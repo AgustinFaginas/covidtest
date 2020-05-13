@@ -44,6 +44,7 @@ public class Institucion {
 
 	public void setCamas(Integer camas) {
 		this.camas = camas;
+		
 	}
 
 }
