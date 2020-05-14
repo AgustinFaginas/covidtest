@@ -13,6 +13,7 @@ public class Institucion {
 	private String nombre;
 	private String password;
 	private Integer camas;
+	private Long razonSocial;
 
 	public Long getId() {
 		return id;
@@ -44,6 +45,14 @@ public class Institucion {
 
 	public void setCamas(Integer camas) {
 		this.camas = camas;
+	}
+
+	public Long getRazonSocial() {
+		return razonSocial;
+	}
+
+	public void setRazonSocial(Long razonSocial) {
+		this.razonSocial = razonSocial;
 	}
 
 }
