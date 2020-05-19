@@ -6,13 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Institucion {
+public class Institucion  extends Usuario{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
 	private String password;
 	private Integer camas;
+
+
+	
 
 	public Long getId() {
 		return id;
