@@ -9,15 +9,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ControladorInstituciones {
-	
+
 	@RequestMapping(value = "/detalle", method = RequestMethod.GET)
-	public ModelAndView helloWorld(@RequestParam(value = "nombreInstitucion", required = false) String nombre)
-			 {
+	public ModelAndView detalle(@RequestParam(value = "nombre", required = false) String nombre) {
 		String message = "Detalle de: " + nombre;
-		
+
 		ModelMap model = new ModelMap();
-		model.put("nombre", nombre);
 		
+		model.put("msg", message);
 		return new ModelAndView("vistaDetalle", model);
 	}
 
