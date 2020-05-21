@@ -20,8 +20,8 @@
 				<a class="navbar-brand" href="#">CovidTest</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Principal</a></li>
+				<li class="active"><a href="#">Principal</a></li>
+				<li><a href="#">FAQ</a></li>
 				<li><a href="#">Ingresar</a></li>
 				<li><a href="#">Regístrese</a></li>
 			</ul>

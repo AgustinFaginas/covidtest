@@ -6,12 +6,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ControladorTest {
-	
+
 	@RequestMapping("/test")
 	public ModelAndView aTest() {
-		
+
 		return new ModelAndView("Test");
-		
+
 	}
 
 }
