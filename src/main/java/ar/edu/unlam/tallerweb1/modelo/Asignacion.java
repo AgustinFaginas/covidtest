@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -17,11 +16,11 @@ public class Asignacion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 
-	private LocalDate fechaIngreso;
-	private LocalDateTime horaIngreso;
-	private LocalDate fechaEgreso;
-	private String motivoEgreso;
+
 	private LocalDateTime horaEgreso;
+	private LocalDateTime horaIngreso;
+
+	private String motivoEgreso;
 
 	@ManyToOne
 	@JoinColumn
@@ -39,12 +38,12 @@ public class Asignacion {
 		Id = id;
 	}
 
-	public LocalDate getFechaIngreso() {
-		return fechaIngreso;
+	public LocalDateTime getHoraEgreso() {
+		return horaEgreso;
 	}
 
-	public void setFechaIngreso(LocalDate fechaIngreso) {
-		this.fechaIngreso = fechaIngreso;
+	public void setHoraEgreso(LocalDateTime horaEgreso) {
+		this.horaEgreso = horaEgreso;
 	}
 
 	public LocalDateTime getHoraIngreso() {
@@ -55,28 +54,12 @@ public class Asignacion {
 		this.horaIngreso = horaIngreso;
 	}
 
-	public LocalDate getFechaEgreso() {
-		return fechaEgreso;
-	}
-
-	public void setFechaEgreso(LocalDate fechaEgreso) {
-		this.fechaEgreso = fechaEgreso;
-	}
-
 	public String getMotivoEgreso() {
 		return motivoEgreso;
 	}
 
 	public void setMotivoEgreso(String motivoEgreso) {
 		this.motivoEgreso = motivoEgreso;
-	}
-
-	public LocalDateTime getHoraEgreso() {
-		return horaEgreso;
-	}
-
-	public void setHoraEgreso(LocalDateTime horaEgreso) {
-		this.horaEgreso = horaEgreso;
 	}
 
 	public Paciente getPaciente() {
