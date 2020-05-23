@@ -17,6 +17,9 @@ public class Paciente extends Usuario  {
 	@JoinColumn 
 	private Domicilio domicilio;
 	private Boolean infectado;
+	private Integer edad;
+	private String apellido;
+	
 	
 	
 	public Long getId() {
@@ -37,5 +40,18 @@ public class Paciente extends Usuario  {
 	public void setInfectado(Boolean infectado) {
 		this.infectado = infectado;
 	}
+	public Integer getEdad() {
+		return edad;
+	}
+	public void setEdad(Integer edad) {
+		this.edad = edad;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
 	
 }
