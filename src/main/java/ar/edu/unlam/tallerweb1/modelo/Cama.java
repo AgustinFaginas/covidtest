@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -15,9 +15,9 @@ public class Cama {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn
-	private Usuario usuario;
+	private Institucion institucion;
 
 	public Long getId() {
 		return id;
@@ -27,13 +27,12 @@ public class Cama {
 		this.id = id;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Institucion getInstitucion() {
+		return institucion;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setInstitucion(Institucion institucion) {
+		this.institucion = institucion;
 	}
-	
 
 }
