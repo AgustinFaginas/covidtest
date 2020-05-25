@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -18,10 +19,25 @@ public class Cama {
 	@ManyToOne
 	@JoinColumn
 	private Institucion institucion;
+	
+	@OneToOne
+	@JoinColumn
+	private Paciente pacienteActual;
 
 	public Long getId() {
 		return id;
 	}
+	
+
+	public Paciente getPacienteActual() {
+		return pacienteActual;
+	}
+
+
+	public void setPacienteActual(Paciente pacienteActual) {
+		this.pacienteActual = pacienteActual;
+	}
+
 
 	public void setId(Long id) {
 		this.id = id;
