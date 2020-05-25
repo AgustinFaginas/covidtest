@@ -10,7 +10,7 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 @Service("servicioRegistro")
 @Transactional
 public class ServicioRegistroImpl implements ServicioRegistro {
-	
+
 	@Autowired
 	private RepositorioUsuario servicioRegistro;
 
