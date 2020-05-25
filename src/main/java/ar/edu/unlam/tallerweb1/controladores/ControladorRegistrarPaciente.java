@@ -18,78 +18,43 @@ public class ControladorRegistrarPaciente {
 	@Autowired
 	ServicioRegistro servicioRegistro;
 
-//	@RequestMapping(value = "/detalle", method = RequestMethod.GET)
-//	public ModelAndView detalle(@RequestParam(value = "nombre", required = false) String nombre) {
-//		String message = "Detalle de: " + nombre;
-//
-//		ModelMap model = new ModelMap();
-//		
-//		model.put("msg", message);
-//		return new ModelAndView("vistaDetalle", model);
-//	}
-
-	
-//
-//	@RequestMapping(path = "/guardar-evento", method = RequestMethod.POST)
-//	public ModelAndView guardarEvento(@ModelAttribute("evento") Evento evento,Long actividades[], HttpServletRequest request){
-//		
-//		System.out.println("\n tipo de viaje :"+evento.getTipoDeViaje());
-//		ModelMap modelo = servicioEvento.validarEvento(evento);
-//		Long id = (long)request.getSession().getAttribute("ID");
-//		Usuario usuarioLogueado = this.servicioPerfil.mostrarPerfil(id);
-//		if(modelo.size()>0){
-//			List<Provincia>provincias = this.servicioProvincia.mostrarTodasLasProvincias();
-//			modelo.put("evento",evento);
-//			modelo.put("provincias",provincias);
-//			return new ModelAndView("new-travel",modelo);
-//		}else{
-//			Provincia prov = this.servicioProvincia.mostrarProvincia(evento.getIdDeProvincia());
-//			evento.setProvincia(prov);
-//			this.servicioEvento.guardarFotoEvento(evento);
-//			this.servicioEvento.guadarEvento(evento,usuarioLogueado);
-//			this.servicioElemento.guardarElemetos(evento,usuarioLogueado);
-//			this.servicioChat.crearChatEvento(evento,usuarioLogueado);
-//			for(int i=0;i<actividades.length;i++){
-//				System.out.println("\n\n actividades:"+actividades[i]);
-//				this.servicioActivities.guardarActividadesEnElEvento
-//				(evento,this.servicioActivities.buscarActividades(actividades[i]));
-//			}
-//			return new ModelAndView("redirect:/registro-evento?mensaje=exito");
-//		}
-//	
-//	}
-	
 	@RequestMapping("/registroPaciente")
-	public ModelAndView registrarPaciente(@RequestParam(value="nombre", required=false)String nombre,
-			@RequestParam(value="apellido", required=false)String apellido) {
-		
+	public ModelAndView registrarPaciente(
+
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "apellido", required = false) String apellido,
+			@RequestParam(value = "email", required = false) String email,
+			@RequestParam(value = "password", required = false) String password
+
+											) {
+
 		Paciente paciente = new Paciente();
-		
+
 		paciente.setNombre(nombre);
 		paciente.setApellido(apellido);
-		
-		servicioRegistro.registrarPaciente(paciente);
-		
+		paciente.setEmail(email);
+		paciente.setPassword(password);
+
+		try {
+			servicioRegistro.registrarPaciente(paciente);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		String message = "El nombre del paciente es: " + nombre;
 		String message2 = "El apellido del paciente es: " + apellido;
+		String message3 = "El email ingresado es: " + email;
 		
+
 		ModelMap model = new ModelMap();
 		model.put("msg", message);
 		model.put("msg2", message2);
-
+		model.put("msg3", message3);
+	
 
 		return new ModelAndView("registroPaciente", model);
 
 	}
 
-//	@RequestMapping(value = "/hi/amigo", method = RequestMethod.GET)
-//	public ModelAndView helloWorld(@RequestParam(value = "firstname", required = false) String nombre,
-//			@RequestParam(value = "sourcename", required = true) String apellido) {
-//		String message = "El nombre ingresado es: " + nombre + "!";
-//		String message2 = "El apellido ingresado es: " + apellido;
-//		ModelMap model = new ModelMap();
-//		model.put("msg", message);
-//		model.put("msg2", message2);
-//		return new ModelAndView("mensaje", model);
-//	}
 }

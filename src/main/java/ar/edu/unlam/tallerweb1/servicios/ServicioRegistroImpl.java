@@ -15,8 +15,9 @@ public class ServicioRegistroImpl implements ServicioRegistro {
 	private RepositorioUsuario servicioRegistro;
 
 	@Override
-	public void registrarPaciente(Usuario usuario) {
+	public void registrarPaciente(Usuario usuario) throws Exception {
 		if (servicioRegistro.consultarUsuario(usuario) != null) {
+			throw new Exception("El mail ya se encuentra en uso");
 
 		}
 
