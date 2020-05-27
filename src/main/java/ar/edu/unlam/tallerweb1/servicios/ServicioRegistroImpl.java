@@ -12,16 +12,16 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 public class ServicioRegistroImpl implements ServicioRegistro {
 
 	@Autowired
-	private RepositorioUsuario servicioRegistro;
+	private RepositorioUsuario repositorioUsuario;
 
 	@Override
 	public void registrarPaciente(Usuario usuario) throws Exception {
-		if (servicioRegistro.consultarUsuario(usuario) != null) {
+		if (repositorioUsuario.consultarUsuario(usuario) != null) {
 			throw new Exception("El mail ya se encuentra en uso");
 
 		}
 
-		servicioRegistro.registrarPaciente(usuario);
+		repositorioUsuario.registrarPaciente(usuario);
 
 	}
 
