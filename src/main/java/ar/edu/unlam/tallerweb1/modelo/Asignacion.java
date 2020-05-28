@@ -20,8 +20,6 @@ public class Asignacion {
 	private LocalDateTime horaEgreso;
 	private LocalDateTime horaIngreso;
 
-	private String motivoEgreso;
-
 	@ManyToOne
 	@JoinColumn
 	private Paciente paciente;
@@ -29,6 +27,17 @@ public class Asignacion {
 	@ManyToOne
 	@JoinColumn
 	private Cama cama;
+
+	private MotivoEgreso motivoEgreso;
+	
+	
+	public MotivoEgreso getMotivoEgreso() {
+		return motivoEgreso;
+	}
+
+	public void setMotivoEgreso(MotivoEgreso motivoEgreso) {
+		this.motivoEgreso = motivoEgreso;
+	}
 
 	public Long getId() {
 		return Id;
@@ -52,14 +61,6 @@ public class Asignacion {
 
 	public void setHoraIngreso(LocalDateTime horaIngreso) {
 		this.horaIngreso = horaIngreso;
-	}
-
-	public String getMotivoEgreso() {
-		return motivoEgreso;
-	}
-
-	public void setMotivoEgreso(String motivoEgreso) {
-		this.motivoEgreso = motivoEgreso;
 	}
 
 	public Paciente getPaciente() {
