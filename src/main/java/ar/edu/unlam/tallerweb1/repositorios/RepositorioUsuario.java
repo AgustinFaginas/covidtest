@@ -9,4 +9,6 @@ public interface RepositorioUsuario {
 
 	public void registrarPaciente(Usuario usuario);
 
+	void registrarInstitucion(Usuario usuario);
+
 }
