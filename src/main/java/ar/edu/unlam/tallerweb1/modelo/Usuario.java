@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Usuario {
@@ -19,9 +18,8 @@ public class Usuario {
 	private String email;
 	private String password;
 	private String rol;
-	
-	@OneToOne
-	private Documento documento;
+	private String numeroDocumento;
+	private TipoDocumento tipoDocumento;
 	
 	@ManyToOne
 	@JoinColumn 
@@ -66,10 +64,17 @@ public class Usuario {
 	public void setDomicilio(Domicilio domicilio) {
 		this.domicilio = domicilio;
 	}
-	public Documento getDocumento() {
-		return documento;
+	public String getNumeroDocumento() {
+		return numeroDocumento;
 	}
-	public void setDocumento(Documento documento) {
-		this.documento = documento;
+	public void setNumeroDocumento(String numeroDocumento) {
+		this.numeroDocumento = numeroDocumento;
 	}
+	public TipoDocumento getTipoDocumento() {
+		return tipoDocumento;
+	}
+	public void setTipoDocumento(TipoDocumento tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
+
 }

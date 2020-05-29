@@ -1,19 +1,22 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
-import ar.edu.unlam.tallerweb1.modelo.Documento;
+import ar.edu.unlam.tallerweb1.modelo.Asignacion;
 import ar.edu.unlam.tallerweb1.modelo.MotivoEgreso;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
+import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 
 public interface ServicioPaciente {
 	
-	public Boolean guardarPaciente(Paciente paciente) throws Exception;
+	public void registrarPaciente(Paciente paciente) throws Exception;
 
-	public Paciente consultarPacientePorDoc(Documento documento);
+	public Paciente consultarPacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento);
 	
-	public Boolean consultarAsignacionPaciente(Paciente paciente);
+	public Asignacion consultarAsignacionPaciente(Paciente paciente);
+	
+	public Long consultarIdAsignacionPaciente(Paciente paciente);
 	
 	public void egresarPaciente(Paciente paciente, MotivoEgreso motivoEgreso) throws Exception;
 	
-	public Long consultarIdDePacientePorDoc(Documento documento) throws Exception;
+	public Long consultarIdDePacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento) throws Exception;
 	
 }
