@@ -5,8 +5,9 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.unlam.tallerweb1.modelo.Documento;
+import ar.edu.unlam.tallerweb1.modelo.MotivoEgreso;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
-import ar.edu.unlam.tallerweb1.modelo.TipoDeDocumento;
 
 @Repository("repositorioPaciente")
 public class RepositorioPacienteImpl implements RepositorioPaciente {
@@ -17,12 +18,39 @@ public class RepositorioPacienteImpl implements RepositorioPaciente {
 	public RepositorioPacienteImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
+	
 
-	public Paciente consultarPacientePorDoc(Integer nroDocumento, TipoDeDocumento tipoDoc) {
+	@Override
+	public Boolean guardarPaciente(Paciente paciente) {
+		
+		return (Boolean) sessionFactory.getCurrentSession().save(paciente);
+	
+	}
+
+	public Paciente consultarPacientePorDoc(Documento documento) {
 
 		return (Paciente) sessionFactory.getCurrentSession().createCriteria(Paciente.class)
-				.add(Restrictions.eq("numeroDeDocumeto", nroDocumento)).add(Restrictions.eq("tipoDeDocumento", tipoDoc))
+				.add(Restrictions.eq("numeroDeDocumeto", documento.getNumeroDocumento())).add(Restrictions.eq("tipoDocumento", documento.getTipoDocumento()))
 				.uniqueResult();
 	}
+
+	@Override
+	public Long consultarIdDePacientePorDoc(Documento documento) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean consultarAsignacionPaciente(Long id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void egresarPaciente(Paciente paciente, MotivoEgreso motivoEgreso) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
