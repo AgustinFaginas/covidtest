@@ -29,47 +29,44 @@
 	</nav>
 	<div class="container mt-3">
 		<h1>Covid-19 Test Online</h1>
-		<br>
-		<br>
+		<br> <br>
 
-		<form action="/action">
+		<form action="validarTest" method=GET>
 			<div class="custom-control custom-checkbox mb-3">
 
 				<label class="custom-control-label" for="customCheck">1-¿Tiene
 					pérdida del gusto o de olfato?</label>
 			</div>
-			<br>
+
 			<br> Si <input type="checkbox" class="custom-control-input"
-				id="customCheck" name="example1"><br> No <input
-				type="checkbox" class="custom-control-input" id="customCheck"
-				name="example1">
+				id="customCheck" name="tos">
+
 			<div class="custom-control custom-checkbox mb-3">
-				<br>
-				<br> <label class="custom-control-label" for="customCheck">2-¿Es
-					Personal de Salud y tiene fiebre o síntomas (tos, dolor de
-					garganta, dificultad respiratoria, falta de olfato, falta de
-					gusto)?</label> <input type="checkbox" class="custom-control-input"
-					id="customCheck" name="example2"><br>
+				<br> <br> <label class="custom-control-label"
+					for="customCheck">2-¿Es Personal de Salud y tiene fiebre o
+					síntomas (tos, dolor de garganta, dificultad respiratoria, falta de
+					olfato, falta de gusto)?</label> <br> Si
+					 <input type="checkbox" class="custom-control-input" id="customCheck" name="sintomas"><br>
 				<br> <label class="custom-control-label" for="customCheck">3-¿Es
 					una persona de 60 años o más o brinda asistencia a personas mayores
 					o es personal de Fuerzas de seguridad y Fuerzas Armadas o reside en
 					una institución cerrada, y tiene fiebre o síntomas (tos, dolor de
 					garganta, dificultad respiratoria, falta de olfato, falta de
 					gusto)? </label> Si <input type="checkbox" class="custom-control-input"
-					id="customCheck" name="example1"><br> No <input
-					type="checkbox" class="custom-control-input" id="customCheck"
-					name="example1">
+					id="customCheck" name="mayor">
+
+
 
 			</div>
-			<br>
-			<br>
+			<br> <br>
 
 			<button type="submit" class="btn btn-primary">Siguiente</button>
+		</form>
 	</div>
 	<br>
 
-	</form>
-	</div>
+
+
 
 
 
