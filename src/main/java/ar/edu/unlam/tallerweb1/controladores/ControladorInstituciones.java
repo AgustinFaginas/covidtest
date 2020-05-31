@@ -16,6 +16,8 @@ public class ControladorInstituciones {
 
 	@Autowired
 	private ServicioRegistro servicioRegistro;
+	
+	//private ServicioInstitucion servicioInstitucion;
 
 	@RequestMapping(value = "/detalle", method = RequestMethod.GET)
 	public ModelAndView detalle(@RequestParam(value = "nombre", required = false) String nombre) {
