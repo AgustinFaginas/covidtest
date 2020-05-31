@@ -15,6 +15,7 @@ public class Paciente extends Usuario  {
 	private Boolean infectado;
 	private Integer edad;
 	private String apellido;
+
 	
 	@OneToOne
 	private Paciente pacienteActual;

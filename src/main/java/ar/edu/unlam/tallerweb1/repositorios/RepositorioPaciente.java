@@ -1,18 +1,22 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
-import ar.edu.unlam.tallerweb1.modelo.Documento;
+import ar.edu.unlam.tallerweb1.modelo.Asignacion;
 import ar.edu.unlam.tallerweb1.modelo.MotivoEgreso;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
+import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 
 public interface RepositorioPaciente {
-	Paciente consultarPacientePorDoc(Documento documento);
+	
+	Paciente consultarPacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento);
 
-	Long consultarIdDePacientePorDoc(Documento documento);
+	Long consultarIdDePacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento);
 
-	Boolean consultarAsignacionPaciente(Long id);
+	Asignacion consultarAsignacionPaciente(Paciente paciente);
 
+	void registrarPaciente(Paciente paciente);
+	
 	void egresarPaciente(Paciente paciente, MotivoEgreso motivoEgreso);
 
-	Boolean guardarPaciente(Paciente paciente);
+	Long consultarIdAsignacionPaciente(Paciente paciente);
 
 }

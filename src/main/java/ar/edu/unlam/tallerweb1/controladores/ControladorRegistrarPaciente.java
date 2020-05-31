@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
-import ar.edu.unlam.tallerweb1.servicios.ServicioRegistro;
+import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
+import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 
 @Controller
 public class ControladorRegistrarPaciente {
 
 	@Autowired
-	ServicioRegistro servicioRegistro;
+	ServicioPaciente servicioPaciente;
 
 	@RequestMapping("/registroPaciente")
 	public ModelAndView registrarPaciente(
@@ -22,7 +23,8 @@ public class ControladorRegistrarPaciente {
 			@RequestParam(value = "nombre", required = false) String nombre,
 			@RequestParam(value = "apellido", required = false) String apellido,
 			@RequestParam(value = "email", required = false) String email,
-			@RequestParam(value = "password", required = false) String password
+			@RequestParam(value = "password", required = false) String password,
+			@RequestParam(value = "nroDoc", required = false) String nroDoc
 
 	) {
 
@@ -32,9 +34,13 @@ public class ControladorRegistrarPaciente {
 		paciente.setApellido(apellido);
 		paciente.setEmail(email);
 		paciente.setPassword(password);
-
+		
+		TipoDocumento tipoDoc = TipoDocumento.DNI;
+		paciente.setNumeroDocumento(nroDoc);
+		paciente.setTipoDocumento(tipoDoc);
+		
 		try {
-			servicioRegistro.registrarPaciente(paciente);
+			servicioPaciente.registrarPaciente(paciente);
 		} catch (Exception e) {
 
 			e.printStackTrace();
