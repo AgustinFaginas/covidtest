@@ -40,7 +40,7 @@ public class RepositorioPacienteImpl implements RepositorioPaciente {
 
 	@Override
 	public Long consultarIdDePacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 

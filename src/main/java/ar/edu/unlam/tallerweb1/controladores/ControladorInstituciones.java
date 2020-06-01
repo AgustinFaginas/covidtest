@@ -1,5 +1,8 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -8,17 +11,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
-import ar.edu.unlam.tallerweb1.servicios.ServicioRegistro;
+import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
+import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
+
 
 @Controller
 public class ControladorInstituciones {
 
 	@Autowired
-	private ServicioRegistro servicioRegistro;
+	private ServicioInstitucion servicioInstitucion;
 	
-	//private ServicioInstitucion servicioInstitucion;
-
+	@Autowired
+	private ServicioCama servicioCama;
+	
 	@RequestMapping(value = "/detalle", method = RequestMethod.GET)
 	public ModelAndView detalle(@RequestParam(value = "nombre", required = false) String nombre) {
 		String message = "Detalle de: " + nombre;
@@ -34,17 +41,23 @@ public class ControladorInstituciones {
 
 			@RequestParam(value = "nombre", required = false) String nombre,
 			@RequestParam(value = "email", required = false) String email,
-			@RequestParam(value = "password", required = false) String password
+			@RequestParam(value = "password", required = false) String password,
+			@RequestParam(value = "cuit", required = false) String cuit, 
+			@RequestParam(value="cantidadCamas", required = false)Integer camasTotales
 
 	) {
 		Institucion institucion = new Institucion();
-
+		
 		institucion.setNombre(nombre);
 		institucion.setEmail(email);
 		institucion.setPassword(password);
-
+		institucion.setCantidadCamas(camasTotales);
+		institucion.setNumeroDocumento(cuit);
+		List<Cama> camas = new ArrayList<Cama>();
+		camasTotales = camas.size();
+		
 		try {
-			servicioRegistro.registrarInstitucion(institucion);
+			servicioInstitucion.registrarInstitucion(institucion);
 		} catch (Exception e) {
 
 			e.printStackTrace();

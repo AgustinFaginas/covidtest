@@ -37,4 +37,6 @@ public class RepositorioCamaImpl implements RepositorioCama {
 
 	}
 
+	
+	
 }

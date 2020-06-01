@@ -9,7 +9,7 @@ public interface ServicioPaciente {
 	
 	public void registrarPaciente(Paciente paciente) throws Exception;
 
-	public Paciente consultarPacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento);
+	public Paciente consultarPacientePorDoc(String ndoc, TipoDocumento tipoDoc);
 	
 	public Asignacion consultarAsignacionPaciente(Paciente paciente);
 	

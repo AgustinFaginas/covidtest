@@ -22,7 +22,7 @@ public class ServicioPacienteImpl implements ServicioPaciente {
 
 		if (repositorioPaciente.consultarPacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento()) != null) {
 			throw new Exception("El paciente ya está registrado");
-
+			
 		}
 		repositorioPaciente.registrarPaciente(paciente);
 	}
@@ -36,7 +36,7 @@ public class ServicioPacienteImpl implements ServicioPaciente {
 	@Override
 	public void egresarPaciente(Paciente paciente, MotivoEgreso motivoEgreso) throws Exception {
 		
-		if (repositorioPaciente.consultarIdAsignacionPaciente(paciente) != null) {
+		if (repositorioPaciente.consultarIdAsignacionPaciente(paciente) == null) {
 			throw new Exception("El paciente no está asignado");
 
 		}
@@ -54,8 +54,8 @@ public class ServicioPacienteImpl implements ServicioPaciente {
 	@Override
 	public Long consultarIdDePacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento) throws Exception {
 
-		if (repositorioPaciente.consultarPacientePorDoc(numeroDocumento, tipoDocumento) != null) {
-			throw new Exception("El paciente ya está registrado");
+		if (repositorioPaciente.consultarPacientePorDoc(numeroDocumento, tipoDocumento) == null) {
+			throw new Exception("El paciente No está registrado");
 
 		}
 		return repositorioPaciente.consultarIdDePacientePorDoc(numeroDocumento, tipoDocumento);
