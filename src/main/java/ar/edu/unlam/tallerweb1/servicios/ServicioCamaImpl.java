@@ -31,4 +31,9 @@ public class ServicioCamaImpl implements ServicioCama {
 		return repositorioCama.verCamasDisponiblesPorInstitucion(institucion);
 	}
 
+	@Override//guardar cama
+	public void registrarCama(Cama cama) {
+		repositorioCama.registrarCama(cama);
+	}
+
 }

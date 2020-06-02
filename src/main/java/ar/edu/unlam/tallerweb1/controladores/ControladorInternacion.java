@@ -13,7 +13,9 @@ import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
+import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioInternacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 
 @Controller
@@ -23,7 +25,10 @@ public class ControladorInternacion {
 	private ServicioPaciente servicioPaciente;
 	@Autowired
 	private ServicioInstitucion servicioInstitucion;
-	
+	@Autowired
+	private ServicioInternacion servicioInternacion;
+	@Autowired
+	private ServicioCama servicioCama;
 
 	@RequestMapping(value = "/internarPaciente", method = RequestMethod.GET)
 	public ModelAndView irAinternacion(
@@ -38,19 +43,19 @@ public class ControladorInternacion {
 
 		Paciente paciente = servicioPaciente.consultarPacientePorDoc(ndoc, tipoDoc);
 		Institucion inst = servicioInstitucion.consultarInstitucionPorCuit(nCuit);
+		
 		Cama cama = new Cama();
 		cama.setPacienteActual(paciente);
 		cama.setInstitucion(inst);
+		servicioCama.registrarCama(cama);
 		
-		
-	
 		Asignacion internacion = new Asignacion();
 		internacion.setCama(cama);
 		internacion.setPaciente(paciente);
-		
 		//internacion.setHoraIngreso(horaIngreso);
 		
-
+		servicioInternacion.registrarInternacion(internacion);
+		
 		ModelMap model = new ModelMap();
 		model.put("paciente", paciente);
 		model.put("institucion", inst);

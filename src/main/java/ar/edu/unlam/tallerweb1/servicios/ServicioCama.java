@@ -6,6 +6,8 @@ import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
 
 public interface ServicioCama {
+	
+	void registrarCama(Cama cama);
 
 	Cama consultarCamaPorId(Long id);
 

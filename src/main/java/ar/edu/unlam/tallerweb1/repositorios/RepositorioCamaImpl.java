@@ -37,6 +37,12 @@ public class RepositorioCamaImpl implements RepositorioCama {
 
 	}
 
+	@Override
+	public void registrarCama(Cama cama) {
+		sessionFactory.getCurrentSession().save(cama);
+		
+	}
+
 	
 	
 }
