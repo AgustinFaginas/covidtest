@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
+import java.time.LocalDateTime;
+
 import javax.inject.Inject;
 
 import org.hibernate.SessionFactory;
@@ -8,12 +10,15 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.modelo.Asignacion;
+import ar.edu.unlam.tallerweb1.modelo.Institucion;
+import ar.edu.unlam.tallerweb1.modelo.MotivoEgreso;
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 
 
 @Repository
 @Transactional
 public class RepositorioInternacionImpl implements RepositorioInternacion {
-	@Inject
+	@Autowired
 	private SessionFactory sessionFactory;
 
 
@@ -28,6 +33,6 @@ public class RepositorioInternacionImpl implements RepositorioInternacion {
 		sessionFactory.getCurrentSession().save(asignacion);
 		
 	}
-	
-	
+
+
 }

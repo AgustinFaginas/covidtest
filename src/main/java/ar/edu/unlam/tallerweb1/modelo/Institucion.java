@@ -18,10 +18,6 @@ public class Institucion extends Usuario{
 	
 	private Integer cantidadCamas;
 	
-	@OneToMany
-	@JoinColumn
-	private List<Cama>camas;
-	
 	public Long getId() {
 		return id;
 	}
@@ -38,12 +34,6 @@ public class Institucion extends Usuario{
 		this.cantidadCamas = cantidadCamas;
 	}
 
-	public List<Cama> getCamas() {
-		return camas;
-	}
 
-	public void setCamas(List<Cama> camas) {
-		this.camas = camas;
-	}
 
 }

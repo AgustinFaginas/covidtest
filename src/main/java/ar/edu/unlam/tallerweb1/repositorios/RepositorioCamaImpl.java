@@ -34,7 +34,7 @@ public class RepositorioCamaImpl implements RepositorioCama {
 	public List<Cama> verCamasDisponiblesPorInstitucion(Institucion institucion) {
 
 		return sessionFactory.getCurrentSession().createCriteria(Cama.class)
-				.add(Restrictions.eq("pacienteActual", null))
+				//.add(Restrictions.eq("pacienteActual", null))
 				.add(Restrictions.eq("institucion", institucion.getId()))
 				.list();
 

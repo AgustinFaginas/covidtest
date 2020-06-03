@@ -13,12 +13,17 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioInternacion;
 public class ServicioInternacionImpl implements ServicioInternacion{
 
 	@Autowired
-	RepositorioInternacion repositorioInternacion;
+	private RepositorioInternacion repositorioInternacion;
 	
 	@Override
 	public void registrarInternacion(Asignacion asignacion) {
 		repositorioInternacion.registrarInternacion(asignacion);
 		
 	}
+
+	
+
+
+	
 
 }

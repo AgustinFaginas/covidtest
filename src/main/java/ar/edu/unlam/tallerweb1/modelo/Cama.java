@@ -20,24 +20,14 @@ public class Cama {
 	@JoinColumn
 	private Institucion institucion;
 	
-	@OneToOne
-	@JoinColumn
-	private Paciente pacienteActual;
+//	@OneToOne
+//	@JoinColumn
+//	private Paciente pacienteActual;
 
 	public Long getId() {
 		return id;
 	}
 	
-
-	public Paciente getPacienteActual() {
-		return pacienteActual;
-	}
-
-
-	public void setPacienteActual(Paciente pacienteActual) {
-		this.pacienteActual = pacienteActual;
-	}
-
 
 	public void setId(Long id) {
 		this.id = id;

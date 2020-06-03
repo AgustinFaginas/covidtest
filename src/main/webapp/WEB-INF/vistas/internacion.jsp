@@ -10,7 +10,7 @@
 	<h2>InstitucionId: ${institucion.id}</h2>
 	<h2>PacienteId: ${paciente.id}</h2>
 	<h2>CamaId: ${cama.id}</h2>
-	<h2>Cantidad de camas: ${cantCamasOcupadas}</h2>
+	<h2>Cantidad de camas Disponibles: ${numeroCamasDisponibles}</h2>
 	<h2>Cantidad maxima de camas: ${cantMaxCamas}</h2>
 </body>
 </html>
