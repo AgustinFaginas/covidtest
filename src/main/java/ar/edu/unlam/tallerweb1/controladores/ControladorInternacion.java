@@ -1,5 +1,8 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -45,24 +48,51 @@ public class ControladorInternacion {
 		Institucion inst = servicioInstitucion.consultarInstitucionPorCuit(nCuit);
 		
 		Cama cama = new Cama();
-		cama.setPacienteActual(paciente);
-		cama.setInstitucion(inst);
-		servicioCama.registrarCama(cama);
-		
-		Asignacion internacion = new Asignacion();
-		internacion.setCama(cama);
-		internacion.setPaciente(paciente);
-		
-		//internacion.setHoraIngreso(horaIngreso);
-		
-		servicioInternacion.registrarInternacion(internacion);
-		
-		ModelMap model = new ModelMap();
-		model.put("paciente", paciente);
-		model.put("institucion", inst);
-		model.put("cama", cama);
 
-		return new ModelAndView("internacion", model);
+		
+		Integer capacidadCamas = inst.getCantidadCamas();
+		
+//		List<Cama> camas = new ArrayList<Cama>();		
+//		
+//		camas.add(cama);
+		
+		Integer cantidadCamasOcupadas = 0;
+		
+		if(cantidadCamasOcupadas <= capacidadCamas) {
+			
+			cama.setPacienteActual(paciente);
+			cama.setInstitucion(inst);
+			servicioCama.registrarCama(cama);
+			
+			cantidadCamasOcupadas = cantidadCamasOcupadas + 1;
+			
+			//inst.setCamas(camas);
+			
+			Asignacion internacion = new Asignacion();
+			internacion.setCama(cama);
+			internacion.setPaciente(paciente);
+			
+			//internacion.setHoraIngreso(horaIngreso);
+			
+			servicioInternacion.registrarInternacion(internacion);
+			
+			ModelMap model = new ModelMap();
+			model.put("paciente", paciente);
+			model.put("institucion", inst);
+			model.put("cama", cama);
+			model.put("cantCamasOcupadas", cantidadCamasOcupadas);
+			model.put("cantMaxCamas", capacidadCamas);
+
+			return new ModelAndView("internacion", model);
+			
+		} else {
+			return new ModelAndView("internacionerror");
+		}
+		
+		
+
+		
+
 	}
 
 }
