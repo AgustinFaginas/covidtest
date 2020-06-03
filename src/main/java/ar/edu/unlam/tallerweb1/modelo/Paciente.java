@@ -16,16 +16,11 @@ public class Paciente extends Usuario  {
 	private Integer edad;
 	private String apellido;
 
+//	@OneToOne
+//	//private Paciente pacienteActual;
+//	private Cama camaActual;
 	
-	@OneToOne
-	private Paciente pacienteActual;
-	
-	public Paciente getPacienteActual() {
-		return pacienteActual;
-	}
-	public void setPacienteActual(Paciente pacienteActual) {
-		this.pacienteActual = pacienteActual;
-	}
+
 	public Long getId() {
 		return id;
 	}

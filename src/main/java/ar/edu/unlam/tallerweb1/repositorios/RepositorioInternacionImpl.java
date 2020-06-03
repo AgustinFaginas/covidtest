@@ -1,17 +1,19 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
+import javax.inject.Inject;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.modelo.Asignacion;
-import ar.edu.unlam.tallerweb1.modelo.Institucion;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
-import ar.edu.unlam.tallerweb1.servicios.ServicioInternacion;
+
 
 @Repository
+@Transactional
 public class RepositorioInternacionImpl implements RepositorioInternacion {
+	@Inject
 	private SessionFactory sessionFactory;
 
 

@@ -34,14 +34,14 @@ public class ControladorInternacion {
 	public ModelAndView irAinternacion(
 			
 			@RequestParam(value = "tipoDoc", required = false) TipoDocumento tipoDoc,
-			@RequestParam(value = "ndoc", required = false) String ndoc,
+			@RequestParam(value = "nDoc", required = false) String nDoc,
 			@RequestParam(value = "nCuit", required = false) String nCuit
 
 	)
 
 	{
 
-		Paciente paciente = servicioPaciente.consultarPacientePorDoc(ndoc, tipoDoc);
+		Paciente paciente = servicioPaciente.consultarPacientePorDoc(nDoc, tipoDoc);
 		Institucion inst = servicioInstitucion.consultarInstitucionPorCuit(nCuit);
 		
 		Cama cama = new Cama();
@@ -52,6 +52,7 @@ public class ControladorInternacion {
 		Asignacion internacion = new Asignacion();
 		internacion.setCama(cama);
 		internacion.setPaciente(paciente);
+		
 		//internacion.setHoraIngreso(horaIngreso);
 		
 		servicioInternacion.registrarInternacion(internacion);
@@ -59,6 +60,7 @@ public class ControladorInternacion {
 		ModelMap model = new ModelMap();
 		model.put("paciente", paciente);
 		model.put("institucion", inst);
+		model.put("cama", cama);
 
 		return new ModelAndView("internacion", model);
 	}

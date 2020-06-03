@@ -7,6 +7,8 @@
 <title>Internación</title>
 </head>
 <body>
-	<h2>${paciente.id}</h2>
+	<h2>InstitucionId: ${institucion.id}</h2>
+	<h2>PacienteId: ${paciente.id}</h2>
+	<h2>CamaId: ${cama.id}</h2>
 </body>
 </html>
