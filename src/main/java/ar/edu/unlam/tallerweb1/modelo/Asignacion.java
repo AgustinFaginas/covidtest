@@ -3,6 +3,8 @@ package ar.edu.unlam.tallerweb1.modelo;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,14 +22,15 @@ public class Asignacion {
 	private LocalDateTime horaEgreso;
 	private LocalDateTime horaIngreso;
 
-	@ManyToOne
+	@ManyToOne(targetEntity = Paciente.class)
 	@JoinColumn
 	private Paciente paciente;
 
 	@ManyToOne
 	@JoinColumn
 	private Cama cama;
-
+	
+	@Enumerated(EnumType.STRING)
 	private MotivoEgreso motivoEgreso;
 	
 	
