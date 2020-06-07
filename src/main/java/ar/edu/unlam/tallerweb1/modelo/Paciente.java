@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity 
 public class Paciente extends Usuario  {
@@ -15,11 +14,6 @@ public class Paciente extends Usuario  {
 	private Boolean infectado;
 	private Integer edad;
 	private String apellido;
-
-//	@OneToOne
-//	//private Paciente pacienteActual;
-//	private Cama camaActual;
-	
 
 	public Long getId() {
 		return id;
