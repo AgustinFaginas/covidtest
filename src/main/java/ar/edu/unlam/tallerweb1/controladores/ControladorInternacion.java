@@ -21,51 +21,56 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 @Controller
 public class ControladorInternacion {
 
-	@Autowired
-	private ServicioPaciente servicioPaciente;
-	@Autowired
-	private ServicioInstitucion servicioInstitucion;
-	@Autowired
-	private ServicioInternacion servicioInternacion;
-	@Autowired
-	private ServicioCama servicioCama;
+    @Autowired
+    private ServicioPaciente servicioPaciente;
+    @Autowired
+    private ServicioInstitucion servicioInstitucion;
+    @Autowired
+    private ServicioInternacion servicioInternacion;
+    @Autowired
+    private ServicioCama servicioCama;
 
-	@RequestMapping(value = "/internarPaciente", method = RequestMethod.GET)
-	public ModelAndView irAinternacion(
+    @RequestMapping(value = "/internarPaciente", method = RequestMethod.GET)
+    public ModelAndView irAinternacion(
 
-			@RequestParam(value = "tipoDoc", required = false) TipoDocumento tipoDoc,
-			@RequestParam(value = "nDoc", required = false) String nDoc,
-			@RequestParam(value = "nCuit", required = false) String nCuit
+            @RequestParam(value = "tipoDoc", required = false) TipoDocumento tipoDoc,
+            @RequestParam(value = "nDoc", required = false) String nDoc,
+            @RequestParam(value = "nCuit", required = false) String nCuit
 
-	)
+    ) {
 
-	{
+        Paciente paciente = servicioPaciente.consultarPacientePorDoc(nDoc, tipoDoc);
+        Institucion inst = servicioInstitucion.consultarInstitucionPorCuit(nCuit);
 
-		Paciente paciente = servicioPaciente.consultarPacientePorDoc(nDoc, tipoDoc);
-		Institucion inst = servicioInstitucion.consultarInstitucionPorCuit(nCuit);
+        Cama cama = new Cama();
+        cama.setInstitucion(inst);
+        servicioCama.registrarCama(cama);
 
-		Cama cama = new Cama();
-		cama.setInstitucion(inst);
-		servicioCama.registrarCama(cama);
-		
-		//Integer capacidadTotalCamas = inst.getCantidadCamas();
-		
-		Asignacion internacion = new Asignacion();
-		internacion.setCama(cama);
-		internacion.setPaciente(paciente);
+        //Integer capacidadTotalCamas = inst.getCantidadCamas();
 
-		servicioInternacion.registrarInternacion(internacion);
-		
-		ModelMap model = new ModelMap();
-		model.put("paciente", paciente);
-		model.put("institucion", inst);
-		model.put("cama", cama);
-		
+        Asignacion internacion = new Asignacion();
+        internacion.setCama(cama);
+        internacion.setPaciente(paciente);
 
-		return new ModelAndView("internacion", model);
+        servicioInternacion.registrarInternacion(internacion);
 
-		// ELSE return new ModelAndView("internacionerror");
+        ModelMap model = new ModelMap();
+        model.put("paciente", paciente);
+        model.put("institucion", inst);
+        model.put("cama", cama);
 
-	}
+
+        return new ModelAndView("internacion", model);
+
+        // ELSE return new ModelAndView("internacionerror");
+
+    }
+
+    @RequestMapping("/home2")
+    public ModelAndView home2() {
+
+
+        return new ModelAndView("home2");
+    }
 
 }
