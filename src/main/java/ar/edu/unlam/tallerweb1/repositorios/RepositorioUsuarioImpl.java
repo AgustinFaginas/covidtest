@@ -1,4 +1,4 @@
-package ar.edu.unlam.tallerweb1.repositorios.impl;
+package ar.edu.unlam.tallerweb1.repositorios;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;

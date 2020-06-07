@@ -1,4 +1,4 @@
-package ar.edu.unlam.tallerweb1.repositorios.impl;
+package ar.edu.unlam.tallerweb1.repositorios;
 
 import java.time.LocalDateTime;
 import java.util.List;

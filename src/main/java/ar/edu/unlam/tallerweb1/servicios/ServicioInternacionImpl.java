@@ -1,4 +1,4 @@
-package ar.edu.unlam.tallerweb1.servicios.impl;
+package ar.edu.unlam.tallerweb1.servicios;
 
 import javax.transaction.Transactional;
 

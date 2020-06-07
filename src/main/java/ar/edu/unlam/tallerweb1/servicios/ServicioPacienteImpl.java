@@ -1,4 +1,4 @@
-package ar.edu.unlam.tallerweb1.servicios.impl;
+package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import org.springframework.beans.factory.annotation.Autowired;
