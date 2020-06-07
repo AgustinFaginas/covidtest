@@ -1,5 +1,6 @@
-package ar.edu.unlam.tallerweb1.repositorios;
+package ar.edu.unlam.tallerweb1.repositorios.impl;
 
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioInstitucion;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;

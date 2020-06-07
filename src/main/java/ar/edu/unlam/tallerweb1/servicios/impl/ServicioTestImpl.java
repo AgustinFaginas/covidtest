@@ -1,5 +1,6 @@
-package ar.edu.unlam.tallerweb1.servicios;
+package ar.edu.unlam.tallerweb1.servicios.impl;
 
+import ar.edu.unlam.tallerweb1.servicios.ServicioTest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

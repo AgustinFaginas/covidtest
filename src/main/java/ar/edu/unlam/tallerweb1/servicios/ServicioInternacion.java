@@ -6,4 +6,5 @@ public interface ServicioInternacion {
 	void registrarInternacion(Asignacion asignacion);
 
 
+
 }

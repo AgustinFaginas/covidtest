@@ -1,7 +1,8 @@
-package ar.edu.unlam.tallerweb1.servicios;
+package ar.edu.unlam.tallerweb1.servicios.impl;
 
 import javax.transaction.Transactional;
 
+import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

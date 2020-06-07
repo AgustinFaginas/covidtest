@@ -1,9 +1,10 @@
-package ar.edu.unlam.tallerweb1.repositorios;
+package ar.edu.unlam.tallerweb1.repositorios.impl;
 
 import java.time.LocalDateTime;
 
 import javax.inject.Inject;
 
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioInternacion;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

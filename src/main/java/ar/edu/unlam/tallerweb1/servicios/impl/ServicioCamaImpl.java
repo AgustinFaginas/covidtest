@@ -1,9 +1,10 @@
-package ar.edu.unlam.tallerweb1.servicios;
+package ar.edu.unlam.tallerweb1.servicios.impl;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
