@@ -23,8 +23,8 @@ public class Asignacion {
 	private LocalDateTime horaIngreso;
 
 	@ManyToOne(targetEntity = Paciente.class)
-	@JoinColumn
-	private Paciente paciente;
+	@JoinColumn(name = "paciente_id")
+	private Paciente paciente_id;
 
 	@ManyToOne
 	@JoinColumn
@@ -67,11 +67,11 @@ public class Asignacion {
 	}
 
 	public Paciente getPaciente() {
-		return paciente;
+		return paciente_id;
 	}
 
 	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
+		this.paciente_id = paciente;
 	}
 
 	public Cama getCama() {

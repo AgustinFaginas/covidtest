@@ -45,11 +45,13 @@ public class ControladorConsultarPaciente {
 				
 				String mensaje = "Nombre: " + paciente.getNombre();
 				String mensaje2 = "Apellido: " + paciente.getApellido();
-				String mensaje3 = "Email: " + paciente.getEmail();
+				String mensaje3 = "Documento: (" + paciente.getTipoDocumento()+ ") " + paciente.getNumeroDocumento();
+				String mensaje4 = "Email: " + paciente.getEmail();
 				
 				model.put("mensaje", mensaje);
 				model.put("mensaje2", mensaje2);
 				model.put("mensaje3", mensaje3);
+				model.put("mensaje4", mensaje4);
 				
 				return new ModelAndView("detallePaciente", model);
 			}

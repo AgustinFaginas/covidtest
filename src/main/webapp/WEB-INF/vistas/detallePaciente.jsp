@@ -23,10 +23,15 @@
 					<h4>${mensaje}</h4> 
 					<h4>${mensaje2}</h4>
 					<h4>${mensaje3}</h4>
+					<h4>${mensaje4}</h4>
 					
 					<h4>${msg}</h4>
 					
 					<a href="consultarPaciente">VOLVER</a>
+					
+					<hr class="colorgraph" style="margin-bottom:5px;"><br>
+					
+					<a href="asignarPaciente">ASIGNAR PACIENTE</a>
 
 			</div>
 	
