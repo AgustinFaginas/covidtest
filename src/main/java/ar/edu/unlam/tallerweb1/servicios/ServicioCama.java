@@ -13,4 +13,6 @@ public interface ServicioCama {
 
 	List<Cama> verCamasDisponiblesPorInstitucion(Institucion institucion);
 
+
+
 }

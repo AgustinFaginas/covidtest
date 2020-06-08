@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +15,9 @@ public class Localidad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+    @Enumerated(EnumType.STRING)
+	private NombreLocalidad nombreLocalidad;
 	
 	@ManyToOne 
 	@JoinColumn 
@@ -33,6 +38,14 @@ public class Localidad {
 
 	public void setPartido(Partido partido) {
 		this.partido = partido;
+	}
+
+	public NombreLocalidad getNombreLocalidad() {
+		return nombreLocalidad;
+	}
+
+	public void setNombreLocalidad(NombreLocalidad nombreLocalidad) {
+		this.nombreLocalidad = nombreLocalidad;
 	}
 
 	

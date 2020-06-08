@@ -20,57 +20,70 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
 @Controller
 public class ControladorInstituciones {
 
-	@Autowired
-	private ServicioInstitucion servicioInstitucion;
-	
-	@Autowired
-	private ServicioCama servicioCama;
-	
-	@RequestMapping(value = "/detalle", method = RequestMethod.GET)
-	public ModelAndView detalle(@RequestParam(value = "nombre", required = false) String nombre) {
-		String message = "Detalle de: " + nombre;
+    @Autowired
+    private ServicioInstitucion servicioInstitucion;
 
-		ModelMap model = new ModelMap();
+    @Autowired
+    private ServicioCama servicioCama;
 
-		model.put("msg", message);
-		return new ModelAndView("vistaDetalle", model);
-	}
+    @RequestMapping(value = "/detalle", method = RequestMethod.GET)
+    public ModelAndView detalle(@RequestParam(value = "nombre", required = false) String nombre) {
+        String message = "Detalle de: " + nombre;
 
-	@RequestMapping("/registroinstitucion")
-	public ModelAndView registrarPaciente(
+        ModelMap model = new ModelMap();
 
-			@RequestParam(value = "nombre", required = false) String nombre,
-			@RequestParam(value = "email", required = false) String email,
-			@RequestParam(value = "password", required = false) String password,
-			@RequestParam(value = "cuit", required = false) String cuit, 
-			@RequestParam(value="cantidadCamas", required = false)Integer camasTotales
+        model.put("msg", message);
+        return new ModelAndView("vistaDetalle", model);
+    }
 
-	) {
-		Institucion institucion = new Institucion();
-		
-		institucion.setNombre(nombre);
-		institucion.setEmail(email);
-		institucion.setPassword(password);
-		institucion.setCantidadCamas(camasTotales);
-		institucion.setNumeroDocumento(cuit);
-		List<Cama> camas = new ArrayList<Cama>();
-		camasTotales = camas.size();
-		
-		try {
-			servicioInstitucion.registrarInstitucion(institucion);
-		} catch (Exception e) {
+    @RequestMapping("/registroinstitucion")
+    public ModelAndView registrarPaciente(
 
-			e.printStackTrace();
-		}
+            @RequestParam(value = "nombre", required = false) String nombre,
+            @RequestParam(value = "email", required = false) String email,
+            @RequestParam(value = "password", required = false) String password,
+            @RequestParam(value = "cuit", required = false) String cuit,
+            @RequestParam(value = "cantidadCamas", required = false) Integer camasTotales
 
-		String message = "Nombre: " + nombre;
-		String message2 = "Email: " + email;
+    ) {
+        Institucion institucion = new Institucion();
 
-		ModelMap model = new ModelMap();
-		model.put("msg", message);
-		model.put("msg2", message2);
+        institucion.setNombre(nombre);
+        institucion.setEmail(email);
+        institucion.setPassword(password);
+        institucion.setCantidadCamas(camasTotales);
+        institucion.setNumeroDocumento(cuit);
+        List<Cama> camas = new ArrayList<Cama>();
+        camasTotales = camas.size();
 
-		return new ModelAndView("registroinstitucion", model);
-	}
+        try {
+            servicioInstitucion.registrarInstitucion(institucion);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        String message = "Nombre: " + nombre;
+        String message2 = "Email: " + email;
+
+        ModelMap model = new ModelMap();
+        model.put("msg", message);
+        model.put("msg2", message2);
+
+        return new ModelAndView("registroinstitucion", model);
+    }
+
+    @RequestMapping("/instituciones")
+    public ModelAndView instituciones() {
+
+        List<Institucion> instituciones = servicioInstitucion.institucion();
+
+        ModelMap model = new ModelMap();
+
+        model.put("instituciones", instituciones);
+
+        return new ModelAndView("instituciones", model);
+    }
+
 
 }

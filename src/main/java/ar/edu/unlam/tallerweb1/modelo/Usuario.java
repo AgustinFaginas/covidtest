@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +21,8 @@ public class Usuario {
 	private String password;
 	private String rol;
 	private String numeroDocumento;
+	
+	@Enumerated(EnumType.STRING)
 	private TipoDocumento tipoDocumento;
 	
 	@ManyToOne

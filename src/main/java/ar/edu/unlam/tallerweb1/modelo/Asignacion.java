@@ -2,8 +2,9 @@ package ar.edu.unlam.tallerweb1.modelo;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,14 +22,15 @@ public class Asignacion {
 	private LocalDateTime horaEgreso;
 	private LocalDateTime horaIngreso;
 
-	@ManyToOne//(cascade=CascadeType.ALL)
-	@JoinColumn
-	private Paciente paciente;
+	@ManyToOne(targetEntity = Paciente.class)
+	@JoinColumn(name = "paciente_id")
+	private Paciente paciente_id;
 
 	@ManyToOne
 	@JoinColumn
 	private Cama cama;
-
+	
+	@Enumerated(EnumType.STRING)
 	private MotivoEgreso motivoEgreso;
 	
 	
@@ -65,11 +67,11 @@ public class Asignacion {
 	}
 
 	public Paciente getPaciente() {
-		return paciente;
+		return paciente_id;
 	}
 
 	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
+		this.paciente_id = paciente;
 	}
 
 	public Cama getCama() {
