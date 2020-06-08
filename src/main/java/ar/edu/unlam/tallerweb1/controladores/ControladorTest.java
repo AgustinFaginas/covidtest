@@ -26,7 +26,7 @@ public class ControladorTest {
 
 	@RequestMapping(value = "/validarTest", method = RequestMethod.GET)
 	public ModelAndView validarTest(
-			@RequestParam(value = "fiebre", required = false) Integer fiebre,
+			@RequestParam(value = "fiebre", required = false) Float fiebre,
 			@RequestParam(value = "perdidaOlfato", required = false) Boolean olfato,
 			@RequestParam(value = "perdidaGusto", required = false) Boolean gusto,
 			@RequestParam(value = "tos", required = false) Boolean tos,

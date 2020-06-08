@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ServicioTestImpl implements ServicioTest {
 
 	@Override
-	public Boolean realizarTest(Integer fiebre, Boolean olfato, Boolean gusto, Boolean tos, Boolean respiracion) {
+	public Boolean realizarTest(Float fiebre, Boolean olfato, Boolean gusto, Boolean tos, Boolean respiracion) {
 		
 		if(olfato==null) {
 			olfato=false;
