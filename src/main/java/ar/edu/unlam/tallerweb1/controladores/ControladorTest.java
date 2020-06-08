@@ -1,11 +1,9 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import java.awt.Checkbox;
+
 
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,27 +25,39 @@ public class ControladorTest {
 	}
 
 	@RequestMapping(value = "/validarTest", method = RequestMethod.GET)
-	public ModelAndView validarTest(@RequestParam(value = "tos", required = false) String tos,
-			@RequestParam(value = "fiebre", required = false) String fiebre,
-			@RequestParam(value = "perdidaOlfato", required = false) String olfato) {
+	public ModelAndView validarTest(
+			@RequestParam(value = "fiebre", required = false) Integer fiebre,
+			@RequestParam(value = "perdidaOlfato", required = false) Boolean olfato,
+			@RequestParam(value = "perdidaGusto", required = false) Boolean gusto,
+			@RequestParam(value = "tos", required = false) Boolean tos,
+			@RequestParam(value="perdidaRespiracion" , required = false) Boolean respiracion
+			) {
 
-		ModelMap model = new ModelMap();
-
-		try {
-			String mensaje=servicioTest.realizarTest(tos, fiebre, olfato); 
-				
-				model.put("mensaje", mensaje);
-			
-		} catch (Exception e) {
-			
 		
-
-			String mensaje=e.getMessage();
-			model.put("mensaje", mensaje);
-			e.printStackTrace();
+		
+		Boolean resultado=servicioTest.realizarTest(fiebre, olfato, gusto, tos, respiracion);
+		
+		if(resultado==true) {
+			return new ModelAndView("testPositivo");
+		}else {
+			return new ModelAndView("testNegativo");
 		}
 
-		return new ModelAndView("validarTest", model);
+		
+
+	}
+	
+	@RequestMapping("/testPositivo")
+	public ModelAndView testPositivo() {
+
+		return new ModelAndView("testPositivo");
+
+	}
+	@RequestMapping("/testNegativo")
+	public ModelAndView testNegativo() {
+
+		return new ModelAndView("testNegativo");
+
 	}
 
 }
