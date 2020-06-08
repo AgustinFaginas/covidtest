@@ -24,7 +24,8 @@ public class ControladorRegistrarPaciente {
 			@RequestParam(value = "apellido", required = false) String apellido,
 			@RequestParam(value = "email", required = false) String email,
 			@RequestParam(value = "password", required = false) String password,
-			@RequestParam(value = "nroDoc", required = false) String nroDoc
+			@RequestParam(value = "nDoc", required = false) String nDoc,
+			@RequestParam(value = "tipoDoc", required = false) TipoDocumento tipoDoc
 
 	) {
 
@@ -35,8 +36,8 @@ public class ControladorRegistrarPaciente {
 		paciente.setEmail(email);
 		paciente.setPassword(password);
 		
-		TipoDocumento tipoDoc = TipoDocumento.DNI;
-		paciente.setNumeroDocumento(nroDoc);
+	
+		paciente.setNumeroDocumento(nDoc);
 		paciente.setTipoDocumento(tipoDoc);
 		
 		try {

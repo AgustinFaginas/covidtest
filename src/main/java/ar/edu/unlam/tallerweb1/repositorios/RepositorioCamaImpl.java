@@ -2,18 +2,22 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioCama;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.unlam.tallerweb1.modelo.Asignacion;
 import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
 
 @Repository("repositorioCama")
+@Transactional
 public class RepositorioCamaImpl implements RepositorioCama {
-
+	@Inject
 	private SessionFactory sessionFactory;
 
 	@Autowired
@@ -31,10 +35,18 @@ public class RepositorioCamaImpl implements RepositorioCama {
 	public List<Cama> verCamasDisponiblesPorInstitucion(Institucion institucion) {
 
 		return sessionFactory.getCurrentSession().createCriteria(Cama.class)
-				.add(Restrictions.eq("pacienteActual", null))
+				//.add(Restrictions.eq("pacienteActual", null))
 				.add(Restrictions.eq("institucion", institucion.getId()))
 				.list();
 
 	}
+//Guardar cama
+	@Override
+	public void registrarCama(Cama cama) {
+		sessionFactory.getCurrentSession().save(cama);
+		
+	}
 
+	
+	
 }

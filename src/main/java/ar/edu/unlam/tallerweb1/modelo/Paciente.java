@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity 
 public class Paciente extends Usuario  {
@@ -16,16 +15,6 @@ public class Paciente extends Usuario  {
 	private Integer edad;
 	private String apellido;
 
-	
-	@OneToOne
-	private Paciente pacienteActual;
-	
-	public Paciente getPacienteActual() {
-		return pacienteActual;
-	}
-	public void setPacienteActual(Paciente pacienteActual) {
-		this.pacienteActual = pacienteActual;
-	}
 	public Long getId() {
 		return id;
 	}

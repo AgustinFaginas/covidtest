@@ -1,5 +1,8 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -8,54 +11,79 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
-import ar.edu.unlam.tallerweb1.servicios.ServicioRegistro;
+import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
+import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
+
 
 @Controller
 public class ControladorInstituciones {
 
-	@Autowired
-	private ServicioRegistro servicioRegistro;
+    @Autowired
+    private ServicioInstitucion servicioInstitucion;
 
-	@RequestMapping(value = "/detalle", method = RequestMethod.GET)
-	public ModelAndView detalle(@RequestParam(value = "nombre", required = false) String nombre) {
-		String message = "Detalle de: " + nombre;
+    @Autowired
+    private ServicioCama servicioCama;
 
-		ModelMap model = new ModelMap();
+    @RequestMapping(value = "/detalle", method = RequestMethod.GET)
+    public ModelAndView detalle(@RequestParam(value = "nombre", required = false) String nombre) {
+        String message = "Detalle de: " + nombre;
 
-		model.put("msg", message);
-		return new ModelAndView("vistaDetalle", model);
-	}
+        ModelMap model = new ModelMap();
 
-	@RequestMapping("/registroinstitucion")
-	public ModelAndView registrarPaciente(
+        model.put("msg", message);
+        return new ModelAndView("vistaDetalle", model);
+    }
 
-			@RequestParam(value = "nombre", required = false) String nombre,
-			@RequestParam(value = "email", required = false) String email,
-			@RequestParam(value = "password", required = false) String password
+    @RequestMapping("/registroinstitucion")
+    public ModelAndView registrarPaciente(
 
-	) {
-		Institucion institucion = new Institucion();
+            @RequestParam(value = "nombre", required = false) String nombre,
+            @RequestParam(value = "email", required = false) String email,
+            @RequestParam(value = "password", required = false) String password,
+            @RequestParam(value = "cuit", required = false) String cuit,
+            @RequestParam(value = "cantidadCamas", required = false) Integer camasTotales
 
-		institucion.setNombre(nombre);
-		institucion.setEmail(email);
-		institucion.setPassword(password);
+    ) {
+        Institucion institucion = new Institucion();
 
-		try {
-			servicioRegistro.registrarInstitucion(institucion);
-		} catch (Exception e) {
+        institucion.setNombre(nombre);
+        institucion.setEmail(email);
+        institucion.setPassword(password);
+        institucion.setCantidadCamas(camasTotales);
+        institucion.setNumeroDocumento(cuit);
+        List<Cama> camas = new ArrayList<Cama>();
+        camasTotales = camas.size();
 
-			e.printStackTrace();
-		}
+        try {
+            servicioInstitucion.registrarInstitucion(institucion);
+        } catch (Exception e) {
 
-		String message = "Nombre: " + nombre;
-		String message2 = "Email: " + email;
+            e.printStackTrace();
+        }
 
-		ModelMap model = new ModelMap();
-		model.put("msg", message);
-		model.put("msg2", message2);
+        String message = "Nombre: " + nombre;
+        String message2 = "Email: " + email;
 
-		return new ModelAndView("registroinstitucion", model);
-	}
+        ModelMap model = new ModelMap();
+        model.put("msg", message);
+        model.put("msg2", message2);
+
+        return new ModelAndView("registroinstitucion", model);
+    }
+
+    @RequestMapping("/instituciones")
+    public ModelAndView instituciones() {
+
+        List<Institucion> instituciones = servicioInstitucion.institucion();
+
+        ModelMap model = new ModelMap();
+
+        model.put("instituciones", instituciones);
+
+        return new ModelAndView("instituciones", model);
+    }
+
 
 }
