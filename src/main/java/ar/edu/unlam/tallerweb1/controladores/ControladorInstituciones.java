@@ -33,7 +33,7 @@ public class ControladorInstituciones {
         ModelMap model = new ModelMap();
 
         model.put("msg", message);
-        return new ModelAndView("vistaDetalle", model);
+        return new ModelAndView("panelInstitucion", model);
     }
 
     @RequestMapping("/registroinstitucion")

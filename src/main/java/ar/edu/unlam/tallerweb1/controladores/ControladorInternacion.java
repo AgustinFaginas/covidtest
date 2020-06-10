@@ -60,7 +60,7 @@ public class ControladorInternacion {
         model.put("cama", cama);
 
 
-        return new ModelAndView("internacion", model);
+        return new ModelAndView("panelInternacion", model);
 
         // ELSE return new ModelAndView("internacionerror");
 
@@ -72,5 +72,8 @@ public class ControladorInternacion {
 
         return new ModelAndView("home2");
     }
+    
+    
+    
 
 }
