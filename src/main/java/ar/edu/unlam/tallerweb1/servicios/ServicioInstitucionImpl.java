@@ -46,5 +46,11 @@ public class ServicioInstitucionImpl implements ServicioInstitucion {
         return repositorioInstitucion.instituciones();
     }
 
+	@Override
+	public Usuario obtenerInstitucionPorId(Long idInstitucion) {
+		
+		return repositorioInstitucion.obtenerInstitucionPorId(idInstitucion);
+	}
+
 
 }

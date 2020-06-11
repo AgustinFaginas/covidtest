@@ -11,4 +11,6 @@ public interface RepositorioInstitucion {
 
     List<Institucion> instituciones();
 
+	Institucion obtenerInstitucionPorId(Long id);
+
 }

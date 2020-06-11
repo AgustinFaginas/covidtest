@@ -13,4 +13,6 @@ public interface ServicioInstitucion {
     public Institucion consultarInstitucionPorCuit(String numeroCuit);
 
     public List<Institucion> institucion();
+    //Para panel
+    public Usuario obtenerInstitucionPorId(Long idInstitucion);
 }

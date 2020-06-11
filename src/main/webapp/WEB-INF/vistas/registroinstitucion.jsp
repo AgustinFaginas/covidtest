@@ -11,7 +11,7 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 
-<title>Nuevo Paciente</title>
+<title>Nueva Institución</title>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -28,7 +28,7 @@
 		</div>
 	</nav>
 	<div class="container mt-3">
-		<h1>Nuevo Paciente</h1>
+		<h1>Nuevo Institucion</h1>
 		<br> <br>
 
 		<h2>${msg}</h2>
