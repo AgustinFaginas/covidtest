@@ -18,9 +18,11 @@
 <body>
 
 <div class="sidenav">
-  <a href="">Consultar disponibilidad</a>
+<a href="instituciones">Otras Instituciones</a>
+  <a href="">Ver Camas</a>
   <a href="">Lista de Espera</a>
   <a href="">Asignar</a>
+  
 </div>
 
 <div class="main">
