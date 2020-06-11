@@ -58,7 +58,7 @@ public class ControladorInternacion {
         model.put("cama", cama);
 
 
-        return new ModelAndView("panelInternacion", model);
+        return new ModelAndView("internacion", model);
 
         // ELSE return new ModelAndView("internacionerror");
 
