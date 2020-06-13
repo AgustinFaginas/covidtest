@@ -20,7 +20,7 @@
 <div class="sidenav">
 <a href="instituciones">Otras Instituciones</a>
   <a href="">Ver Camas</a>
-  <a href="">Lista de Espera</a>
+  <a href="pacientes">Lista de Espera</a>
   <a href="">Asignar</a>
   
 </div>

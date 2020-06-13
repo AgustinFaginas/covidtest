@@ -51,7 +51,7 @@ public class ControladorInstituciones {
         i = (Institucion) servicioInstitucion.obtenerInstitucionPorId(id);
         String nombre = i.getNombre();
         Integer camas = i.getCantidadCamas();
-        //String localidad = i.getDomicilio().getLocalidad().getNombreLocalidad().toString();
+       // String localidad = i.getDomicilio().getLocalidad().getNombreLocalidad().toString();
         
          
         String m0 = "Nombre: " + nombre;

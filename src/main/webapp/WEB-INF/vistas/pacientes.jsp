@@ -23,12 +23,17 @@
         <th scope="col">#</th>
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
+        <th scope="col">Infectado</th>
+        
     </tr>
     <c:forEach items="${pacientes}" var="paciente">
         <tr>
             <th scope="row"><c:out value="${paciente.getId()}"/></th>
             <td><c:out value="${paciente.getNombre()}"/></td>
             <td><c:out value="${paciente.getApellido()}"/></td>
+            <td><c:out value="${paciente.getInfectado() ? 'Yes' : 'No'}"/></td>
+            <td><c:out value="Ver Ficha Médica"/></td>
+            <td><c:out value="Asignación de Cama"/></td>
         </tr>
     </c:forEach>
 </table>

@@ -20,6 +20,7 @@ public class ControladorPaciente {
     public ModelAndView pacientes() {
 
         List<Paciente> pacientes = servicioPaciente.pacientes();
+        
 
         ModelMap model = new ModelMap();
 
