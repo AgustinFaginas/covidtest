@@ -5,9 +5,9 @@ import ar.edu.unlam.tallerweb1.modelo.Paciente;
 
 public interface ServicioAsignacion {
 	
-	public Asignacion consultarAsignacionPacienteInternado(Paciente paciente) throws Exception;
+	public Asignacion consultarAsignacionPacienteInternado(Paciente paciente);
 	
 	public void actualizarAsignacion(Asignacion asignacion);
 
-	
+	public Asignacion consultarAsignacionPorId(Long nro);
 }

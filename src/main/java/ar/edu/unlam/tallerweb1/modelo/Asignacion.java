@@ -8,7 +8,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -22,12 +21,10 @@ public class Asignacion {
 	private LocalDateTime horaEgreso;
 	private LocalDateTime horaIngreso;
 
-	@ManyToOne(targetEntity = Paciente.class)
-	@JoinColumn(name = "paciente_id")
-	private Paciente paciente_id;
+	@ManyToOne
+	private Paciente paciente;
 
 	@ManyToOne
-	@JoinColumn
 	private Cama cama;
 	
 	@Enumerated(EnumType.STRING)
@@ -67,11 +64,11 @@ public class Asignacion {
 	}
 
 	public Paciente getPaciente() {
-		return paciente_id;
+		return paciente;
 	}
 
 	public void setPaciente(Paciente paciente) {
-		this.paciente_id = paciente;
+		this.paciente = paciente;
 	}
 
 	public Cama getCama() {

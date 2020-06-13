@@ -22,7 +22,7 @@ public class RepositorioAsignacionImpl implements RepositorioAsignacion{
 	public Asignacion consultarAsignacionPacienteInternado(Paciente paciente) {
 		
 		return (Asignacion) sessionFactory.getCurrentSession().createCriteria(Asignacion.class)
-				.add(Restrictions.eq("paciente_id", paciente.getId()))
+				.add(Restrictions.eq("paciente", paciente))
 				.add(Restrictions.eq("horaEgreso", null))
 				.uniqueResult();
 	}
@@ -32,6 +32,13 @@ public class RepositorioAsignacionImpl implements RepositorioAsignacion{
 		
 		sessionFactory.getCurrentSession().update(asignacion);		
 	
+	}
+	
+	public Asignacion consultarAsignacionPorId(Long nro) {
+		
+		return (Asignacion) sessionFactory.getCurrentSession().createCriteria(Asignacion.class)
+				.add(Restrictions.eq("id", nro))
+				.uniqueResult();
 	}
 
 }

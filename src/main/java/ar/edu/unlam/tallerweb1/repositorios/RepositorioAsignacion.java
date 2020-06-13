@@ -9,4 +9,5 @@ public interface RepositorioAsignacion {
 	
 	void actualizarAsignacion(Asignacion asignacion);
 
+	Asignacion consultarAsignacionPorId(Long nro);
 }

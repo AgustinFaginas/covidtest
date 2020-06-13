@@ -17,11 +17,7 @@ public class ServicioAsignacionImpl implements ServicioAsignacion {
 
 
 	@Override
-	public Asignacion consultarAsignacionPacienteInternado(Paciente paciente) throws Exception{
-		
-		if(repositorioAsignacion.consultarAsignacionPacienteInternado(paciente) == null) {
-			throw new Exception("El paciente no se encuentra asignado a ninguna cama");
-		}
+	public Asignacion consultarAsignacionPacienteInternado(Paciente paciente){
 		
 		return repositorioAsignacion.consultarAsignacionPacienteInternado(paciente);
 	}
@@ -31,5 +27,12 @@ public class ServicioAsignacionImpl implements ServicioAsignacion {
 		
 		repositorioAsignacion.actualizarAsignacion(asignacion);
 	}
+	
+	@Override
+	public Asignacion consultarAsignacionPorId(Long nro){
+		
+		return repositorioAsignacion.consultarAsignacionPorId(nro);
+	}
+	
 	
 }

@@ -36,11 +36,11 @@
                     </div>
                     <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#banner">Home</a></li>
-                            <li class=""><a href="#service">asdasdasddad</a></li>
-                            <li class=""><a href="#about">About</a></li>
-                            <li class=""><a href="#testimonial">Testimonial</a></li>
-                            <li class=""><a href="#contact">Contact</a></li>
+ 							<li class="active"><a href="#banner">INICIO</a></li>
+                            <li class=""><a href="#service">PANEL</a></li>
+                            <li class=""><a href="#about">REGISTRAR</a></li>
+                            <li class=""><a href="#testimonial">PACIENTES</a></li>
+                            <li class=""><a href="#contact">ESTADÍSTICAS</a></li>
                         </ul>
                     </div>
                 </div>

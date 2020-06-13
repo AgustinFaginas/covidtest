@@ -1,17 +1,16 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Asignacion;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
+import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 import ar.edu.unlam.tallerweb1.servicios.ServicioAsignacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 
@@ -38,31 +37,25 @@ public class ControladorConsultarAsignacion {
 		return new ModelAndView("consultarAsignacion", modelo);
 	}
 	
-	@RequestMapping(path = "/detalleAsignacion", method = RequestMethod.POST)
-	public ModelAndView validarAsignacion(@ModelAttribute("paciente") Paciente paciente, HttpServletRequest request) {
+	@RequestMapping(path = "/detalleAsignacion", method = RequestMethod.GET)
+	public ModelAndView validarAsignacion( 
+			
+            @RequestParam(value = "numeroDocumento") String numeroDocumento,
+			@RequestParam(value = "tipoDocumento", required = false) TipoDocumento tipoDocumento
+            ){
 		
 		ModelMap model = new ModelMap();
 		Asignacion asignacionBuscada = new Asignacion();
 		
-		paciente =  servicioPaciente.consultarPacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento());
+		Paciente pacienteBuscado =  servicioPaciente.consultarPacientePorDoc(numeroDocumento, tipoDocumento);
 		
-			if (paciente != null) {
-				
-				try {
-				
-					asignacionBuscada =  servicioAsignacion.consultarAsignacionPacienteInternado(paciente);
-				
-				}catch (Exception e){
-				
-					model.put("msg", e.getMessage());
-					e.printStackTrace();
-					
-					return new ModelAndView("detalleAsignacion", model);
-				}
+			if (pacienteBuscado != null) {
+			
+				asignacionBuscada =  servicioAsignacion.consultarAsignacionPacienteInternado(pacienteBuscado);
 				
 				if (asignacionBuscada != null) {
 					
-					String mensaje = "Nombre del paciente: " + paciente.getNombre() + " " + paciente.getApellido();
+					String mensaje = "Nombre del paciente: " + pacienteBuscado.getNombre() + " " + pacienteBuscado.getApellido();
 					String mensaje2 = "Cama asignada: " + asignacionBuscada.getCama();
 					String mensaje3 = "Hora de internación: " + asignacionBuscada.getHoraIngreso();
 					
@@ -72,6 +65,9 @@ public class ControladorConsultarAsignacion {
 					
 					return new ModelAndView("detalleAsignacion", model);
 				}
+				model.put("error", "El paciente no está asignado");
+				
+				return new ModelAndView("consultarAsignacion", model);
 			}
 			model.put("error", "No existe el paciente");
 			
