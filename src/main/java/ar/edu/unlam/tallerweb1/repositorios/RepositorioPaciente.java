@@ -11,6 +11,8 @@ public interface RepositorioPaciente {
 
     Paciente consultarPacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento);
 
+    Paciente consultarPacientePorId(Long id);
+
     Long consultarIdDePacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento);
 
     Asignacion consultarAsignacionPaciente(Paciente paciente);

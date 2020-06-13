@@ -45,6 +45,15 @@ public class RepositorioPacienteImpl implements RepositorioPaciente {
     }
 
     @Override
+    public Paciente consultarPacientePorId(Long id) {
+
+        return (Paciente) sessionFactory.getCurrentSession().createCriteria(Paciente.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
+
+    }
+
+    @Override
     public Long consultarIdDePacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento) {
 
         return null;

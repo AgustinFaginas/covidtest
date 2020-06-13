@@ -17,36 +17,43 @@ import ar.edu.unlam.tallerweb1.modelo.Institucion;
 @Repository("repositorioCama")
 @Transactional
 public class RepositorioCamaImpl implements RepositorioCama {
-	@Inject
-	private SessionFactory sessionFactory;
+    @Inject
+    private SessionFactory sessionFactory;
 
-	@Autowired
-	public RepositorioCamaImpl(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+    @Autowired
+    public RepositorioCamaImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
-	@Override
-	public Cama consultarCamaPorId(Long id) {
+    @Override
+    public Cama consultarCamaPorId(Long id) {
 
-		return (Cama) sessionFactory.getCurrentSession().createCriteria(Cama.class).add(Restrictions.eq("id", id));
-	}
+        return (Cama) sessionFactory.getCurrentSession().createCriteria(Cama.class).add(Restrictions.eq("id", id))
+                .uniqueResult();
+    }
 
-	@Override
-	public List<Cama> verCamasDisponiblesPorInstitucion(Institucion institucion) {
+    @Override
+    public List<Cama> verCamasDisponiblesPorInstitucion(Institucion institucion) {
 
-		return sessionFactory.getCurrentSession().createCriteria(Cama.class)
-				//.add(Restrictions.eq("pacienteActual", null))
-				.add(Restrictions.eq("institucion", institucion.getId()))
-				.list();
+        return sessionFactory.getCurrentSession().createCriteria(Cama.class)
+                //.add(Restrictions.eq("pacienteActual", null))
+                .add(Restrictions.eq("institucion", institucion.getId()))
+                .list();
 
-	}
-//Guardar cama
-	@Override
-	public void registrarCama(Cama cama) {
-		sessionFactory.getCurrentSession().save(cama);
-		
-	}
+    }
 
-	
-	
+    //Guardar cama
+    @Override
+    public void registrarCama(Cama cama) {
+        sessionFactory.getCurrentSession().save(cama);
+
+    }
+
+    @Override
+    public List<Cama> camas() {
+        return sessionFactory.getCurrentSession().createCriteria(Cama.class)
+                .list();
+    }
+
+
 }

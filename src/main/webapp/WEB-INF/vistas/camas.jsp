@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title> Pacientes</title>
+    <title>Camas</title>
 </head>
 <body>
 
@@ -17,24 +17,23 @@
     <c:out value="${paciente.getApellido()}"/>
 </c:forEach> --%>
 
-<form action="camas" method="get">
+<form action="internar" method="get">
 
     <table class="table table-bordered table-dark">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Internar</th>
+            <th scope="col">Institucion</th>
+            <th scope="col">Descripcion</th>
         </tr>
-        <c:forEach items="${pacientes}" var="paciente">
+        <c:forEach items="${camas}" var="cama">
             <tr>
-                <th scope="row"><c:out value="${paciente.getId()}"/></th>
-                <td><c:out value="${paciente.getNombre()}"/></td>
-                <td><c:out value="${paciente.getApellido()}"/></td>
+                <th scope="row"><c:out value="${cama.getId()}"/></th>
+                <td><c:out value="${cama.getInstitucion()}"/></td>
+                <td><c:out value="${cama.getDescripcion()}"/></td>
                 <td>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="idPaciente" id="radio-paciente"
-                               value="${paciente.getId()}"
+                        <input class="form-check-input" type="radio" name="idCama" id="radio-cama"
+                               value="${cama.getId()}"
                         >
                     </div>
                 </td>
@@ -42,9 +41,31 @@
         </c:forEach>
     </table>
 
+    <table class="table table-bordered table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+        </tr>
+        <tr>
+            <th scope="row"><c:out value="${pacienteAInternar.getId()}"/></th>
+            <td><c:out value="${pacienteAInternar.getNombre()}"/></td>
+            <td><c:out value="${pacienteAInternar.getApellido()}"/></td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="idPaciente" id="radio-paciente"
+                           value="${pacienteAInternar.getId()}"
+                    >
+                </div>
+            </td>
+        </tr>
+    </table>
+
     <button class="btn btn-dark" type="submit">Guardar</button>
 
+
 </form>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

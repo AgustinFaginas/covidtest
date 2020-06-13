@@ -23,4 +23,6 @@ public interface ServicioPaciente {
 
     public List<Paciente> pacientes();
 
+    public Paciente consultarPacientePorId(Long id);
+
 }
