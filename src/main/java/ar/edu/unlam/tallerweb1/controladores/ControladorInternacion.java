@@ -46,8 +46,6 @@ public class ControladorInternacion {
         cama.setInstitucion(inst);
         servicioCama.registrarCama(cama);
 
-        //Integer capacidadTotalCamas = inst.getCantidadCamas();
-
         Asignacion internacion = new Asignacion();
         internacion.setCama(cama);
         internacion.setPaciente(paciente);
@@ -60,7 +58,7 @@ public class ControladorInternacion {
         model.put("cama", cama);
 
 
-        return new ModelAndView("panelInternacion", model);
+        return new ModelAndView("internacion", model);
 
         // ELSE return new ModelAndView("internacionerror");
 

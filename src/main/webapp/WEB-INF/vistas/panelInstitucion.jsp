@@ -18,15 +18,20 @@
 <body>
 
 <div class="sidenav">
-  <a href="">Camas Disponibles</a>
+<a href="instituciones">Otras Instituciones</a>
+  <a href="">Ver Camas</a>
   <a href="">Lista de Espera</a>
-  <a href="">Camas</a>
   <a href="">Asignar</a>
+  
 </div>
 
 <div class="main">
   <h2>Panel de Control</h2>
-  
+  <div class="container">
+  ${m0}<br>
+  ${m1}<br>
+  ${m2}<br>
+  </div>
 </div>
    
 </body>

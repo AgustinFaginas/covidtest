@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Cama;
+import ar.edu.unlam.tallerweb1.modelo.Domicilio;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
+import ar.edu.unlam.tallerweb1.modelo.Localidad;
+import ar.edu.unlam.tallerweb1.modelo.NombreLocalidad;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
 
@@ -33,8 +37,39 @@ public class ControladorInstituciones {
         ModelMap model = new ModelMap();
 
         model.put("msg", message);
-        return new ModelAndView("panelInstitucion", model);
+        return new ModelAndView("vistaDetalle", model);
+        
+        
     }
+    
+    //Requiere Id
+    @RequestMapping(value = "/panel", method = RequestMethod.GET)
+    public ModelAndView irApanel(@RequestParam(value = "id", required = false) Long id) {
+       
+        
+        Institucion i = new Institucion();
+        i = (Institucion) servicioInstitucion.obtenerInstitucionPorId(id);
+        String nombre = i.getNombre();
+        Integer camas = i.getCantidadCamas();
+        //String localidad = i.getDomicilio().getLocalidad().getNombreLocalidad().toString();
+        
+         
+        String m0 = "Nombre: " + nombre;
+        String m1 = "Camas disponibles: " + camas;
+        //String m2 = "Localidad: " + localidad;
+        ModelMap model = new ModelMap();
+
+        model.put("m0", m0);
+        model.put("m1", m1);
+        //model.put("m2", m2);
+        
+        
+        return new ModelAndView("panelInstitucion", model);
+        
+        
+    }
+    
+    
 
     @RequestMapping("/registroinstitucion")
     public ModelAndView registrarPaciente(
