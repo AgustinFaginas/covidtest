@@ -16,25 +16,30 @@ import ar.edu.unlam.tallerweb1.repositorios.RepositorioCama;
 @Transactional
 
 public class ServicioCamaImpl implements ServicioCama {
-	
-	@Autowired 
-	private RepositorioCama repositorioCama;
 
-	@Override
-	public Cama consultarCamaPorId(Long id) {
-		
-		return repositorioCama.consultarCamaPorId(id);
-	}
+    @Autowired
+    private RepositorioCama repositorioCama;
 
-	@Override
-	public List<Cama> verCamasDisponiblesPorInstitucion(Institucion institucion) {
-		
-		return repositorioCama.verCamasDisponiblesPorInstitucion(institucion);
-	}
+    @Override
+    public Cama consultarCamaPorId(Long id) {
 
-	@Override//guardar cama
-	public void registrarCama(Cama cama) {
-		repositorioCama.registrarCama(cama);
-	}
+        return repositorioCama.consultarCamaPorId(id);
+    }
+
+    @Override
+    public List<Cama> verCamasDisponiblesPorInstitucion(Institucion institucion) {
+
+        return repositorioCama.verCamasDisponiblesPorInstitucion(institucion);
+    }
+
+    @Override
+    public List<Cama> camas() {
+        return repositorioCama.camas();
+    }
+
+    @Override//guardar cama
+    public void registrarCama(Cama cama) {
+        repositorioCama.registrarCama(cama);
+    }
 
 }

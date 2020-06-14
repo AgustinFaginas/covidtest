@@ -38,22 +38,22 @@ public class ControladorInstituciones {
 
         model.put("msg", message);
         return new ModelAndView("vistaDetalle", model);
-        
-        
+
+
     }
-    
+
     //Requiere Id
     @RequestMapping(value = "/panel", method = RequestMethod.GET)
     public ModelAndView irApanel(@RequestParam(value = "id", required = false) Long id) {
-       
-        
+
+
         Institucion i = new Institucion();
         i = (Institucion) servicioInstitucion.obtenerInstitucionPorId(id);
         String nombre = i.getNombre();
         Integer camas = i.getCantidadCamas();
         //String localidad = i.getDomicilio().getLocalidad().getNombreLocalidad().toString();
-        
-         
+
+
         String m0 = "Nombre: " + nombre;
         String m1 = "Camas disponibles: " + camas;
         //String m2 = "Localidad: " + localidad;
@@ -62,14 +62,13 @@ public class ControladorInstituciones {
         model.put("m0", m0);
         model.put("m1", m1);
         //model.put("m2", m2);
-        
-        
+
+
         return new ModelAndView("panelInstitucion", model);
-        
-        
+
+
     }
-    
-    
+
 
     @RequestMapping("/registroinstitucion")
     public ModelAndView registrarPaciente(
@@ -89,14 +88,57 @@ public class ControladorInstituciones {
         institucion.setCantidadCamas(camasTotales);
         institucion.setNumeroDocumento(cuit);
         List<Cama> camas = new ArrayList<Cama>();
-        camasTotales = camas.size();
+        //camasTotales = camas.size();
+
+        camasTotales = (int) camasTotales;
 
         try {
             servicioInstitucion.registrarInstitucion(institucion);
+
         } catch (Exception e) {
 
             e.printStackTrace();
         }
+
+        //Crea la cantidad de camas que se indico por parametro
+        for (Integer i = 0; i < camasTotales; i++) {
+
+            Cama cama = new Cama();
+            cama.setInstitucion(institucion);
+            servicioCama.registrarCama(cama);
+
+            /*if (i == 0) {
+                Cama cama0 = new Cama();
+                cama0.setInstitucion(institucion);
+                servicioCama.registrarCama(cama0);
+            }
+
+            if (i == 1) {
+                Cama cama1 = new Cama();
+                cama1.setInstitucion(institucion);
+                servicioCama.registrarCama(cama1);
+            }
+
+            if (i == 2) {
+                Cama cama2 = new Cama();
+                cama2.setInstitucion(institucion);
+                servicioCama.registrarCama(cama2);
+            }*/
+
+        }
+
+
+          /*Cama cama = new Cama();
+            cama.setInstitucion(institucion);
+            servicioCama.registrarCama(cama);
+            cama.setDescripcion(String.valueOf(i));*/
+        /*Cama cama1 = new Cama();
+        cama1.setInstitucion(institucion);
+        servicioCama.registrarCama(cama1);
+
+        Cama cama2 = new Cama();
+        cama2.setInstitucion(institucion);
+        servicioCama.registrarCama(cama2);*/
 
         String message = "Nombre: " + nombre;
         String message2 = "Email: " + email;

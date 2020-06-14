@@ -6,13 +6,13 @@ import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
 
 public interface ServicioCama {
-	
-	void registrarCama(Cama cama);
 
-	Cama consultarCamaPorId(Long id);
+    void registrarCama(Cama cama);
 
-	List<Cama> verCamasDisponiblesPorInstitucion(Institucion institucion);
+    Cama consultarCamaPorId(Long id);
 
+    List<Cama> verCamasDisponiblesPorInstitucion(Institucion institucion);
 
+    public List<Cama> camas();
 
 }

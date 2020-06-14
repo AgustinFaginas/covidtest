@@ -70,8 +70,68 @@ public class ControladorInternacion {
 
         return new ModelAndView("home2");
     }
-    
-    
-    
+
+    @RequestMapping(value = "/internar", method = RequestMethod.GET)
+    public ModelAndView internar(
+            @RequestParam(value = "idPaciente") Long idPaciente,
+            @RequestParam(value = "idCama") Long idCama
+    ) {
+
+        Paciente paciente = servicioPaciente.consultarPacientePorId(idPaciente);
+        Cama cama = servicioCama.consultarCamaPorId(idCama);
+
+        Asignacion internacion = new Asignacion();
+        internacion.setCama(cama);
+        internacion.setPaciente(paciente);
+
+        servicioInternacion.registrarInternacion(internacion);
+
+        Long idInternacion = internacion.getId();
+
+
+        ModelMap model = new ModelMap();
+
+        model.put("idInternacion", idInternacion);
+        model.put("idPaciente", idPaciente);
+        model.put("idCama", idCama);
+
+        return new ModelAndView("internar", model);
+    }
+
+
+    /*@RequestMapping(value = "/internarPaciente", method = RequestMethod.GET)
+    public ModelAndView internarPaciente(
+
+            @RequestParam(value = "tipoDoc", required = false) TipoDocumento tipoDoc,
+            @RequestParam(value = "nDoc", required = false) String nDoc,
+            @RequestParam(value = "nCuit", required = false) String nCuit
+
+    ) {
+
+        Paciente paciente = servicioPaciente.consultarPacientePorDoc(nDoc, tipoDoc);
+        Institucion inst = servicioInstitucion.consultarInstitucionPorCuit(nCuit);
+
+        Cama cama = new Cama();
+        cama.setInstitucion(inst);
+        servicioCama.registrarCama(cama);
+
+        Asignacion internacion = new Asignacion();
+        internacion.setCama(cama);
+        internacion.setPaciente(paciente);
+
+        servicioInternacion.registrarInternacion(internacion);
+
+        ModelMap model = new ModelMap();
+        model.put("paciente", paciente);
+        model.put("institucion", inst);
+        model.put("cama", cama);
+
+
+        return new ModelAndView("internacion", model);
+
+        // ELSE return new ModelAndView("internacionerror");
+
+    }*/
+
 
 }

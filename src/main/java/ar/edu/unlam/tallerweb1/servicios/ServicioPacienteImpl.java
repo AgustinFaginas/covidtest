@@ -70,6 +70,11 @@ public class ServicioPacienteImpl implements ServicioPaciente {
     }
 
     @Override
+    public Paciente consultarPacientePorId(Long id) {
+        return repositorioPaciente.consultarPacientePorId(id);
+    }
+
+    @Override
     public Long consultarIdAsignacionPaciente(Paciente paciente) {
         // TODO Auto-generated method stub
         return null;
