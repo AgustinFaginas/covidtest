@@ -70,7 +70,7 @@ public class ControladorInstituciones {
         //model.put("m2", m2);
 
 
-        return new ModelAndView("panelInstitucion", model);
+        return new ModelAndView("panel-vista", model);
 
 
     }
