@@ -21,10 +21,10 @@ public class Asignacion {
 	private LocalDateTime horaEgreso;
 	private LocalDateTime horaIngreso;
 
-	@ManyToOne
+	@ManyToOne//(cascade= CascadeType.ALL)
 	private Paciente paciente;
 
-	@ManyToOne
+	@ManyToOne//(cascade= CascadeType.ALL)
 	private Cama cama;
 	
 	@Enumerated(EnumType.STRING)

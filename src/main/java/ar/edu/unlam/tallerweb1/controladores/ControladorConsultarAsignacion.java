@@ -30,9 +30,6 @@ public class ControladorConsultarAsignacion {
 	public ModelAndView consultarAsignacion() {
 
 		ModelMap modelo = new ModelMap();
-		
-		Paciente paciente = new Paciente();
-		modelo.put("paciente", paciente);
 
 		return new ModelAndView("consultarAsignacion", modelo);
 	}
@@ -56,7 +53,7 @@ public class ControladorConsultarAsignacion {
 				if (asignacionBuscada != null) {
 					
 					String mensaje = "Nombre del paciente: " + pacienteBuscado.getNombre() + " " + pacienteBuscado.getApellido();
-					String mensaje2 = "Cama asignada: " + asignacionBuscada.getCama();
+					String mensaje2 = "Cama asignada: " + asignacionBuscada.getCama().getDescripcion();
 					String mensaje3 = "Hora de internación: " + asignacionBuscada.getHoraIngreso();
 					
 					model.put("mensaje", mensaje);
@@ -73,5 +70,5 @@ public class ControladorConsultarAsignacion {
 			
 			return new ModelAndView("consultarAsignacion", model);
 	}
-
+	
 }

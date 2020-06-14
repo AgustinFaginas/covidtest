@@ -23,7 +23,7 @@ public class RepositorioAsignacionImpl implements RepositorioAsignacion{
 		
 		return (Asignacion) sessionFactory.getCurrentSession().createCriteria(Asignacion.class)
 				.add(Restrictions.eq("paciente", paciente))
-				.add(Restrictions.eq("horaEgreso", null))
+				.add(Restrictions.isNull("horaEgreso"))
 				.uniqueResult();
 	}
 	

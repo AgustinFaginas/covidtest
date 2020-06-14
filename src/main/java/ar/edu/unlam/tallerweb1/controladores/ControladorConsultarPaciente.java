@@ -35,7 +35,7 @@ public class ControladorConsultarPaciente {
 	}
 	
 	@RequestMapping(path = "/detallePaciente", method = RequestMethod.POST)
-	public ModelAndView validarConsulta(@ModelAttribute("paciente") Paciente paciente, HttpServletRequest request) {
+	public ModelAndView validarConsulta(@ModelAttribute("paciente") Paciente paciente, HttpServletRequest request){
 		
 		ModelMap model = new ModelMap();
 		
