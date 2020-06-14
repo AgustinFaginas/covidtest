@@ -85,4 +85,14 @@ public class RepositorioPacienteImpl implements RepositorioPaciente {
         // TODO Auto-generated method stub
         return null;
     }
+
+//Nico
+	@Override
+	public Paciente ObtenerPacientePorId(Long id) {
+		// TODO Auto-generated method stub
+		return (Paciente) sessionFactory.getCurrentSession().createCriteria(Paciente.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
+                
+	}
 }

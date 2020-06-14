@@ -23,4 +23,6 @@ public interface RepositorioPaciente {
 
     List<Paciente> pacientes();
 
+	Paciente ObtenerPacientePorId(Long id);
+
 }

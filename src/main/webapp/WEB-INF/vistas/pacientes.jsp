@@ -24,6 +24,8 @@
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
         <th scope="col">Infectado</th>
+         
+        
         
     </tr>
     <c:forEach items="${pacientes}" var="paciente">
@@ -31,9 +33,8 @@
             <th scope="row"><c:out value="${paciente.getId()}"/></th>
             <td><c:out value="${paciente.getNombre()}"/></td>
             <td><c:out value="${paciente.getApellido()}"/></td>
-            <td><c:out value="${paciente.getInfectado() ? 'Yes' : 'No'}"/></td>
-            <td><c:out value="Ver Ficha Médica"/></td>
-            <td><c:out value="Asignación de Cama"/></td>
+            <td><c:out value="${paciente.getInfectado() ? 'Si' : 'No'}"/></td>
+            <td><a href="<c:url value='/Camas/${paciente.getId()}' />" >Asignar cama</a></td>
         </tr>
     </c:forEach>
 </table>
