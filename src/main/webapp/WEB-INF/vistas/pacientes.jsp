@@ -23,7 +23,7 @@
         <th scope="col">#</th>
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
-        <th scope="col">Infectado</th>
+        <!-- <th scope="col">Infectado</th> -->
          
         
         
@@ -34,7 +34,7 @@
             <td><c:out value="${paciente.getNombre()}"/></td>
             <td><c:out value="${paciente.getApellido()}"/></td>
             <td><c:out value="${paciente.getInfectado() ? 'Si' : 'No'}"/></td>
-            <td><a href="<c:url value='/Camas/${paciente.getId()}' />" >Asignar cama</a></td>
+            <%-- <td><a href="<c:url value='/Camas/${paciente.getId()}' />" >Asignar cama</a></td> --%>
         </tr>
     </c:forEach>
 </table>

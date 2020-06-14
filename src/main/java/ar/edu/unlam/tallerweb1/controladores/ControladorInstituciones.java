@@ -108,17 +108,17 @@ public class ControladorInstituciones {
         return new ModelAndView("registroinstitucion", model);
     }
 
-    @RequestMapping("/instituciones")
-    public ModelAndView instituciones() {
-
-        List<Institucion> instituciones = servicioInstitucion.institucion();
-
-        ModelMap model = new ModelMap();
-
-        model.put("instituciones", instituciones);
-
-        return new ModelAndView("instituciones", model);
-    }
+//    @RequestMapping("/instituciones")
+//    public ModelAndView instituciones() {
+//
+//        List<Institucion> instituciones = servicioInstitucion.institucion();
+//
+//        ModelMap model = new ModelMap();
+//
+//        model.put("instituciones", instituciones);
+//
+//        return new ModelAndView("instituciones", model);
+//    }
 
 
 }
