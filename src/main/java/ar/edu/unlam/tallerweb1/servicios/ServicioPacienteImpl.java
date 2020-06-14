@@ -80,4 +80,10 @@ public class ServicioPacienteImpl implements ServicioPaciente {
         return null;
     }
 
+	@Override
+	public Paciente ObtenerPacientePorId(Long id) {
+		// TODO Auto-generated method stub
+		return repositorioPaciente.ObtenerPAcientePorId(id);
+	}
+
 }

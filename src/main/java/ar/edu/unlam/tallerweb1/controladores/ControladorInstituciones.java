@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +21,7 @@ import ar.edu.unlam.tallerweb1.modelo.NombreLocalidad;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 
 
 @Controller
@@ -29,6 +32,9 @@ public class ControladorInstituciones {
 
     @Autowired
     private ServicioCama servicioCama;
+  
+    @Autowired
+    private ServicioPaciente servicioPaciente;
 
     @RequestMapping(value = "/detalle", method = RequestMethod.GET)
     public ModelAndView detalle(@RequestParam(value = "nombre", required = false) String nombre) {
@@ -64,10 +70,20 @@ public class ControladorInstituciones {
         //model.put("m2", m2);
 
 
-        return new ModelAndView("panelInstitucion", model);
+        return new ModelAndView("panel-vista", model);
 
 
     }
+    
+ // Para acceder al panel de asignacion desde "pacientes" Accede al Paciente elegido.
+ 	@RequestMapping(value = "/Camas/{id}", method = RequestMethod.GET)
+ 	public String irAasignacion(Model model, @PathVariable Long id) {
+
+ 		
+ 		model.addAttribute("paciente", servicioPaciente.ObtenerPacientePorId(id));
+
+ 		return "AsignacionCama";
+ 	}
 
 
     @RequestMapping("/registroinstitucion")

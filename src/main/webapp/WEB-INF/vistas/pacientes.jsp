@@ -19,7 +19,7 @@
 
 <form action="camas" method="get">
 
-    <table class="table table-bordered table-dark">
+   <%--  <table class="table table-bordered table-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
@@ -40,7 +40,36 @@
                 </td>
             </tr>
         </c:forEach>
-    </table>
+    </table> --%>
+    
+    <table class="table table-bordered table-dark">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Infectado</th>
+         
+        
+        
+    </tr>
+    <c:forEach items="${pacientes}" var="paciente">
+        <tr>
+            <th scope="row"><c:out value="${paciente.getId()}"/></th>
+            <td><c:out value="${paciente.getNombre()}"/></td>
+            <td><c:out value="${paciente.getApellido()}"/></td>
+            <td><c:out value="${paciente.getInfectado() ? 'Si' : 'No'}"/></td>
+           <td><a href="<c:url value='/Camas/${paciente.getId()}' />" >Asignar cama</a></td>
+          
+           <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="idPaciente" id="radio-paciente"
+                               value="${paciente.getId()}"
+                        >
+                    </div>
+                </td>
+        </tr>
+    </c:forEach>
+</table>
 
     <button class="btn btn-dark" type="submit">Guardar</button>
 
