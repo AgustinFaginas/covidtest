@@ -1,5 +1,6 @@
-package ar.edu.unlam.tallerweb1.repositorios;
+package ar.edu.unlam.tallerweb1.repositorios.repositoriosImpl;
 
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioAsignacion;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import ar.edu.unlam.tallerweb1.modelo.Asignacion;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 
 @Repository("repositorioAsignacion")
-public class RepositorioAsignacionImpl implements RepositorioAsignacion{
+public class RepositorioAsignacionImpl implements RepositorioAsignacion {
 
 	private SessionFactory sessionFactory;
 

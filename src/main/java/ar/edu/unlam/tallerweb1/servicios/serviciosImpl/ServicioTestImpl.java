@@ -1,4 +1,4 @@
-package ar.edu.unlam.tallerweb1.servicios;
+package ar.edu.unlam.tallerweb1.servicios.serviciosImpl;
 
 import ar.edu.unlam.tallerweb1.servicios.ServicioTest;
 import org.springframework.stereotype.Service;
