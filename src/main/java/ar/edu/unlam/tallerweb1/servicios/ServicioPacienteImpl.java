@@ -76,7 +76,7 @@ public class ServicioPacienteImpl implements ServicioPaciente {
     }
 //Nico
 	@Override
-	public Paciente consultarPacientePorId(Long id) {
+	public Paciente ObtenerPacientePorId(Long id) {
 	
 		return repositorioPaciente.ObtenerPacientePorId(id);
 	}

@@ -71,7 +71,7 @@ public class ControladorInternacion {
 
     @RequestMapping("/home2")
     public ModelAndView home2() {
-
+    	
 
         return new ModelAndView("home2");
     }
@@ -80,7 +80,8 @@ public class ControladorInternacion {
 	@RequestMapping(value = "/Camas/{id}", method = RequestMethod.GET)
 	public String irAasignacion(Model model, @PathVariable Long id) {
 
-		model.addAttribute("paciente", servicioPaciente.consultarPacientePorId(id));
+		
+		model.addAttribute("paciente", servicioPaciente.ObtenerPacientePorId(id));
 
 		return "AsignacionCama";
 	}
