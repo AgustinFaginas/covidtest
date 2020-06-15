@@ -63,7 +63,7 @@ public class ControladorTest {
     @RequestMapping("/home3")
     public ModelAndView home3() {
 
-        return new ModelAndView("home3");
+        return new ModelAndView("home1");
 
     }
 }
