@@ -20,15 +20,29 @@ public class Asignacion {
 
 	private LocalDateTime horaEgreso;
 	private LocalDateTime horaIngreso;
+	
+	private LocalDateTime horaTraslado;
+	
 
 	@ManyToOne//(cascade= CascadeType.ALL)
 	private Paciente paciente;
+
+	public MotivoTraslado getMotivoTraslado() {
+		return motivoTraslado;
+	}
+
+	public void setMotivoTraslado(MotivoTraslado motivoTraslado) {
+		this.motivoTraslado = motivoTraslado;
+	}
 
 	@ManyToOne//(cascade= CascadeType.ALL)
 	private Cama cama;
 	
 	@Enumerated(EnumType.STRING)
 	private MotivoEgreso motivoEgreso;
+	
+	@Enumerated(EnumType.STRING)
+	private MotivoTraslado motivoTraslado;
 	
 	
 	public MotivoEgreso getMotivoEgreso() {
@@ -77,6 +91,14 @@ public class Asignacion {
 
 	public void setCama(Cama cama) {
 		this.cama = cama;
+	}
+
+	public LocalDateTime getHoraTraslado() {
+		return horaTraslado;
+	}
+
+	public void setHoraTraslado(LocalDateTime horaTraslado) {
+		this.horaTraslado = horaTraslado;
 	}
 
 }
