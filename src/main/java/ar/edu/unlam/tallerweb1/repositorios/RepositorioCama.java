@@ -15,4 +15,6 @@ public interface RepositorioCama {
     void registrarCama(Cama cama);
 
     List<Cama> camas();
+
+	List<Cama> ObtenerCamas();
 }

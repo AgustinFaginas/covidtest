@@ -42,4 +42,10 @@ public class ServicioCamaImpl implements ServicioCama {
         repositorioCama.registrarCama(cama);
     }
 
+	@Override
+	public List<Cama> ObtenerCamas() {
+		// TODO Auto-generated method stub
+		return repositorioCama.ObtenerCamas();
+	}
+
 }
