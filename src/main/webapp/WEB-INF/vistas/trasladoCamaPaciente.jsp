@@ -42,6 +42,26 @@
 			</select>
 		</div>
 
+
+		<div class="form-group">
+			<h4>Seleccione cama</h4>
+			<select name="selectCama" id="selectCamas">
+			<c:forEach var="cama"  items="${camas}">
+				<option value="${cama.getId()}">"${cama.id}"</option>
+			 </c:forEach> 
+			</select>
+
+		</div>
+		<%--  <c:forEach items="${camas}" var="cama">
+        <tr>
+            <th scope="row"><c:out value="${cama.getId()}"/></th>
+            <td><c:out value="${cama.getId()}"/></td>
+            <td><c:out value="${cama.getDescripcion()}"/></td>
+           
+        </tr>
+    </c:forEach> --%>
+
+		
 		<div class="validation"></div>
 
 		<br>

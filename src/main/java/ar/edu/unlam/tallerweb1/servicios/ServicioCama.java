@@ -15,4 +15,6 @@ public interface ServicioCama {
 
     public List<Cama> camas();
 
+	List<Cama> ObtenerCamas();
+
 }
