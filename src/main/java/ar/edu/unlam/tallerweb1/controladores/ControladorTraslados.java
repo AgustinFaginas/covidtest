@@ -45,42 +45,42 @@ public class ControladorTraslados {
 	
 	
 
-	@RequestMapping(path = "/trasladoValido")
-	public ModelAndView egresoValido(
-
-			@RequestParam(value = "numeroDocumento") String numeroDocumento,
-			@RequestParam(value = "tipoDocumento", required = false) TipoDocumento tipoDocumento,
-			@RequestParam(value = "idcama", required = false) Long idcama,
-			@RequestParam(value = "motivoTraslado", required = false) MotivoTraslado motivoTraslado) {
-
-		ModelMap model = new ModelMap();
-
-		Asignacion asignacionBuscada = new Asignacion();
-
-			
-		if (asignacionBuscada != null) {
-			
-			asignacionBuscada.getPaciente();
-			asignacionBuscada.getCama().getId();
-			
-			String mensaje = "Nombre del paciente: " + asignacionBuscada.getPaciente().getNombre() + " " 
-													 + asignacionBuscada.getPaciente().getApellido();
-			String mensaje2 = "Cama asignada: " + asignacionBuscada.getCama().getDescripcion();
-			String mensaje3 = "Hora de internación: " + asignacionBuscada.getHoraIngreso();
-			String mensaje4 = "Hora de internación: " + asignacionBuscada.getHoraEgreso();
-			String mensaje5 = "Hora de internación: " + asignacionBuscada.getMotivoEgreso();
-			
-			model.put("mensaje", mensaje);
-			model.put("mensaje2", mensaje2);
-			model.put("mensaje3", mensaje3);
-			model.put("mensaje4", mensaje4);
-			model.put("mensaje5", mensaje5);
-			
-			model.put("egresoValido", "El paciente fue egresado");
-
-			return new ModelAndView("trasladoValido", model);
-		} 
-		return new ModelAndView("trasladoCamaPaciente", model);
-	}
+//	@RequestMapping(path = "/trasladoValido")
+//	public ModelAndView egresoValido(
+//
+//			@RequestParam(value = "numeroDocumento") String numeroDocumento,
+//			@RequestParam(value = "tipoDocumento", required = false) TipoDocumento tipoDocumento,
+//			@RequestParam(value = "idcama", required = false) Long idcama,
+//			@RequestParam(value = "motivoTraslado", required = false) MotivoTraslado motivoTraslado) {
+//
+//		ModelMap model = new ModelMap();
+//
+//		Asignacion asignacionBuscada = new Asignacion();
+//
+//			
+//		if (asignacionBuscada != null) {
+//			
+//			asignacionBuscada.getPaciente();
+//			asignacionBuscada.getCama().getId();
+//			
+//			String mensaje = "Nombre del paciente: " + asignacionBuscada.getPaciente().getNombre() + " " 
+//													 + asignacionBuscada.getPaciente().getApellido();
+//			String mensaje2 = "Cama asignada: " + asignacionBuscada.getCama().getDescripcion();
+//			String mensaje3 = "Hora de internación: " + asignacionBuscada.getHoraIngreso();
+//			String mensaje4 = "Hora de internación: " + asignacionBuscada.getHoraEgreso();
+//			String mensaje5 = "Hora de internación: " + asignacionBuscada.getMotivoEgreso();
+//			
+//			model.put("mensaje", mensaje);
+//			model.put("mensaje2", mensaje2);
+//			model.put("mensaje3", mensaje3);
+//			model.put("mensaje4", mensaje4);
+//			model.put("mensaje5", mensaje5);
+//			
+//			model.put("egresoValido", "El paciente fue egresado");
+//
+//			return new ModelAndView("trasladoValido", model);
+//		} 
+//		return new ModelAndView("trasladoCamaPaciente", model);
+//	}
 
 }
