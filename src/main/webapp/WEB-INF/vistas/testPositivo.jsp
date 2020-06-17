@@ -121,7 +121,7 @@
                 </div>
 
                 <div class="form-col">
-                    <button class="btn btn-primary" type="submit">Submit form</button>
+                    <button class="btn btn-primary" type="submit">Enviar</button>
                 </div>
 
             </form>
