@@ -49,7 +49,7 @@
 				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item ml-5">
-				<a class="nav-link" href="#">Realizar test</a>
+				<a class="nav-link" href="autoTest">Realizar test</a>
 			</li>
 		</ul>
 		<button type="button" class="btn btn-dark ml-5">Log in</button>
