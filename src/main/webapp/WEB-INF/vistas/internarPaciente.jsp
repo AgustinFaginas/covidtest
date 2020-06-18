@@ -134,7 +134,7 @@
     <div class="container">
         <div >
 					
-         <form action="egresoValido" method="GET" role="form" class="contactForm">
+         <form action="detalleInternacion" method="GET" role="form" class="contactForm">
 			                        
 			              <div class="form-group">
 			                        
@@ -158,9 +158,9 @@
 										
 										<div class="form-group">
 											<h4>Seleccione una cama</h4>
-											<select name="idCama" id="idCama">
-												<c:forEach var="idCama" items="${camas}">
-													<option value="${cama.getId()}">"${cama.id}"
+											<select name="cama" id="idCama">
+												<c:forEach var="cama" items="${camas}">
+													<option value="${cama.getId()}">${cama.getId()}
 												</c:forEach>
 											</select>
 						

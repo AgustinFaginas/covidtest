@@ -79,6 +79,8 @@ public class ControladorEgresarPaciente {
 			} 
 			else {
 				model.put("error", "El paciente no está asignado");
+				
+				return new ModelAndView("egresarPaciente", model);
 			}
 		}	
 		
@@ -87,8 +89,6 @@ public class ControladorEgresarPaciente {
 			
 			return new ModelAndView("egresarPaciente", model);
 		}
-		
-		return new ModelAndView("egresarPaciente", model);
 	}
 
 }

@@ -86,7 +86,9 @@ public class ControladorInternarPaciente {
 				return new ModelAndView("detalleInternacion", model);
 			} 
 			else {
-				model.put("error", "El paciente no está asignado");
+				model.put("error", "El paciente ya está asignado");
+
+				return new ModelAndView("internarPaciente", model);
 			}
 		}	
 		
@@ -95,8 +97,6 @@ public class ControladorInternarPaciente {
 			
 			return new ModelAndView("internarPaciente", model);
 		}
-		
-		return new ModelAndView("internarPaciente", model);
 	}
 
 }
