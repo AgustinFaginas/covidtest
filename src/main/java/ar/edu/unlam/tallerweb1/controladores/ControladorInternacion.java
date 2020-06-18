@@ -30,7 +30,7 @@ public class ControladorInternacion {
     @Autowired
     private ServicioCama servicioCama;
 
-    @RequestMapping(value = "/internarPaciente", method = RequestMethod.GET)
+    @RequestMapping(value = "/internarPaciente2", method = RequestMethod.GET)
     public ModelAndView irAinternacion(
 
             @RequestParam(value = "tipoDoc", required = false) TipoDocumento tipoDoc,

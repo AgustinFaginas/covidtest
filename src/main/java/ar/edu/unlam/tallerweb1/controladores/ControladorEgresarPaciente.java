@@ -64,8 +64,8 @@ public class ControladorEgresarPaciente {
 														 + asignacionBuscada.getPaciente().getApellido();
 				String mensaje2 = "Cama asignada: " + asignacionBuscada.getCama().getDescripcion();
 				String mensaje3 = "Hora de internación: " + asignacionBuscada.getHoraIngreso();
-				String mensaje4 = "Hora de internación: " + asignacionBuscada.getHoraEgreso();
-				String mensaje5 = "Hora de internación: " + asignacionBuscada.getMotivoEgreso();
+				String mensaje4 = "Hora de egreso: " + asignacionBuscada.getHoraEgreso();
+				String mensaje5 = "Motivo de egreso: " + asignacionBuscada.getMotivoEgreso();
 				
 				model.put("mensaje", mensaje);
 				model.put("mensaje2", mensaje2);

@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
@@ -8,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Dashboard Template · Bootstrap</title>
+    <title>Detalle Internacion</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
@@ -126,59 +127,37 @@
    
      
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Egresar Paciente</h1>
+        <h1 class="h2">Detalle Internacion</h1>
        
       </div>
       	
-    <div class="container">
-        <div >
+     <div class="container">
+        <div>
+			
+                  	<h4 class="h4">${mensaje}</h4> 
 					
-         <form action="egresoValido" method="GET" role="form" class="contactForm">
-			                        
-			              <div class="form-group">
-			                        
-			                  <h4>Número de documento</h4>
-			                        
-			                  <input type="text" name="numeroDocumento" class="form-control br-radius-zero" id="numeroDocumento"
-			                                   placeholder="Ingrese número de documento" data-rule="minlen:1"
-			                                   data-msg="Ingrese número de documento valido"/>
-			                  <div class="validation"></div>
-			              </div>
-			                        
-			                        <div class="form-group">
-			                        <h4>Tipo de documento</h4>
-			                    
-					                    <select name="tipoDocumento" type="TipoDocumento" class="form-control br-radius-zero" >
-											<option type="TipoDocumento">DNI
-											<option type="TipoDocumento">PASAPORTE
-											<option type="TipoDocumento">LIBRETA CÍVICA
-										</select>
-									</div>
-									
-									<div class="form-group">
-			                        <h4>Motivo de Egreso</h4>
-										 <select name="motivoEgreso" type="MotivoEgreso" class="form-control br-radius-zero" >
-											<option type="MotivoEgreso">CURADO
-											<option type="MotivoEgreso">TRASLADADO
-											<option type="MotivoEgreso">FALLECIDO
-										</select>      
-			                       </div>  
-			                       
-			                        <div class="validation"></div>
-			                        </div>
-									<br>
-			                        <div class="form-action">
-			                            <button type="submit" class="btn btn-sm btn-outline-secondary">Egresar Paciente</button>
-			                        </div>
-			                        <br>
-			                        <div class="form-group">
-			                        <c:if test="${not empty error}">
-						        <h4><span>${error}</span></h4>
-						        <br>
-						         </div>
-					        </c:if>	
-			                       
-			        </form>
+					<h4 class="h4">${mensaje2}</h4>
+					
+					<h4 class="h4">${mensaje3}</h4>
+					
+					<h4 class="h4">${msg}</h4>
+					
+					<h4 class="h4">${mensaje5}</h4>
+					
+                    <br>
+                    <a href="#" class="btn btn-sm btn-outline-secondary">Inicio</a>
+					
+       
+        </div>
+            
+                        
+                        <div class="form-group">
+                        
+                        <c:if test="${not empty error}">
+			        <h4><span>${error}</span></h4>
+			        <br>
+			         </div>
+		        </c:if>	
         
         </div>
     </div>
