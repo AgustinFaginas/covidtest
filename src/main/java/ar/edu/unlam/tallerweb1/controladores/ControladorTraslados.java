@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Asignacion;
 import ar.edu.unlam.tallerweb1.modelo.Cama;
+import ar.edu.unlam.tallerweb1.modelo.MotivoEgreso;
 import ar.edu.unlam.tallerweb1.modelo.MotivoTraslado;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
@@ -43,44 +44,63 @@ public class ControladorTraslados {
 	        return new ModelAndView("trasladoCamaPaciente", model);
 	    }
 	
-	
+	 @RequestMapping(path = "/trasladoValido")
+		public ModelAndView traslado(
+				
+				@RequestParam(value = "numeroDocumento") String numeroDocumento,
+				@RequestParam(value = "tipoDocumento", required = false) TipoDocumento tipoDocumento,
+				@RequestParam(value = "motivoTraslado", required = false) MotivoTraslado motivoTraslado,
+				@RequestParam(value = "selectCama", required = false) Long idCama
+				) {
+			
+			ModelMap model = new ModelMap();
+			
+			Asignacion asignacionBuscada = new Asignacion();
+			
+			Paciente pacienteBuscado =  servicioPaciente.consultarPacientePorDoc(numeroDocumento, tipoDocumento);
+			Cama camaSeleccionada = servicioCama.consultarCamaPorId(idCama);
+			if (pacienteBuscado != null) {
+			
+				asignacionBuscada = servicioAsignacion.consultarAsignacionPacienteInternado(pacienteBuscado);
+			
+				if (asignacionBuscada != null) {
+					
+					LocalDateTime horaTraslado = LocalDateTime.now();
+					
+					asignacionBuscada.setHoraTraslado(horaTraslado);
+					asignacionBuscada.setMotivoTraslado(motivoTraslado);
+					asignacionBuscada.setCama(camaSeleccionada);
+					
+					servicioAsignacion.actualizarAsignacion(asignacionBuscada);
+					
+					String mensaje = "Nombre del paciente: " + asignacionBuscada.getPaciente().getNombre() + " " 
+															 + asignacionBuscada.getPaciente().getApellido();
+					String mensaje2 = "Cama asignada: " + asignacionBuscada.getCama().getId();//asignacionBuscada.getCama().getDescripcion();
+					
+					String mensaje4 = "Hora de traslado: " + asignacionBuscada.getHoraTraslado();
+					String mensaje5 = "Motivo de Traslado: " + asignacionBuscada.getMotivoTraslado();
+					
+					model.put("mensaje", mensaje);
+					model.put("mensaje2", mensaje2);
+				
+					model.put("mensaje4", mensaje4);
+					model.put("mensaje5", mensaje5);
+					
+					model.put("trasladoExitoso", "El paciente fue trasladado");
 
-//	@RequestMapping(path = "/trasladoValido")
-//	public ModelAndView egresoValido(
-//
-//			@RequestParam(value = "numeroDocumento") String numeroDocumento,
-//			@RequestParam(value = "tipoDocumento", required = false) TipoDocumento tipoDocumento,
-//			@RequestParam(value = "idcama", required = false) Long idcama,
-//			@RequestParam(value = "motivoTraslado", required = false) MotivoTraslado motivoTraslado) {
-//
-//		ModelMap model = new ModelMap();
-//
-//		Asignacion asignacionBuscada = new Asignacion();
-//
-//			
-//		if (asignacionBuscada != null) {
-//			
-//			asignacionBuscada.getPaciente();
-//			asignacionBuscada.getCama().getId();
-//			
-//			String mensaje = "Nombre del paciente: " + asignacionBuscada.getPaciente().getNombre() + " " 
-//													 + asignacionBuscada.getPaciente().getApellido();
-//			String mensaje2 = "Cama asignada: " + asignacionBuscada.getCama().getDescripcion();
-//			String mensaje3 = "Hora de internación: " + asignacionBuscada.getHoraIngreso();
-//			String mensaje4 = "Hora de internación: " + asignacionBuscada.getHoraEgreso();
-//			String mensaje5 = "Hora de internación: " + asignacionBuscada.getMotivoEgreso();
-//			
-//			model.put("mensaje", mensaje);
-//			model.put("mensaje2", mensaje2);
-//			model.put("mensaje3", mensaje3);
-//			model.put("mensaje4", mensaje4);
-//			model.put("mensaje5", mensaje5);
-//			
-//			model.put("egresoValido", "El paciente fue egresado");
-//
-//			return new ModelAndView("trasladoValido", model);
-//		} 
-//		return new ModelAndView("trasladoCamaPaciente", model);
-//	}
-
+					return new ModelAndView("trasladoExitoso", model);
+				} 
+				else {
+					model.put("error", "El paciente no está asignado");
+					
+					return new ModelAndView("TrasladoCamaPaciente", model);
+				}
+			}	
+			
+			else {
+				model.put("error", "No existe el paciente");
+				
+				return new ModelAndView("TrasladoCamaPaciente", model);
+			}
+		}
 }

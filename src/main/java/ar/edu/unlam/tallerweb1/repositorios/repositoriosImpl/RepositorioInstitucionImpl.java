@@ -38,6 +38,9 @@ public class RepositorioInstitucionImpl implements RepositorioInstitucion {
 	public Institucion obtenerInstitucionPorId(Long id) {
 		
 		return (Institucion) sessionFactory.getCurrentSession().createCriteria(Institucion.class)
-                .add(Restrictions.eq("id", id)).uniqueResult();
+               .add(Restrictions.eq("id", id)).uniqueResult();
+				
+				
+		
 	}
 }
