@@ -17,7 +17,13 @@ public class ControladorTest {
     @Inject
     private ServicioTest servicioTest;
 
-    @RequestMapping("/autoTest")
+    public ServicioTest getServicioTest() {
+		return servicioTest;
+	}
+
+	
+
+	@RequestMapping("/autoTest")
     public ModelAndView aTest() {
 
         return new ModelAndView("autoTest");
@@ -33,10 +39,7 @@ public class ControladorTest {
             @RequestParam(value = "perdidaRespiracion", required = false) Boolean respiracion
     ) {
 
-
-        Boolean resultado = servicioTest.realizarTest(fiebre, olfato, gusto, tos, respiracion);
-
-        if (resultado == true) {
+        if (servicioTest.realizarTest(fiebre, olfato, gusto, tos, respiracion)) {
             return new ModelAndView("testPositivo");
         } else {
             return new ModelAndView("testNegativo");
