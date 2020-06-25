@@ -29,6 +29,7 @@ public class TestAsignacion {
 		MotivoEgreso motivoEgreso = MotivoEgreso.CURADO;
 		
 		when(controlador.getServicioPaciente().consultarPacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento())).thenReturn(paciente);
+		when(controlador.getServicioAsignacion().consultarAsignacionPacienteInternado(paciente)).thenReturn(null);
 		
 		ModelAndView model = new ModelAndView();
 		model.setViewName("egresarPaciente");
