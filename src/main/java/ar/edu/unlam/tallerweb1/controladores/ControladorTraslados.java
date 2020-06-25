@@ -31,8 +31,39 @@ public class ControladorTraslados {
 	
 	@Autowired
 	ServicioCama servicioCama;
+	
+	@Autowired
+	public ControladorTraslados(ServicioAsignacion servicioAsignacion, ServicioPaciente servicioPaciente, ServicioCama servicioCama) {
+		this.servicioAsignacion = servicioAsignacion;
+		this.servicioPaciente = servicioPaciente;
+		this.servicioCama = servicioCama;
+	}
 
-	 @RequestMapping("/trasladoCama")
+	 public ServicioAsignacion getServicioAsignacion() {
+		return servicioAsignacion;
+	}
+
+	public void setServicioAsignacion(ServicioAsignacion servicioAsignacion) {
+		this.servicioAsignacion = servicioAsignacion;
+	}
+
+	public ServicioPaciente getServicioPaciente() {
+		return servicioPaciente;
+	}
+
+	public void setServicioPaciente(ServicioPaciente servicioPaciente) {
+		this.servicioPaciente = servicioPaciente;
+	}
+
+	public ServicioCama getServicioCama() {
+		return servicioCama;
+	}
+
+	public void setServicioCama(ServicioCama servicioCama) {
+		this.servicioCama = servicioCama;
+	}
+
+	@RequestMapping("/trasladoCama")
 	    public ModelAndView selectCamas() {
 
 	        List<Cama> camas = servicioCama.camas();
