@@ -19,11 +19,30 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 @Controller
 public class ControladorEgresarPaciente {
 
+	private ServicioAsignacion servicioAsignacion;
+	private ServicioPaciente servicioPaciente;
+
 	@Autowired
-	ServicioAsignacion servicioAsignacion;
+	public ControladorEgresarPaciente(ServicioAsignacion servicioAsignacion, ServicioPaciente servicioPaciente) {
+		this.servicioAsignacion = servicioAsignacion;
+		this.servicioPaciente = servicioPaciente;
+	}
 	
-	@Autowired
-	ServicioPaciente servicioPaciente;
+	public ServicioAsignacion getServicioAsignacion() {
+		return servicioAsignacion;
+	}
+
+	public void setServicioAsignacion(ServicioAsignacion servicioAsignacion) {
+		this.servicioAsignacion = servicioAsignacion;
+	}
+
+	public ServicioPaciente getServicioPaciente() {
+		return servicioPaciente;
+	}
+
+	public void setServicioPaciente(ServicioPaciente servicioPaciente) {
+		this.servicioPaciente = servicioPaciente;
+	}
 
 	@RequestMapping("/egresarPaciente")
 	public ModelAndView egresarPaciente() {
