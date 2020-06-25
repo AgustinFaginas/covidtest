@@ -8,7 +8,7 @@ import org.junit.Test;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.servicios.serviciosImpl.ServicioPacienteImpl;
 
-public class TestPaciente {
+public class PacienteTest {
 
 	@Test
 	public void TestFuncionaServicioConsultarIdDePacientePorDocumento() throws Exception {

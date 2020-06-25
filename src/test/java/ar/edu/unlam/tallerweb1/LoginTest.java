@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -14,7 +13,7 @@ import ar.edu.unlam.tallerweb1.controladores.ControladorLogin;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 
-public class TestLogin {
+public class LoginTest {
 	
 	@Test
 	public void TestLogeoCorecctamente() {

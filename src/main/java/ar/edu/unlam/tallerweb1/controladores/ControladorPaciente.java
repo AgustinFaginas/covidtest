@@ -16,15 +16,15 @@ public class ControladorPaciente {
     @Autowired
     ServicioPaciente servicioPaciente;
 
-    @RequestMapping("/pacientes")
+    @RequestMapping("/listaPacientes")
     public ModelAndView pacientes() {
 
         List<Paciente> pacientes = servicioPaciente.pacientes();
 
         ModelMap model = new ModelMap();
 
-        model.put("pacientes", pacientes);
+        model.put("listaPacientes", pacientes);
 
-        return new ModelAndView("pacientes", model);
+        return new ModelAndView("listaPacientes", model);
     }
 }

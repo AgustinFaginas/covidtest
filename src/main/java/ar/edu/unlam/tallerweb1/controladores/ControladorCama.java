@@ -22,8 +22,8 @@ public class ControladorCama {
     @Autowired
     ServicioPaciente servicioPaciente;
 
-    @RequestMapping("/camas")
-    public ModelAndView camas(@RequestParam(value = "idPaciente") Long idPaciente) {
+    @RequestMapping("/listaCamas")
+    public ModelAndView listarCamas(@RequestParam(value = "idPaciente") Long idPaciente) {
 
         List<Cama> camas = servicioCama.camas();
 
@@ -35,6 +35,6 @@ public class ControladorCama {
         model.put("idPaciente", idPaciente);
         model.put("pacienteAInternar", pacienteAInternar);
 
-        return new ModelAndView("camas", model);
+        return new ModelAndView("listaCamas", model);
     }
 }

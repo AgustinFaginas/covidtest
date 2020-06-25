@@ -2,7 +2,6 @@ package ar.edu.unlam.tallerweb1.servicios.serviciosImpl;
 
 import javax.transaction.Transactional;
 
-import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,6 @@ import java.util.List;
 
 @Service
 @Transactional
-
 public class ServicioInstitucionImpl implements ServicioInstitucion {
 
     @Autowired
@@ -25,14 +23,9 @@ public class ServicioInstitucionImpl implements ServicioInstitucion {
     private RepositorioUsuario repositorioUsuario;
 
     @Override
-    public void registrarInstitucion(Usuario usuario) throws Exception {
-        if (repositorioUsuario.consultarUsuario(usuario) != null) {
-            throw new Exception("El mail ya se encuentra en uso");
-
-        }
+    public void registrarInstitucion(Usuario usuario){
 
         repositorioUsuario.registrarInstitucion(usuario);
-
     }
 
     @Override
@@ -42,12 +35,12 @@ public class ServicioInstitucionImpl implements ServicioInstitucion {
     }
 
     @Override
-    public List<Institucion> institucion() {
-        return repositorioInstitucion.instituciones();
+    public List<Institucion> obtenerListaInstituciones() {
+        return repositorioInstitucion.obtenerListaInstituciones();
     }
 
 	@Override
-	public Usuario obtenerInstitucionPorId(Long idInstitucion) {
+	public Institucion obtenerInstitucionPorId(Long idInstitucion) {
 		
 		return repositorioInstitucion.obtenerInstitucionPorId(idInstitucion);
 	}

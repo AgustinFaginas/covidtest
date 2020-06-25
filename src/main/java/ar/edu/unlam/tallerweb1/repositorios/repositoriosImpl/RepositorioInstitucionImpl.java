@@ -29,7 +29,7 @@ public class RepositorioInstitucionImpl implements RepositorioInstitucion {
     }
 
     @Override
-    public List<Institucion> instituciones() {
+    public List<Institucion> obtenerListaInstituciones() {
         return sessionFactory.getCurrentSession().createCriteria(Institucion.class)
                 .list();
     }

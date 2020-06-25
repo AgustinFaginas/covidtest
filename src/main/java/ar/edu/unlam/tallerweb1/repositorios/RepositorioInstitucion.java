@@ -9,7 +9,7 @@ public interface RepositorioInstitucion {
 
     Institucion consultarInstitucionPorCuit(String numeroCuit);
 
-    List<Institucion> instituciones();
+    List<Institucion> obtenerListaInstituciones();
 
 	Institucion obtenerInstitucionPorId(Long id);
 
