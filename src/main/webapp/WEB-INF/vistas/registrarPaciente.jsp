@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
@@ -9,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Detalle Internacion</title>
+    <title>Registrar Paciente</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
@@ -127,37 +126,79 @@
    
      
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Detalle Registro Institución</h1>
+        <h1 class="h2">Registrar Paciente</h1>
        
       </div>
       	
-     <div class="container">
+    <div class="container">
         <div>
-			
-                  	<h4 class="h4">${mensaje}</h4> 
 					
-					<h4 class="h4">${mensaje2}</h4>
-					
-					<h4 class="h4">${mensaje3}</h4>
-					
-					<h4 class="h4">${msg}</h4>
-					
-					<h4 class="h4">${mensaje5}</h4>
-					
-                    <br>
-                    <a href="#" class="btn btn-sm btn-outline-secondary">Inicio</a>
-					
-       
-        </div>
-            
-                        
-                        <div class="form-group">
-                        
-                        <c:if test="${not empty error}">
-			        <h4><span>${error}</span></h4>
-			        <br>
-			         </div>
-		        </c:if>	
+         <form action="detalleRegistroPaciente" method="POST" modelAttribute="paciente" role="form" class="contactForm">
+			                    
+			              <div class="form-group">
+			                        
+			                  <h4>Nombre</h4>
+			                        
+			                  <input type="text" name="nombre" class="form-control br-radius-zero" id="nombre"
+			                                   placeholder="Ingrese el nombre de la institución" data-rule="minlen:3"
+			                                   data-msg="Ingrese un nombre válido" required/>
+			                  <div class="validation"></div>
+			              </div>
+			              
+			              <div class="form-group">
+			                        
+			                  <h4>Número de Documento</h4>
+			                        
+			                  <input type="text" name="numeroDocumento" class="form-control br-radius-zero" id="numeroDocumento"
+			                                   placeholder="Ingrese número de documento" data-rule="minlen:1"
+			                                   data-msg="Ingrese número de CUIT valido" required/>
+			                  <div class="validation"></div>
+			              </div>
+			              
+			              <div class="form-group">
+                          <h4>Tipo de documento</h4>
+                    
+		                     <select name="tipoDocumento" id="tipoDocumento"class="form-control br-radius-zero" required>
+								<option id="tipoDocumento" >DNI
+								<option id="tipoDocumento" >PASAPORTE
+								<option id="tipoDocumento" >LIBRETA CÍVICA
+							</select>
+							
+                        </div>
+
+			              <div class="form-group">
+			                        
+			                  <h4>Email</h4>
+			                        
+			                  <input type="text" name="email" class="form-control br-radius-zero" id="email"
+			                                   placeholder="Ingrese un mail" data-rule="mail"
+			                                   data-msg="Ingrese un mail valido" required/>
+			                  <div class="validation"></div>
+			              </div>
+			              
+			              <div class="form-group">
+			                        
+			                  <h4>Contraseña de la cuenta</h4>
+			                        
+			                  <input type="text" name="password" class="form-control br-radius-zero" id="password"
+			                                   placeholder="Ingrese una contraseña" data-rule="minlen:1"
+			                                   data-msg="Ingrese una contraseña valida" required/>
+			                  <div class="validation"></div>
+			              </div>      
+			                        
+									<br>
+			                        <div class="form-action">
+			                            <button type="submit" class="btn btn-sm btn-outline-secondary">Registrar institución</button>
+			                        </div>
+			                        <br>
+			                        <div class="form-group">
+			                        <c:if test="${not empty error}">
+						        <h4><span>${error}</span></h4>
+						        <br>
+						         </div>
+					        </c:if>	
+			                       
+			        </form>
         
         </div>
     </div>

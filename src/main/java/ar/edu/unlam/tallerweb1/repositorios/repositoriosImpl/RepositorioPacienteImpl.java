@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.repositorios.repositoriosImpl;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.unlam.tallerweb1.modelo.Asignacion;
-import ar.edu.unlam.tallerweb1.modelo.MotivoEgreso;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 
@@ -23,18 +20,15 @@ public class RepositorioPacienteImpl implements RepositorioPaciente {
     @Inject
     private SessionFactory sessionFactory;
 
-
     @Autowired
     public RepositorioPacienteImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-
     @Override
     public void registrarPaciente(Paciente paciente) {
 
         sessionFactory.getCurrentSession().save(paciente);
-
     }
 
     public Paciente consultarPacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento) {
@@ -50,21 +44,6 @@ public class RepositorioPacienteImpl implements RepositorioPaciente {
         return (Paciente) sessionFactory.getCurrentSession().createCriteria(Paciente.class)
                 .add(Restrictions.eq("id", id))
                 .uniqueResult();
-
-    }
-
-    @Override
-    public Long consultarIdDePacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento) {
-
-        return null;
-    }
-
-    @Override
-    public Long consultarIdAsignacionPaciente(Paciente paciente) {
-
-        //	return (Long) sessionFactory.getCurrentSession().createCriteria(Asignacion.class)
-        //			.add(Restrictions.eq("idPaciente", paciente.getId()));
-        return null;
     }
 
     @Override
@@ -73,32 +52,4 @@ public class RepositorioPacienteImpl implements RepositorioPaciente {
                 .list();
     }
 
-    @Override
-    public void egresarPaciente(Paciente paciente, MotivoEgreso motivoEgreso) {
-
-
-        Asignacion asignacionAModificar = new Asignacion();
-        LocalDateTime horaDeEgreso = LocalDateTime.now();
-
-        asignacionAModificar = consultarAsignacionPaciente(paciente);
-        asignacionAModificar.setHoraEgreso(horaDeEgreso);
-        asignacionAModificar.setMotivoEgreso(motivoEgreso);
-
-        sessionFactory.getCurrentSession().saveOrUpdate(asignacionAModificar);
-
-    }
-
-
-    @Override
-    public Asignacion consultarAsignacionPaciente(Paciente paciente) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-	@Override
-	public Paciente ObtenerPAcientePorId(Long id) {
-		return (Paciente) sessionFactory.getCurrentSession().createCriteria(Paciente.class)
-				.add(Restrictions.eq("id", id)).uniqueResult();
-	}
 }

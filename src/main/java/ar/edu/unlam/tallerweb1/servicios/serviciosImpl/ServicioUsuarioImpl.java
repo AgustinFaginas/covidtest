@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios.serviciosImpl;
 
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
@@ -16,9 +17,9 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 	private RepositorioUsuario repositorioUsuario;
 
 	@Override
-	public Boolean consultarDisponibilidadEmail(String email) {
+	public Usuario consultarUsuarioPorEmail(String email) {
 		
-		return repositorioUsuario.consultarDisponibilidadEmail(email);
+		return repositorioUsuario.consultarUsuarioPorEmail(email);
 	}
 
 

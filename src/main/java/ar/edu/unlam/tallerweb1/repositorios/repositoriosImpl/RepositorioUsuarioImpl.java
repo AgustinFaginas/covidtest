@@ -52,13 +52,11 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	}
 
 	@Override
-	public Boolean consultarDisponibilidadEmail(String email) {
+	public Usuario consultarUsuarioPorEmail(String email) {
 		
-		return (Boolean) sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+		return	(Usuario) sessionFactory.getCurrentSession().createCriteria(Usuario.class)
 				.add(Restrictions.eq("email", email))
 				.uniqueResult();
 	}
 	
-	
-
 }

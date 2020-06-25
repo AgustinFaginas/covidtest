@@ -11,6 +11,6 @@ public interface RepositorioUsuario {
 
 	void registrarInstitucion(Usuario usuario);
 
-	Boolean consultarDisponibilidadEmail(String email);
+	Usuario consultarUsuarioPorEmail(String email);
 
 }

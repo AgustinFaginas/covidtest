@@ -133,7 +133,7 @@
     <div class="container">
         <div>
 					
-         <form action="detalleAsignacion" method="POST" modelAttribute="institcuion" role="form" class="contactForm">
+         <form action="detalleRegistroInstitucion" method="POST" modelAttribute="institcuion" role="form" class="contactForm">
 			                    
 			              <div class="form-group">
 			                        
@@ -156,8 +156,9 @@
 			              </div>
 					                             			            
 					        <div class="form-group">
-			                    <h4>Cantidad de camas en la Institución</h4>
-			                    <input type="number" class="form-control input-sm" id="cantidadCamas" name="cantidadCamas" min="1" max="2000" required>		                  
+			                    <h4>Cantidad de camas</h4>
+			                    <input type="number" class="form-control input-sm" id="cantidadCamas" name="cantidadCamas" min="1" max="2000" 
+			                    placeholder="Ingrese la cantidad de camas de la institución">		                  
 		               		</div>      
                		
 			              <div class="form-group">

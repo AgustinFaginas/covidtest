@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
@@ -46,26 +47,31 @@ public class ControladorInstitucion {
     public ModelAndView validarRegistroInstitucion(
 
     		@ModelAttribute("usuario") Institucion institucion,
-    		Integer camasTotales,
     		HttpServletRequest request
 
     ) {
 
         institucion.setTipoDocumento(TipoDocumento.CUIT);
-        camasTotales = (int) camasTotales;
         
         ModelMap model = new ModelMap();
 
-       if(servicioUsuario.consultarDisponibilidadEmail(institucion.getEmail()) == null ||
+       if(servicioUsuario.consultarUsuarioPorEmail(institucion.getEmail()) == null &&
     	  servicioInstitucion.consultarInstitucionPorCuit(institucion.getNumeroDocumento()) == null) {
     	   
         servicioInstitucion.registrarInstitucion(institucion);
-        request.getSession().setAttribute("ROL", institucion.getRol());
+
+        String rol = Rol.INSTITUCION.name();
+        request.getSession().setAttribute(rol, institucion.getRol());
   
-        for (Integer i = 0; i < camasTotales; i++) {
+        for (int i = 0; i < institucion.getCantidadCamas().intValue(); i++) {
         	
             Cama cama = new Cama();
             cama.setInstitucion(institucion);
+            
+            int numeroCama = i + 1;
+            String descripcion = "" + numeroCama;
+            cama.setDescripcion(descripcion);
+            
             servicioCama.registrarCama(cama);
         }
 

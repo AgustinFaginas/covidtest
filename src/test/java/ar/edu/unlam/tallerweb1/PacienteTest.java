@@ -2,23 +2,24 @@ package ar.edu.unlam.tallerweb1;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
-import ar.edu.unlam.tallerweb1.servicios.serviciosImpl.ServicioPacienteImpl;
+import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 
 public class PacienteTest {
 
 	@Test
 	public void TestFuncionaServicioConsultarIdDePacientePorDocumento() throws Exception {
 		
-		ServicioPacienteImpl servicioPacienteImpl = mock (ServicioPacienteImpl.class);
+		ServicioPaciente servicioPaciente = mock (ServicioPaciente.class);
 		Paciente paciente = mock(Paciente.class);
 
-		Long esperado = (long) 0;
+		when(servicioPaciente.consultarPacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento())).thenReturn(paciente);
 				
-		assertEquals(esperado, servicioPacienteImpl.consultarIdDePacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento()));
+		assertEquals(paciente.getId(), servicioPaciente.consultarPacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento()).getId());
 		
 	}
 }
