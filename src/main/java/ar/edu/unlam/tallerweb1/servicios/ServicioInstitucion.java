@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface ServicioInstitucion {
 
-    public void registrarInstitucion(Usuario usuario) throws Exception;
+    public void registrarInstitucion(Usuario usuario);
 
     public Institucion consultarInstitucionPorCuit(String numeroCuit);
 
-    public List<Institucion> institucion();
+    public List<Institucion> obtenerListaInstituciones();
     //Para panel
-    public Usuario obtenerInstitucionPorId(Long idInstitucion);
+    public Institucion obtenerInstitucionPorId(Long idInstitucion);
 }

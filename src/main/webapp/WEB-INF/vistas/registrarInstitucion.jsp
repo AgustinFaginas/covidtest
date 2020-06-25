@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html lang="en">
   <head>
@@ -127,14 +126,14 @@
    
      
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Internar Paciente</h1>
+        <h1 class="h2">Consultar Asignacion</h1>
        
       </div>
       	
     <div class="container">
-        <div >
+        <div>
 					
-         <form action="detalleInternacion" method="GET" role="form" class="contactForm">
+         <form action="detalleAsignacion" method="GET" role="form" class="contactForm">
 			                        
 			              <div class="form-group">
 			                        
@@ -154,25 +153,12 @@
 											<option type="TipoDocumento">PASAPORTE
 											<option type="TipoDocumento">LIBRETA CÍVICA
 										</select>
-									</div>
-										
-										<div class="form-group">
-											<h4>Seleccione una cama</h4>
-											<select name="camas" id="idCama">
-												<c:forEach var="cama" items="${camas}">
-													<option value="${cama.getId()}">${cama.getId()}
-												</c:forEach>
-											</select>
-						
-										</div>
-										  
-			                       </div>  
-			                       
+			                                   
 			                        <div class="validation"></div>
 			                        </div>
 									<br>
 			                        <div class="form-action">
-			                            <button type="submit" class="btn btn-sm btn-outline-secondary">Internar</button>
+			                            <button type="submit" class="btn btn-sm btn-outline-secondary">Consultar Asignacion</button>
 			                        </div>
 			                        <br>
 			                        <div class="form-group">

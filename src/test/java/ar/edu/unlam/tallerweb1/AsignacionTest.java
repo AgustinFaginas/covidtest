@@ -15,7 +15,7 @@ import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.servicios.ServicioAsignacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 
-public class TestAsignacion {
+public class AsignacionTest {
 	
 	@Test
 	public void TestNoSePuedeEgresaPacienteNuncaAsignado() {

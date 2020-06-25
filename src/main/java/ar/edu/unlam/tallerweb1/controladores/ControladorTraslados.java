@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Asignacion;
 import ar.edu.unlam.tallerweb1.modelo.Cama;
-import ar.edu.unlam.tallerweb1.modelo.MotivoEgreso;
 import ar.edu.unlam.tallerweb1.modelo.MotivoTraslado;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
@@ -63,19 +62,23 @@ public class ControladorTraslados {
 		this.servicioCama = servicioCama;
 	}
 
+<<<<<<< HEAD
 	@RequestMapping("/trasladoCama")
 	    public ModelAndView selectCamas() {
+=======
+	 @RequestMapping("/trasladarPacienteCama")
+	    public ModelAndView trasladarPacienteCama() {
+>>>>>>> e416cee0e9835f3980610945a0e18955474ab0fc
 
-	        List<Cama> camas = servicioCama.camas();
+	        List<Cama> listaCamas = servicioCama.camas();
 	        
 	        ModelMap model = new ModelMap();
+	        model.put("camas", listaCamas);
 
-	        model.put("camas", camas);
-
-	        return new ModelAndView("trasladoCamaPaciente", model);
+	        return new ModelAndView("trasladarPacienteCama", model);
 	    }
 	
-	 @RequestMapping(path = "/trasladoValido")
+	 @RequestMapping(path = "/detalleTraslado")
 		public ModelAndView traslado(
 				
 				@RequestParam(value = "numeroDocumento") String numeroDocumento,
@@ -119,19 +122,19 @@ public class ControladorTraslados {
 					
 					model.put("trasladoExitoso", "El paciente fue trasladado");
 
-					return new ModelAndView("trasladoExitoso", model);
+					return new ModelAndView("detalleTraslado", model);
 				} 
 				else {
 					model.put("error", "El paciente no está asignado");
 					
-					return new ModelAndView("TrasladoCamaPaciente", model);
+					return new ModelAndView("trasladarPacienteCama", model);
 				}
 			}	
 			
 			else {
 				model.put("error", "No existe el paciente");
 				
-				return new ModelAndView("TrasladoCamaPaciente", model);
+				return new ModelAndView("trasladarPacienteCama", model);
 			}
 		}
 }

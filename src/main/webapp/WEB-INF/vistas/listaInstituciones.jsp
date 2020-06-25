@@ -23,7 +23,7 @@
         <th scope="col">#</th>
         <th scope="col">Nombre</th>
     </tr>
-    <c:forEach items="${instituciones}" var="institucion">
+    <c:forEach items="${listaInstituciones}" var="institucion">
         <tr>
             <th scope="row"><c:out value="${institucion.getId()}"/></th>
             <td><c:out value="${institucion.getNombre()}"/></td>

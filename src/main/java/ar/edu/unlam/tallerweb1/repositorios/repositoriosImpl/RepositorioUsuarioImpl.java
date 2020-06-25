@@ -50,6 +50,14 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		sessionFactory.getCurrentSession().save(usuario);
 		
 	}
+
+	@Override
+	public Boolean consultarDisponibilidadEmail(String email) {
+		
+		return (Boolean) sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.add(Restrictions.eq("email", email))
+				.uniqueResult();
+	}
 	
 	
 
