@@ -140,7 +140,7 @@
 			                  <h4>Nombre</h4>
 			                        
 			                  <input type="text" name="nombre" class="form-control br-radius-zero" id="nombre"
-			                                   placeholder="Ingrese el nombre de la institución" data-rule="minlen:3"
+			                                   placeholder="Ingrese el nombre del paciente" data-rule="minlen:3"
 			                                   data-msg="Ingrese un nombre válido" required/>
 			                  <div class="validation"></div>
 			              </div>
