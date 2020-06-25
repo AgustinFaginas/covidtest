@@ -126,39 +126,63 @@
    
      
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Consultar Asignacion</h1>
+        <h1 class="h2">Registrar Institución</h1>
        
       </div>
       	
     <div class="container">
         <div>
 					
-         <form action="detalleAsignacion" method="GET" role="form" class="contactForm">
-			                        
+         <form action="detalleAsignacion" method="POST" modelAttribute="institcuion" role="form" class="contactForm">
+			                    
 			              <div class="form-group">
 			                        
-			                  <h4>Número de documento</h4>
+			                  <h4>Nombre de la Institución</h4>
 			                        
-			                  <input type="text" name="numeroDocumento" class="form-control br-radius-zero" id="numeroDocumento"
-			                                   placeholder="Ingrese número de documento" data-rule="minlen:1"
-			                                   data-msg="Ingrese número de documento valido"/>
+			                  <input type="text" name="nombre" class="form-control br-radius-zero" id="nombre"
+			                                   placeholder="Ingrese el nombre de la institución" data-rule="minlen:3"
+			                                   data-msg="Ingrese un nombre válido"/>
 			                  <div class="validation"></div>
 			              </div>
+			              
+			              <div class="form-group">
 			                        
-			                        <div class="form-group">
-			                        <h4>Tipo de documento</h4>
-			                    
-					                    <select name="tipoDocumento" type="TipoDocumento" class="form-control br-radius-zero" >
-											<option type="TipoDocumento">DNI
-											<option type="TipoDocumento">PASAPORTE
-											<option type="TipoDocumento">LIBRETA CÍVICA
-										</select>
-			                                   
-			                        <div class="validation"></div>
-			                        </div>
+			                  <h4>Número de CUIT</h4>
+			                        
+			                  <input type="text" name="numeroDocumento" class="form-control br-radius-zero" id="numeroDocumento"
+			                                   placeholder="Ingrese número de CUIT" data-rule="minlen:1"
+			                                   data-msg="Ingrese número de CUIT valido"/>
+			                  <div class="validation"></div>
+			              </div>
+					                             			            
+					        <div class="form-group">
+			                    <h4>Cantidad de camas en la Institución</h4>
+			                    <input type="number" class="form-control input-sm" id="cantidadCamas" name="cantidadCamas" min="1" max="2000" required>		                  
+		               		</div>      
+               		
+			              <div class="form-group">
+			                        
+			                  <h4>Email</h4>
+			                        
+			                  <input type="text" name="email" class="form-control br-radius-zero" id="email"
+			                                   placeholder="Ingrese un mail" data-rule="mail"
+			                                   data-msg="Ingrese un mail valido"/>
+			                  <div class="validation"></div>
+			              </div>
+			              
+			              <div class="form-group">
+			                        
+			                  <h4>Contraseña de la cuenta</h4>
+			                        
+			                  <input type="text" name="password" class="form-control br-radius-zero" id="password"
+			                                   placeholder="Ingrese una contraseña" data-rule="minlen:1"
+			                                   data-msg="Ingrese una contraseña valida"/>
+			                  <div class="validation"></div>
+			              </div>      
+			                        
 									<br>
 			                        <div class="form-action">
-			                            <button type="submit" class="btn btn-sm btn-outline-secondary">Consultar Asignacion</button>
+			                            <button type="submit" class="btn btn-sm btn-outline-secondary">Registrar institución</button>
 			                        </div>
 			                        <br>
 			                        <div class="form-group">
