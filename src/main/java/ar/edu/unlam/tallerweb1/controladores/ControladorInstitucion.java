@@ -2,15 +2,18 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
@@ -43,46 +46,46 @@ public class ControladorInstitucion {
 	@RequestMapping("/detalleRegistroInstitucion")
     public ModelAndView validarRegistroInstitucion(
 
-            @RequestParam(value = "nombre", required = false) String nombre,
-            @RequestParam(value = "email", required = false) String email,
-            @RequestParam(value = "password", required = false) String password,
-            @RequestParam(value = "numeroCuit", required = false) String numeroCuit,
-            @RequestParam(value = "cantidadCamas", required = false) Integer camasTotales
+    		@ModelAttribute("usuario") Institucion institucion,
+    		HttpServletRequest request
 
     ) {
-        Institucion institucion = new Institucion();
 
-        institucion.setNombre(nombre);
-        institucion.setEmail(email);
-        institucion.setPassword(password);
-        institucion.setCantidadCamas(camasTotales);
-        institucion.setNumeroDocumento(numeroCuit);
         institucion.setTipoDocumento(TipoDocumento.CUIT);
-        camasTotales = (int) camasTotales;
+        
+        ModelMap model = new ModelMap();
 
-       if(servicioUsuario.consultarDisponibilidadEmail(email) == null ||
-    	  servicioInstitucion.consultarInstitucionPorCuit(numeroCuit) == null) {
+       if(servicioUsuario.consultarUsuarioPorEmail(institucion.getEmail()) == null &&
+    	  servicioInstitucion.consultarInstitucionPorCuit(institucion.getNumeroDocumento()) == null) {
     	   
         servicioInstitucion.registrarInstitucion(institucion);
+
+        String rol = Rol.INSTITUCION.name();
+        request.getSession().setAttribute(rol, institucion.getRol());
   
-        for (Integer i = 0; i < camasTotales; i++) {
+        for (int i = 0; i < institucion.getCantidadCamas().intValue(); i++) {
         	
             Cama cama = new Cama();
             cama.setInstitucion(institucion);
+            
+            int numeroCama = i + 1;
+            String descripcion = "" + numeroCama;
+            cama.setDescripcion(descripcion);
+            
             servicioCama.registrarCama(cama);
         }
 
-        String mensajeNombre = "Nombre: " + nombre;
-        String mensajeApellido = "Email: " + email;
+    	String mensaje = "Nombre: " + institucion.getNombre();
+		String mensaje2 = "Documento: (" + institucion.getTipoDocumento() + ") " + institucion.getNumeroDocumento();
+		String mensaje3 = "Email: " + institucion.getEmail();
 
-        ModelMap model = new ModelMap();
-        model.put("mensajeNombre", mensajeNombre);
-        model.put("mensajeApellido", mensajeApellido);
+		model.put("mensaje", mensaje);
+		model.put("mensaje2", mensaje2);
+		model.put("mensaje3", mensaje3);
 
         return new ModelAndView("detalleRegistroInstitucion", model);
        }
        else {
-    	   ModelMap model = new ModelMap();
     	   
            model.put("error", "Ya existe un usuario registrado con su mail o cuit");
            
