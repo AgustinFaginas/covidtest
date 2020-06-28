@@ -8,11 +8,13 @@ import java.util.List;
 public interface RepositorioPaciente {
 
     void registrarPaciente(Paciente paciente);
-	
-	Paciente consultarPacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento);
+
+    Paciente consultarPacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento);
 
     Paciente consultarPacientePorId(Long id);
 
     List<Paciente> pacientes();
+
+    List<Paciente> pacientesInfectados();
 
 }

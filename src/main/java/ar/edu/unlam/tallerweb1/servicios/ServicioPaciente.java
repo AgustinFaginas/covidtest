@@ -15,4 +15,6 @@ public interface ServicioPaciente {
 
     public Paciente consultarPacientePorId(Long id);
 
+    public List<Paciente> pacientesInfectados();
+
 }

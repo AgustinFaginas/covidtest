@@ -38,5 +38,10 @@ public class ServicioPacienteImpl implements ServicioPaciente {
         return repositorioPaciente.consultarPacientePorId(id);
     }
 
+    @Override
+    public List<Paciente> pacientesInfectados() {
+        return repositorioPaciente.pacientesInfectados();
+    }
+
 
 }

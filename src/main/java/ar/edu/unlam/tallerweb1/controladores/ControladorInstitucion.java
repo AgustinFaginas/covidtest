@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Cama;
@@ -25,72 +26,71 @@ public class ControladorInstitucion {
 
     private ServicioInstitucion servicioInstitucion;
     private ServicioCama servicioCama;
-	private ServicioUsuario servicioUsuario;
-    
+    private ServicioUsuario servicioUsuario;
+
     @Autowired
     public ControladorInstitucion(ServicioInstitucion servicioInstitucion, ServicioCama servicioCama,
-			ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario) {
-		this.servicioInstitucion = servicioInstitucion;
-		this.servicioCama = servicioCama;
-		this.servicioUsuario = servicioUsuario;
-	}
-    
+                                  ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario) {
+        this.servicioInstitucion = servicioInstitucion;
+        this.servicioCama = servicioCama;
+        this.servicioUsuario = servicioUsuario;
+    }
+
     @RequestMapping("/registrarInstitucion")
-	public ModelAndView registrarInstitucion() {
+    public ModelAndView registrarInstitucion() {
 
-		ModelMap modelo = new ModelMap();
+        ModelMap modelo = new ModelMap();
 
-		return new ModelAndView("registrarInstitucion", modelo);
-	}
+        return new ModelAndView("registrarInstitucion", modelo);
+    }
 
-	@RequestMapping("/detalleRegistroInstitucion")
+    @RequestMapping("/detalleRegistroInstitucion")
     public ModelAndView validarRegistroInstitucion(
 
-    		@ModelAttribute("usuario") Institucion institucion,
-    		HttpServletRequest request
+            @ModelAttribute("usuario") Institucion institucion,
+            HttpServletRequest request
 
     ) {
 
         institucion.setTipoDocumento(TipoDocumento.CUIT);
-        
+
         ModelMap model = new ModelMap();
 
-       if(servicioUsuario.consultarUsuarioPorEmail(institucion.getEmail()) == null &&
-    	  servicioInstitucion.consultarInstitucionPorCuit(institucion.getNumeroDocumento()) == null) {
-    	   
-        servicioInstitucion.registrarInstitucion(institucion);
+        if (servicioUsuario.consultarUsuarioPorEmail(institucion.getEmail()) == null &&
+                servicioInstitucion.consultarInstitucionPorCuit(institucion.getNumeroDocumento()) == null) {
 
-        String rol = Rol.INSTITUCION.name();
-        request.getSession().setAttribute(rol, institucion.getRol());
-  
-        for (int i = 0; i < institucion.getCantidadCamas().intValue(); i++) {
-        	
-            Cama cama = new Cama();
-            cama.setInstitucion(institucion);
-            
-            int numeroCama = i + 1;
-            String descripcion = "" + numeroCama;
-            cama.setDescripcion(descripcion);
-            
-            servicioCama.registrarCama(cama);
+            servicioInstitucion.registrarInstitucion(institucion);
+
+            String rol = Rol.INSTITUCION.name();
+            request.getSession().setAttribute(rol, institucion.getRol());
+
+            for (int i = 0; i < institucion.getCantidadCamas().intValue(); i++) {
+
+                Cama cama = new Cama();
+                cama.setInstitucion(institucion);
+
+                int numeroCama = i + 1;
+                String descripcion = "" + numeroCama;
+                cama.setDescripcion(descripcion);
+
+                servicioCama.registrarCama(cama);
+            }
+
+            String mensaje = "Nombre: " + institucion.getNombre();
+            String mensaje2 = "Documento: (" + institucion.getTipoDocumento() + ") " + institucion.getNumeroDocumento();
+            String mensaje3 = "Email: " + institucion.getEmail();
+
+            model.put("mensaje", mensaje);
+            model.put("mensaje2", mensaje2);
+            model.put("mensaje3", mensaje3);
+
+            return new ModelAndView("detalleRegistroInstitucion", model);
+        } else {
+
+            model.put("error", "Ya existe un usuario registrado con su mail o cuit");
+
+            return new ModelAndView("registrarInstitucion", model);
         }
-
-    	String mensaje = "Nombre: " + institucion.getNombre();
-		String mensaje2 = "Documento: (" + institucion.getTipoDocumento() + ") " + institucion.getNumeroDocumento();
-		String mensaje3 = "Email: " + institucion.getEmail();
-
-		model.put("mensaje", mensaje);
-		model.put("mensaje2", mensaje2);
-		model.put("mensaje3", mensaje3);
-
-        return new ModelAndView("detalleRegistroInstitucion", model);
-       }
-       else {
-    	   
-           model.put("error", "Ya existe un usuario registrado con su mail o cuit");
-           
-    	   return new ModelAndView("registrarInstitucion", model);
-       }
     }
 
     @RequestMapping("/listaInstituciones")

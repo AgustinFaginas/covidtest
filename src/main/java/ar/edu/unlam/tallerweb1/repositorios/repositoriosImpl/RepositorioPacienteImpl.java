@@ -52,4 +52,11 @@ public class RepositorioPacienteImpl implements RepositorioPaciente {
                 .list();
     }
 
+    @Override
+    public List<Paciente> pacientesInfectados() {
+        return sessionFactory.getCurrentSession().createCriteria(Paciente.class)
+                .add(Restrictions.eq("infectado", true))
+                .list();
+    }
+
 }
