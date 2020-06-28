@@ -64,8 +64,7 @@
 </div>
 
 <div class="container my-5">
-	<h5 class="text-center my-3">Si el paciente esta registrado <a href="internarPaciente">ingrese aqui</a></h5>
-	<h5 class="text-center my-3">Si el paciente no esta registrado , complete los siguientes datos </h5>
+	<h5 class="text-center my-3">Complete los siguientes datos y sera contactado en la brevedad </h5>
 </div>
 
 <h2 class="text-center my-5">Complete el siguiente formulario con sus datos</h2>
@@ -80,7 +79,7 @@
 
         <div class="col-10" style="width: 30rem;">
 
-            <form action="registroPaciente" method=get>
+            <form action="detalleRegistroPaciente" method="POST" modelAttribute="paciente">
 
                 <div class="form-row">
                     <label for="nombre">Nombre</label>
@@ -107,18 +106,21 @@
 
                     <div class="col-4 mb-3">
                         <label for="tipoDni">Tipo Documento</label>
-                        <select class="form-control" name="tipoDoc" id="tipoDni">
-                            <option value="DNI">DNI</option>
-                            <option value="LIBRETA_CIVICA">Libreta Civica</option>
-                            <option value="PASAPORTE">Pasaporte</option>
-                        </select>
+                         <select name="tipoDocumento" id="tipoDocumento"class="form-control br-radius-zero" required>
+								<option id="tipoDocumento" >DNI
+								<option id="tipoDocumento" >PASAPORTE
+								<option id="tipoDocumento" >LIBRETA CÍVICA
+							</select>
                     </div>
 
                     <div class="col-8 mb-3">
                         <label for="numeroDni">Numero de documento</label>
-                        <input type="number" class="form-control" id="numeroDni" name="nDoc" required>
+                        <input type="text" name="numeroDocumento" class="form-control br-radius-zero" id="numeroDocumento"
+			                                   placeholder="Ingrese número de documento" data-rule="minlen:1"
+			                                   data-msg="Ingrese número de CUIT valido" required/>
                     </div>
                 </div>
+               
 
                 <div class="form-col">
                     <button class="btn btn-primary" type="submit">Enviar</button>
