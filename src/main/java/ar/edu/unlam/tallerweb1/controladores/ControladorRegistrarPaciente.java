@@ -21,57 +21,58 @@ public class ControladorRegistrarPaciente {
 
     private ServicioInstitucion servicioInstitucion;
     private ServicioUsuario servicioUsuario;
-	private ServicioPaciente servicioPaciente;
-    
+    private ServicioPaciente servicioPaciente;
+
     @Autowired
     public ControladorRegistrarPaciente(ServicioInstitucion servicioInstitucion, ServicioCama servicioCama,
-			ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario) {
-		this.servicioInstitucion = servicioInstitucion;
-		this.servicioUsuario = servicioUsuario;
-		this.servicioPaciente = servicioPaciente;
-	}
-    
+                                        ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario) {
+        this.servicioInstitucion = servicioInstitucion;
+        this.servicioUsuario = servicioUsuario;
+        this.servicioPaciente = servicioPaciente;
+    }
+
     @RequestMapping("/registrarPaciente")
-	public ModelAndView registrarPaciente() {
+    public ModelAndView registrarPaciente() {
 
-		ModelMap modelo = new ModelMap();
+        ModelMap modelo = new ModelMap();
 
-		return new ModelAndView("registrarPaciente", modelo);
-	}
+        return new ModelAndView("registrarPaciente", modelo);
+    }
 
-	@RequestMapping("/detalleRegistroPaciente")
+    @RequestMapping("/detalleRegistroPaciente")
     public ModelAndView validarRegistroPaciente(
 
-    		@ModelAttribute("paciente") Paciente paciente,
-    		HttpServletRequest request
+            @ModelAttribute("paciente") Paciente paciente,
+            HttpServletRequest request
 
     ) {
-        
+
         ModelMap model = new ModelMap();
 
-       if(servicioUsuario.consultarUsuarioPorEmail(paciente.getEmail()) == null &&
-    	  servicioPaciente.consultarPacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento()) == null) {
-    	   
-        servicioInstitucion.registrarInstitucion(paciente);
-        
-        String rol = Rol.PACIENTE.name();
-        request.getSession().setAttribute(rol, paciente.getRol());
+        if (servicioUsuario.consultarUsuarioPorEmail(paciente.getEmail()) == null &&
+                servicioPaciente.consultarPacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento()) == null) {
 
-    	String mensaje = "Nombre: " + paciente.getNombre();
-		String mensaje2 = "Documento: (" + paciente.getTipoDocumento() + ") " + paciente.getNumeroDocumento();
-		String mensaje3 = "Email: " + paciente.getEmail();
+            paciente.setPosibleInfectado(true);
 
-		model.put("mensaje", mensaje);
-		model.put("mensaje2", mensaje2);
-		model.put("mensaje3", mensaje3);
+            servicioPaciente.registrarPaciente(paciente);
 
-        return new ModelAndView("detalleRegistroPaciente", model);
-       }
-       else {
-    	   
-           model.put("error", "Ya existe un usuario registrado con su mail o documento");
-           
-    	   return new ModelAndView("registrarPaciente", model);
-       }
+            String rol = Rol.PACIENTE.name();
+            request.getSession().setAttribute("rol", paciente.getRol());
+
+            String mensaje = "Nombre: " + paciente.getNombre();
+            String mensaje2 = "Documento: (" + paciente.getTipoDocumento() + ") " + paciente.getNumeroDocumento();
+            String mensaje3 = "Email: " + paciente.getEmail();
+
+            model.put("mensaje", mensaje);
+            model.put("mensaje2", mensaje2);
+            model.put("mensaje3", mensaje3);
+
+            return new ModelAndView("detalleRegistroPaciente", model);
+        } else {
+
+            model.put("error", "Ya existe un usuario registrado con su mail o documento");
+
+            return new ModelAndView("registrarPaciente", model);
+        }
     }
 }

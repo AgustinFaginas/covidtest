@@ -59,10 +59,12 @@ public class ControladorInstitucion {
         if (servicioUsuario.consultarUsuarioPorEmail(institucion.getEmail()) == null &&
                 servicioInstitucion.consultarInstitucionPorCuit(institucion.getNumeroDocumento()) == null) {
 
+            institucion.setRol(Rol.INSTITUCION);
+
             servicioInstitucion.registrarInstitucion(institucion);
 
-            String rol = Rol.INSTITUCION.name();
-            request.getSession().setAttribute(rol, institucion.getRol());
+            request.getSession().setAttribute("ID", institucion.getId());
+            request.getSession().setAttribute("ROL", institucion.getRol());
 
             for (int i = 0; i < institucion.getCantidadCamas().intValue(); i++) {
 
