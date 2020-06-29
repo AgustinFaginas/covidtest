@@ -86,12 +86,12 @@ public class ControladorLogin {
 	
 	
 	//LOGOUT
-//	@RequestMapping(path = "/logout")
-//	public ModelAndView logout(@RequestParam(value = "redirect", defaultValue="") String redirect, HttpServletRequest request) {
-//		request.getSession().removeAttribute("ID");
-//		if (redirect != "") {
-//			return new ModelAndView("redirect:/"+redirect);
-//		}
-//		return new ModelAndView("redirect:/home");
-//	}
+	@RequestMapping(path = "/logout")
+	public ModelAndView logout(@RequestParam(value = "redirect", defaultValue="") String redirect, HttpServletRequest request) {
+		request.getSession().removeAttribute("ID");
+		if (redirect != "") {
+			return new ModelAndView("redirect:/"+redirect);
+		}
+		return new ModelAndView("redirect:/home");
+	}
 }
