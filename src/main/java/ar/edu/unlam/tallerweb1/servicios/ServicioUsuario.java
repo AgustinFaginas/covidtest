@@ -6,4 +6,6 @@ public interface ServicioUsuario {
 
 	public Usuario consultarUsuarioPorEmail(String email);
 
+	public Usuario consultarUsuarioPorId(Long id);
+
 }

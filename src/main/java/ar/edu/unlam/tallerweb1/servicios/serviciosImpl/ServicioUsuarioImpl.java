@@ -22,6 +22,12 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 		return repositorioUsuario.consultarUsuarioPorEmail(email);
 	}
 
+	@Override
+	public Usuario consultarUsuarioPorId(Long id) {
+		// TODO Auto-generated method stub
+		return repositorioUsuario.consultarUsuarioPorId(id);
+	}
+
 
 
 	

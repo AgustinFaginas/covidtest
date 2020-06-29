@@ -6,9 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,6 +19,7 @@ import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
@@ -27,6 +31,7 @@ public class ControladorInstitucion {
     private ServicioInstitucion servicioInstitucion;
     private ServicioCama servicioCama;
     private ServicioUsuario servicioUsuario;
+    private ServicioPaciente servicioPaciente;
 
     @Autowired
     public ControladorInstitucion(ServicioInstitucion servicioInstitucion, ServicioCama servicioCama,
@@ -105,5 +110,39 @@ public class ControladorInstitucion {
 
         return new ModelAndView("listaInstituciones", model);
     }
+    
+  //Requiere Id
+    @RequestMapping("bienvenido")
+	public ModelAndView irAbienvenido(HttpServletRequest request){	
+		if (request.getSession().getAttribute("ID") == null) {
+			return new ModelAndView("redirect:/login");
+		}
+		
+		ModelMap model = new ModelMap();
+	
+		
+       Long id = (Long) request.getSession().getAttribute("ID");
+       Institucion i = servicioInstitucion.obtenerInstitucionPorId(id);
+        
+       String nombre = i.getNombre();
+        Integer camas = i.getCantidadCamas();
+      
+        model.put("nombre", nombre);
+        model.put("camas", camas);
+      
+		return new ModelAndView("bienvenido", model);
+    }
+    
+ // Para acceder al panel desde Bienvenido
+ 	@RequestMapping(value = "/Panel/{id}", method = RequestMethod.GET)
+ 	public String irAasignacion(Model model, @PathVariable Long id, HttpServletRequest request) {
+ 		
+ 		
+ 		Long idBuscada = (Long) request.getSession().getAttribute("ID");
+ 		Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(idBuscada);
+ 		model.addAttribute("institucion", institucion );
+
+ 		return "panel";
+ 	}
 
 }
