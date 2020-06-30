@@ -116,17 +116,17 @@ public class ControladorInstitucion {
 	@RequestMapping("bienvenido")
 	public ModelAndView irAbienvenido(HttpServletRequest request) {
 		
-		if (request.getSession().getAttribute("ID") == null && request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
-			return new ModelAndView("redirect:/login");
-		}
+		ModelMap model = new ModelMap();
+
+		if (request.getSession().getAttribute("ID") == null || request.getSession().getAttribute("ROL")!=Rol.INSTITUCION) {
+			return new ModelAndView("redirect:/home");
+		} 
 		
 			Long id = (Long) request.getSession().getAttribute("ID");
 			Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
 			
 			String nombre = institucion.getNombre();
 			Integer camas = institucion.getCantidadCamas();
-			
-			ModelMap model = new ModelMap();
 			
 			model.put("nombre", nombre);
 			model.put("camas", camas);
@@ -135,15 +135,11 @@ public class ControladorInstitucion {
 		
 	}
 
-	// Para acceder al panel desde Bienvenido
-	@RequestMapping(value = "/Panel/{id}", method = RequestMethod.GET)
-	public String irAasignacion(Model model, @PathVariable Long id, HttpServletRequest request) {
 
-		Long idBuscada = (Long) request.getSession().getAttribute("ID");
-		Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(idBuscada);
-		model.addAttribute("institucion", institucion);
-
-		return "panel";
+	
+	@RequestMapping(path = "/Panel", method = RequestMethod.GET)
+	public ModelAndView irApanel() {
+		return new ModelAndView("panel");
 	}
 
 }

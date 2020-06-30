@@ -99,6 +99,7 @@ public class ControladorLogin {
 	public ModelAndView logout(@RequestParam(value = "redirect", defaultValue = "") String redirect,
 			HttpServletRequest request) {
 		request.getSession().removeAttribute("ID");
+		request.getSession().removeAttribute("ROL");
 		if (redirect != "") {
 			return new ModelAndView("redirect:/" + redirect);
 		}
