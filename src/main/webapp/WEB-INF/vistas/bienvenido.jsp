@@ -80,8 +80,7 @@
 			<a href="">Modificar datos</a>
 		</p>
 		<p class="lead">
-			<a class="btn btn-primary btn-lg"
-				href="<c:url value='/Panel/${institucion.getId()}' />" role="button">Ir a
+			<a class="btn btn-primary btn-lg" href="Panel" role="submit">Ir a
 				Panel de Control</a>
 		</p>
 	</div>

@@ -16,10 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ControladorLogin {
 
-	// La anotacion @Autowired indica a Spring que se debe utilizar el contructor como mecanismo de inyección de dependencias,
-	// es decir, qeue lo parametros del mismo deben ser un bean de spring y el framewrok automaticamente pasa como parametro
-	// el bean correspondiente, en este caso, un objeto de una clase que implemente la interface ServicioLogin,
-	// dicha clase debe estar anotada como @Service o @Repository y debe estar en un paquete de los indicados en
+	// La anotacion @Autowired indica a Spring que se debe utilizar el contructor
+	// como mecanismo de inyección de dependencias,
+	// es decir, qeue lo parametros del mismo deben ser un bean de spring y el
+	// framewrok automaticamente pasa como parametro
+	// el bean correspondiente, en este caso, un objeto de una clase que implemente
+	// la interface ServicioLogin,
+	// dicha clase debe estar anotada como @Service o @Repository y debe estar en un
+	// paquete de los indicados en
 	// applicationContext.xml
 	private ServicioLogin servicioLogin;
 
@@ -32,42 +36,46 @@ public class ControladorLogin {
 	}
 
 	@Autowired
-	public ControladorLogin(ServicioLogin servicioLogin){
+	public ControladorLogin(ServicioLogin servicioLogin) {
 		this.servicioLogin = servicioLogin;
 	}
 
-	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/login si la misma es invocada por metodo http GET
+	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/login si la misma es
+	// invocada por metodo http GET
 	@RequestMapping("/login")
 	public ModelAndView irALogin(HttpServletRequest request) {
 
 		ModelMap modelo = new ModelMap();
-		
+
 		if (request.getSession().getAttribute("ID") != null) {
 			modelo.put("alert", "Ya se encuentra logueado con una cuenta, primero cierre sesi�n.");
 		}
 		Usuario usuario = new Usuario();
 		modelo.put("usuario", usuario);
-	
+
 		return new ModelAndView("login", modelo);
 	}
 
-	// Este metodo escucha la URL validar-login siempre y cuando se invoque con metodo http POST
-	// El método recibe un objeto Usuario el que tiene los datos ingresados en el form correspondiente y se corresponde con el modelAttribute definido en el
+	// Este metodo escucha la URL validar-login siempre y cuando se invoque con
+	// metodo http POST
+	// El método recibe un objeto Usuario el que tiene los datos ingresados en el
+	// form correspondiente y se corresponde con el modelAttribute definido en el
 	// tag form:form
 	@RequestMapping(path = "/validar-login", method = RequestMethod.POST)
 	public ModelAndView validarLogin(@ModelAttribute("usuario") Usuario usuario, HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 
-		// invoca el metodo consultarUsuario del servicio y hace un redirect a la URL /home, esto es, en lugar de enviar a una vista
+		// invoca el metodo consultarUsuario del servicio y hace un redirect a la URL
+		// /home, esto es, en lugar de enviar a una vista
 		// hace una llamada a otro action a través de la URL correspondiente a ésta
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		if (usuarioBuscado != null) {
 			request.getSession().setAttribute("ID", usuarioBuscado.getId());
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
 			return new ModelAndView("redirect:/bienvenido");
-			
+
 		} else {
-			
+
 			model.put("error", "Usuario o clave incorrecta");
 		}
 		return new ModelAndView("login", model);
@@ -79,19 +87,20 @@ public class ControladorLogin {
 		return new ModelAndView("home");
 	}
 
-	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la url /login directamente.
+	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la
+	// url /login directamente.
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
 		return new ModelAndView("redirect:/login");
 	}
-	
-	
-	//LOGOUT
+
+	// LOGOUT
 	@RequestMapping(path = "/logout")
-	public ModelAndView logout(@RequestParam(value = "redirect", defaultValue="") String redirect, HttpServletRequest request) {
+	public ModelAndView logout(@RequestParam(value = "redirect", defaultValue = "") String redirect,
+			HttpServletRequest request) {
 		request.getSession().removeAttribute("ID");
 		if (redirect != "") {
-			return new ModelAndView("redirect:/"+redirect);
+			return new ModelAndView("redirect:/" + redirect);
 		}
 		return new ModelAndView("redirect:/home");
 	}

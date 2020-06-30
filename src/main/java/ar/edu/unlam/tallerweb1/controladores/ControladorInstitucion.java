@@ -22,127 +22,128 @@ import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
 @Controller
 public class ControladorInstitucion {
 
-    private ServicioInstitucion servicioInstitucion;
-    private ServicioCama servicioCama;
-    private ServicioUsuario servicioUsuario;
-    private ServicioPaciente servicioPaciente;
+	private ServicioInstitucion servicioInstitucion;
+	private ServicioCama servicioCama;
+	private ServicioUsuario servicioUsuario;
+	private ServicioPaciente servicioPaciente;
+	private ServicioLogin servicioLogin;
 
-    @Autowired
-    public ControladorInstitucion(ServicioInstitucion servicioInstitucion, ServicioCama servicioCama,
-                                  ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario) {
-        this.servicioInstitucion = servicioInstitucion;
-        this.servicioCama = servicioCama;
-        this.servicioUsuario = servicioUsuario;
-    }
+	@Autowired
+	public ControladorInstitucion(ServicioInstitucion servicioInstitucion, ServicioCama servicioCama,
+			ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario) {
+		this.servicioInstitucion = servicioInstitucion;
+		this.servicioCama = servicioCama;
+		this.servicioUsuario = servicioUsuario;
+	}
 
-    @RequestMapping("/registrarInstitucion")
-    public ModelAndView registrarInstitucion() {
+	@RequestMapping("/registrarInstitucion")
+	public ModelAndView registrarInstitucion() {
 
-        ModelMap modelo = new ModelMap();
+		ModelMap modelo = new ModelMap();
 
-        return new ModelAndView("registrarInstitucion", modelo);
-    }
+		return new ModelAndView("registrarInstitucion", modelo);
+	}
 
-    @RequestMapping("/detalleRegistroInstitucion")
-    public ModelAndView validarRegistroInstitucion(
+	@RequestMapping("/detalleRegistroInstitucion")
+	public ModelAndView validarRegistroInstitucion(
 
-            @ModelAttribute("usuario") Institucion institucion,
-            HttpServletRequest request
+			@ModelAttribute("usuario") Institucion institucion, HttpServletRequest request
 
-    ) {
+	) {
 
-        institucion.setTipoDocumento(TipoDocumento.CUIT);
+		institucion.setTipoDocumento(TipoDocumento.CUIT);
 
-        ModelMap model = new ModelMap();
+		ModelMap model = new ModelMap();
 
-        if (servicioUsuario.consultarUsuarioPorEmail(institucion.getEmail()) == null &&
-                servicioInstitucion.consultarInstitucionPorCuit(institucion.getNumeroDocumento()) == null) {
+		if (servicioUsuario.consultarUsuarioPorEmail(institucion.getEmail()) == null
+				&& servicioInstitucion.consultarInstitucionPorCuit(institucion.getNumeroDocumento()) == null) {
 
-            institucion.setRol(Rol.INSTITUCION);
+			institucion.setRol(Rol.INSTITUCION);
 
-            servicioInstitucion.registrarInstitucion(institucion);
+			servicioInstitucion.registrarInstitucion(institucion);
 
-            request.getSession().setAttribute("ID", institucion.getId());
-            request.getSession().setAttribute("ROL", institucion.getRol());
+			request.getSession().setAttribute("ID", institucion.getId());
+			request.getSession().setAttribute("ROL", institucion.getRol());
 
-            for (int i = 0; i < institucion.getCantidadCamas().intValue(); i++) {
+			for (int i = 0; i < institucion.getCantidadCamas().intValue(); i++) {
 
-                Cama cama = new Cama();
-                cama.setInstitucion(institucion);
+				Cama cama = new Cama();
+				cama.setInstitucion(institucion);
 
-                int numeroCama = i + 1;
-                String descripcion = "" + numeroCama;
-                cama.setDescripcion(descripcion);
+				int numeroCama = i + 1;
+				String descripcion = "" + numeroCama;
+				cama.setDescripcion(descripcion);
 
-                servicioCama.registrarCama(cama);
-            }
+				servicioCama.registrarCama(cama);
+			}
 
-            String mensaje = "Nombre: " + institucion.getNombre();
-            String mensaje2 = "Documento: (" + institucion.getTipoDocumento() + ") " + institucion.getNumeroDocumento();
-            String mensaje3 = "Email: " + institucion.getEmail();
+			String mensaje = "Nombre: " + institucion.getNombre();
+			String mensaje2 = "Documento: (" + institucion.getTipoDocumento() + ") " + institucion.getNumeroDocumento();
+			String mensaje3 = "Email: " + institucion.getEmail();
 
-            model.put("mensaje", mensaje);
-            model.put("mensaje2", mensaje2);
-            model.put("mensaje3", mensaje3);
+			model.put("mensaje", mensaje);
+			model.put("mensaje2", mensaje2);
+			model.put("mensaje3", mensaje3);
 
-            return new ModelAndView("detalleRegistroInstitucion", model);
-        } else {
+			return new ModelAndView("detalleRegistroInstitucion", model);
+		} else {
 
-            model.put("error", "Ya existe un usuario registrado con su mail o cuit");
+			model.put("error", "Ya existe un usuario registrado con su mail o cuit");
 
-            return new ModelAndView("registrarInstitucion", model);
-        }
-    }
+			return new ModelAndView("registrarInstitucion", model);
+		}
+	}
 
-    @RequestMapping("/listaInstituciones")
-    public ModelAndView listarInstituciones() {
+	@RequestMapping("/listaInstituciones")
+	public ModelAndView listarInstituciones() {
 
-        List<Institucion> listaInstituciones = servicioInstitucion.obtenerListaInstituciones();
+		List<Institucion> listaInstituciones = servicioInstitucion.obtenerListaInstituciones();
 
-        ModelMap model = new ModelMap();
-        model.put("listaInstituciones", listaInstituciones);
+		ModelMap model = new ModelMap();
+		model.put("listaInstituciones", listaInstituciones);
 
-        return new ModelAndView("listaInstituciones", model);
-    }
-    
-  //Requiere Id
-    @RequestMapping("bienvenido")
-	public ModelAndView irAbienvenido(HttpServletRequest request){	
-		if (request.getSession().getAttribute("ID") == null) {
+		return new ModelAndView("listaInstituciones", model);
+	}
+
+	
+	@RequestMapping("bienvenido")
+	public ModelAndView irAbienvenido(HttpServletRequest request) {
+		
+		if (request.getSession().getAttribute("ID") == null && request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
 			return new ModelAndView("redirect:/login");
 		}
 		
-		ModelMap model = new ModelMap();
-	
-		
-       Long id = (Long) request.getSession().getAttribute("ID");
-       Institucion i = servicioInstitucion.obtenerInstitucionPorId(id);
-        
-       String nombre = i.getNombre();
-        Integer camas = i.getCantidadCamas();
-      
-        model.put("nombre", nombre);
-        model.put("camas", camas);
-      
-		return new ModelAndView("bienvenido", model);
-    }
-    
- // Para acceder al panel desde Bienvenido
- 	@RequestMapping(value = "/Panel/{id}", method = RequestMethod.GET)
- 	public String irAasignacion(Model model, @PathVariable Long id, HttpServletRequest request) {
- 		
- 		
- 		Long idBuscada = (Long) request.getSession().getAttribute("ID");
- 		Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(idBuscada);
- 		model.addAttribute("institucion", institucion );
+			Long id = (Long) request.getSession().getAttribute("ID");
+			Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
+			
+			String nombre = institucion.getNombre();
+			Integer camas = institucion.getCantidadCamas();
+			
+			ModelMap model = new ModelMap();
+			
+			model.put("nombre", nombre);
+			model.put("camas", camas);
 
- 		return "panel";
- 	}
+			return new ModelAndView("bienvenido", model);
+		
+	}
+
+	// Para acceder al panel desde Bienvenido
+	@RequestMapping(value = "/Panel/{id}", method = RequestMethod.GET)
+	public String irAasignacion(Model model, @PathVariable Long id, HttpServletRequest request) {
+
+		Long idBuscada = (Long) request.getSession().getAttribute("ID");
+		Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(idBuscada);
+		model.addAttribute("institucion", institucion);
+
+		return "panel";
+	}
 
 }
