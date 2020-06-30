@@ -35,7 +35,9 @@ public class ControladorAdmin {
 		}
 
 		
-			
+		if (request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
+			return new ModelAndView("redirect:/denied");
+		}
 			
 			Long id = (Long) request.getSession().getAttribute("ID");
 			Usuario admin = servicioUsuario.consultarUsuarioPorId(id);
