@@ -29,7 +29,7 @@ public class ControladorAdmin {
 			return new ModelAndView("redirect:/home");
 		}
 
-		if (request.getSession().getAttribute("ROL")==Rol.ADMIN) {
+		if (request.getSession().getAttribute("ROL") == Rol.ADMIN) {
 			Long id = (Long) request.getSession().getAttribute("ID");
 			Usuario admin = servicioUsuario.consultarUsuarioPorId(id);
 
