@@ -18,7 +18,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>Bienvenido</title>
+<title>Acceso Denegado</title>
 
 <style>
 #navbar-top:hover {
@@ -71,18 +71,15 @@
 	<!-- <h2 class="text-center mb-3 mt-5">Bienvenido </h2> -->
 
 	<div class="jumbotron">
-		<h1 class="display-4">Bienvenido/a</h1>
-		<p class="lead">Desde aquí acceda a las opciones principales de:
-			${nombre}</p>
-		<p class="lead">La institución ${nombre} posee ${camas} camas en total.</p>
+		<h1 class="display-4">ACCESO DENEGADO</h1>
+		<p class="lead">Usted no tiene permisos para navegar esta página.
+		</p>
+	
 		<hr class="my-4">
 		<p>
-			<a href="">Modificar datos</a>
+			<a href="home">Volver a Home</a>
 		</p>
-		<p class="lead">
-			<a class="btn btn-primary btn-lg" href="Panel" role="submit">
-				Panel de Control</a>
-		</p>
+		
 	</div>
 
 

@@ -118,9 +118,12 @@ public class ControladorInstitucion {
 		
 		ModelMap model = new ModelMap();
 
-		if (request.getSession().getAttribute("ID") == null || request.getSession().getAttribute("ROL")!=Rol.INSTITUCION) {
+		if (request.getSession().getAttribute("ID") == null) {
 			return new ModelAndView("redirect:/home");
-		} 
+		}
+			
+			if (request.getSession().getAttribute("ROL")==Rol.INSTITUCION) {
+		
 		
 			Long id = (Long) request.getSession().getAttribute("ID");
 			Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
@@ -132,12 +135,13 @@ public class ControladorInstitucion {
 			model.put("camas", camas);
 
 			return new ModelAndView("bienvenido", model);
-		
+			
+			}
+			return new ModelAndView("redirect:/denied");
 	}
 
-
 	
-	@RequestMapping(path = "/Panel", method = RequestMethod.GET)
+	@RequestMapping(path = "/panel", method = RequestMethod.GET)
 	public ModelAndView irApanel() {
 		return new ModelAndView("panel");
 	}

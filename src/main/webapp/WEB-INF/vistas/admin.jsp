@@ -18,7 +18,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>Bienvenido</title>
+<title>Administrador</title>
 
 <style>
 #navbar-top:hover {
@@ -71,10 +71,10 @@
 	<!-- <h2 class="text-center mb-3 mt-5">Bienvenido </h2> -->
 
 	<div class="jumbotron">
-		<h1 class="display-4">Bienvenido/a</h1>
-		<p class="lead">Desde aquí acceda a las opciones principales de:
-			${nombre}</p>
-		<p class="lead">La institución ${nombre} posee ${camas} camas en total.</p>
+		<h1 class="display-4">Bienvenido/a ADMIN: ${rol}</h1>
+		<p class="lead">Desde aquí acceda a las opciones principales de ADMINISTRADOR:
+			</p>
+		
 		<hr class="my-4">
 		<p>
 			<a href="">Modificar datos</a>
