@@ -71,7 +71,7 @@
 	<!-- <h2 class="text-center mb-3 mt-5">Bienvenido </h2> -->
 
 	<div class="jumbotron">
-		<h1 class="display-4">Bienvenido/a ADMIN: ${rol}</h1>
+		<h1 class="display-4">Bienvenido/a ADMIN: ${nombre}</h1>
 		<p class="lead">Desde aquí acceda a las opciones principales de ADMINISTRADOR:
 			</p>
 		
