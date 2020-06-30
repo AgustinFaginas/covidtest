@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,25 +57,23 @@ public class ControladorLogin {
 		return new ModelAndView("login", modelo);
 	}
 
-	// Este metodo escucha la URL validar-login siempre y cuando se invoque con
-	// metodo http POST
-	// El método recibe un objeto Usuario el que tiene los datos ingresados en el
-	// form correspondiente y se corresponde con el modelAttribute definido en el
-	// tag form:form
+	
 	@RequestMapping(path = "/validar-login", method = RequestMethod.POST)
 	public ModelAndView validarLogin(@ModelAttribute("usuario") Usuario usuario, HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 
-		// invoca el metodo consultarUsuario del servicio y hace un redirect a la URL
-		// /home, esto es, en lugar de enviar a una vista
-		// hace una llamada a otro action a través de la URL correspondiente a ésta
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
-		if (usuarioBuscado != null) {
+		if (usuarioBuscado != null && usuarioBuscado.getRol() == Rol.INSTITUCION) {
 			request.getSession().setAttribute("ID", usuarioBuscado.getId());
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
 			return new ModelAndView("redirect:/bienvenido");
 
-		} else {
+		} else if (usuarioBuscado !=null && usuarioBuscado.getRol() == Rol.ADMIN ) {
+			request.getSession().setAttribute("ID", usuarioBuscado.getId());
+			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
+			return new ModelAndView("redirect:/admin");
+		}
+		else {
 
 			model.put("error", "Usuario o clave incorrecta");
 		}

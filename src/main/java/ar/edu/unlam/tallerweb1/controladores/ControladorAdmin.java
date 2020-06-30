@@ -21,8 +21,8 @@ public class ControladorAdmin {
 
 	private ServicioUsuario servicioUsuario;
 
-	@RequestMapping(path = "/admin", method = RequestMethod.GET)
-	public ModelAndView irAadmin(HttpServletRequest request) {
+	@RequestMapping("admin")
+	public ModelAndView irAadmin (HttpServletRequest request) {
 
 		ModelMap model = new ModelMap();
 		if (request.getSession().getAttribute("ID") == null) {
@@ -39,10 +39,10 @@ public class ControladorAdmin {
 
 			return new ModelAndView("admin", model);
 
-		} else {
+		} 
 			return new ModelAndView("redirect:/denied");
 
-		}
+		
 
 	}
 
