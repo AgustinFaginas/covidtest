@@ -7,7 +7,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -16,81 +16,20 @@
     <title>Grafico Pacientes</title>
 
     <style>
-        #navbar-top:hover {
-            text-decoration: none;
-        }
-
-        .container-chart {
-            margin-top: 10em;
+        #map {
+            height: 50em;
+            width: 100%;
         }
     </style>
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+
 </head>
-
-
-<script>
-    window.onload = function () {
-
-        //Grafico de barras
-        var chart = new CanvasJS.Chart("chartContainerBarras", {
-            animationEnabled: true,
-            theme: "light1", // "light1", "light2", "dark1", "dark2",
-            title: {
-                text: "Casos totales de contagiados y recuperados"
-            },
-            axisY: {
-                title: "Cantidad de personas"
-            },
-            data: [{
-                type: "column",
-                showInLegend: true,
-                legendMarkerColor: "grey",
-                legendText: "Estado",
-                dataPoints: [
-                    {y: ${cantidadPacientesInfectados}, label: "Infectados"},
-                    {y: ${cantidadPacientesNoInfectados}, label: "Recuperados"}
-                ]
-            }]
-        });
-
-        chart.render();
-
-        //Grafico de torta
-        var porcentaje1 = (${cantidadPacientesInfectados} * 100 /
-        ${cantidadPacientes})
-        ;
-        var porcentaje2 = (${cantidadPacientesNoInfectados} * 100 /
-        ${cantidadPacientes})
-        ;
-
-        var chart = new CanvasJS.Chart("chartContainerTorta", {
-            theme: "light1", // "light1", "light2", "dark1", "dark2"
-            //exportEnabled: true,
-            //animationEnabled: true,
-            title: {
-                text: "Casos totales de contagiados y recuperados"
-            },
-            data: [{
-                type: "pie",
-                startAngle: 25,
-                toolTipContent: "<b>{label}</b>: {y}%",
-                showInLegend: "true",
-                legendText: "{label}",
-                indexLabelFontSize: 16,
-                indexLabel: "{label} - {y}%",
-                dataPoints: [
-                    {y: ${cantidadPacientesInfectados}, label: "Infectados"},
-                    {y: ${cantidadPacientesNoInfectados}, label: "Recuperados"}
-
-                ]
-            }]
-        });
-        chart.render();
-
-    }
-
-</script>
-
 
 <body>
 
@@ -125,13 +64,21 @@
     </div>
 </nav>
 
+<h1 class="text-center m-5">Mapa de instituciones</h1>
+
 <div class="container-fluid m-5">
     <div class="row container-chart">
-        <div class="col"></div>
-        <div class="col-6">
-            <div id="chartContainerBarras" style="height: 40em; width: 100%;"></div>
+        <div class="col-2"></div>
+        <div class="col-8">
+            <h3 class="text-justify m-5">En este mapa podrá visualizar facilmente su ubicación. Así como también la
+                ubicación de hospitales, centros de salud, e instituciones que prestan sus instalaciones servicio
+                para el alojamiento para pacientes
+                de Coronavirus. En estos Centros de Aislamiento permanecerán, en el caso
+                de que el Sistema de Salud se encuentre desbordado por la falta de espacio físico, aquellos pacientes
+                que necesiten estar aislados, sin asistencia médica puntual, junto a los casos menos graves y puedan
+                realizar su aislamiento individual o familiar.</h3>
         </div>
-        <div class="col"></div>
+        <div class="col-2"></div>
     </div>
 </div>
 
@@ -139,7 +86,7 @@
     <div class="row container-chart">
         <div class="col"></div>
         <div class="col-6">
-            <div id="chartContainerTorta" style="height: 40em; width: 100%;"></div>
+            <div id="map"></div>
         </div>
         <div class="col"></div>
     </div>
@@ -157,8 +104,125 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+<script>
+    var hospitales = [
+        {
+            "nombre": "HOSPITAL GENERAL DE AGUDOS D. VELEZ SARSFIELD",
+            "lat": -34.6253368,
+            "lon": -58.50761514
+        },
+        {
+            "nombre": "HOSP. DE PEDIATRIA DR. J. GARRAHAN",
+            "lat": -34.62994536,
+            "lon": -58.39187918
+        },
+        {
+            "nombre": "HOSPITAL GENERAL DE NIÑOS PEDRO DE ELIZALDE",
+            "lat": -34.62884736,
+            "lon": -58.37755085
+        },
+        {
+            "nombre": "HOSPITAL DE REHABILITACION RESPIRATORIA MARIA FERRER",
+            "lat": -34.630211204449473,
+            "lon": -58.3758433488021
+        },
+        {
+            "nombre": "HOSPITAL INFANTO JUVENIL C. TOBAR GARCIA",
+            "lat": -34.635702235155911,
+            "lon": -58.382328450948762
+        },
+        {
+            "nombre": "HOSPITAL GENERAL DE AGUDOS B. RIVADAVIA",
+            "lat": -34.58476595812138,
+            "lon": -58.400513457442273
+        },
+        {
+            "nombre": "HOSPITAL GENERAL DE AGUDOS DR C. ARGERICH",
+            "lat": -34.628344858167651,
+            "lon": -58.365985088719015
+        },
+        {
+            "nombre": "HOSPITAL GENERAL DE AGUDOS DR. J. A. FERNANDEZ",
+            "lat": -34.581141710888993,
+            "lon": -58.406893914278655
+        },
+        {
+            "nombre": "HOSPITAL CECILIA GRIERSON",
+            "lat": -34.67184801407717,
+            "lon": -58.456642849110352
+        },
+        {
+            "nombre": "HOSPITAL DE REHABILITACION M. ROCCA",
+            "lat": -34.617981754059123,
+            "lon": -58.502144922222243
+        },
+        {
+            "nombre": "HOSPITAL DE OFTALMOLOGIA SANTA LUCIA",
+            "lat": -34.622712507512453,
+            "lon": -58.394064160474649
+        },
+        {
+            "nombre": "HOSPITAL DE QUEMADOS DR. ARTURO UMBERTO ILLIA",
+            "lat": -34.625503195248271,
+            "lon": -58.432396695024352
+        },
+        {
+            "nombre": "HOSPITAL DE ODONTOLOGIA  JOSE DUEÑAS",
+            "lat": -34.614634834842903,
+            "lon": -58.427659754283688
+        },
+        {
+            "nombre": "HOSPITAL OFTALMOLOGICO DR. PEDRO LAGLEYZE",
+            "lat": -34.605434275020741,
+            "lon": -58.460185577552785
+        },
+        {
+            "nombre": "HOSPITAL MATERNO INFANTIL R. SARDA",
+            "lat": -34.634856308414967,
+            "lon": -58.402750627537664
+        }
 
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    ]
+
+    var map = L.map('map').fitWorld();
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(map);
+
+    map.locate({ setView: true, maxZoom: 16 });
+
+    function onLocationFound(e) {
+        L.marker(e.latlng).addTo(map)
+    }
+
+    for (var i = 0; i < hospitales.length; i++) {
+        marker = new L.marker([hospitales[i].lat, hospitales[i].lon])
+            .bindPopup(hospitales[i].nombre)
+            .addTo(map);
+    }
+
+    function onLocationFound(e) {
+        //var radius = 0;
+
+        L.marker(e.latlng).addTo(map)
+            .bindPopup("Su ubicación").openPopup();
+
+        //L.circle(e.latlng, radius).addTo(map);
+
+    }
+
+    map.on('locationfound', onLocationFound);
+
+    function onLocationError(e) {
+        alert(e.message);
+    }
+
+    map.on('locationerror', onLocationError);
+</script>
 
 <!-- Footer -->
 <footer class="page-footer font-small mdb-color pt-4 bg-whiteborder border-top">

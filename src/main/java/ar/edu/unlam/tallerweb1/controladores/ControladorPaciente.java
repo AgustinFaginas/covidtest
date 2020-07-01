@@ -28,8 +28,8 @@ public class ControladorPaciente {
         return new ModelAndView("listaPacientes", model);
     }
 
-    @RequestMapping("/cantidadPacientes")
-    public ModelAndView cantidadPacientes() {
+    @RequestMapping("/grafico-pacientes")
+    public ModelAndView graficoPacientes() {
 
         Integer cantidadPacientes = servicioPaciente.pacientes().size();
         Integer cantidadPacientesInfectados = servicioPaciente.pacientesInfectados().size();
@@ -42,7 +42,13 @@ public class ControladorPaciente {
         model.put("cantidadPacientesNoInfectados", cantidadPacientesNoInfectados);
 
 
-        return new ModelAndView("graficobackup", model);
+        return new ModelAndView("grafico-pacientes", model);
+    }
+
+    @RequestMapping("/mapa-paciente")
+    public ModelAndView mapaPaciente() {
+
+        return new ModelAndView("mapa-paciente");
     }
 
 
