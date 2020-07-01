@@ -14,7 +14,6 @@
 
 <h2>ID: ${id}</h2>
 <h2>Cantidad de camas de la institución: ${cantidadCamas}</h2>
-<h2>Cantidad de asignaciones actuales: ${cantidadAsignaciones}</h2>
 <h2>Cantidad de camas disponibles: ${cantidadCamasDisponiblesPorInstitucion}</h2>
 
 

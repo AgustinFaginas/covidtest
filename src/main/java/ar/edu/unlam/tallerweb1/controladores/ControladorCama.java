@@ -59,19 +59,41 @@ public class ControladorCama {
         Integer cantidadCamas = servicioCama.obtenerCamasPorInstitucion(institucion).size();
         List<Cama> camasTotales = servicioCama.obtenerCamasPorInstitucion(institucion);
 
-        Integer cantidadAsignaciones = servicioAsignacion.obtenerAsignacionesActuales().size();
-
-        List<Asignacion> asignacionesActuales = new ArrayList<Asignacion>();
-
-        List<Cama> camasDisponibles = camasTotales;
+        List<Asignacion> asignacionesVigentes = servicioAsignacion.obtenerAsignacionesActuales();
+        Integer cantidadAsignacionesActuales = servicioAsignacion.obtenerAsignacionesActuales().size();
 
         ModelMap model = new ModelMap();
 
-        if (camasDisponibles.get(0).equals(camasTotales.get(0))){
+        /*Iterator<Cama> camas = camasTotales.iterator();
+
+        while(camas.hasNext()){
+            for (int i=0; i<cantidadAsignacionesActuales; i++){
+                if (camas.next().getId() == asignacionesVigentes.get(i).getCama().getId()){
+                    camas.remove();
+                }
+            }
+        }*/
+
+        for (int i = 0; i < cantidadCamas; i++) {
+            for (int j = 0; j < cantidadAsignacionesActuales; j++) {
+                if (camasTotales.get(i).equals(asignacionesVigentes.get(j).getCama())) {
+                    camasTotales.remove(i);
+                }
+            }
+        }
+
+        /*for (int i = 0; i < fruits.size(); i++) {
+            System.out.println (fruits.get(i));
+            if ("Apple".equals(fruits.get(i))) {
+                fruits.remove(i);
+            }
+        }*/
+
+        /*if (camasDisponibles.get(0).equals(camasTotales.get(0))){
             model.put("cantidadcamasDisponiblesPorInstitucion", 1);
         }else {
             model.put("cantidadcamasDisponiblesPorInstitucion", 0);
-        }
+        }*/
 
         /*for (int i=0; i<cantidadCamas; i++){
             if (asignacionesActuales.get(i).getCama().getId() == camasTotales.get(i).getId()){
@@ -80,13 +102,11 @@ public class ControladorCama {
 
         }*/
 
-        Integer cantidadCamasDisponiblesPorInstitucion = camasDisponibles.size();
-
+        Integer cantidadCamasDisponiblesPorInstitucion = camasTotales.size();
 
         model.put("id", id);
         model.put("cantidadCamas", cantidadCamas);
-        model.put("cantidadAsignaciones", cantidadAsignaciones);
-
+        model.put("cantidadCamasDisponiblesPorInstitucion", cantidadCamasDisponiblesPorInstitucion);
 
 
         return new ModelAndView("vistacamas", model);
