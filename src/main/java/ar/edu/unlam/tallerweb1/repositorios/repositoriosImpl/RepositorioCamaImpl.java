@@ -55,12 +55,19 @@ public class RepositorioCamaImpl implements RepositorioCama {
                 .list();
     }
 
-	@Override
-	public List<Cama> ObtenerCamas() {
-		// TODO Auto-generated method stub
-		return sessionFactory.getCurrentSession().createCriteria(Cama.class)
+    @Override
+    public List<Cama> ObtenerCamas() {
+        // TODO Auto-generated method stub
+        return sessionFactory.getCurrentSession().createCriteria(Cama.class)
                 .list();
-	}
+    }
+
+    @Override
+    public List<Cama> obtenerCamasPorInstitucion(Institucion institucion) {
+        return sessionFactory.getCurrentSession().createCriteria(Cama.class)
+                .add(Restrictions.eq("institucion", institucion))
+                .list();
+    }
 
 
 }

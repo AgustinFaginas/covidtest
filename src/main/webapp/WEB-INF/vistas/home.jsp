@@ -26,7 +26,7 @@
 <body>
 
 <nav class="navbar sticky-top bg-dark text-white justify-content-center align-items-center">
-	<a class="text-center text-white" href="#" id="navbar-top">
+	<a class="text-center text-white" href="https://www.argentina.gob.ar/salud/coronavirus-COVID-19" id="navbar-top">
 		<h5>
 			Coronavirus COVID-19 conocé información y recomendaciones del Ministerio de Salud</strong>
 		</h5>
@@ -214,7 +214,7 @@
 			<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
 				<h6 class="text-uppercase mb-4 font-weight-bold">ENLACES ÚTILES</h6>
 				<p>
-					<a href="#!">Ministerio de Salud</a>
+					<a href="https://www.argentina.gob.ar/salud/coronavirus-COVID-19">Ministerio de Salud</a>
 				</p>
 				<p>
 					<a href="#!">Hospitales y establecimientos de salud</a>

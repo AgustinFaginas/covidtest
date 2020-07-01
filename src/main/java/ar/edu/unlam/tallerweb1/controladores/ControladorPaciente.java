@@ -48,7 +48,7 @@ public class ControladorPaciente {
     @RequestMapping("/mapa-paciente")
     public ModelAndView mapaPaciente() {
 
-        return new ModelAndView("mapa-paciente");
+        return new ModelAndView("detalleRegistroPaciente");
     }
 
 

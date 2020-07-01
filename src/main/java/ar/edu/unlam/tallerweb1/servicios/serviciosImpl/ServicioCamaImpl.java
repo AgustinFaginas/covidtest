@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import ar.edu.unlam.tallerweb1.modelo.Asignacion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioAsignacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,9 @@ public class ServicioCamaImpl implements ServicioCama {
 
     @Autowired
     private RepositorioCama repositorioCama;
+
+    @Autowired
+    private ServicioAsignacion servicioAsignacion;
 
     @Override
     public Cama consultarCamaPorId(Long id) {
@@ -42,10 +47,34 @@ public class ServicioCamaImpl implements ServicioCama {
         repositorioCama.registrarCama(cama);
     }
 
-	@Override
-	public List<Cama> ObtenerCamas() {
-		// TODO Auto-generated method stub
-		return repositorioCama.ObtenerCamas();
-	}
+    @Override
+    public List<Cama> ObtenerCamas() {
+        // TODO Auto-generated method stub
+        return repositorioCama.ObtenerCamas();
+    }
+
+    @Override
+    public List<Cama> obtenerCamasPorInstitucion(Institucion institucion) {
+        return repositorioCama.obtenerCamasPorInstitucion(institucion);
+    }
+
+    /*@Override
+    public List<Cama> obtenerCamasDisponiblesPorInstitucion(Institucion institucion) {
+
+        List<Cama> camas = this.obtenerCamasPorInstitucion(institucion);
+
+        List <Asignacion> asignaciones = servicioAsignacion.obtenerAsignacionesActuales();
+
+        for (Asignacion asignacion: asignaciones) {
+            for (Cama cama: camas
+            ) {
+                if(asignacion.getCama().getId() == cama.getId()){
+                    camas.remove(cama);
+                }
+            }
+        }
+
+        return camas;
+    }*/
 
 }

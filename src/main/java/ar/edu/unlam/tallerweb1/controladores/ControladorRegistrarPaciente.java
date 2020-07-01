@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import javax.servlet.http.HttpServletRequest;
 
+import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -59,13 +60,15 @@ public class ControladorRegistrarPaciente {
             String rol = Rol.PACIENTE.name();
             request.getSession().setAttribute("rol", paciente.getRol());
 
-            String mensaje = "Nombre: " + paciente.getNombre();
-            String mensaje2 = "Documento: (" + paciente.getTipoDocumento() + ") " + paciente.getNumeroDocumento();
-            String mensaje3 = "Email: " + paciente.getEmail();
+            String nombre = paciente.getNombre();
+            String documento = paciente.getNumeroDocumento();
+            String email = paciente.getEmail();
+            TipoDocumento tipoDocumento = paciente.getTipoDocumento();
 
-            model.put("mensaje", mensaje);
-            model.put("mensaje2", mensaje2);
-            model.put("mensaje3", mensaje3);
+            model.put("nombre", nombre);
+            model.put("documento", documento);
+            model.put("tipoDocumento", tipoDocumento);
+            model.put("email", email);
 
             return new ModelAndView("detalleRegistroPaciente", model);
         } else {
