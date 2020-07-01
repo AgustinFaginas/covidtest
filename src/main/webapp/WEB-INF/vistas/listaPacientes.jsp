@@ -11,13 +11,12 @@
     <title> Pacientes</title>
 </head>
 <body>
-
 <%-- <c:forEach items="${pacientes}" var="paciente">
     <c:out value="${paciente.getNombre()}"/>
     <c:out value="${paciente.getApellido()}"/>
 </c:forEach> --%>
 
-<form action="camas" method="get">
+<%--<form action="camas" method="get">--%>
 
    <%--  <table class="table table-bordered table-dark">
         <tr>
@@ -48,32 +47,32 @@
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
         <th scope="col">Infectado</th>
-         
-        
+
+
         
     </tr>
-    <c:forEach items="${pacientes}" var="paciente">
+    <c:forEach items="${listaPacientes}" var="paciente">
         <tr>
             <th scope="row"><c:out value="${paciente.getId()}"/></th>
             <td><c:out value="${paciente.getNombre()}"/></td>
             <td><c:out value="${paciente.getApellido()}"/></td>
-            <td><c:out value="${paciente.getInfectado() ? 'Si' : 'No'}"/></td>
-           <td><a href="<c:url value='/Camas/${paciente.getId()}' />" >Asignar cama</a></td>
-          
+            <td><c:out value="${paciente.getInfectado() ? 'Infectado' : 'No infectado'}"/></td>
+           <%--<td><a href="<c:url value='/Camas/${paciente.getId()}' />" >Asignar cama</a></td>
+
            <td>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="idPaciente" id="radio-paciente"
                                value="${paciente.getId()}"
                         >
                     </div>
-                </td>
+                </td>--%>
         </tr>
     </c:forEach>
 </table>
 
-    <button class="btn btn-dark" type="submit">Guardar</button>
+<%--    <button class="btn btn-dark" type="submit">Guardar</button>--%>
 
-</form>
+<%--</form>--%>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
