@@ -32,16 +32,6 @@ public class RepositorioCamaImpl implements RepositorioCama {
                 .uniqueResult();
     }
 
-    @Override
-    public List<Cama> verCamasDisponiblesPorInstitucion(Institucion institucion) {
-
-        return sessionFactory.getCurrentSession().createCriteria(Cama.class)
-                //.add(Restrictions.eq("pacienteActual", null))
-                .add(Restrictions.eq("institucion", institucion.getId()))
-                .list();
-
-    }
-
     //Guardar cama
     @Override
     public void registrarCama(Cama cama) {
@@ -50,13 +40,7 @@ public class RepositorioCamaImpl implements RepositorioCama {
     }
 
     @Override
-    public List<Cama> camas() {
-        return sessionFactory.getCurrentSession().createCriteria(Cama.class)
-                .list();
-    }
-
-    @Override
-    public List<Cama> ObtenerCamas() {
+    public List<Cama> obtenerCamas() {
         // TODO Auto-generated method stub
         return sessionFactory.getCurrentSession().createCriteria(Cama.class)
                 .list();

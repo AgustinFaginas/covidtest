@@ -10,13 +10,9 @@ public interface RepositorioCama {
 
     Cama consultarCamaPorId(Long id);
 
-    List<Cama> verCamasDisponiblesPorInstitucion(Institucion institucion);
-
     void registrarCama(Cama cama);
 
-    List<Cama> camas();
-
-    List<Cama> ObtenerCamas();
+    List<Cama> obtenerCamas();
 
     List<Cama> obtenerCamasPorInstitucion(Institucion institucion);
 
