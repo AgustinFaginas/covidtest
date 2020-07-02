@@ -130,10 +130,6 @@
         <div>
         <h1 class="h2">Internar Paciente</h1> 
         </div>
-        
-        <div>
-        <p class="px-md-5"> ${pacienteAInternar.getApellido()}, ${pacienteAInternar.getNombre()}</p>
-        </div>
        
       </div>
       	
@@ -152,29 +148,29 @@
 		    </table>
 		</div>
 		
-		<h4 class="">Paso 2: Elegir Cama</h4>	
+		<h4 class="">Paso 1: Elegir Paciente Infectado</h4>	
 		
 		</br>		
 		        
-		<form action="detalleInternacionPorPasos" method="get">
+		<form action="listaCamas" method="get">
 		
 		  <div class="table-responsive">
 		    <table class="table table-striped table-sm">
 		        <tr>
-		            <th >#</th>
-		            <th >Institucion</th>
-		            <th >Descripcion</th>
+		            <th >Id</th>
+		            <th >Nombre</th>
+		            <th >Apellido</th>
 		            <th></th>
 		        </tr>
-		        <c:forEach items="${camas}" var="cama">
+		        <c:forEach items="${listaPacientesInfectados}" var="paciente">
 		            <tr>
-		                <th ><c:out value="${cama.getId()}"/></th>
-		                <td><c:out value="${cama.getInstitucion().getNombre()}"/></td>
-		                <td><c:out value="${cama.getDescripcion()}"/></td>
+		                <th ><c:out value="${paciente.getId()}"/></th>
+		                <td><c:out value="${paciente.getNombre()}"/></td>
+		                <td><c:out value="${paciente.getApellido()}"/></td>
 		                <td>
 		                    <div class="form-check">
-		                        <input class="form-check-input" type="radio" name="idCama" id="radio-cama"
-		                               value="${cama.getId()}">
+		                        <input class="form-check-input" type="radio" name="idPaciente" id="radio-cama"
+		                               value="${paciente.getId()}">
 		                    </div> 
 		               </td>
 		            </tr>
@@ -182,7 +178,7 @@
 		    </table>
 		</div>
 		
-		    <button class="btn btn-sm btn-outline-secondary" type="submit">Internar</button>
+		    <button class="btn btn-sm btn-outline-secondary" type="submit">Siguiente</button>
 		
 		
 		</form>

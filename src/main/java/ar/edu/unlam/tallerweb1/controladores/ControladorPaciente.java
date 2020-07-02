@@ -1,14 +1,22 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import ar.edu.unlam.tallerweb1.modelo.Asignacion;
+import ar.edu.unlam.tallerweb1.modelo.Cama;
+import ar.edu.unlam.tallerweb1.modelo.Institucion;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.LinkedList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class ControladorPaciente {
@@ -61,6 +69,31 @@ public class ControladorPaciente {
         model.put("posiblesInfectados", posiblesInfectados);
 
         return new ModelAndView("posiblesinfectados", model);
+    }
+    
+    @RequestMapping("/listaPacientesInfectados")
+    public ModelAndView listaPacientesInfectados(
+    	
+		HttpServletRequest request
+		
+    	) {
+
+		ModelMap model = new ModelMap();
+		
+		if (request.getSession().getAttribute("ID") == null) {
+			model.put("error", "Debe iniciar sesión");
+	        return new ModelAndView("login", model);
+		}
+	
+		if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
+			return new ModelAndView("redirect:/denied");
+		}
+		
+		List<Paciente> listaPacientesInfectados = servicioPaciente.pacientesInfectados(); 
+		
+		model.put("listaPacientesInfectados", listaPacientesInfectados);
+    
+        return new ModelAndView("listaPacientesInfectados", model);
     }
 
 

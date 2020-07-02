@@ -95,6 +95,8 @@ public class ControladorCama {
 			return new ModelAndView("redirect:/denied");
 		}
 		
+		request.getSession().setAttribute("ID_PACIENTE", idPaciente);
+		
     	Long id = (long) request.getSession().getAttribute("ID");
     	Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
         

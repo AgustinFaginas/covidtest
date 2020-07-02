@@ -79,6 +79,12 @@
                         </a>
                     </li>
                     <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="consultarPaciente">
+                            <span data-feather="search"></span>
+                            Consultar paciente
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
                         <a class="nav-link" href="internarPaciente">
                             <span data-feather="user-plus"></span>
                             Internar paciente
@@ -91,9 +97,9 @@
                         </a>
                     </li>
                     <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="consultarPaciente">
-                            <span data-feather="search"></span>
-                            Consultar paciente
+                        <a class="nav-link" href="listaPacientesInfectados">
+                            <span data-feather="users"></span>
+                            Pacientes Infectados
                         </a>
                     </li>
                     <li class="nav-item mt-3 mb-3">
