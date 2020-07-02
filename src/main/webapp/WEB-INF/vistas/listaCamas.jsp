@@ -161,15 +161,13 @@
 		  <div class="table-responsive">
 		    <table class="table table-striped table-sm">
 		        <tr>
-		            <th >#</th>
-		            <th >Institucion</th>
+		            <th >Id</th>
 		            <th >Descripcion</th>
-		            <th></th>
+		            <th>Seleccionar Cama</th>
 		        </tr>
 		        <c:forEach items="${camas}" var="cama">
 		            <tr>
 		                <th ><c:out value="${cama.getId()}"/></th>
-		                <td><c:out value="${cama.getInstitucion().getNombre()}"/></td>
 		                <td><c:out value="${cama.getDescripcion()}"/></td>
 		                <td>
 		                    <div class="form-check">

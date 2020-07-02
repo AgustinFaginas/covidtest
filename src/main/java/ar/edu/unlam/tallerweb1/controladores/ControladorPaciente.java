@@ -108,5 +108,4 @@ public class ControladorPaciente {
         return new ModelAndView("listapacientes2", model);
     }
 
-
 }

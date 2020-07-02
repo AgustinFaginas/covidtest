@@ -145,7 +145,7 @@
 					<h4 class="h4">${mensaje5}</h4>
 					
                     <br>
-                    <a href="#" class="btn btn-sm btn-outline-secondary">Inicio</a>
+                    <a href="bienvenido" class="btn btn-sm btn-outline-secondary">Inicio</a>
 					
        
         </div>
