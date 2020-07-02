@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios.serviciosImpl;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -65,10 +66,24 @@ public class ServicioCamaImpl implements ServicioCama {
 //        for (int i = 0; i < camasTotalesPorInstitucion.size(); i++) {
 //            if (camasTotalesPorInstitucion.get(i).getId() != null) {
 //            	camasTotalesPorInstitucion2.add(camasTotalesPorInstitucion.get(i));
-//            }
+//            }li
 //        }
 //        
-//        return camasTotalesPorInstitucion2;
+//        return camasTotalesPorInstitucion2;<
+//		HashSet <Cama>  todasLLAsCamas=servicioCama=(institucionID);
+//		HashSet<Cama> camasAsignada=servicioAsignacion(institucion);
+//		for (Cama c: camasAsignada) 
+//			todas.remove(c);
+//		}
+//		return todas
+//		
+		
+		
+		
+		
+		
+		
+		
 		  return null;
 	}
 
