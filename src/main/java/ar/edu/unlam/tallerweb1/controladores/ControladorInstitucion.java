@@ -137,9 +137,6 @@ public class ControladorInstitucion {
 	}
 
 	
-	@RequestMapping(path = "/panel", method = RequestMethod.GET)
-	public ModelAndView irApanel() {
-		return new ModelAndView("panel");
-	}
+	
 
 }
