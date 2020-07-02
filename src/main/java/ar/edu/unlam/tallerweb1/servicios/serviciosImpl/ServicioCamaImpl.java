@@ -49,27 +49,27 @@ public class ServicioCamaImpl implements ServicioCama {
 
 	@Override
 	public List<Cama> obtenerCamasDisponiblesPorInstitucion(Institucion institucion) {
-	
-		 	List<Cama> camasTotalesPorInstitucion = obtenerCamasPorInstitucion(institucion);
-	        LinkedList<Cama> camasTotalesPorInstitucion2 = new LinkedList<Cama>();
-	        List<Asignacion> asignacionesVigentes = servicioAsignacion.obtenerAsignacionesActuales();
-
-	        for (int i = 0; i < camasTotalesPorInstitucion.size(); i++) {
-	            for (int j = 0; j < asignacionesVigentes.size(); j++) {
-	                if (camasTotalesPorInstitucion.get(i).getId() == asignacionesVigentes.get(j).getCama().getId()) {
-	                	camasTotalesPorInstitucion.get(i).setId(null);
-	                }
-	            }
-	        }
-	        
-	        for (int i = 0; i < camasTotalesPorInstitucion.size(); i++) {
-	            if (camasTotalesPorInstitucion.get(i).getId() != null) {
-	            	camasTotalesPorInstitucion2.add(camasTotalesPorInstitucion.get(i));
-	            }
-	        }
-	        
-	        return camasTotalesPorInstitucion2;
-
+//	
+//		  List<Cama> camasTotalesPorInstitucion = obtenerCamasPorInstitucion(institucion);
+//        LinkedList<Cama> camasTotalesPorInstitucion2 = new LinkedList<Cama>();
+//        List<Asignacion> asignacionesVigentes = servicioAsignacion.obtenerAsignacionesActuales();
+//
+//        for (int i = 0; i < camasTotalesPorInstitucion.size(); i++) {
+//            for (int j = 0; j < asignacionesVigentes.size(); j++) {
+//                if (camasTotalesPorInstitucion.get(i).getId() == asignacionesVigentes.get(j).getCama().getId()) {
+//                	camasTotalesPorInstitucion.get(i).setId(null);
+//                }
+//            }
+//        }
+//        
+//        for (int i = 0; i < camasTotalesPorInstitucion.size(); i++) {
+//            if (camasTotalesPorInstitucion.get(i).getId() != null) {
+//            	camasTotalesPorInstitucion2.add(camasTotalesPorInstitucion.get(i));
+//            }
+//        }
+//        
+//        return camasTotalesPorInstitucion2;
+		  return null;
 	}
 
 }
