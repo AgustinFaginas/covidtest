@@ -52,6 +52,7 @@
 				</a></li>
 				<li class="nav-item ml-5"><a class="nav-link" href="autoTest">Realizar
 						test</a></li>
+						<li class="nav-item ml-5"><a class="nav-link" href="registrarInstitucion">Registrar Institucion</a></li>
 			</ul>
 			<c:if test="${alert == null}">
 				<a href="login" class="btn btn-dark ml-5" role="button"
