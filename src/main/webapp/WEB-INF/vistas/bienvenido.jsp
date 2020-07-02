@@ -61,13 +61,13 @@
             <div class="sidebar-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="bienvenido">
                             <span data-feather="home"></span>
                             Home Institución
                         </a>
                     </li>
                     <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="disponibilidadCamas">
                             <span data-feather="inbox"></span>
                             Disponibilidad Camas
                         </a>

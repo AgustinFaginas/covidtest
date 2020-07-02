@@ -74,7 +74,7 @@ public class ControladorCama {
 
         model.put("camas", camasDisponiblesInstitucion);
 
-        return new ModelAndView("disponibilidadCamas", model);
+        return new ModelAndView("disponibilidad-camas", model);
     }
     
     @RequestMapping("/listaCamas")
