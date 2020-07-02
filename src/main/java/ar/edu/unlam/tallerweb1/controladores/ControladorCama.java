@@ -43,7 +43,7 @@ public class ControladorCama {
     	
     	if (request.getSession().getAttribute("ID") == null) {
 			model.put("error", "Debe iniciar sesión");
-	        return new ModelAndView("redirect:/login", model);
+	        return new ModelAndView("login", model);
 		}
 
 		if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
@@ -88,7 +88,7 @@ public class ControladorCama {
     	
     	if (request.getSession().getAttribute("ID") == null) {
 			model.put("error", "Debe iniciar sesión");
-	        return new ModelAndView("redirect:/login", model);
+	        return new ModelAndView("login", model);
 		}
 
 		if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
