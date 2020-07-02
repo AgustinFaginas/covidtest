@@ -11,15 +11,11 @@ public interface ServicioCama {
 
     Cama consultarCamaPorId(Long id);
 
-    List<Cama> verCamasDisponiblesPorInstitucion(Institucion institucion);
-
-    public List<Cama> camas();
-
-	List<Cama> ObtenerCamas();
+	List<Cama> obtenerCamas();
 
 	List<Cama> obtenerCamasPorInstitucion(Institucion institucion);
 
-	//List<Cama> obtenerCamasDisponiblesPorInstitucion(Institucion institucion);
+	List<Cama> obtenerCamasDisponiblesPorInstitucion(Institucion institucion);
 
 
 }

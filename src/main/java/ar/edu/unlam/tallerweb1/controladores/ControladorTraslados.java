@@ -62,14 +62,11 @@ public class ControladorTraslados {
 		this.servicioCama = servicioCama;
 	}
 
-
-	
-
 	 @RequestMapping("/trasladarPacienteCama")
 	    public ModelAndView trasladarPacienteCama() {
 
 
-	        List<Cama> listaCamas = servicioCama.camas();
+	        List<Cama> listaCamas = servicioCama.obtenerCamas();
 	        
 	        ModelMap model = new ModelMap();
 	        model.put("camas", listaCamas);

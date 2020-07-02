@@ -37,7 +37,7 @@ public class ControladorInternarPaciente {
 	@RequestMapping("/internarPaciente")
 	public ModelAndView internarPaciente() {
 
-		   List<Cama> camasLibres = servicioCama.ObtenerCamas();
+		   List<Cama> camasLibres = servicioCama.obtenerCamas();
 	        
 	        ModelMap modelo = new ModelMap();
 
