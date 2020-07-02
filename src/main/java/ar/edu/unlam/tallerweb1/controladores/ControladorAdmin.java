@@ -57,10 +57,10 @@ public class ControladorAdmin {
 			
 	}
 	
-//	@RequestMapping(path = "/panel", method = RequestMethod.GET)
-//	public ModelAndView irApanel() {
-//		return new ModelAndView("panel");
-//	}
+	@RequestMapping(path = "/inicioAdmin", method = RequestMethod.GET)
+	public ModelAndView irAhomeAdmin() {
+		return new ModelAndView("homeAdmin");
+	}
 	
 	@RequestMapping("/panel")
 	public ModelAndView irApanel() {

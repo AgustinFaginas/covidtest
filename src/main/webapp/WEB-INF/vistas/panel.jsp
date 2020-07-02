@@ -10,7 +10,7 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Jekyll v4.0.1">
-<title>Dashboard Template · Bootstrap</title>
+<title>Admin</title>
 
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
@@ -40,7 +40,7 @@
 <body>
 	<nav
 		class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">COVIDTEST</a>
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">AsignAR</a>
 		<button class="navbar-toggler position-absolute d-md-none collapsed"
 			type="button" data-toggle="collapse" data-target="#sidebarMenu"
 			aria-controls="sidebarMenu" aria-expanded="false"
@@ -50,8 +50,7 @@
 		<input class="form-control form-control-dark w-100" type="text"
 			placeholder="Search" aria-label="Search">
 		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap"><a class="nav-link" href="#">Sign
-					out</a></li>
+			<li class="nav-item text-nowrap"><a class="nav-link" href="#">Salir</a></li>
 		</ul>
 	</nav>
 
@@ -60,26 +59,50 @@
 			<nav id="sidebarMenu"
 				class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
 				<div class="sidebar-sticky pt-3">
-					<ul class="nav flex-column">
-						<li class="nav-item"><a class="nav-link active" href="#">
-								<span data-feather="home"></span> Principal <span
-								class="sr-only">(current)</span>
-						</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> <span
-								data-feather="file"></span> Disponibilidad Camas
-						</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> <span
-								data-feather="shopping-cart"></span> Consultar Otros Centros de
-								Atención
-						</a></li>
-						<li class="nav-item"><a class="nav-link" href="pacientes">
-								<span data-feather="users"></span> Lista de Espera
-						</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> <span
-								data-feather="bar-chart-2"></span> Reportes
-						</a></li>
-
-					</ul>
+					 <ul class="nav flex-column">
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="bienvenido">
+                            <span data-feather="inicioAdmin"></span>
+                            Home 
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="disponibilidadCamas">
+                            <span data-feather="inbox"></span>
+                            Disponibilidad Camas
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="posiblesinfectados">
+                            <span data-feather="users"></span>
+                            Lista de Espera
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="internarPaciente">
+                            <span data-feather="user-plus"></span>
+                            Internar paciente
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="egresarPaciente">
+                            <span data-feather="user-minus"></span>
+                            Egresar paciente
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="consultarPaciente">
+                            <span data-feather="search"></span>
+                            Consultar paciente
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="grafico-pacientes">
+                            <span data-feather="bar-chart-2"></span>
+                            Reportes
+                        </a>
+                    </li>
+                </ul>
 
 					<!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Saved reports</span>
@@ -117,7 +140,7 @@
 			</nav>
 
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-				<div
+				<!-- <div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">Panel de Control</h1>
 					<div class="btn-toolbar mb-2 mb-md-0">
@@ -130,9 +153,9 @@
 							<span data-feather="calendar"></span> This week
 						</button>
 					</div>
-				</div>
+				</div> -->
 
-				 <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> 
+				<%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%> 
 
 				<h2>Instituciones</h2>
 				<table class="table table-bordered table-white">
