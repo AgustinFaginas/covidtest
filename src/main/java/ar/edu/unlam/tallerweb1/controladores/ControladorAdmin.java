@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ import ar.edu.unlam.tallerweb1.modelo.Institucion;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
-
+import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
 @Controller
@@ -24,6 +26,8 @@ public class ControladorAdmin {
 
 	@Autowired
 	private ServicioUsuario servicioUsuario;
+	@Autowired
+	private ServicioInstitucion servicioInstitucion;
 	
 	
 	@RequestMapping("admin")
@@ -52,9 +56,25 @@ public class ControladorAdmin {
 			
 			
 	}
+	
+//	@RequestMapping(path = "/panel", method = RequestMethod.GET)
+//	public ModelAndView irApanel() {
+//		return new ModelAndView("panel");
+//	}
+	
+	@RequestMapping("/panel")
+	public ModelAndView irApanel() {
+
+		List<Institucion> listaInstituciones = servicioInstitucion.obtenerListaInstituciones();
+
+		ModelMap model = new ModelMap();
+		model.put("listaInstituciones", listaInstituciones);
+
+		return new ModelAndView("panel", model);
+	}
 
 	@RequestMapping(path = "/denied", method = RequestMethod.GET)
-	public ModelAndView irApanel() {
+	public ModelAndView denied() {
 		return new ModelAndView("denied");
 	}
 
