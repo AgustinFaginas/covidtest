@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Dashboard Template · Bootstrap</title>
+    <title>Institución</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
@@ -73,7 +73,7 @@
                         </a>
                     </li>
                     <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="pacientes">
+                        <a class="nav-link" href="posiblesinfectados">
                             <span data-feather="users"></span>
                             Lista de Espera
                         </a>
