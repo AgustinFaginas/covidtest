@@ -49,7 +49,7 @@
     <!--   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a href="login" class="btn btn-dark ml-5" role="button"
+            <a href="logout" class="btn btn-dark ml-5" role="button"
                aria-disabled="true">Log out</a>
         </li>
     </ul>
