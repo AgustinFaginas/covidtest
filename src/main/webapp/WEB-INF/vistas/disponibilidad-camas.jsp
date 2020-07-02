@@ -44,68 +44,7 @@
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
 </head>
-<script>
-    window.onload = function () {
 
-        //Grafico de barras
-        var chart = new CanvasJS.Chart("chartContainerBarras", {
-            animationEnabled: true,
-            theme: "light1", // "light1", "light2", "dark1", "dark2",
-            title: {
-                text: "Casos totales de contagiados y recuperados"
-            },
-            axisY: {
-                title: "Cantidad de personas"
-            },
-            data: [{
-                type: "column",
-                showInLegend: true,
-                legendMarkerColor: "grey",
-                legendText: "Estado",
-                dataPoints: [
-                    {y: ${cantidadPacientesInfectados}, label: "Infectados"},
-                    {y: ${cantidadPacientesNoInfectados}, label: "Recuperados"}
-                ]
-            }]
-        });
-
-        chart.render();
-
-        //Grafico de torta
-        var porcentaje1 = (${cantidadPacientesInfectados} * 100 /
-        ${cantidadPacientes})
-        ;
-        var porcentaje2 = (${cantidadPacientesNoInfectados} * 100 /
-        ${cantidadPacientes})
-        ;
-
-        var chart = new CanvasJS.Chart("chartContainerTorta", {
-            theme: "light1", // "light1", "light2", "dark1", "dark2"
-            //exportEnabled: true,
-            //animationEnabled: true,
-            title: {
-                text: "Casos totales de contagiados y recuperados"
-            },
-            data: [{
-                type: "pie",
-                startAngle: 25,
-                toolTipContent: "<b>{label}</b>: {y}%",
-                showInLegend: "true",
-                legendText: "{label}",
-                indexLabelFontSize: 16,
-                indexLabel: "{label} - {y}%",
-                dataPoints: [
-                    {y: porcentaje1, label: "Infectados"},
-                    {y: porcentaje2, label: "Recuperados"}
-
-                ]
-            }]
-        });
-        chart.render();
-
-    }
-
-</script>
 <body>
 <nav class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
     <%--    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">COVIDTEST</a>--%>
@@ -138,7 +77,7 @@
                         </a>
                     </li>
                     <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="disponibilidadCamas">
+                        <a class="nav-link" href="#">
                             <span data-feather="inbox"></span>
                             Disponibilidad Camas
                         </a>
@@ -150,7 +89,7 @@
                         </a>
                     </li>
                     <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="grafico-pacientes">
                             <span data-feather="bar-chart-2"></span>
                             Reportes
                         </a>
@@ -160,24 +99,34 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <div class="container-fluid m-5">
-                <div class="row container-chart">
-                    <div class="col"></div>
-                    <div class="col-6">
-                        <div id="chartContainerBarras" style="height: 40em; width: 100%;"></div>
-                    </div>
-                    <div class="col"></div>
-                </div>
-            </div>
+            <div class="container m-5">
+                <form action="internar" method="get">
 
-            <div class="container-fluid m-5">
-                <div class="row container-chart">
-                    <div class="col"></div>
-                    <div class="col-6">
-                        <div id="chartContainerTorta" style="height: 40em; width: 100%;"></div>
+                    <div class="table-responsive">
+
+
+                        <table class="table table-striped table-sm">
+                            <tr>
+                                <th>Id</th>
+                                <th>Descripción</th>
+                                <th>Acción</th>
+                            </tr>
+                            <c:forEach items="${camas}" var="cama">
+                                <tr>
+                                    <th><c:out value="${cama.getId()}"/></th>
+                                    <td><c:out value="${cama.getDescripcion()}"/></td>
+                                    <td>
+                                        <div class="form-action">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Internar
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
                     </div>
-                    <div class="col"></div>
-                </div>
+
+                </form>
             </div>
 
         </main>
@@ -197,6 +146,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script src="js/dashboard.js"></script>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>
