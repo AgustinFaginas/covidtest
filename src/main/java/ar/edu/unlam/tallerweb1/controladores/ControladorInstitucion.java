@@ -125,7 +125,7 @@ public class ControladorInstitucion {
 			Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
 			
 			String nombre = institucion.getNombre();
-			Integer camas = institucion.getCantidadCamas();
+			Integer camas = servicioCama.obtenerCamasPorInstitucion(institucion).size();
 			
 			model.put("nombre", nombre);
 			model.put("camas", camas);

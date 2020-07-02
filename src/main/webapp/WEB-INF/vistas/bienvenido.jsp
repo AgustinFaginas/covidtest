@@ -103,6 +103,12 @@
                         </a>
                     </li>
                     <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="consultarAsignacion">
+                            <span data-feather="search"></span>
+                            Consultar Asignación
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
                         <a class="nav-link" href="grafico-pacientes">
                             <span data-feather="bar-chart-2"></span>
                             Reportes

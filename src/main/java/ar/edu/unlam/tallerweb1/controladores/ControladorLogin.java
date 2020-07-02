@@ -63,6 +63,12 @@ public class ControladorLogin {
 		ModelMap model = new ModelMap();
 
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
+		
+		if (usuarioBuscado == null) {
+			model.put("error", "Usuario o clave incorrecta");
+			return new ModelAndView("login", model);
+		}
+		
 		if (usuarioBuscado != null && usuarioBuscado.getRol() == Rol.INSTITUCION) {
 			request.getSession().setAttribute("ID", usuarioBuscado.getId());
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
