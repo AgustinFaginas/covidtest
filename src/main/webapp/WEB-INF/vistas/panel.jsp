@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <html lang="en">
@@ -9,7 +10,7 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Jekyll v4.0.1">
-<title>Dashboard Template · Bootstrap</title>
+<title>Admin</title>
 
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
@@ -39,7 +40,7 @@
 <body>
 	<nav
 		class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">COVIDTEST</a>
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">AsignAR</a>
 		<button class="navbar-toggler position-absolute d-md-none collapsed"
 			type="button" data-toggle="collapse" data-target="#sidebarMenu"
 			aria-controls="sidebarMenu" aria-expanded="false"
@@ -49,8 +50,7 @@
 		<input class="form-control form-control-dark w-100" type="text"
 			placeholder="Search" aria-label="Search">
 		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap"><a class="nav-link" href="#">Sign
-					out</a></li>
+			<li class="nav-item text-nowrap"><a class="nav-link" href="#">Salir</a></li>
 		</ul>
 	</nav>
 
@@ -59,26 +59,50 @@
 			<nav id="sidebarMenu"
 				class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
 				<div class="sidebar-sticky pt-3">
-					<ul class="nav flex-column">
-						<li class="nav-item"><a class="nav-link active" href="#">
-								<span data-feather="home"></span> Principal <span
-								class="sr-only">(current)</span>
-						</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> <span
-								data-feather="file"></span> Disponibilidad Camas
-						</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> <span
-								data-feather="shopping-cart"></span> Consultar Otros Centros de
-								Atención
-						</a></li>
-						<li class="nav-item"><a class="nav-link" href="pacientes">
-								<span data-feather="users"></span> Lista de Espera
-						</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> <span
-								data-feather="bar-chart-2"></span> Reportes
-						</a></li>
-
-					</ul>
+					 <ul class="nav flex-column">
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="bienvenido">
+                            <span data-feather="inicioAdmin"></span>
+                            Home 
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="disponibilidadCamas">
+                            <span data-feather="inbox"></span>
+                            Disponibilidad Camas
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="posiblesinfectados">
+                            <span data-feather="users"></span>
+                            Lista de Espera
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="internarPaciente">
+                            <span data-feather="user-plus"></span>
+                            Internar paciente
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="egresarPaciente">
+                            <span data-feather="user-minus"></span>
+                            Egresar paciente
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="consultarPaciente">
+                            <span data-feather="search"></span>
+                            Consultar paciente
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="grafico-pacientes">
+                            <span data-feather="bar-chart-2"></span>
+                            Reportes
+                        </a>
+                    </li>
+                </ul>
 
 					<!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Saved reports</span>
@@ -116,7 +140,7 @@
 			</nav>
 
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-				<div
+				<!-- <div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">Panel de Control</h1>
 					<div class="btn-toolbar mb-2 mb-md-0">
@@ -129,138 +153,23 @@
 							<span data-feather="calendar"></span> This week
 						</button>
 					</div>
-				</div>
+				</div> -->
 
-				<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+				<%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%> 
 
-				<h2>Internaciones</h2>
-				<div class="table-responsive">
-					<table class="table table-striped table-sm">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Header</th>
-								<th>Header</th>
-								<th>Header</th>
-								<th>Header</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1,001</td>
-								<td>Lorem</td>
-								<td>ipsum</td>
-								<td>dolor</td>
-								<td>sit</td>
-							</tr>
-							<tr>
-								<td>1,002</td>
-								<td>amet</td>
-								<td>consectetur</td>
-								<td>adipiscing</td>
-								<td>elit</td>
-							</tr>
-							<tr>
-								<td>1,003</td>
-								<td>Integer</td>
-								<td>nec</td>
-								<td>odio</td>
-								<td>Praesent</td>
-							</tr>
-							<tr>
-								<td>1,003</td>
-								<td>libero</td>
-								<td>Sed</td>
-								<td>cursus</td>
-								<td>ante</td>
-							</tr>
-							<tr>
-								<td>1,004</td>
-								<td>dapibus</td>
-								<td>diam</td>
-								<td>Sed</td>
-								<td>nisi</td>
-							</tr>
-							<tr>
-								<td>1,005</td>
-								<td>Nulla</td>
-								<td>quis</td>
-								<td>sem</td>
-								<td>at</td>
-							</tr>
-							<tr>
-								<td>1,006</td>
-								<td>nibh</td>
-								<td>elementum</td>
-								<td>imperdiet</td>
-								<td>Duis</td>
-							</tr>
-							<tr>
-								<td>1,007</td>
-								<td>sagittis</td>
-								<td>ipsum</td>
-								<td>Praesent</td>
-								<td>mauris</td>
-							</tr>
-							<tr>
-								<td>1,008</td>
-								<td>Fusce</td>
-								<td>nec</td>
-								<td>tellus</td>
-								<td>sed</td>
-							</tr>
-							<tr>
-								<td>1,009</td>
-								<td>augue</td>
-								<td>semper</td>
-								<td>porta</td>
-								<td>Mauris</td>
-							</tr>
-							<tr>
-								<td>1,010</td>
-								<td>massa</td>
-								<td>Vestibulum</td>
-								<td>lacinia</td>
-								<td>arcu</td>
-							</tr>
-							<tr>
-								<td>1,011</td>
-								<td>eget</td>
-								<td>nulla</td>
-								<td>Class</td>
-								<td>aptent</td>
-							</tr>
-							<tr>
-								<td>1,012</td>
-								<td>taciti</td>
-								<td>sociosqu</td>
-								<td>ad</td>
-								<td>litora</td>
-							</tr>
-							<tr>
-								<td>1,013</td>
-								<td>torquent</td>
-								<td>per</td>
-								<td>conubia</td>
-								<td>nostra</td>
-							</tr>
-							<tr>
-								<td>1,014</td>
-								<td>per</td>
-								<td>inceptos</td>
-								<td>himenaeos</td>
-								<td>Curabitur</td>
-							</tr>
-							<tr>
-								<td>1,015</td>
-								<td>sodales</td>
-								<td>ligula</td>
-								<td>in</td>
-								<td>libero</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+				<h2>Instituciones</h2>
+				<table class="table table-bordered table-white">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+    </tr>
+    <c:forEach items="${listaInstituciones}" var="institucion">
+        <tr>
+            <th scope="row"><c:out value="${institucion.getId()}"/></th>
+            <td><c:out value="${institucion.getNombre()}"/></td>
+        </tr>
+    </c:forEach>
+</table>
 			</main>
 		</div>
 	</div>

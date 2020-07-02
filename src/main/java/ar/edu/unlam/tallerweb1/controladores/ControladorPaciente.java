@@ -96,5 +96,17 @@ public class ControladorPaciente {
         return new ModelAndView("listaPacientesInfectados", model);
     }
 
+    @RequestMapping("/listapacientes2")
+    public ModelAndView listapacientes2() {
+
+        List<Paciente> pacientes = servicioPaciente.pacientes();
+
+        ModelMap model = new ModelMap();
+
+        model.put("listaPacientes", pacientes);
+
+        return new ModelAndView("listapacientes2", model);
+    }
+
 
 }
