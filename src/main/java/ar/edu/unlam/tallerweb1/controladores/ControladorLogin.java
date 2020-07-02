@@ -49,7 +49,7 @@ public class ControladorLogin {
 		ModelMap modelo = new ModelMap();
 
 		if (request.getSession().getAttribute("ID") != null) {
-			modelo.put("alert", "Ya se encuentra logueado con una cuenta, primero cierre sesi�n.");
+			modelo.put("alert", "Ya se encuentra logueado con una cuenta, primero cierre sesion.");
 		}
 		Usuario usuario = new Usuario();
 		modelo.put("usuario", usuario);
@@ -96,14 +96,23 @@ public class ControladorLogin {
 	}
 
 	// LOGOUT
+//	@RequestMapping(path = "/logout")
+//	public ModelAndView logout(@RequestParam(value = "redirect", defaultValue = "") String redirect,
+//			HttpServletRequest request) {
+//		request.getSession().removeAttribute("ID");
+//		request.getSession().removeAttribute("ROL");
+//		if (redirect != "") {
+//			return new ModelAndView("redirect:/" + redirect);
+//		}
+//		return new ModelAndView("redirect:/home");
+//	}
+	
 	@RequestMapping(path = "/logout")
 	public ModelAndView logout(@RequestParam(value = "redirect", defaultValue = "") String redirect,
 			HttpServletRequest request) {
 		request.getSession().removeAttribute("ID");
 		request.getSession().removeAttribute("ROL");
-		if (redirect != "") {
-			return new ModelAndView("redirect:/" + redirect);
-		}
+		
 		return new ModelAndView("redirect:/home");
 	}
 }
