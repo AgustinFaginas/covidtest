@@ -79,6 +79,24 @@
                         </a>
                     </li>
                     <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="internarPaciente">
+                            <span data-feather="user-plus"></span>
+                            Internar paciente
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="egresarPaciente">
+                            <span data-feather="user-minus"></span>
+                            Egresar paciente
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="consultarPaciente">
+                            <span data-feather="search"></span>
+                            Consultar paciente
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
                         <a class="nav-link" href="grafico-pacientes">
                             <span data-feather="bar-chart-2"></span>
                             Reportes

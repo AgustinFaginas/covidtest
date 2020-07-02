@@ -92,7 +92,7 @@ public class ControladorLogin {
 	// url /login directamente.
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
-		return new ModelAndView("redirect:/login");
+		return new ModelAndView("login");
 	}
 
 	// LOGOUT
