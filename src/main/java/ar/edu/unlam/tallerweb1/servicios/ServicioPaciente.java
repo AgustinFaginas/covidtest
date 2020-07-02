@@ -17,4 +17,6 @@ public interface ServicioPaciente {
 
     public List<Paciente> pacientesInfectados();
 
+    public List<Paciente> posiblesInfectados();
+
 }

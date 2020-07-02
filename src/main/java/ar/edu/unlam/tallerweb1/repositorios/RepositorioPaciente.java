@@ -17,4 +17,6 @@ public interface RepositorioPaciente {
 
     List<Paciente> pacientesInfectados();
 
+    List<Paciente> posiblesInfectados();
+
 }

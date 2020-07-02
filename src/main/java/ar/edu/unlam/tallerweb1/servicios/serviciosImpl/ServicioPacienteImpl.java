@@ -43,5 +43,10 @@ public class ServicioPacienteImpl implements ServicioPaciente {
         return repositorioPaciente.pacientesInfectados();
     }
 
+    @Override
+    public List<Paciente> posiblesInfectados() {
+        return repositorioPaciente.posiblesInfectados();
+    }
+
 
 }
