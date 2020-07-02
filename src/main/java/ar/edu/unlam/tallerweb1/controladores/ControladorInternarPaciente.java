@@ -1,7 +1,10 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,38 +15,62 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Asignacion;
 import ar.edu.unlam.tallerweb1.modelo.Cama;
+import ar.edu.unlam.tallerweb1.modelo.Institucion;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 import ar.edu.unlam.tallerweb1.servicios.ServicioAsignacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
+import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInternacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
+import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
 @Controller
 public class ControladorInternarPaciente {
 
 	@Autowired
 	ServicioAsignacion servicioAsignacion;
-	
 	@Autowired
 	ServicioInternacion servicioInternacion;
-	
 	@Autowired
 	ServicioPaciente servicioPaciente;
-
 	@Autowired
-	ServicioCama servicioCama;
+	ServicioCama servicioCama;	
+	@Autowired
+	ServicioUsuario servicioUsuario;
+	@Autowired
+	ServicioInstitucion servicioInstitucion;
 
 	@RequestMapping("/internarPaciente")
-	public ModelAndView internarPaciente() {
+	public ModelAndView internarPaciente(HttpServletRequest request) {
 
-		   List<Cama> camasLibres = servicioCama.obtenerCamas();
+		Long id = (long) request.getSession().getAttribute("ID");
+    	Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
+        
+        List<Cama> camasTotalesInstitucion = servicioCama.obtenerCamasPorInstitucion(institucion);
+        List<Asignacion> asignacionesVigentes = servicioAsignacion.obtenerAsignacionesActuales();
+
+        LinkedList<Cama> camasDisponiblesInstitucion = new LinkedList<Cama>();
+        
+        for (int i = 0; i < camasTotalesInstitucion.size(); i++) {
+          for (int j = 0; j < asignacionesVigentes.size(); j++) {
+              if (camasTotalesInstitucion.get(i).getId() == asignacionesVigentes.get(j).getCama().getId()) {
+              	camasTotalesInstitucion.get(i).setId(null);
+              }
+          }
+        }
+      
+        for (int i = 0; i < camasTotalesInstitucion.size(); i++) {
+          if (camasTotalesInstitucion.get(i).getId() != null) {
+        	  camasDisponiblesInstitucion.add(camasTotalesInstitucion.get(i));
+          }
+        }
 	        
 	        ModelMap modelo = new ModelMap();
 
-	        modelo.put("camas", camasLibres);
+	        modelo.put("camas", camasDisponiblesInstitucion);
 	        
-		return new ModelAndView("bienvenido", modelo);
+		return new ModelAndView("internarPaciente", modelo);
 	}
 	
 	@RequestMapping(path = "/detalleInternacion")
@@ -88,14 +115,14 @@ public class ControladorInternarPaciente {
 			else {
 				model.put("error", "El paciente ya está asignado");
 
-				return new ModelAndView("internarPaciente", model);
+				return new ModelAndView("redirect:/internarPaciente", model);
 			}
 		}	
 		
 		else {
 			model.put("error", "No existe el paciente");
 			
-			return new ModelAndView("internarPaciente", model);
+			return new ModelAndView("redirect:/internarPaciente", model);
 		}
 	}
 

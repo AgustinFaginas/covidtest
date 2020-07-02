@@ -158,9 +158,9 @@
 										
 										<div class="form-group">
 											<h4>Seleccione una cama</h4>
-											<select name="camas" id="idCama">
+											<select name="cama" id="idCama">
 												<c:forEach var="cama" items="${camas}">
-													<option value="${cama.getId()}">${cama.getId()}
+													<option value="${cama.getId()}">${cama.getDescripcion()}
 												</c:forEach>
 											</select>
 						
