@@ -95,8 +95,8 @@
                 indexLabelFontSize: 16,
                 indexLabel: "{label} - {y}%",
                 dataPoints: [
-                    {y: ${cantidadPacientesInfectados}, label: "Infectados"},
-                    {y: ${cantidadPacientesNoInfectados}, label: "Recuperados"}
+                    {y: porcentaje1, label: "Infectados"},
+                    {y: porcentaje2, label: "Recuperados"}
 
                 ]
             }]
