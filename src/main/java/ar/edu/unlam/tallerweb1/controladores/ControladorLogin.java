@@ -49,7 +49,7 @@ public class ControladorLogin {
 		ModelMap modelo = new ModelMap();
 
 		if (request.getSession().getAttribute("ID") != null) {
-			modelo.put("alert", "Ya se encuentra logueado con una cuenta, primero cierre sesión.");
+			modelo.put("alert", "Ya se encuentra logueado con una cuenta, primero cierre sesiï¿½n.");
 		}
 		Usuario usuario = new Usuario();
 		modelo.put("usuario", usuario);
@@ -66,7 +66,7 @@ public class ControladorLogin {
 		if (usuarioBuscado != null && usuarioBuscado.getRol() == Rol.INSTITUCION) {
 			request.getSession().setAttribute("ID", usuarioBuscado.getId());
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
-			return new ModelAndView("redirect:/bienvenido");
+			return new ModelAndView("bienvenido");
 
 		} 
 		

@@ -1,21 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<html lang="es">
-
+<html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>Dashboard Template · Bootstrap</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
-    <title>Grafico Pacientes</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
 
     <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
         #navbar-top:hover {
             text-decoration: none;
         }
@@ -23,11 +39,11 @@
         .container-chart {
             margin-top: 10em;
         }
+
     </style>
-
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
 </head>
-
-
 <script>
     window.onload = function () {
 
@@ -90,185 +106,97 @@
     }
 
 </script>
-
-
 <body>
-
-<nav class="navbar sticky-top bg-dark text-white justify-content-center align-items-center">
-    <a class="text-center text-white" href="#" id="navbar-top">
-        <h5>
-            Coronavirus COVID-19 conocé información y recomendaciones del Ministerio de Salud</strong>
-        </h5>
-    </a>
-</nav>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">
+<nav class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
+    <%--    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">COVIDTEST</a>--%>
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="home">
         <img src="img/share2.png" width="35" height="35" class="d-inline-block align-top" alt="logo">
         AsignAR
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item ml-5 active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item ml-5">
-                <a class="nav-link" href="autoTest">Realizar test</a>
-            </li>
-        </ul>
-        <button type="button" class="btn btn-dark ml-5">Log in</button>
-    </div>
+    <!--   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a href="login" class="btn btn-dark ml-5" role="button"
+               aria-disabled="true">Log out</a>
+        </li>
+    </ul>
 </nav>
 
-<div class="container-fluid m-5">
-    <div class="row container-chart">
-        <div class="col"></div>
-        <div class="col-6">
-            <div id="chartContainerBarras" style="height: 40em; width: 100%;"></div>
-        </div>
-        <div class="col"></div>
-    </div>
-</div>
-
-<div class="container-fluid m-5">
-    <div class="row container-chart">
-        <div class="col"></div>
-        <div class="col-6">
-            <div id="chartContainerTorta" style="height: 40em; width: 100%;"></div>
-        </div>
-        <div class="col"></div>
-    </div>
-</div>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
-
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-<!-- Footer -->
-<footer class="page-footer font-small mdb-color pt-4 bg-whiteborder border-top">
-
-    <!-- Footer Links -->
-    <div class="container text-center text-md-left">
-
-        <!-- Footer links -->
-        <div class="row text-center text-md-left mt-3 pb-3">
-
-            <!-- Grid column -->
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 text-left">
-                <h6 class="text-uppercase mb-4 font-weight-bold">asignAR</h6>
-                <img src="img/share2.png" width="50" height="50" class="d-inline-block align-top" alt="">
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+            <div class="sidebar-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="#">
+                            <span data-feather="home"></span>
+                            Home Institución
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="#">
+                            <span data-feather="inbox"></span>
+                            Disponibilidad Camas
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="pacientes">
+                            <span data-feather="users"></span>
+                            Lista de Espera
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="grafico-pacientes">
+                            <span data-feather="bar-chart-2"></span>
+                            Reportes
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <!-- Grid column -->
+        </nav>
 
-            <hr class="w-100 clearfix d-md-none">
-
-            <!-- Grid column -->
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                <h6 class="text-uppercase mb-4 font-weight-bold">ENLACES ÚTILES</h6>
-                <p>
-                    <a href="#!">Ministerio de Salud</a>
-                </p>
-                <p>
-                    <a href="#!">Hospitales y establecimientos de salud</a>
-                </p>
-            </div>
-
-            <!-- Grid column -->
-            <hr class="w-100 clearfix d-md-none">
-
-            <!-- Grid column -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h6 class="text-uppercase mb-4 font-weight-bold">Teléfono</h6>
-                <p>
-                    <i class="fas fa-home"></i> Llamá al <strong>120</strong>, es gratuito desde cualquier lugar del
-                    país y te atienden las 24 horas.</p>
-                <hr>
-                <h6 class="text-uppercase mb-4 font-weight-bold">Whatsapp</h6>
-                <i class="fas fa-home"></i> Escribí "Hola" al <strong>+54 9 11
-                2256-0566</strong> para que encuentres respuestas a las preguntas más
-                frecuentes y recibas consejos de prevención.</p>
-
-
-            </div>
-            <!-- Grid column -->
-
-        </div>
-        <!-- Footer links -->
-
-        <hr>
-
-        <!-- Grid row -->
-        <div class="row d-flex align-items-center">
-
-            <!-- Grid column -->
-            <div class="col-md-7 col-lg-8">
-
-                <!--Copyright-->
-                <p class="text-center text-md-left">© 2020 Copyright:
-
-                    <strong>ASIGNAR</strong>
-
-                </p>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-5 col-lg-4 ml-lg-0">
-
-                <!-- Social buttons -->
-                <div class="text-center text-md-right">
-                    <ul class="list-unstyled list-inline">
-                        <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                <i class="fab fa-google-plus-g"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </li>
-                    </ul>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="container-fluid m-5">
+                <div class="row container-chart">
+                    <div class="col"></div>
+                    <div class="col-6">
+                        <div id="chartContainerBarras" style="height: 40em; width: 100%;"></div>
+                    </div>
+                    <div class="col"></div>
                 </div>
-
             </div>
-            <!-- Grid column -->
 
-        </div>
-        <!-- Grid row -->
+            <div class="container-fluid m-5">
+                <div class="row container-chart">
+                    <div class="col"></div>
+                    <div class="col-6">
+                        <div id="chartContainerTorta" style="height: 40em; width: 100%;"></div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+
+        </main>
 
     </div>
-    <!-- Footer Links -->
+</div>
 
-</footer>
-<!-- Footer -->
+</main>
+
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+<script src="../assets/dist/js/bootstrap.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
-
 </html>

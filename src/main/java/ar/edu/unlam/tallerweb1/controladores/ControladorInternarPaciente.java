@@ -43,7 +43,7 @@ public class ControladorInternarPaciente {
 
 	        modelo.put("camas", camasLibres);
 	        
-		return new ModelAndView("internarPaciente", modelo);
+		return new ModelAndView("bienvenido", modelo);
 	}
 	
 	@RequestMapping(path = "/detalleInternacion")
