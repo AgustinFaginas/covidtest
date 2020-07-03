@@ -111,7 +111,7 @@ VALUES (1, "101", "FIJA", 2),
        (46, "122", "FIJA", 5),
 	   (47, "123", "FIJA", 5),
        (48, "124", "FIJA", 5);
-    
+ 
 /* ----- INTERNACION ----- */     
 INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, paciente_id)
 VALUES (1, '2020-01-01 01:00:00.000000', null, null, 1, 9),
@@ -119,10 +119,21 @@ VALUES (1, '2020-01-01 01:00:00.000000', null, null, 1, 9),
        (3, '2020-03-01 01:00:00.000000', null, null, 6, 11),
 	   (4, '2020-04-01 01:00:00.000000', null, null, 5, 12);
 
-/* ----- EGRESO ----- */        
+/* ----- EGRESO ----- */     
+UPDATE asignacion a
+SET a.horaEgreso = '2020-02-01 01:00:00.000000', 
+	a.motivoEgreso = "CURADO"
+WHERE a.cama_id IN(1,2,3);
+       
+/* ----- INGRESO Y EGRESO A LA VEZ (SON EGRESOS EN DEFINITVA)----- */        
 INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, paciente_id)
 VALUES (5, '2020-01-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "CURADO", 10, 15),
 	   (6, '2020-02-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "CURADO", 11, 16),
        (7, '2020-03-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "FALLECIDO", 12, 17),
 	   (8, '2020-04-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "TRASLADADO", 13, 18);
+       
+/* ----- INTERNACION 2 (rehusando 2 camas liberadas)----- */     
+INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, paciente_id)
+VALUES (9, '2020-01-01 01:00:00.000000', null, null, 10, 15),
+	   (10, '2020-02-01 01:00:00.000000', null, null, 11, 16);
        

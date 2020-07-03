@@ -53,13 +53,26 @@ JOIN Usuario us2 ON us2.id = asig.paciente_id;
 SELECT *
 FROM Cama c 
 	JOIN Asignacion a 
-    ON c.id = a.cama_id
-WHERE a.cama_id IS NULL
-	AND a.horaEgreso IS NULL;
-    
+    ON c.id = a.cama_id;
+                  
 SELECT a.cama_id
 FROM Asignacion a 
 WHERE NOT EXISTS (SELECT 1
-				  WHERE a.cama_id 
-                  AND a.horaEgreso IS NOT NULL);
+				   
+                  AND a.horaEgreso IS NULL);
+                  
+SELECT c.id
+FROM cama c
+WHERE NOT EXISTS (SELECT 1
+				  FROM asignacion a
+				  WHERE NOT EXISTS (SELECT 1
+								    WHERE c.id = a.cama_id
+                                    AND a.horaEgreso IS NULL));                  
 
+SELECT c.id
+FROM cama c
+WHERE c.institucion_id = 2
+AND NOT EXISTS (SELECT 1
+ 			   FROM asignacion a
+			   WHERE a.cama_id = c.id
+			   AND a.horaEgreso IS NULL);     
