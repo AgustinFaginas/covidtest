@@ -62,15 +62,25 @@ public class ControladorAdmin {
 		return new ModelAndView("homeAdmin");
 	}
 	
+	
 	@RequestMapping("/panel")
-	public ModelAndView irApanel() {
+	public ModelAndView irApanel(HttpServletRequest request) {
+
+		ModelMap model = new ModelMap();
+		if (request.getSession().getAttribute("ID") == null) {
+			return new ModelAndView("redirect:/home");
+		}
+
+		if (request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
+			return new ModelAndView("redirect:/denied");
+		}
 
 		List<Institucion> listaInstituciones = servicioInstitucion.obtenerListaInstituciones();
 
-		ModelMap model = new ModelMap();
 		model.put("listaInstituciones", listaInstituciones);
 
 		return new ModelAndView("panel", model);
+
 	}
 
 	@RequestMapping(path = "/denied", method = RequestMethod.GET)
