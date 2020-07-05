@@ -81,37 +81,25 @@
     </c:if>
 </div>
 
+<h1 class="text-center m-5">Mapa de instituciones</h1>
+
 <div class="container-fluid mt-5">
     <div class="row container-chart">
-
         <div class="col-2"></div>
-
         <div class="col-8">
-            <div class="card text-white bg-dark border-dark mb-3">
-                <h1 class="card-header text-center">Mapa de instituciones</h1>
-                <div id="map"></div>
-                <div class="card-body">
-                    <p class="card-text text-justify">En este mapa podrá visualizar facilmente su ubicación.
-                        Así como
-                        también la
-                        ubicación de hospitales, centros de salud, e instituciones que prestan sus instalaciones
-                        para el alojamiento de pacientes
-                        con Coronavirus. En estos Centros de Aislamiento permanecerán, en el caso
-                        de que el Sistema de Salud se encuentre desbordado por la falta de espacio físico, aquellos
-                        pacientes
-                        que necesiten estar aislados, sin asistencia médica puntual, junto a los casos menos graves y
-                        puedan
-                        realizar su aislamiento individual o familiar</p>
-                </div>
-            </div>
+            <h5 class="text-justify m-5">En este mapa podrá visualizar facilmente su ubicación. Así como también la
+                ubicación de hospitales, centros de salud, e instituciones que prestan sus instalaciones
+                para el alojamiento de pacientes
+                con Coronavirus. En estos Centros de Aislamiento permanecerán, en el caso
+                de que el Sistema de Salud se encuentre desbordado por la falta de espacio físico, aquellos pacientes
+                que necesiten estar aislados, sin asistencia médica puntual, junto a los casos menos graves y puedan
+                realizar su aislamiento individual o familiar.</h5>
         </div>
-
         <div class="col-2"></div>
-
     </div>
 </div>
 
-<%--<div class="container-fluid m-5">
+<div class="container-fluid m-5">
     <div class="row container-chart">
         <div class="col"></div>
         <div class="col-6">
@@ -119,7 +107,7 @@
         </div>
         <div class="col"></div>
     </div>
-</div>--%>
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
