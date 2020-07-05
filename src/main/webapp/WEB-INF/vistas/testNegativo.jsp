@@ -60,7 +60,7 @@
 <h1 class="text-center mb-3 mt-5">El resultado de su test ha sido negativo</h1>
 
 <div class="text-center my-5">
-    <img src="img/happy.png" class="rounded" alt="happy" width="350" height="350">
+    <img src="img/no-virus.png" class="rounded" alt="no-virus" width="350" height="350">
 </div>
 
 <h2 class="text-center mb-3 mt-5">Compruebe su estado cada 48hs y recuerde seguir los consejos para prevenir el Coronavirus</h2>

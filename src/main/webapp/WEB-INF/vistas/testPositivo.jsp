@@ -60,7 +60,7 @@
 <h1 class="text-center mb-3 mt-5">El resultado de su test ha sido positivo</h1>
 
 <div class="text-center my-5">
-    <img src="img/sad.png" class="rounded" alt="sad" width="350" height="350">
+    <img src="img/virus.png" class="rounded" alt="virus" width="350" height="350">
 </div>
 
 <div class="container my-5">

@@ -57,68 +57,90 @@
     </div>
 </nav>
 
-<h1 class="text-center my-5">Complete el siguiente formulario con sus datos</h1>
+<div class="progress my-1">
+    <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+         aria-valuemax="100"></div>
+</div>
 
-<div class="d-flex my-5 justify-content-center">
+<div class="container-fluid my-5">
     <div class="row">
 
-        <div class="col-1">
+        <div class="col-4"></div>
+
+        <div class="col-4">
+
+            <div class="card border-dark mb-3">
+                <div class="card-header">
+                    <h3 class="text-center my-2">Complete el formulario con sus síntomas</h3>
+                </div>
+                <div class="card-body text-dark">
+                    <form action="validarTest" method="get"
+                          class="d-flex justify-content-center flex-column justify-content-center">
+                        <div class="form-group row my-4">
+                            <label for="fiebre" class="col-6 col-form-label h6">Indique su temperatura corporal</label>
+                            <div class="col-6 align-self-center">
+                                <input type="number" class="form-control" id="fiebre" name="fiebre" min="35" max="42"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-secondary text-center">Consejos para medir la
+                                    temperatura
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                                    Medir la temperatura siempre en el mismo lugar (oído y axila), ya que de otro modo
+                                    pueden variar los valores.
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                                    No se debe tomar la temperatura después del baño o de haber realizado una actividad
+                                    física. Se debe esperar por lo menos 20 minutos.
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                                    La fiebre hay que medirla, no hay que fiarse de la percepción que se tenga al
+                                    momento de tocar la frente.
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="form-group form-check my-4">
+                            <input type="checkbox" class="form-check-input" id="perdidaOlfato" name="perdidaOlfato">
+                            <label class="form-check-label h6" for="perdidaOlfato">¿Sentís perdida parcial del olfato?
+                            </label></label>
+                        </div>
+                        <div class="form-group form-check my-4">
+                            <input type="checkbox" class="form-check-input" id="perdidaGusto" name="perdidaGusto">
+                            <label class="form-check-label h6" for="perdidaGusto">¿Sentís una perdida parcial del
+                                gusto?</label>
+                        </div>
+                        <div class="form-group form-check my-4">
+                            <input type="checkbox" class="form-check-input" id="tos" name="tos">
+                            <label class="form-check-label h6" for="tos">¿Tenés tos o dolor de garganta?</label>
+                        </div>
+                        <div class="form-group form-check my-4">
+                            <input type="checkbox" class="form-check-input" id="perdidaRespiracion"
+                                   name="perdidaRespiracion">
+                            <label class="form-check-label h6" for="perdidaRespiracion">¿Tenés dificultad respiratoria o
+                                falta
+                                de aire?</label>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary text-center mt-5 w-50">
+                                Enviar
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
 
         </div>
 
-        <div class="col-10" style="width: 30rem;">
-            <form action="validarTest" method="get"
-                  class="d-flex justify-content-center flex-column justify-content-center">
-
-                <div class="form-group row w-80 mx-4">
-                    <label for="fiebre" class="col-5 col-form-label">Temperatura</label>
-                    <div class="col-7">
-                        <input type="number" class="form-control input-sm" id="fiebre" name="fiebre" min="35" max="41" required>
-                    </div>
-                </div>
-
-                <div class="form-group form-check mx-5">
-                    <input type="checkbox" class="form-check-input" id="perdidaOlfato" name="perdidaOlfato">
-                    <label class="form-check-label" for="perdidaOlfato">¿Sentís una perdida parcial del olfato?
-                    </label></label>
-                </div>
-
-                <div class="form-group form-check mx-5">
-                    <input type="checkbox" class="form-check-input" id="perdidaGusto" name="perdidaGusto">
-                    <label class="form-check-label" for="perdidaGusto">¿Sentís una perdida parcial del
-                        gusto?</label>
-                </div>
-
-                <div class="form-group form-check mx-5">
-                    <input type="checkbox" class="form-check-input" id="tos" name="tos">
-                    <label class="form-check-label" for="tos">¿Tenés tos o dolor de garganta?</label>
-                </div>
-
-
-                <div class="form-group form-check mx-5">
-                    <input type="checkbox" class="form-check-input" id="perdidaRespiracion"
-                           name="perdidaRespiracion">
-                    <label class="form-check-label" for="perdidaRespiracion">¿Tenés dificultad respiratoria o falta
-                        de aire?</label>
-                </div>
-
-                <button type="submit" class="btn btn-primary text-center align-content-center mx-5">Enviar</button>
-            </form>
-        </div>
-
-        <div class="col-1">
-
-        </div>
+        <div class="col-4"></div>
 
     </div>
 </div>
-
-
-
-
-
-
-
 
 
 <!-- Optional JavaScript -->
