@@ -58,8 +58,8 @@
 </nav>
 
 <div class="progress my-1">
-    <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-         aria-valuemax="100">50%
+    <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+         aria-valuemax="100">75%
     </div>
 </div>
 
@@ -72,64 +72,77 @@
 
             <div class="card border-dark mb-3">
                 <div class="card-header">
-                    <h3 class="text-center my-2">Complete el formulario con sus síntomas</h3>
+                    <h3 class="text-center my-2">Complete el formulario con sus datos</h3>
                 </div>
                 <div class="card-body text-dark">
-                    <form action="validarTest" method="get"
+                    <form action="validarEnfermedades" method="get"
                           class="d-flex justify-content-center flex-column justify-content-center">
-                        <div class="form-group row my-4">
-                            <label for="fiebre" class="col-6 col-form-label h6">Indique su temperatura corporal</label>
-                            <div class="col-6 align-self-center">
-                                <input type="number" class="form-control" id="fiebre" name="fiebre" min="35" max="42"
-                                       required>
+
+                        <div class="form-row mt-4">
+                            <div class="form-group col-6">
+                                <label for="estatura">Estatura</label>
+                                <small id="centimetros" class="text-muted">
+                                    (en centímetros)
+                                </small>
+                                <input type="number" name="estatura" class="form-control br-radius-zero"
+                                       id="estatura" required/>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="peso">Peso</label>
+                                <small id="kilos" class="text-muted">
+                                    (en kilogramos)
+                                </small>
+                                <input type="number" name="peso" class="form-control br-radius-zero"
+                                       id="peso" required/>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <ul class="list-group">
-                                <li class="list-group-item list-group-item-secondary text-center">Consejos para medir la
-                                    temperatura
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
-                                    Medir la temperatura siempre en el mismo lugar (oído y axila), ya que de otro modo
-                                    pueden variar los valores.
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
-                                    No se debe tomar la temperatura después del baño o de haber realizado una actividad
-                                    física. Se debe esperar por lo menos 20 minutos.
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
-                                    La fiebre hay que medirla, no hay que fiarse de la percepción que se tenga al
-                                    momento de tocar la frente.
-                                </li>
-                            </ul>
 
-                        </div>
+
                         <div class="form-group form-check my-4">
-                            <input type="checkbox" class="form-check-input" id="perdidaOlfato" name="perdidaOlfato">
-                            <label class="form-check-label h6" for="perdidaOlfato">¿Sentís perdida parcial del olfato?
+                            <input type="checkbox" class="form-check-input" id="embarazo" name="embarazo">
+                            <label class="form-check-label h6" for="embarazo">Estoy embarazada
                             </label></label>
                         </div>
                         <div class="form-group form-check my-4">
-                            <input type="checkbox" class="form-check-input" id="perdidaGusto" name="perdidaGusto">
-                            <label class="form-check-label h6" for="perdidaGusto">¿Sentís una perdida parcial del
-                                gusto?</label>
+                            <input type="checkbox" class="form-check-input" id="diabetes" name="diabetes">
+                            <label class="form-check-label h6" for="diabetes">Tengo diabetes</label>
                         </div>
                         <div class="form-group form-check my-4">
-                            <input type="checkbox" class="form-check-input" id="tos" name="tos">
-                            <label class="form-check-label h6" for="tos">¿Tenés tos o dolor de garganta?</label>
+                            <input type="checkbox" class="form-check-input" id="enfHepatica" name="enfHepatica">
+                            <label class="form-check-label h6" for="enfHepatica">Tengo alguna enfermedad
+                                hepática</label>
                         </div>
                         <div class="form-group form-check my-4">
-                            <input type="checkbox" class="form-check-input" id="perdidaRespiracion"
-                                   name="perdidaRespiracion">
-                            <label class="form-check-label h6" for="perdidaRespiracion">¿Tenés dificultad respiratoria o
-                                falta
-                                de aire?</label>
+                            <input type="checkbox" class="form-check-input" id="enfRespiratoria"
+                                   name="enfRespiratoria">
+                            <label class="form-check-label h6" for="enfRespiratoria">Tengo alguna enfermedad
+                                respiratoria</label>
                         </div>
+                        <div class="form-group form-check my-4">
+                            <input type="checkbox" class="form-check-input" id="enfRenal"
+                                   name="enfRenal">
+                            <label class="form-check-label h6" for="enfRenal">Tengo alguna enfermedad
+                                renal crónica</label>
+                        </div>
+                        <div class="form-group form-check my-4">
+                            <input type="checkbox" class="form-check-input" id="enfCardiologica"
+                                   name="enfCardiologica">
+                            <label class="form-check-label h6" for="enfCardiologica">Tengo alguna enfermedad
+                                cardiológica</label>
+                        </div>
+
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary text-center mt-5 w-50">
                                 Enviar
                             </button>
                         </div>
+
+                        <%--<div class="text-center">
+                            <button class="btn btn-primary text-center mt-5 w-50" data-toggle="modal"
+                                    data-target="#modal">
+                                Enviar
+                            </button>
+                        </div>--%>
 
                     </form>
                 </div>
@@ -142,6 +155,33 @@
 
     </div>
 </div>
+
+</div>
+
+<%--<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog"
+     aria-labelledby="modalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">AsignAR</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Este formulario tiene carácter de declaración jurada. Hacer una falsa
+                    declaración puede
+                    considerarse una contravención grave.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar
+                </button>
+                <button type="submit" class="btn btn-primary">Confirmar</button>
+            </div>
+        </div>
+    </div>--%>
 
 
 <!-- Optional JavaScript -->

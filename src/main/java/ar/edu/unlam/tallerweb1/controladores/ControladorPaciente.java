@@ -70,29 +70,29 @@ public class ControladorPaciente {
 
         return new ModelAndView("posiblesinfectados", model);
     }
-    
+
     @RequestMapping("/listaPacientesInfectados")
     public ModelAndView listaPacientesInfectados(
-    	
-		HttpServletRequest request
-		
-    	) {
 
-		ModelMap model = new ModelMap();
-		
-		if (request.getSession().getAttribute("ID") == null) {
-			model.put("error", "Debe iniciar sesión");
-	        return new ModelAndView("login", model);
-		}
-	
-		if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-			return new ModelAndView("redirect:/denied");
-		}
-		
-		List<Paciente> listaPacientesInfectados = servicioPaciente.pacientesInfectados(); 
-		
-		model.put("listaPacientesInfectados", listaPacientesInfectados);
-    
+            HttpServletRequest request
+
+    ) {
+
+        ModelMap model = new ModelMap();
+
+        if (request.getSession().getAttribute("ID") == null) {
+            model.put("error", "Debe iniciar sesión");
+            return new ModelAndView("login", model);
+        }
+
+        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
+            return new ModelAndView("redirect:/denied");
+        }
+
+        List<Paciente> listaPacientesInfectados = servicioPaciente.pacientesInfectados();
+
+        model.put("listaPacientesInfectados", listaPacientesInfectados);
+
         return new ModelAndView("listaPacientesInfectados", model);
     }
 
