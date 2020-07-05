@@ -57,6 +57,12 @@
     </div>
 </nav>
 
+<div class="progress my-1">
+    <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+         aria-valuemax="100">75%
+    </div>
+</div>
+
 <h1 class="text-center mb-3 mt-5">El resultado de su test ha sido positivo</h1>
 
 <div class="text-center my-5">
@@ -64,12 +70,83 @@
 </div>
 
 <div class="container my-5">
-	<h5 class="text-center my-3">Complete los siguientes datos y sera contactado en la brevedad </h5>
+    <h3 class="text-center my-3">Complete los siguientes datos y sera contactado en la brevedad </h3>
 </div>
 
-<h2 class="text-center my-5">Complete el siguiente formulario con sus datos</h2>
+<div class="container-fluid my-5">
+    <div class="row">
 
-<div class="d-flex my-5 justify-content-center">
+        <div class="col-4"></div>
+
+        <div class="col-4">
+
+            <div class="card border-dark mb-3">
+                <div class="card-header">
+                    <h3 class="text-center my-2">Complete el formulario con sus datos</h3>
+                </div>
+                <div class="card-body text-dark">
+                    <form action="detalleRegistroPaciente" method="POST" modelAttribute="paciente"
+                          class="d-flex justify-content-center flex-column justify-content-center">
+
+                        <div class="form-row my-4">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+
+                        <div class="form-row my-4">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" required>
+
+                        </div>
+
+                        <div class="form-row my-4">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-row my-4">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+
+                        <div class="form-row my-4">
+                            <div class="form-group col-6">
+                                <label for="tipoDocumento">Tipo Documento</label>
+                                <select name="tipoDocumento" id="tipoDocumento" class="form-control br-radius-zero"
+                                        required>
+                                    <option id="tipoDocumentoDNI">DNI
+                                    <option id="tipoDocumentoPasaporte">PASAPORTE
+                                    <option id="tipoDocumentoLibretaCivica">LIBRETA CÍVICA
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="numeroDocumento">Numero de documento</label>
+                                <input type="text" name="numeroDocumento" class="form-control br-radius-zero"
+                                       id="numeroDocumento"
+                                       placeholder="Ingrese número de documento" data-rule="minlen:1"
+                                       data-msg="Ingrese número de CUIT valido" required/>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary text-center mt-5 w-50">
+                                Enviar
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-4"></div>
+
+    </div>
+</div>
+
+<%--<div class="d-flex my-5 justify-content-center">
 
     <div class="row">
 
@@ -106,21 +183,22 @@
 
                     <div class="col-4 mb-3">
                         <label for="tipoDni">Tipo Documento</label>
-                         <select name="tipoDocumento" id="tipoDocumento"class="form-control br-radius-zero" required>
-								<option id="tipoDocumento" >DNI
-								<option id="tipoDocumento" >PASAPORTE
-								<option id="tipoDocumento" >LIBRETA CÍVICA
-							</select>
+                        <select name="tipoDocumento" id="tipoDocumento" class="form-control br-radius-zero" required>
+                            <option id="tipoDocumento">DNI
+                            <option id="tipoDocumento">PASAPORTE
+                            <option id="tipoDocumento">LIBRETA CÍVICA
+                        </select>
                     </div>
 
                     <div class="col-8 mb-3">
                         <label for="numeroDni">Numero de documento</label>
-                        <input type="text" name="numeroDocumento" class="form-control br-radius-zero" id="numeroDocumento"
-			                                   placeholder="Ingrese número de documento" data-rule="minlen:1"
-			                                   data-msg="Ingrese número de CUIT valido" required/>
+                        <input type="text" name="numeroDocumento" class="form-control br-radius-zero"
+                               id="numeroDocumento"
+                               placeholder="Ingrese número de documento" data-rule="minlen:1"
+                               data-msg="Ingrese número de CUIT valido" required/>
                     </div>
                 </div>
-               
+
 
                 <div class="form-col">
                     <button class="btn btn-primary" type="submit">Enviar</button>
@@ -136,7 +214,7 @@
         </div>
 
     </div>
-</div>
+</div>--%>
 
 
 <!-- Optional JavaScript -->

@@ -58,8 +58,9 @@
 </nav>
 
 <div class="progress my-1">
-    <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-         aria-valuemax="100"></div>
+    <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+         aria-valuemax="100">50%
+    </div>
 </div>
 
 <div class="container-fluid my-5">

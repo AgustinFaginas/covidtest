@@ -61,6 +61,12 @@
     </div>
 </nav>
 
+<div class="progress my-1">
+    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+         aria-valuemax="100">100%
+    </div>
+</div>
+
 <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
     <h5>Registro exitoso</h5>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
