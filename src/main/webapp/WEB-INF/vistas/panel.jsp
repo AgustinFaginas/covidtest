@@ -63,7 +63,7 @@
                     <li class="nav-item mt-3 mb-3">
                         <a class="nav-link" href="bienvenido">
                             <span data-feather="home"></span>
-                            Home Institución
+                            Home
                         </a>
                     </li>
                     <li class="nav-item mt-3 mb-3">

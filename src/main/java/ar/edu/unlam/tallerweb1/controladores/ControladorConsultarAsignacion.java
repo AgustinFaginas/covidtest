@@ -52,13 +52,19 @@ public class ControladorConsultarAsignacion {
 				
 				if (asignacionBuscada != null) {
 					
-					String mensaje = "Nombre del paciente: " + pacienteBuscado.getNombre() + " " + pacienteBuscado.getApellido();
-					String mensaje2 = "Cama asignada: " + asignacionBuscada.getCama().getDescripcion();
-					String mensaje3 = "Hora de internación: " + asignacionBuscada.getHoraIngreso();
+					String apellido = asignacionBuscada.getPaciente().getApellido();
+					String nombre = asignacionBuscada.getPaciente().getNombre();
+					String numeroDocumento2 = asignacionBuscada.getPaciente().getNumeroDocumento();
+					String tipoDocumento2 = asignacionBuscada.getPaciente().getTipoDocumento().name();
+					String horaIngreso = asignacionBuscada.getHoraIngreso().toString();
+					String cama = asignacionBuscada.getCama().getDescripcion();
 					
-					model.put("mensaje", mensaje);
-					model.put("mensaje2", mensaje2);
-					model.put("mensaje3", mensaje3);
+					model.put("apellido", apellido);
+					model.put("nombre", nombre);
+					model.put("numeroDocumento", numeroDocumento2);
+					model.put("tipoDocumento", tipoDocumento2);
+					model.put("horaIngreso", horaIngreso);
+					model.put("cama", cama);
 					
 					return new ModelAndView("detalleAsignacion", model);
 				}
