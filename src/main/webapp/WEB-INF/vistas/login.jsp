@@ -19,7 +19,7 @@
                         <div class="breadcrumb_iner_item">
                             <div class="container" style="max-width: 600px">
                                 <h3 class="alert-login">${alert}</h3>
-                                <h3 onClick="logout()">Cerrar sesiï¿½n</h3>
+                                <h3 onClick="logout()">Cerrar sesión</h3>
                             </div>
                         </div>
                     </div>
