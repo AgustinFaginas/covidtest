@@ -62,16 +62,6 @@ public class ControladorAdmin {
 		return new ModelAndView("homeAdmin");
 	}
 	
-//	@RequestMapping("/panel")
-//	public ModelAndView irApanel(HttpServletRequest request) {
-//
-//		List<Institucion> listaInstituciones = servicioInstitucion.obtenerListaInstituciones();
-//
-//		ModelMap model = new ModelMap();
-//		model.put("listaInstituciones", listaInstituciones);
-//
-//		return new ModelAndView("panel", model);
-//	}
 	
 	@RequestMapping("/panel")
 	public ModelAndView irApanel(HttpServletRequest request) {
