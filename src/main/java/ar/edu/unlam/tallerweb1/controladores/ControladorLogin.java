@@ -49,7 +49,7 @@ public class ControladorLogin {
 		ModelMap modelo = new ModelMap();
 
 		if (request.getSession().getAttribute("ID") != null) {
-//			modelo.put("alert", "Ya se encuentra logueado con una cuenta, primero cierre sesion.");
+			modelo.put("alert", "Ya se encuentra logueado con una cuenta, primero cierre sesion.");
 			return new ModelAndView("error_login", modelo);
 		}
 		Usuario usuario = new Usuario();

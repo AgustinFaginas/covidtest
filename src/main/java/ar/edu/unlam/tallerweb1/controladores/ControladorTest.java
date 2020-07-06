@@ -3,6 +3,8 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import javax.inject.Inject;
 
+import ar.edu.unlam.tallerweb1.modelo.IMC;
+import com.google.protobuf.Enum;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -131,28 +133,12 @@ public class ControladorTest {
 
         Float estaturaMetros = estatura / 100;
 
-        Float imc = peso / (estaturaMetros * estaturaMetros);
-
-        String categoriaIMC = "";
-
-        if (imc < 18.5) {
-            categoriaIMC = "inferior";
-        }
-        if (imc >= 18.5 && imc < 25.0) {
-            categoriaIMC = "normal";
-        }
-        if (imc >= 25.0 && imc < 30.0) {
-            categoriaIMC = "superior";
-        }
-        if (imc >= 30.0) {
-            categoriaIMC = "obesidad";
-        }
+        IMC categoriaIMC = servicioTest.calcularCategoriaIMC(peso, estaturaMetros);
 
         ModelMap model = new ModelMap();
         model.put("contador", contador);
         model.put("estatura", estaturaMetros);
         model.put("peso", peso);
-        model.put("imc", imc);
         model.put("categoriaIMC", categoriaIMC);
 
         return new ModelAndView("validarEnfermedades", model);
