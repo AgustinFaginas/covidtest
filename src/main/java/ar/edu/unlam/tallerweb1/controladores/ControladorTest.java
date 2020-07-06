@@ -133,28 +133,12 @@ public class ControladorTest {
 
         Float estaturaMetros = estatura / 100;
 
-        Float imc = peso / (estaturaMetros * estaturaMetros);
-
-        IMC categoriaIMC = null;
-
-        if (imc < 18.5) {
-            categoriaIMC = IMC.INFERIOR;
-        }
-        if (imc >= 18.5 && imc < 25.0) {
-            categoriaIMC = IMC.NORMAL;
-        }
-        if (imc >= 25.0 && imc < 30.0) {
-            categoriaIMC = IMC.SUPERIOR;
-        }
-        if (imc >= 30.0) {
-            categoriaIMC = IMC.OBESIDAD;
-        }
+        IMC categoriaIMC = servicioTest.calcularCategoriaIMC(peso, estaturaMetros);
 
         ModelMap model = new ModelMap();
         model.put("contador", contador);
         model.put("estatura", estaturaMetros);
         model.put("peso", peso);
-        model.put("imc", imc);
         model.put("categoriaIMC", categoriaIMC);
 
         return new ModelAndView("validarEnfermedades", model);
