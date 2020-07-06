@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <html lang="en">
@@ -50,7 +50,8 @@
 		<input class="form-control form-control-dark w-100" type="text"
 			placeholder="Search" aria-label="Search">
 		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap"><a class="nav-link" href="logout">Salir</a></li>
+			<li class="nav-item text-nowrap"><a class="nav-link"
+				href="logout">Salir</a></li>
 		</ul>
 	</nav>
 
@@ -59,56 +60,39 @@
 			<nav id="sidebarMenu"
 				class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
 				<div class="sidebar-sticky pt-3">
-					 <ul class="nav flex-column">
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="bienvenido">
-                            <span data-feather="home"></span>
-                            Home
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="disponibilidadCamas">
-                            <span data-feather="inbox"></span>
-                            Disponibilidad Camas
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="posiblesinfectados">
-                            <span data-feather="users"></span>
-                            Lista de Espera
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="consultarPaciente">
-                            <span data-feather="search"></span>
-                            Consultar paciente
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="internarPaciente">
-                            <span data-feather="user-plus"></span>
-                            Internar paciente
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="egresarPaciente">
-                            <span data-feather="user-minus"></span>
-                            Egresar paciente
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="listaPacientesInfectados">
-                            <span data-feather="users"></span>
-                            Pacientes Infectados
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="grafico-pacientes">
-                            <span data-feather="bar-chart-2"></span>
-                            Reportes
-                        </a>
-                    </li>
-                </ul>
+					<ul class="nav flex-column">
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="bienvenido"> <span data-feather="home"></span> Home
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="disponibilidadCamas"> <span data-feather="inbox"></span>
+								Disponibilidad Camas
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="posiblesinfectados"> <span data-feather="users"></span>
+								Lista de Espera
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="consultarPaciente"> <span data-feather="search"></span>
+								Consultar paciente
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="internarPaciente"> <span data-feather="user-plus"></span>
+								Internar paciente
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="egresarPaciente"> <span data-feather="user-minus"></span>
+								Egresar paciente
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="listaPacientesInfectados"> <span data-feather="users"></span>
+								Pacientes Infectados
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="grafico-pacientes"> <span data-feather="bar-chart-2"></span>
+								Reportes
+						</a></li>
+					</ul>
 
 					<!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Saved reports</span>
@@ -161,21 +145,24 @@
 					</div>
 				</div> -->
 
-				<%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%> 
+				<%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%>
 
 				<h2>Instituciones</h2>
 				<table class="table table-bordered table-white">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-    </tr>
-    <c:forEach items="${listaInstituciones}" var="institucion">
-        <tr>
-            <th scope="row"><c:out value="${institucion.getId()}"/></th>
-            <td><c:out value="${institucion.getNombre()}"/></td>
-        </tr>
-    </c:forEach>
-</table>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Estado</th>
+						<th scope="col">Acciones</th>
+					</tr>
+					<c:forEach items="${poInfectados}" var="paciente">
+						<tr>
+							<th scope="row"><c:out value="${paciente.getId()}" /></th>
+							<td><c:out value="${paciente.getNombre()}" /></td>
+							<td><c:out value="${paciente.getInfectado()}" /></td>
+						</tr>
+					</c:forEach>
+				</table>
 			</main>
 		</div>
 	</div>
