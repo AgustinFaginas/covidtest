@@ -1,3 +1,5 @@
+USE tp_db;
+
 INSERT INTO provincia (id, nombreProvincia)
 VALUES (1, "BUENOS_AIRES"),
 	   (2, "CORDOBA"),

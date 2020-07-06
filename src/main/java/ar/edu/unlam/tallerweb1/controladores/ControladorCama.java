@@ -52,26 +52,9 @@ public class ControladorCama {
 		
     	Long id = (long) request.getSession().getAttribute("ID");
     	Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
-        
-        List<Cama> camasTotalesInstitucion = servicioCama.obtenerCamasPorInstitucion(institucion);
-        List<Asignacion> asignacionesVigentes = servicioAsignacion.obtenerAsignacionesActuales();
-
-        LinkedList<Cama> camasDisponiblesInstitucion = new LinkedList<Cama>();
-        
-        for (int i = 0; i < camasTotalesInstitucion.size(); i++) {
-          for (int j = 0; j < asignacionesVigentes.size(); j++) {
-              if (camasTotalesInstitucion.get(i).getId() == asignacionesVigentes.get(j).getCama().getId()) {
-              	camasTotalesInstitucion.get(i).setId(null);
-              }
-          }
-        }
-      
-        for (int i = 0; i < camasTotalesInstitucion.size(); i++) {
-          if (camasTotalesInstitucion.get(i).getId() != null) {
-        	  camasDisponiblesInstitucion.add(camasTotalesInstitucion.get(i));
-          }
-        }
-
+    	
+    	List<Cama> camasDisponiblesInstitucion = servicioCama.obtenerCamasDisponiblesPorInstitucion(institucion);
+    	
         model.put("camas", camasDisponiblesInstitucion);
 
         return new ModelAndView("disponibilidad-camas", model);
