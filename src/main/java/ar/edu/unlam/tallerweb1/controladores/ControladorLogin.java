@@ -49,7 +49,8 @@ public class ControladorLogin {
 		ModelMap modelo = new ModelMap();
 
 		if (request.getSession().getAttribute("ID") != null) {
-			modelo.put("alert", "Ya se encuentra logueado con una cuenta, primero cierre sesion.");
+//			modelo.put("alert", "Ya se encuentra logueado con una cuenta, primero cierre sesion.");
+			return new ModelAndView("error_login", modelo);
 		}
 		Usuario usuario = new Usuario();
 		modelo.put("usuario", usuario);
@@ -101,17 +102,7 @@ public class ControladorLogin {
 		return new ModelAndView("login");
 	}
 
-	// LOGOUT
-//	@RequestMapping(path = "/logout")
-//	public ModelAndView logout(@RequestParam(value = "redirect", defaultValue = "") String redirect,
-//			HttpServletRequest request) {
-//		request.getSession().removeAttribute("ID");
-//		request.getSession().removeAttribute("ROL");
-//		if (redirect != "") {
-//			return new ModelAndView("redirect:/" + redirect);
-//		}
-//		return new ModelAndView("redirect:/home");
-//	}
+
 	
 	@RequestMapping(path = "/logout")
 	public ModelAndView logout(@RequestParam(value = "redirect", defaultValue = "") String redirect,

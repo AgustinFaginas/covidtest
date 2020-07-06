@@ -58,134 +58,90 @@
 </nav>
 
 <div class="progress my-1">
-    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-         aria-valuemax="100">100%
+    <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+         aria-valuemax="100">75%
     </div>
 </div>
 
-<h1 class="text-center mb-3 mt-5">El resultado de su test ha sido negativo</h1>
+<h1 class="text-center mb-3 mt-5">El resultado de su test ha sido positivo</h1>
 
 <div class="text-center my-5">
-    <img src="img/no-virus.png" class="rounded" alt="no-virus" width="350" height="350">
+    <img src="img/virus.png" class="rounded" alt="virus" width="350" height="350">
 </div>
 
-<h2 class="text-center mb-3 mt-5">Compruebe su estado cada 48hs y recuerde seguir los consejos para prevenir el
-    Coronavirus</h2>
+<div class="container my-5">
+    <h5 class="text-center my-3">Complete los siguientes datos y sera contactado en la brevedad </h5>
+</div>
 
-<div class="container mb-5">
+<h2 class="text-center my-5">Complete el siguiente formulario con sus datos</h2>
+
+<div class="d-flex my-5 justify-content-center">
+
     <div class="row">
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/handwash1.png" width="100" height="100"
-                             alt="Generic placeholder image">
+
+        <div class="col-1">
+
+        </div>
+
+        <div class="col-10" style="width: 30rem;">
+
+            <form action="detalleRegistroPaciente" method="POST" modelAttribute="paciente">
+
+                <div class="form-row">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido" required>
+
+                </div>
+
+                <div class="form-row">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <div class="form-row">
+
+                    <div class="col-4 mb-3">
+                        <label for="tipoDni">Tipo Documento</label>
+                        <select name="tipoDocumento" id="tipoDocumento" class="form-control br-radius-zero" required>
+                            <option id="tipoDocumento">DNI
+                            <option id="tipoDocumento">PASAPORTE
+                            <option id="tipoDocumento">LIBRETA CÍVICA
+                        </select>
                     </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Lavarse las manos con jabón regularmente al menos por 20 segundos</h4>
+
+                    <div class="col-8 mb-3">
+                        <label for="numeroDni">Numero de documento</label>
+                        <input type="text" name="numeroDocumento" class="form-control br-radius-zero"
+                               id="numeroDocumento"
+                               placeholder="Ingrese número de documento" data-rule="minlen:1"
+                               data-msg="Ingrese número de CUIT valido" required/>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/nottouch.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">No llevarse las manos a los ojos y la nariz</h4>
-                    </div>
+
+
+                <div class="form-col">
+                    <button class="btn btn-primary" type="submit">Enviar</button>
                 </div>
-            </div>
+
+            </form>
+
+
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/window.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Ventilar los ambientes</h4>
-                    </div>
-                </div>
-            </div>
+
+        <div class="col-1">
+
         </div>
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/clean.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Desinfectar los objetos que se usan con frecuencia</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/bat.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">No comer sopita de murciélago y/o derivados</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/stayhome.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Permanecer en su hogar el mayor tiempo posible. Salir en casos
-                            extremos</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/physical.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Mantener distancia de otras personas fueras de su hogar</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/medical-mask.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Cubrirse la boca y la nariz con barbijo o tapaboca al estar rodeado de
-                            personas</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 

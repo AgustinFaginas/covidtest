@@ -42,7 +42,7 @@ public class ControladorCama {
     	ModelMap model = new ModelMap();
     	
     	if (request.getSession().getAttribute("ID") == null) {
-			model.put("error", "Debe iniciar sesiÃ³n");
+			model.put("error", "Debe iniciar sesión");
 	        return new ModelAndView("login", model);
 		}
 
