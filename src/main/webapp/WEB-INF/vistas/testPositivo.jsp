@@ -96,7 +96,11 @@
                         <div class="form-row my-4">
                             <label for="apellido">Apellido</label>
                             <input type="text" class="form-control" id="apellido" name="apellido" required>
+                        </div>
 
+                        <div class="form-row my-4">
+                            <label for="edad">Edad</label>
+                            <input type="number" class="form-control" id="edad" name="edad" required>
                         </div>
 
                         <div class="form-row my-4">
