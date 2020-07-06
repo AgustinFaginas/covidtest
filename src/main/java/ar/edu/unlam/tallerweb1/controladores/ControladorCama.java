@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import ar.edu.unlam.tallerweb1.modelo.Asignacion;
 import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +40,7 @@ public class ControladorCama {
     	ModelMap model = new ModelMap();
     	
     	if (request.getSession().getAttribute("ID") == null) {
-			model.put("error", "Debe iniciar sesión");
+			model.put("error", "Debe iniciar sesiï¿½n");
 	        return new ModelAndView("login", model);
 		}
 
@@ -83,25 +81,10 @@ public class ControladorCama {
     	Long id = (long) request.getSession().getAttribute("ID");
     	Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
         
-        List<Cama> camasTotalesInstitucion = servicioCama.obtenerCamasPorInstitucion(institucion);
-        List<Asignacion> asignacionesVigentes = servicioAsignacion.obtenerAsignacionesActuales();
-
-        LinkedList<Cama> camasDisponiblesInstitucion = new LinkedList<Cama>();
+    	List<Cama> camasDisponiblesInstitucion = servicioCama.obtenerCamasDisponiblesPorInstitucion(institucion);
+    	
+        model.put("camas", camasDisponiblesInstitucion);
         
-        for (int i = 0; i < camasTotalesInstitucion.size(); i++) {
-          for (int j = 0; j < asignacionesVigentes.size(); j++) {
-              if (camasTotalesInstitucion.get(i).getId() == asignacionesVigentes.get(j).getCama().getId()) {
-              	camasTotalesInstitucion.get(i).setId(null);
-              }
-          }
-        }
-      
-        for (int i = 0; i < camasTotalesInstitucion.size(); i++) {
-          if (camasTotalesInstitucion.get(i).getId() != null) {
-        	  camasDisponiblesInstitucion.add(camasTotalesInstitucion.get(i));
-          }
-        }
-
         Paciente pacienteAInternar = servicioPaciente.consultarPacientePorId(idPaciente);
 
         model.put("camas", camasDisponiblesInstitucion);
