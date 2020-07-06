@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios.serviciosImpl;
 
+import ar.edu.unlam.tallerweb1.modelo.IMC;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,6 +54,29 @@ public class ServicioTestImpl implements ServicioTest {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public IMC calcularCategoriaIMC(Float peso, Float estaturaMetros) {
+
+        Float imc = peso / (estaturaMetros * estaturaMetros);
+
+        IMC categoriaIMC = null;
+
+        if (imc < 18.5) {
+            return IMC.INFERIOR;
+        }
+        if (imc >= 18.5 && imc < 25.0) {
+            return IMC.NORMAL;
+        }
+        if (imc >= 25.0 && imc < 30.0) {
+            return IMC.SUPERIOR;
+        }
+        if (imc >= 30.0) {
+            return IMC.OBESIDAD;
+        }
+
+        return categoriaIMC;
     }
 
 

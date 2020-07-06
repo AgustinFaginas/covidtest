@@ -3,6 +3,8 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import javax.inject.Inject;
 
+import ar.edu.unlam.tallerweb1.modelo.IMC;
+import com.google.protobuf.Enum;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -84,11 +86,9 @@ public class ControladorTest {
             @RequestParam(value = "enfRespiratoria", required = false) Boolean enfRespiratoria,
             @RequestParam(value = "enfRenal", required = false) Boolean enfRenal,
             @RequestParam(value = "enfCardiologica", required = false) Boolean enfCardiologica,
-            @RequestParam(value = "estatura", required = false) Integer estatura,
-            @RequestParam(value = "peso", required = false) Integer peso
+            @RequestParam(value = "estatura", required = false) Float estatura,
+            @RequestParam(value = "peso", required = false) Float peso
     ) {
-
-        /*----------------------*/
 
         if (embarazo == null) {
             embarazo = false;
@@ -109,40 +109,37 @@ public class ControladorTest {
             enfCardiologica = false;
         }
 
-
-        Integer cont = 0;
+        Integer contador = 0;
 
         if (embarazo == true) {
-            cont++;
+            contador++;
         }
 
         if (diabetes == true) {
-            cont++;
+            contador++;
         }
         if (enfHepatica == true) {
-            cont++;
+            contador++;
         }
         if (enfRespiratoria == true) {
-            cont++;
+            contador++;
         }
         if (enfRenal == true) {
-            cont++;
+            contador++;
         }
         if (enfCardiologica == true) {
-            cont++;
+            contador++;
         }
 
-       /* if (contador >= 3) {
-            return true;
-        } else {
-            return false;
-        }*/
-        /*----------------------*/
+        Float estaturaMetros = estatura / 100;
+
+        IMC categoriaIMC = servicioTest.calcularCategoriaIMC(peso, estaturaMetros);
 
         ModelMap model = new ModelMap();
-        model.put("cont", cont);
-        model.put("estatura", estatura);
+        model.put("contador", contador);
+        model.put("estatura", estaturaMetros);
         model.put("peso", peso);
+        model.put("categoriaIMC", categoriaIMC);
 
         return new ModelAndView("validarEnfermedades", model);
 

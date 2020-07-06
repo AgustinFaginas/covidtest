@@ -12,9 +12,10 @@
 </head>
 <body>
 
-<h2 class="text-center">Contador: ${cont}</h2>
+<h2 class="text-center">Contador: ${contador}</h2>
 <h2 class="text-center">Estatura: ${estatura}</h2>
 <h2 class="text-center">Peso: ${peso}</h2>
+<h2 class="text-center">Categoria IMC: ${categoriaIMC}</h2>
 
 </body>
 </html>
