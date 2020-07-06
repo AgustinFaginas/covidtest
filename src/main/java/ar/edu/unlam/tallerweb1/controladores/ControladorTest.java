@@ -84,11 +84,9 @@ public class ControladorTest {
             @RequestParam(value = "enfRespiratoria", required = false) Boolean enfRespiratoria,
             @RequestParam(value = "enfRenal", required = false) Boolean enfRenal,
             @RequestParam(value = "enfCardiologica", required = false) Boolean enfCardiologica,
-            @RequestParam(value = "estatura", required = false) Integer estatura,
-            @RequestParam(value = "peso", required = false) Integer peso
+            @RequestParam(value = "estatura", required = false) Float estatura,
+            @RequestParam(value = "peso", required = false) Float peso
     ) {
-
-        /*----------------------*/
 
         if (embarazo == null) {
             embarazo = false;
@@ -109,40 +107,53 @@ public class ControladorTest {
             enfCardiologica = false;
         }
 
-
-        Integer cont = 0;
+        Integer contador = 0;
 
         if (embarazo == true) {
-            cont++;
+            contador++;
         }
 
         if (diabetes == true) {
-            cont++;
+            contador++;
         }
         if (enfHepatica == true) {
-            cont++;
+            contador++;
         }
         if (enfRespiratoria == true) {
-            cont++;
+            contador++;
         }
         if (enfRenal == true) {
-            cont++;
+            contador++;
         }
         if (enfCardiologica == true) {
-            cont++;
+            contador++;
         }
 
-       /* if (contador >= 3) {
-            return true;
-        } else {
-            return false;
-        }*/
-        /*----------------------*/
+        Float estaturaMetros = estatura / 100;
+
+        Float imc = peso / (estaturaMetros * estaturaMetros);
+
+        String categoriaIMC = "";
+
+        if (imc < 18.5) {
+            categoriaIMC = "inferior";
+        }
+        if (imc >= 18.5 && imc < 25.0) {
+            categoriaIMC = "normal";
+        }
+        if (imc >= 25.0 && imc < 30.0) {
+            categoriaIMC = "superior";
+        }
+        if (imc >= 30.0) {
+            categoriaIMC = "obesidad";
+        }
 
         ModelMap model = new ModelMap();
-        model.put("cont", cont);
-        model.put("estatura", estatura);
+        model.put("contador", contador);
+        model.put("estatura", estaturaMetros);
         model.put("peso", peso);
+        model.put("imc", imc);
+        model.put("categoriaIMC", categoriaIMC);
 
         return new ModelAndView("validarEnfermedades", model);
 
