@@ -1,4 +1,12 @@
-<jsp:include page="../../partial/header.jsp" />
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<jsp:include page="../../partial/headerInstitucionesParte1.jsp" />
+
+<title>Detalle Asignacion</title>
+    
+<jsp:include page="../../partial/headerInstitucionesParte2.jsp" />
 
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
@@ -7,19 +15,19 @@
 	<div
 		class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 	
-		<h1 class="h2">Detalle Paciente</h1>
+		<h4>Detalle Paciente</h4>
 	
 	</div>
 	
 	<div class="">
 	
-		<p>Nombre del Paciente: ${apellido}, ${nombre}</p>
+		<h6>Nombre del Paciente: ${apellido}, ${nombre}</h6>
 	
-		<h4 class="h4">Documento: ${numeroDocumento} (${tipoDocumento})</h4>
+		<h6 class="">Documento: ${numeroDocumento} (${tipoDocumento})</h6>
 	
-		<h4 class="h4">Hora de internación: ${horaIngreso}</h4>
+		<h6 class="">Hora de internación: ${horaIngreso}</h6>
 	
-		<h4 class="h4">Cama asignada: ${cama}</h4>
+		<h6 class="">Cama asignada: ${cama}</h6>
 	
 		<br>
 	

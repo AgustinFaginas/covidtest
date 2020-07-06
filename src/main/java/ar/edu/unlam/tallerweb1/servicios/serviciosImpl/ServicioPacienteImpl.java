@@ -23,6 +23,11 @@ public class ServicioPacienteImpl implements ServicioPaciente {
         repositorioPaciente.registrarPaciente(paciente);
     }
 
+	@Override
+	public void modificarPaciente(Paciente paciente) {
+		repositorioPaciente.modificarPaciente(paciente);
+	}
+	
     @Override
     public Paciente consultarPacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento) {
         return repositorioPaciente.consultarPacientePorDoc(numeroDocumento, tipoDocumento);
@@ -48,5 +53,9 @@ public class ServicioPacienteImpl implements ServicioPaciente {
         return repositorioPaciente.posiblesInfectados();
     }
 
+	@Override
+	public List<Paciente> pacientesInternados() {
+		return repositorioPaciente.pacientesInternados();
+	}
 
 }
