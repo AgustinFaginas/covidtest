@@ -15,12 +15,13 @@ public class Paciente extends Usuario {
     private Boolean posibleInfectado;
     private Integer edad;
     private String apellido;
-    private Boolean embarazo;
-    private Boolean diabetes;
-    private Boolean enfHepatica;
-    private Boolean enfRespiratoria;
-    private Boolean enfRenal;
-    private Boolean enfCardiologica;
+    private Boolean tieneEmbarazo;
+    private Boolean esFumador;
+    private Boolean tieneDiabetes;
+    private Boolean tieneEnfHepatica;
+    private Boolean tieneEnfRespiratoria;
+    private Boolean tieneEnfRenal;
+    private Boolean tieneEnfCardiologica;
 
     public Long getId() {
         return id;
@@ -62,52 +63,60 @@ public class Paciente extends Usuario {
         this.posibleInfectado = posibleInfectado;
     }
 
-    public Boolean getEmbarazo() {
-        return embarazo;
+    public Boolean getTieneEmbarazo() {
+        return tieneEmbarazo;
     }
 
-    public void setEmbarazo(Boolean embarazo) {
-        this.embarazo = embarazo;
+    public void setTieneEmbarazo(Boolean tieneEmbarazo) {
+        this.tieneEmbarazo = tieneEmbarazo;
     }
 
-    public Boolean getDiabetes() {
-        return diabetes;
+    public Boolean getTieneDiabetes() {
+        return tieneDiabetes;
     }
 
-    public void setDiabetes(Boolean diabetes) {
-        this.diabetes = diabetes;
+    public void setTieneDiabetes(Boolean tieneDiabetes) {
+        this.tieneDiabetes = tieneDiabetes;
     }
 
-    public Boolean getEnfHepatica() {
-        return enfHepatica;
+    public Boolean getTieneEnfHepatica() {
+        return tieneEnfHepatica;
     }
 
-    public void setEnfHepatica(Boolean enfHepatica) {
-        this.enfHepatica = enfHepatica;
+    public void setTieneEnfHepatica(Boolean tieneEnfHepatica) {
+        this.tieneEnfHepatica = tieneEnfHepatica;
     }
 
-    public Boolean getEnfRespiratoria() {
-        return enfRespiratoria;
+    public Boolean getTieneEnfRespiratoria() {
+        return tieneEnfRespiratoria;
     }
 
-    public void setEnfRespiratoria(Boolean enfRespiratoria) {
-        this.enfRespiratoria = enfRespiratoria;
+    public void setTieneEnfRespiratoria(Boolean tieneEnfRespiratoria) {
+        this.tieneEnfRespiratoria = tieneEnfRespiratoria;
     }
 
-    public Boolean getEnfRenal() {
-        return enfRenal;
+    public Boolean getTieneEnfRenal() {
+        return tieneEnfRenal;
     }
 
-    public void setEnfRenal(Boolean enfRenal) {
-        this.enfRenal = enfRenal;
+    public void setTieneEnfRenal(Boolean tieneEnfRenal) {
+        this.tieneEnfRenal = tieneEnfRenal;
     }
 
-    public Boolean getEnfCardiologica() {
-        return enfCardiologica;
+    public Boolean getTieneEnfCardiologica() {
+        return tieneEnfCardiologica;
     }
 
-    public void setEnfCardiologica(Boolean enfCardiologica) {
-        this.enfCardiologica = enfCardiologica;
+    public void setTieneEnfCardiologica(Boolean tieneEnfCardiologica) {
+        this.tieneEnfCardiologica = tieneEnfCardiologica;
+    }
+
+    public Boolean getEsFumador() {
+        return esFumador;
+    }
+
+    public void setEsFumador(Boolean esFumador) {
+        this.esFumador = esFumador;
     }
 }
 

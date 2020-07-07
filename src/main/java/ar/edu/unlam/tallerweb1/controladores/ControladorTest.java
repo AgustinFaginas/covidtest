@@ -80,54 +80,60 @@ public class ControladorTest {
 
     @RequestMapping(value = "/validarEnfermedades", method = RequestMethod.GET)
     public ModelAndView validarEnfermedades(
-            @RequestParam(value = "embarazo", required = false) Boolean embarazo,
-            @RequestParam(value = "diabetes", required = false) Boolean diabetes,
-            @RequestParam(value = "enfHepatica", required = false) Boolean enfHepatica,
-            @RequestParam(value = "enfRespiratoria", required = false) Boolean enfRespiratoria,
-            @RequestParam(value = "enfRenal", required = false) Boolean enfRenal,
-            @RequestParam(value = "enfCardiologica", required = false) Boolean enfCardiologica,
+            @RequestParam(value = "tieneEmbarazo", required = false) Boolean tieneEmbarazo,
+            @RequestParam(value = "esFumador", required = false) Boolean esFumador,
+            @RequestParam(value = "tieneDiabetes", required = false) Boolean tieneDiabetes,
+            @RequestParam(value = "tieneEnfHepatica", required = false) Boolean tieneEnfHepatica,
+            @RequestParam(value = "tieneEnfRespiratoria", required = false) Boolean tieneEnfRespiratoria,
+            @RequestParam(value = "tieneEnfRenal", required = false) Boolean tieneEnfRenal,
+            @RequestParam(value = "tieneEnfCardiologica", required = false) Boolean tieneEnfCardiologica,
             @RequestParam(value = "estatura", required = false) Float estatura,
             @RequestParam(value = "peso", required = false) Float peso
     ) {
 
-        if (embarazo == null) {
-            embarazo = false;
+        if (tieneEmbarazo == null) {
+            tieneEmbarazo = false;
         }
-        if (diabetes == null) {
-            diabetes = false;
+        if (esFumador == null) {
+            esFumador = false;
         }
-        if (enfHepatica == null) {
-            enfHepatica = false;
+        if (tieneDiabetes == null) {
+            tieneDiabetes = false;
         }
-        if (enfRespiratoria == null) {
-            enfRespiratoria = false;
+        if (tieneEnfHepatica == null) {
+            tieneEnfHepatica = false;
         }
-        if (enfRenal == null) {
-            enfRenal = false;
+        if (tieneEnfRespiratoria == null) {
+            tieneEnfRespiratoria = false;
         }
-        if (enfCardiologica == null) {
-            enfCardiologica = false;
+        if (tieneEnfRenal == null) {
+            tieneEnfRenal = false;
+        }
+        if (tieneEnfCardiologica == null) {
+            tieneEnfCardiologica = false;
         }
 
         Integer contador = 0;
 
-        if (embarazo) {
+        if (tieneEmbarazo) {
             contador++;
         }
-
-        if (diabetes) {
+        if (esFumador) {
             contador++;
         }
-        if (enfHepatica) {
+        if (tieneDiabetes) {
             contador++;
         }
-        if (enfRespiratoria) {
+        if (tieneEnfHepatica) {
             contador++;
         }
-        if (enfRenal) {
+        if (tieneEnfRespiratoria) {
             contador++;
         }
-        if (enfCardiologica) {
+        if (tieneEnfRenal) {
+            contador++;
+        }
+        if (tieneEnfCardiologica) {
             contador++;
         }
 
