@@ -63,7 +63,7 @@
     </div>
 </div>
 
-<h1 class="text-center mb-3 mt-5">El resultado de su test ha sido negativo</h1>
+<h1 class="text-center mb-3 mt-5">El resultado de su permiso ha sido positivo</h1>
 
 <div class="text-center my-5">
     <img src="img/no-virus.png" class="rounded" alt="no-virus" width="350" height="350">
@@ -72,124 +72,12 @@
 <h2 class="text-center mb-3 mt-5">Compruebe su estado cada 48hs y recuerde seguir los consejos para prevenir el
     Coronavirus</h2>
 
-<div class="container mb-5">
-    <div class="row">
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/handwash1.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Lavarse las manos con jabón regularmente al menos por 20 segundos</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/nottouch.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">No llevarse las manos a los ojos y la nariz</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/window.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Ventilar los ambientes</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/clean.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Desinfectar los objetos que se usan con frecuencia</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/bat.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">No comer sopita de murciélago y/o derivados</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/stayhome.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Permanecer en su hogar el mayor tiempo posible. Salir en casos
-                            extremos</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/physical.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Mantener distancia de otras personas fueras de su hogar</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/medical-mask.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Cubrirse la boca y la nariz con barbijo o tapaboca al estar rodeado de
-                            personas</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+<h3>${nombre}</h3>
+<h3>${apellido}</h3>
+<h3>${edad}</h3>
+<h3>${tipoDocumento}</h3>
+<h3>${numeroDocumento}</h3>
+<h3>${motivo}</h3>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

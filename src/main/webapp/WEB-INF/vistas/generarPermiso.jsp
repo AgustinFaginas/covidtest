@@ -50,7 +50,7 @@
                 <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ml-5">
-                <a class="nav-link" href="generarPermiso">Generar permiso</a>
+                <a class="nav-link" href="autoTest">Realizar test</a>
             </li>
         </ul>
         <button type="button" class="btn btn-dark ml-5">Log in</button>
@@ -58,136 +58,162 @@
 </nav>
 
 <div class="progress my-1">
-    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-         aria-valuemax="100">100%
+    <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+         aria-valuemax="100">75%
     </div>
 </div>
 
-<h1 class="text-center mb-3 mt-5">El resultado de su test ha sido negativo</h1>
-
-<div class="text-center my-5">
-    <img src="img/no-virus.png" class="rounded" alt="no-virus" width="350" height="350">
+<div class="container my-5">
+    <h3 class="text-center my-3">Complete los siguientes datos y genere su permiso de circulacion </h3>
 </div>
 
-<h2 class="text-center mb-3 mt-5">Compruebe su estado cada 48hs y recuerde seguir los consejos para prevenir el
-    Coronavirus</h2>
+<div class="container-fluid my-5">
+    <div class="row">
 
-<div class="container mb-5">
-    <div class="row">
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/handwash1.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Lavarse las manos con jabón regularmente al menos por 20 segundos</h4>
-                    </div>
+        <div class="col-4"></div>
+
+        <div class="col-4">
+
+            <div class="card border-dark mb-3">
+                <div class="card-header">
+                    <h3 class="text-center my-2">Complete el formulario con sus datos</h3>
+                </div>
+                <div class="card-body text-dark">
+                    <form action="validarPermiso" method="POST"  class="d-flex justify-content-center flex-column justify-content-center">
+                        <div class="form-row my-4">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+
+                        <div class="form-row my-4">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" required>
+                        </div>
+
+                        <div class="form-row my-4">
+                            <label for="edad">Edad</label>
+                            <input type="number" class="form-control" id="edad" name="edad" required>
+                        </div>
+
+                        <div class="form-row my-4">
+                            <div class="form-group col-6">
+                                <label for="tipoDocumento">Tipo Documento</label>
+                                <select name="tipoDocumento" id="tipoDocumento" class="form-control br-radius-zero"
+                                        required>
+                                    <option id="tipoDocumentoDNI">DNI
+                                    <option id="tipoDocumentoPasaporte">PASAPORTE
+                                    <option id="tipoDocumentoLibretaCivica">LIBRETA CÍVICA
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="numeroDocumento">Numero de documento</label>
+                                <input type="text" name="numeroDocumento" class="form-control br-radius-zero"
+                                       id="numeroDocumento"
+                                       placeholder="Ingrese número de documento" data-rule="minlen:1"
+                                       data-msg="Ingrese número de CUIT valido" required/>
+                            </div>
+                        </div>
+                            <div class="form-row my-4">
+                            <div class="form-group col-6">
+                                <label for="motivo">Motivo del permiso</label>
+                                <select name="motivo" id="motivo" class="form-control br-radius-zero"
+                                        required>
+                                    <option id="motivo1">Asistencia de un mayor
+                                    <option id="motivo2">Turno medico con urgencia
+                                    <option id="motivo3">Tramite judicial
+                                    <option id="motivo4">Trabajo escencial
+                                </select>
+                            </div>
+                            
+                           
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary text-center mt-5 w-50">
+                                Enviar
+                            </button>
+                        </div>
+
+                    </form>
                 </div>
             </div>
+
+
         </div>
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/nottouch.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">No llevarse las manos a los ojos y la nariz</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/window.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Ventilar los ambientes</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/clean.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Desinfectar los objetos que se usan con frecuencia</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/bat.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">No comer sopita de murciélago y/o derivados</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/stayhome.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Permanecer en su hogar el mayor tiempo posible. Salir en casos
-                            extremos</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/physical.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Mantener distancia de otras personas fueras de su hogar</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-12">
-                        <img class="d-inline" src="img/medical-mask.png" width="100" height="100"
-                             alt="Generic placeholder image">
-                    </div>
-                    <div class="col-xl-9 col-sm-12">
-                        <h4 class="d-inline">Cubrirse la boca y la nariz con barbijo o tapaboca al estar rodeado de
-                            personas</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        <div class="col-4"></div>
+
     </div>
 </div>
+
+<%--<div class="d-flex my-5 justify-content-center">
+
+    <div class="row">
+
+        <div class="col-1">
+
+        </div>
+
+        <div class="col-10" style="width: 30rem;">
+
+            <form action="detalleRegistroPaciente" method="POST" modelAttribute="paciente">
+
+                <div class="form-row">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido" required>
+
+                </div>
+
+                <div class="form-row">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <div class="form-row">
+
+                    <div class="col-4 mb-3">
+                        <label for="tipoDni">Tipo Documento</label>
+                        <select name="tipoDocumento" id="tipoDocumento" class="form-control br-radius-zero" required>
+                            <option id="tipoDocumento">DNI
+                            <option id="tipoDocumento">PASAPORTE
+                            <option id="tipoDocumento">LIBRETA CÍVICA
+                        </select>
+                    </div>
+
+                    <div class="col-8 mb-3">
+                        <label for="numeroDni">Numero de documento</label>
+                        <input type="text" name="numeroDocumento" class="form-control br-radius-zero"
+                               id="numeroDocumento"
+                               placeholder="Ingrese número de documento" data-rule="minlen:1"
+                               data-msg="Ingrese número de CUIT valido" required/>
+                    </div>
+                </div>
+
+
+                <div class="form-col">
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                </div>
+
+            </form>
+
+
+        </div>
+
+        <div class="col-1">
+
+        </div>
+
+    </div>
+</div>--%>
 
 
 <!-- Optional JavaScript -->

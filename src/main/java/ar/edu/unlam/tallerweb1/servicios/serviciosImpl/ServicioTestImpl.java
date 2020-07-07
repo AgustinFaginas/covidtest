@@ -79,5 +79,18 @@ public class ServicioTestImpl implements ServicioTest {
         return categoriaIMC;
     }
 
+	@Override
+	public Boolean realizarPermiso(String nombre, String apellido, Integer edad, String tipoDocumento,
+			Integer numeroDocumento, String movito) {
+		
+		if(edad>=18) {
+			return true;
+		}else {
+			return false;
+		}
+		
+		
+	}
+
 
 }

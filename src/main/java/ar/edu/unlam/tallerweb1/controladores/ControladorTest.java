@@ -65,12 +65,43 @@ public class ControladorTest {
     }
 
 
-    @RequestMapping("/home3")
-    public ModelAndView home3() {
+    @RequestMapping("/generarPermiso")
+    public ModelAndView generarPermiso() {
 
-        return new ModelAndView("home1");
+        return new ModelAndView("generarPermiso");
 
     }
+    @RequestMapping(value = "/validarPermiso", method = RequestMethod.POST)
+    public ModelAndView validarPermiso(
+            @RequestParam(value = "nombre", required = false) String nombre,
+            @RequestParam(value = "apellido", required = false) String apellido,
+            @RequestParam(value = "edad", required = false) Integer edad,
+            @RequestParam(value = "tipoDocumento", required = false)String tipoDocumento,
+            @RequestParam(value = "numeroDocumento", required = false)Integer numeroDocumento,
+            @RequestParam(value = "motivo", required = false)String motivo
+    ) {
+
+        if (servicioTest.realizarPermiso(nombre, apellido, edad,tipoDocumento, numeroDocumento,motivo)) {
+           ModelMap model = new ModelMap();
+           model.put("nombre", nombre);
+           model.put("apellido", apellido);
+           model.put("edad", edad);
+           model.put("numeroDocumento", tipoDocumento);
+           model.put("motivo", motivo);
+        	return new ModelAndView("permisoPositivo",model);
+        } else {
+            return new ModelAndView("permisoNegativo");
+        }
+
+
+    }
+    @RequestMapping("/permisoPositivo")
+    public ModelAndView permisoPositivo() {
+
+        return new ModelAndView("permisoPositivo");
+
+    }
+    
 
     @RequestMapping("/enfermedades")
     public ModelAndView enfermedades() {
@@ -150,4 +181,6 @@ public class ControladorTest {
         return new ModelAndView("validarEnfermedades", model);
 
     }
+    
+    
 }
