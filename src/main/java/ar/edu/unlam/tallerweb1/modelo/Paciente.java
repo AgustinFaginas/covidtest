@@ -15,6 +15,12 @@ public class Paciente extends Usuario {
     private Boolean posibleInfectado;
     private Integer edad;
     private String apellido;
+    private Boolean embarazo;
+    private Boolean diabetes;
+    private Boolean enfHepatica;
+    private Boolean enfRespiratoria;
+    private Boolean enfRenal;
+    private Boolean enfCardiologica;
 
     public Long getId() {
         return id;
@@ -55,4 +61,54 @@ public class Paciente extends Usuario {
     public void setPosibleInfectado(Boolean posibleInfectado) {
         this.posibleInfectado = posibleInfectado;
     }
+
+    public Boolean getEmbarazo() {
+        return embarazo;
+    }
+
+    public void setEmbarazo(Boolean embarazo) {
+        this.embarazo = embarazo;
+    }
+
+    public Boolean getDiabetes() {
+        return diabetes;
+    }
+
+    public void setDiabetes(Boolean diabetes) {
+        this.diabetes = diabetes;
+    }
+
+    public Boolean getEnfHepatica() {
+        return enfHepatica;
+    }
+
+    public void setEnfHepatica(Boolean enfHepatica) {
+        this.enfHepatica = enfHepatica;
+    }
+
+    public Boolean getEnfRespiratoria() {
+        return enfRespiratoria;
+    }
+
+    public void setEnfRespiratoria(Boolean enfRespiratoria) {
+        this.enfRespiratoria = enfRespiratoria;
+    }
+
+    public Boolean getEnfRenal() {
+        return enfRenal;
+    }
+
+    public void setEnfRenal(Boolean enfRenal) {
+        this.enfRenal = enfRenal;
+    }
+
+    public Boolean getEnfCardiologica() {
+        return enfCardiologica;
+    }
+
+    public void setEnfCardiologica(Boolean enfCardiologica) {
+        this.enfCardiologica = enfCardiologica;
+    }
 }
+
+

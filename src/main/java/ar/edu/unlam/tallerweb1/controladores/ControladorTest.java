@@ -111,23 +111,23 @@ public class ControladorTest {
 
         Integer contador = 0;
 
-        if (embarazo == true) {
+        if (embarazo) {
             contador++;
         }
 
-        if (diabetes == true) {
+        if (diabetes) {
             contador++;
         }
-        if (enfHepatica == true) {
+        if (enfHepatica) {
             contador++;
         }
-        if (enfRespiratoria == true) {
+        if (enfRespiratoria) {
             contador++;
         }
-        if (enfRenal == true) {
+        if (enfRenal) {
             contador++;
         }
-        if (enfCardiologica == true) {
+        if (enfCardiologica) {
             contador++;
         }
 
