@@ -148,30 +148,83 @@
 				<%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%>
 
 				<br>
-				<h2>Posibles Infectados</h2>
+				<h2>Gestión de Pacientes</h2>
 				<br>
-				<table class="table table-hover">
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Nombre</th>
-						<th scope="col">Estado</th>
-						<th scope="col">Acciones</th>
-					</tr>
-					<c:forEach items="${poInfectados}" var="paciente">
-						<tr>
+				<div class="container">
+					
+						<button type="button" class="btn btn-primary btn-lg"  style="margin: 15px">Notificaciones</button>
+						<button onclick="sortTable()" type="button" class="btn btn-secondary btn-lg"  style="margin: 15px; align: left">Ordenar</button>
+					
+
+					<table id="myTable"
+						class="table table-bordered table-hover responsive nowrap text-center">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">NOMBRE</th>
+								<th scope="col">ESTADO</th>
+								<th scope="col">ACCIONES</th>
+								<th scope="col">PRIORIDAD</th>
+							</tr>
+							<c:forEach items="${poInfectados}" var="paciente">
+								<tr>
+						</thead>
+						<tbody>
 							<th scope="row"><c:out value="${paciente.getId()}" /></th>
-							<td class="align-middle"><c:out value="${paciente.getNombre()}" /></td>
 							<td class="align-middle"><c:out
+									value="${paciente.getNombre()}" /></td>
+							<td class="align-middle font-weight-bold"><c:out
 									value="${paciente.getInfectado() ? 'Infectado' : 'No infectado'}" /></td>
-							<td class="align-middle"><button type="button" class="btn btn-danger">Danger</button>
-								<button type="button" class="btn btn-warning">Warning</button></td>
+							<td class="align-middle"><button type="button"
+									class="btn btn-secondary">Derivar a Institución</button>
+								<button type="button" class="btn btn-warning">Mensaje</button>
+								<button type="button" class="btn btn-danger">Borrar</button></td>
+								
 							<%-- <%--<td><a href="<c:url value='/Camas/${paciente.getId()}' />" >Asignar cama</a></td> --%>
-						</tr>
-					</c:forEach>
-				</table>
+							</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</main>
 		</div>
 	</div>
+	<script>
+function sortTable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
+      //check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+</script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
