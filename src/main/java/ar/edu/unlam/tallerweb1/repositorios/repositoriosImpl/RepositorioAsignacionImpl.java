@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.repositorios.repositoriosImpl;
 
-import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioAsignacion;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;

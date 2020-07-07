@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <html lang="en">
@@ -50,7 +50,8 @@
 		<input class="form-control form-control-dark w-100" type="text"
 			placeholder="Search" aria-label="Search">
 		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap"><a class="nav-link" href="logout">Salir</a></li>
+			<li class="nav-item text-nowrap"><a class="nav-link"
+				href="logout">Salir</a></li>
 		</ul>
 	</nav>
 
@@ -59,56 +60,39 @@
 			<nav id="sidebarMenu"
 				class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
 				<div class="sidebar-sticky pt-3">
-					 <ul class="nav flex-column">
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="bienvenido">
-                            <span data-feather="home"></span>
-                            Home
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="disponibilidadCamas">
-                            <span data-feather="inbox"></span>
-                            Disponibilidad Camas
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="posiblesinfectados">
-                            <span data-feather="users"></span>
-                            Lista de Espera
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="consultarPaciente">
-                            <span data-feather="search"></span>
-                            Consultar paciente
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="internarPaciente">
-                            <span data-feather="user-plus"></span>
-                            Internar paciente
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="egresarPaciente">
-                            <span data-feather="user-minus"></span>
-                            Egresar paciente
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="listaPacientesInfectados">
-                            <span data-feather="users"></span>
-                            Pacientes Infectados
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="grafico-pacientes">
-                            <span data-feather="bar-chart-2"></span>
-                            Reportes
-                        </a>
-                    </li>
-                </ul>
+					<ul class="nav flex-column">
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="bienvenido"> <span data-feather="home"></span> Home
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="disponibilidadCamas"> <span data-feather="inbox"></span>
+								Disponibilidad Camas
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="posiblesinfectados"> <span data-feather="users"></span>
+								Lista de Espera
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="consultarPaciente"> <span data-feather="search"></span>
+								Consultar paciente
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="internarPaciente"> <span data-feather="user-plus"></span>
+								Internar paciente
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="egresarPaciente"> <span data-feather="user-minus"></span>
+								Egresar paciente
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="listaPacientesInfectados"> <span data-feather="users"></span>
+								Pacientes Infectados
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="grafico-pacientes"> <span data-feather="bar-chart-2"></span>
+								Reportes
+						</a></li>
+					</ul>
 
 					<!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Saved reports</span>
@@ -161,28 +145,94 @@
 					</div>
 				</div> -->
 
-				<%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%> 
+				<%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%>
 
-				<h2>Instituciones</h2>
-				<table class="table table-bordered table-white">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-    </tr>
-    <c:forEach items="${listaInstituciones}" var="institucion">
-        <tr>
-            <th scope="row"><c:out value="${institucion.getId()}"/></th>
-            <td><c:out value="${institucion.getNombre()}"/></td>
-        </tr>
-    </c:forEach>
-</table>
+				<br>
+				<h2>Gestión de Pacientes</h2>
+				<br>
+				<div class="container">
+					
+						<button type="button" class="btn btn-primary btn-lg"  style="margin: 15px">Notificaciones</button>
+						<button onclick="sortTable()" type="button" class="btn btn-secondary btn-lg"  style="margin: 15px; align: left">Ordenar</button>
+					
+
+					<table id="myTable"
+						class="table table-bordered table-hover responsive nowrap text-center">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">NOMBRE</th>
+								<th scope="col">ESTADO</th>
+								<th scope="col">ACCIONES</th>
+								<th scope="col">PRIORIDAD</th>
+							</tr>
+							<c:forEach items="${poInfectados}" var="paciente">
+								<tr>
+						</thead>
+						<tbody>
+							<th scope="row"><c:out value="${paciente.getId()}" /></th>
+							<td class="align-middle"><c:out
+									value="${paciente.getNombre()}" /></td>
+							<td class="align-middle font-weight-bold"><c:out
+									value="${paciente.getInfectado() ? 'Infectado' : 'No infectado'}" /></td>
+							<td class="align-middle"><button type="button"
+									class="btn btn-secondary">Derivar a Institución</button>
+								<button type="button" class="btn btn-warning">Mensaje</button>
+								<button type="button" class="btn btn-danger">Borrar</button></td>
+								
+							<%-- <%--<td><a href="<c:url value='/Camas/${paciente.getId()}' />" >Asignar cama</a></td> --%>
+							</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</main>
 		</div>
 	</div>
+	<script>
+function sortTable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
+      //check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+</script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
-	<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')
+	</script>
 	<script src="../assets/dist/js/bootstrap.bundle.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>

@@ -1,3 +1,18 @@
+USE tp_db; /*La eliminación siguiente se hace únicamente sobre la BD mencionada*/
+
+/*------- ELIMINACION --------*/
+
+SET sql_safe_updates=0;
+DELETE FROM asignacion;
+DELETE FROM cama;
+DELETE FROM usuario; 
+DELETE FROM domicilio;
+DELETE FROM localidad;
+DELETE FROM partido;
+DELETE FROM provincia;
+
+/*----- INSERCION-------*/
+
 INSERT INTO provincia (id, nombreProvincia)
 VALUES (1, "BUENOS_AIRES"),
 	   (2, "CORDOBA"),
@@ -46,7 +61,7 @@ INSERT INTO usuario(rol, DTYPE, id, nombre, apellido, email, password, numeroDoc
 VALUES("PACIENTE", "Paciente", 6, "Alejandra", "Rodriguez", "alejandro@email.com", "1234", "1", "DNI", 2, true, null),
       ("PACIENTE", "Paciente", 7, "Alejandra", "Rodriguez", "alejandra@email.com", "1234", "2", "DNI", 3, true, null),
 	  ("PACIENTE", "Paciente", 8, "Alan", "Rodriguez", "alan@email.com", "1234", "3", "DNI", 4, true, null),
-      ("PACIENTE", "Paciente", 9, "Ana", "Rodriguez", "ana@email.com", "1234", "3", "DNI", 3, true, null),
+      ("PACIENTE", "Paciente", 9, "Ana", "Rodriguez", "ana@email.com", "1234", "4", "DNI", 3, true, null),
       ("PACIENTE", "Paciente", 10, "Carlos", "Gómez", "carlos@email.com", "1234", "32100100", "DNI", 3, true, null),
       ("PACIENTE", "Paciente", 11, "Carla", "Gómez", "carla@email.com", "1234", "32110100", "DNI", 3, true, null);
 
@@ -135,5 +150,6 @@ VALUES (5, '2020-01-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "CURADO",
 /* ----- INTERNACION 2 (rehusando 2 camas liberadas)----- */     
 INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, paciente_id)
 VALUES (9, '2020-01-01 01:00:00.000000', null, null, 10, 15),
-	   (10, '2020-02-01 01:00:00.000000', null, null, 11, 16);
+	   (10, '2020-02-01 01:00:00.000000', null, null, 11, 16),
+       (11, '2020-02-01 01:00:00.000000', null, null, 12, 8);
        

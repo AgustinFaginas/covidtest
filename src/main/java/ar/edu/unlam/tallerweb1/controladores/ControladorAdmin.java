@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
 @Controller
@@ -27,7 +29,7 @@ public class ControladorAdmin {
 	@Autowired
 	private ServicioUsuario servicioUsuario;
 	@Autowired
-	private ServicioInstitucion servicioInstitucion;
+	private ServicioPaciente servicioPaciente;
 	
 	
 	@RequestMapping("admin")
@@ -75,9 +77,9 @@ public class ControladorAdmin {
 			return new ModelAndView("redirect:/denied");
 		}
 
-		List<Institucion> listaInstituciones = servicioInstitucion.obtenerListaInstituciones();
+		List<Paciente> poInfectados = servicioPaciente.posiblesInfectados();
 
-		model.put("listaInstituciones", listaInstituciones);
+		model.put("poInfectados", poInfectados);
 
 		return new ModelAndView("panel", model);
 
