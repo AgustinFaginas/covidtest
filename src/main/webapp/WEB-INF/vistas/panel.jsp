@@ -147,8 +147,10 @@
 
 				<%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%>
 
-				<h2>Instituciones</h2>
-				<table class="table table-bordered table-white">
+				<br>
+				<h2>Posibles Infectados</h2>
+				<br>
+				<table class="table table-hover">
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Nombre</th>
@@ -158,8 +160,12 @@
 					<c:forEach items="${poInfectados}" var="paciente">
 						<tr>
 							<th scope="row"><c:out value="${paciente.getId()}" /></th>
-							<td><c:out value="${paciente.getNombre()}" /></td>
-							<td><c:out value="${paciente.getInfectado()}" /></td>
+							<td class="align-middle"><c:out value="${paciente.getNombre()}" /></td>
+							<td class="align-middle"><c:out
+									value="${paciente.getInfectado() ? 'Infectado' : 'No infectado'}" /></td>
+							<td class="align-middle"><button type="button" class="btn btn-danger">Danger</button>
+								<button type="button" class="btn btn-warning">Warning</button></td>
+							<%-- <%--<td><a href="<c:url value='/Camas/${paciente.getId()}' />" >Asignar cama</a></td> --%>
 						</tr>
 					</c:forEach>
 				</table>
@@ -169,7 +175,11 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
-	<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')
+	</script>
 	<script src="../assets/dist/js/bootstrap.bundle.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
