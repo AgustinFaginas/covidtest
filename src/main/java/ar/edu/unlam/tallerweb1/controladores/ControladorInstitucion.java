@@ -104,35 +104,29 @@ public class ControladorInstitucion {
 		return new ModelAndView("listaInstituciones", model);
 	}
 
-	
 	@RequestMapping("bienvenido")
 	public ModelAndView irAbienvenido(HttpServletRequest request) {
-		
+
 		ModelMap model = new ModelMap();
 
 		if (request.getSession().getAttribute("ID") == null) {
 			return new ModelAndView("redirect:/home");
 		}
-			
-			if (request.getSession().getAttribute("ROL")==Rol.INSTITUCION) {
-		
-		
+
+		if (request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
+
 			Long id = (Long) request.getSession().getAttribute("ID");
 			Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
-			
+
 			String nombre = institucion.getNombre();
 			Integer camas = (int) servicioCama.obtenerCamasPorInstitucion(institucion).size();
-			
+
 			model.put("nombre", nombre);
 			model.put("camas", camas);
 
 			return new ModelAndView("bienvenido", model);
-			
-			}
-			return new ModelAndView("redirect:/denied");
+
+		}
+		return new ModelAndView("redirect:/denied");
 	}
-
-	
-	
-
 }
