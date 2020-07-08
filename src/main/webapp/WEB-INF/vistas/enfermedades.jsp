@@ -75,7 +75,7 @@
                     <h3 class="text-center my-2">Complete el formulario con sus datos</h3>
                 </div>
                 <div class="card-body text-dark">
-                    <form action="validarEnfermedades" method="get"
+                    <form action="validarEnfermedades" method="POST" modelAttribute="paciente"
                           class="d-flex justify-content-center flex-column justify-content-center">
 
                         <div class="form-row mt-4">
@@ -139,7 +139,7 @@
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary text-center mt-5 w-50">
+                            <button type="submit" class="btn btn-primary text-center mt-5 w-50" value="${paciente.getId()}">
                                 Enviar
                             </button>
                         </div>

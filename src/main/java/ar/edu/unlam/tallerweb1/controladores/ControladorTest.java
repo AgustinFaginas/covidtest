@@ -2,11 +2,16 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import ar.edu.unlam.tallerweb1.modelo.IMC;
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import com.google.protobuf.Enum;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +24,9 @@ public class ControladorTest {
 
     @Inject
     private ServicioTest servicioTest;
+
+    @Inject
+    private ServicioPaciente servicioPaciente;
 
     public ServicioTest getServicioTest() {
         return servicioTest;
@@ -47,7 +55,6 @@ public class ControladorTest {
             return new ModelAndView("testNegativo");
         }
 
-
     }
 
     @RequestMapping("/testPositivo")
@@ -64,53 +71,63 @@ public class ControladorTest {
 
     }
 
-
     @RequestMapping("/generarPermiso")
     public ModelAndView generarPermiso() {
 
         return new ModelAndView("generarPermiso");
 
     }
+
     @RequestMapping(value = "/validarPermiso", method = RequestMethod.POST)
     public ModelAndView validarPermiso(
             @RequestParam(value = "nombre", required = false) String nombre,
             @RequestParam(value = "apellido", required = false) String apellido,
             @RequestParam(value = "edad", required = false) Integer edad,
-            @RequestParam(value = "tipoDocumento", required = false)String tipoDocumento,
-            @RequestParam(value = "numeroDocumento", required = false)Integer numeroDocumento,
-            @RequestParam(value = "motivo", required = false)String motivo
+            @RequestParam(value = "tipoDocumento", required = false) String tipoDocumento,
+            @RequestParam(value = "numeroDocumento", required = false) Integer numeroDocumento,
+            @RequestParam(value = "motivo", required = false) String motivo
     ) {
 
-        if (servicioTest.realizarPermiso(nombre, apellido, edad,tipoDocumento, numeroDocumento,motivo)) {
-           ModelMap model = new ModelMap();
-           model.put("nombre", nombre);
-           model.put("apellido", apellido);
-           model.put("edad", edad);
-           model.put("numeroDocumento", tipoDocumento);
-           model.put("motivo", motivo);
-        	return new ModelAndView("permisoPositivo",model);
+        if (servicioTest.realizarPermiso(nombre, apellido, edad, tipoDocumento, numeroDocumento, motivo)) {
+            ModelMap model = new ModelMap();
+            model.put("nombre", nombre);
+            model.put("apellido", apellido);
+            model.put("edad", edad);
+            model.put("numeroDocumento", tipoDocumento);
+            model.put("motivo", motivo);
+            return new ModelAndView("permisoPositivo", model);
         } else {
             return new ModelAndView("permisoNegativo");
         }
 
-
     }
+
     @RequestMapping("/permisoPositivo")
     public ModelAndView permisoPositivo() {
 
         return new ModelAndView("permisoPositivo");
 
     }
-    
 
     @RequestMapping("/enfermedades")
-    public ModelAndView enfermedades() {
+    public ModelAndView enfermedades(
+            //@RequestParam(value = "ID_PACIENTE", required = false) Long ID_PACIENTE,
+            HttpServletRequest request) {
+
+        /*Long id_paciente = (Long) request.getSession().getAttribute("ID_PACIENTE");
+
+        Paciente paciente = servicioPaciente.consultarPacientePorId(id_paciente);*/
 
         return new ModelAndView("enfermedades");
     }
 
-    @RequestMapping(value = "/validarEnfermedades", method = RequestMethod.GET)
+    /*
+    * @RequestMapping(path = "/validar-enfermedades", method = RequestMethod.POST)
+    public ModelAndView validarLogin(@ModelAttribute("paciente") Usuario usuario, HttpServletRequest request) {*/
+    @RequestMapping(path = "/validarEnfermedades", method = RequestMethod.POST)
     public ModelAndView validarEnfermedades(
+            @ModelAttribute("paciente") Usuario usuario,
+            HttpServletRequest request,
             @RequestParam(value = "tieneEmbarazo", required = false) Boolean tieneEmbarazo,
             @RequestParam(value = "esFumador", required = false) Boolean esFumador,
             @RequestParam(value = "tieneDiabetes", required = false) Boolean tieneDiabetes,
@@ -121,6 +138,10 @@ public class ControladorTest {
             @RequestParam(value = "estatura", required = false) Float estatura,
             @RequestParam(value = "peso", required = false) Float peso
     ) {
+
+        Long id_paciente = (Long) request.getSession().getAttribute("ID_PACIENTE");
+
+        Paciente paciente = servicioPaciente.consultarPacientePorId(id_paciente);
 
         if (tieneEmbarazo == null) {
             tieneEmbarazo = false;
@@ -148,24 +169,31 @@ public class ControladorTest {
 
         if (tieneEmbarazo) {
             contador++;
+            paciente.setTieneEmbarazo(true);
         }
         if (esFumador) {
             contador++;
+            paciente.setEsFumador(true);
         }
         if (tieneDiabetes) {
             contador++;
+            paciente.setTieneDiabetes(true);
         }
         if (tieneEnfHepatica) {
             contador++;
+            paciente.setTieneEnfHepatica(true);
         }
         if (tieneEnfRespiratoria) {
             contador++;
+            paciente.setTieneEnfRespiratoria(true);
         }
         if (tieneEnfRenal) {
             contador++;
+            paciente.setTieneEnfRenal(true);
         }
         if (tieneEnfCardiologica) {
             contador++;
+            paciente.setTieneEnfCardiologica(true);
         }
 
         Float estaturaMetros = estatura / 100;
@@ -181,6 +209,6 @@ public class ControladorTest {
         return new ModelAndView("validarEnfermedades", model);
 
     }
-    
-    
+
+
 }
