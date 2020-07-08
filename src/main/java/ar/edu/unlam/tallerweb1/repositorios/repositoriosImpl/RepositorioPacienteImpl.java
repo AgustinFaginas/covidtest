@@ -32,7 +32,7 @@ public class RepositorioPacienteImpl implements RepositorioPaciente {
 
         sessionFactory.getCurrentSession().save(paciente);
     }
-    
+
     @Override
     public void modificarPaciente(Paciente paciente) {
 
@@ -40,7 +40,7 @@ public class RepositorioPacienteImpl implements RepositorioPaciente {
     }
 
     @SuppressWarnings("deprecation")
-	public Paciente consultarPacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento) {
+    public Paciente consultarPacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento) {
 
         return (Paciente) sessionFactory.getCurrentSession().createCriteria(Paciente.class)
                 .add(Restrictions.eq("numeroDocumento", numeroDocumento)).add(Restrictions.eq("tipoDocumento", tipoDocumento))
@@ -57,37 +57,42 @@ public class RepositorioPacienteImpl implements RepositorioPaciente {
                 .uniqueResult();
     }
 
-    @SuppressWarnings({ "unchecked", "deprecation" })
-	@Override
+    @SuppressWarnings({"unchecked", "deprecation"})
+    @Override
     public List<Paciente> pacientes() {
         return sessionFactory.getCurrentSession().createCriteria(Paciente.class)
                 .list();
     }
 
-    @SuppressWarnings({ "unchecked", "deprecation" })
-	@Override
+    @SuppressWarnings({"unchecked", "deprecation"})
+    @Override
     public List<Paciente> pacientesInfectados() {
         return sessionFactory.getCurrentSession().createCriteria(Paciente.class)
                 .add(Restrictions.eq("infectado", true))
                 .list();
     }
 
-    @SuppressWarnings({ "unchecked", "deprecation" })
-	@Override
+    @SuppressWarnings({"unchecked", "deprecation"})
+    @Override
     public List<Paciente> posiblesInfectados() {
         return sessionFactory.getCurrentSession().createCriteria(Paciente.class)
                 .add(Restrictions.eq("posibleInfectado", true))
                 .list();
     }
 
-    @SuppressWarnings({ "unchecked", "deprecation" })
+    @SuppressWarnings({"unchecked", "deprecation"})
     @Override
     public List<Paciente> pacientesInternados() {
         return sessionFactory.getCurrentSession().createCriteria(Asignacion.class)
-        		.setProjection(Projections.projectionList()
-            	 .add(Projections.property("paciente"), "paciente"))
-        		.add(Restrictions.isNull("motivoEgreso"))
+                .setProjection(Projections.projectionList()
+                        .add(Projections.property("paciente"), "paciente"))
+                .add(Restrictions.isNull("motivoEgreso"))
                 .list();
+    }
+
+    @Override
+    public void actualizarPaciente(Paciente paciente) {
+        sessionFactory.getCurrentSession().update(paciente);
     }
 
 }

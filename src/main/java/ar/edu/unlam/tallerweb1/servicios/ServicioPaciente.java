@@ -8,7 +8,7 @@ import java.util.List;
 public interface ServicioPaciente {
 
     public void registrarPaciente(Paciente paciente);
-    
+
     public void modificarPaciente(Paciente paciente);
 
     public Paciente consultarPacientePorDoc(String ndoc, TipoDocumento tipoDoc);
@@ -23,4 +23,5 @@ public interface ServicioPaciente {
 
     public List<Paciente> pacientesInternados();
 
+    void actualizarPaciente(Paciente paciente);
 }

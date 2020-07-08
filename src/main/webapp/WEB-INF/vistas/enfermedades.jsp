@@ -75,7 +75,7 @@
                     <h3 class="text-center my-2">Complete el formulario con sus datos</h3>
                 </div>
                 <div class="card-body text-dark">
-                    <form action="validarEnfermedades" method="get"
+                    <form action="validarEnfermedades" method="POST" modelAttribute="paciente"
                           class="d-flex justify-content-center flex-column justify-content-center">
 
                         <div class="form-row mt-4">
@@ -99,40 +99,48 @@
 
 
                         <div class="form-group form-check my-4">
-                            <input type="checkbox" class="form-check-input" id="embarazo" name="embarazo">
-                            <label class="form-check-label h6" for="embarazo">Estoy embarazada
+                            <input type="checkbox" class="form-check-input" id="tieneEmbarazo" name="tieneEmbarazo">
+                            <label class="form-check-label h6" for="tieneEmbarazo">Estoy embarazada
                             </label></label>
                         </div>
                         <div class="form-group form-check my-4">
-                            <input type="checkbox" class="form-check-input" id="diabetes" name="diabetes">
-                            <label class="form-check-label h6" for="diabetes">Tengo diabetes</label>
+                            <input type="checkbox" class="form-check-input" id="esFumador" name="esFumador">
+                            <label class="form-check-label h6" for="esFumador">¿Es o fue una persona que fuma o fumó
+                                habitualmente?
+                            </label></label>
                         </div>
                         <div class="form-group form-check my-4">
-                            <input type="checkbox" class="form-check-input" id="enfHepatica" name="enfHepatica">
-                            <label class="form-check-label h6" for="enfHepatica">Tengo alguna enfermedad
+                            <input type="checkbox" class="form-check-input" id="tieneDiabetes" name="tieneDiabetes">
+                            <label class="form-check-label h6" for="tieneDiabetes">Tengo diabetes</label>
+                        </div>
+                        <div class="form-group form-check my-4">
+                            <input type="checkbox" class="form-check-input" id="tieneEnfHepatica"
+                                   name="tieneEnfHepatica">
+                            <label class="form-check-label h6" for="tieneEnfHepatica">Tengo alguna enfermedad
                                 hepática</label>
                         </div>
                         <div class="form-group form-check my-4">
-                            <input type="checkbox" class="form-check-input" id="enfRespiratoria"
-                                   name="enfRespiratoria">
-                            <label class="form-check-label h6" for="enfRespiratoria">Tengo alguna enfermedad
+                            <input type="checkbox" class="form-check-input" id="tieneEnfRespiratoria"
+                                   name="tieneEnfRespiratoria">
+                            <label class="form-check-label h6" for="tieneEnfRespiratoria">Tengo alguna enfermedad
                                 respiratoria</label>
                         </div>
                         <div class="form-group form-check my-4">
-                            <input type="checkbox" class="form-check-input" id="enfRenal"
-                                   name="enfRenal">
-                            <label class="form-check-label h6" for="enfRenal">Tengo alguna enfermedad
+                            <input type="checkbox" class="form-check-input" id="tieneEnfRenal"
+                                   name="tieneEnfRenal">
+                            <label class="form-check-label h6" for="tieneEnfRenal">Tengo alguna enfermedad
                                 renal crónica</label>
                         </div>
                         <div class="form-group form-check my-4">
-                            <input type="checkbox" class="form-check-input" id="enfCardiologica"
-                                   name="enfCardiologica">
-                            <label class="form-check-label h6" for="enfCardiologica">Tengo alguna enfermedad
+                            <input type="checkbox" class="form-check-input" id="tieneEnfCardiologica"
+                                   name="tieneEnfCardiologica">
+                            <label class="form-check-label h6" for="tieneEnfCardiologica">Tengo alguna enfermedad
                                 cardiológica</label>
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary text-center mt-5 w-50">
+                            <button type="submit" class="btn btn-primary text-center mt-5 w-50"
+                                    value="${paciente.getId()}">
                                 Enviar
                             </button>
                         </div>

@@ -48,6 +48,10 @@ public class ControladorRegistrarPaciente {
 
     ) {
 
+        if (paciente == null) {
+            return new ModelAndView("redirect:/denied");
+        }
+
         ModelMap model = new ModelMap();
 
         if (servicioUsuario.consultarUsuarioPorEmail(paciente.getEmail()) == null &&
@@ -65,12 +69,15 @@ public class ControladorRegistrarPaciente {
             String email = paciente.getEmail();
             TipoDocumento tipoDocumento = paciente.getTipoDocumento();
 
+            Paciente pacienteBuscado = servicioPaciente.consultarPacientePorDoc(documento, tipoDocumento);
+            request.getSession().setAttribute("ID_PACIENTE", pacienteBuscado.getId());
+
             model.put("nombre", nombre);
             model.put("documento", documento);
             model.put("tipoDocumento", tipoDocumento);
             model.put("email", email);
 
-            return new ModelAndView("detalleRegistroPaciente", model);
+            return new ModelAndView("enfermedades", model);
         } else {
 
             model.put("error", "Ya existe un usuario registrado con su mail o documento");
