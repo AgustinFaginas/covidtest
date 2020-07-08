@@ -9,7 +9,7 @@ public interface RepositorioPaciente {
 
     void registrarPaciente(Paciente paciente);
 
-	void modificarPaciente(Paciente paciente);
+    void modificarPaciente(Paciente paciente);
 
     Paciente consultarPacientePorDoc(String numeroDocumento, TipoDocumento tipoDocumento);
 
@@ -21,6 +21,7 @@ public interface RepositorioPaciente {
 
     List<Paciente> posiblesInfectados();
 
-	List<Paciente> pacientesInternados();
+    List<Paciente> pacientesInternados();
 
+    void actualizarPaciente(Paciente paciente);
 }

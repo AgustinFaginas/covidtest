@@ -72,12 +72,32 @@
 <h2 class="text-center mb-3 mt-5">Compruebe su estado cada 48hs y recuerde seguir los consejos para prevenir el
     Coronavirus</h2>
 
-<h3>${nombre}</h3>
-<h3>${apellido}</h3>
-<h3>${edad}</h3>
-<h3>${tipoDocumento}</h3>
-<h3>${numeroDocumento}</h3>
-<h3>${motivo}</h3>
+<div class="container-fluid my-5">
+    <div class="row">
+
+        <div class="col-4"></div>
+
+        <div class="col-4">
+
+            <div class="card border-dark mb-3">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title text-center h3">Permiso de circulación</h5>
+                    <p class="card-text">Usted puede circular por 48 horas. Recuerde realizarse un autotest
+                        diariamente</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">${apellido}</li>
+                    <li class="list-group-item">${nombre}</li>
+                    <li class="list-group-item">${numeroDocumento}</li>
+                    <li class="list-group-item">${tipoDocumento}</li>
+                    <li class="list-group-item">${motivo}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

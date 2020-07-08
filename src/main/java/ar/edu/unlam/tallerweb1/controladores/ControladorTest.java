@@ -8,7 +8,6 @@ import ar.edu.unlam.tallerweb1.modelo.IMC;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
-import com.google.protobuf.Enum;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -95,7 +94,7 @@ public class ControladorTest {
             model.put("edad", edad);
             model.put("numeroDocumento", tipoDocumento);
             model.put("motivo", motivo);
-            return new ModelAndView("permisoPositivo", model);
+            return new ModelAndView("permisoAceptado", model);
         } else {
             return new ModelAndView("permisoNegativo");
         }
@@ -105,18 +104,18 @@ public class ControladorTest {
     @RequestMapping("/permisoPositivo")
     public ModelAndView permisoPositivo() {
 
-        return new ModelAndView("permisoPositivo");
+        return new ModelAndView("permisoAceptado");
 
     }
 
     @RequestMapping("/enfermedades")
     public ModelAndView enfermedades(
-            //@RequestParam(value = "ID_PACIENTE", required = false) Long ID_PACIENTE,
+            @RequestParam(value = "ID_PACIENTE", required = false) Long ID_PACIENTE,
             HttpServletRequest request) {
 
-        /*Long id_paciente = (Long) request.getSession().getAttribute("ID_PACIENTE");
+        Long id_paciente = (Long) request.getSession().getAttribute("ID_PACIENTE");
 
-        Paciente paciente = servicioPaciente.consultarPacientePorId(id_paciente);*/
+        Paciente paciente = servicioPaciente.consultarPacientePorId(id_paciente);
 
         return new ModelAndView("enfermedades");
     }
@@ -195,6 +194,8 @@ public class ControladorTest {
             contador++;
             paciente.setTieneEnfCardiologica(true);
         }
+
+        servicioPaciente.actualizarPaciente(paciente);
 
         Float estaturaMetros = estatura / 100;
 

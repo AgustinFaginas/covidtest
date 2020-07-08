@@ -79,7 +79,8 @@
                     <h3 class="text-center my-2">Complete el formulario con sus datos</h3>
                 </div>
                 <div class="card-body text-dark">
-                    <form action="validarPermiso" method="POST"  class="d-flex justify-content-center flex-column justify-content-center">
+                    <form action="validarPermiso" method="POST"
+                          class="d-flex justify-content-center flex-column justify-content-center">
                         <div class="form-row my-4">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -113,19 +114,17 @@
                                        data-msg="Ingrese número de CUIT valido" required/>
                             </div>
                         </div>
-                            <div class="form-row my-4">
-                            <div class="form-group col-6">
-                                <label for="motivo">Motivo del permiso</label>
-                                <select name="motivo" id="motivo" class="form-control br-radius-zero"
-                                        required>
-                                    <option id="motivo1">Asistencia de un mayor
-                                    <option id="motivo2">Turno medico con urgencia
-                                    <option id="motivo3">Tramite judicial
-                                    <option id="motivo4">Trabajo escencial
-                                </select>
-                            </div>
-                            
-                           
+
+                        <div class="form-row my-4">
+                            <label for="motivo">Motivo del permiso</label>
+                            <select name="motivo" id="motivo" class="form-control br-radius-zero"
+                                    required>
+                                <option id="motivo1">Asistencia a un adulto mayor
+                                <option id="motivo2">Turno médico
+                                <option id="motivo3">Trámite
+                                <option id="motivo4">Trabajo escencial
+                            </select>
+                        </div>
 
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary text-center mt-5 w-50">
@@ -137,84 +136,12 @@
                 </div>
             </div>
 
-
         </div>
 
         <div class="col-4"></div>
 
     </div>
 </div>
-
-<%--<div class="d-flex my-5 justify-content-center">
-
-    <div class="row">
-
-        <div class="col-1">
-
-        </div>
-
-        <div class="col-10" style="width: 30rem;">
-
-            <form action="detalleRegistroPaciente" method="POST" modelAttribute="paciente">
-
-                <div class="form-row">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required>
-                </div>
-
-                <div class="form-row">
-                    <label for="apellido">Apellido</label>
-                    <input type="text" class="form-control" id="apellido" name="apellido" required>
-
-                </div>
-
-                <div class="form-row">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-
-                <div class="form-row">
-                    <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-
-                <div class="form-row">
-
-                    <div class="col-4 mb-3">
-                        <label for="tipoDni">Tipo Documento</label>
-                        <select name="tipoDocumento" id="tipoDocumento" class="form-control br-radius-zero" required>
-                            <option id="tipoDocumento">DNI
-                            <option id="tipoDocumento">PASAPORTE
-                            <option id="tipoDocumento">LIBRETA CÍVICA
-                        </select>
-                    </div>
-
-                    <div class="col-8 mb-3">
-                        <label for="numeroDni">Numero de documento</label>
-                        <input type="text" name="numeroDocumento" class="form-control br-radius-zero"
-                               id="numeroDocumento"
-                               placeholder="Ingrese número de documento" data-rule="minlen:1"
-                               data-msg="Ingrese número de CUIT valido" required/>
-                    </div>
-                </div>
-
-
-                <div class="form-col">
-                    <button class="btn btn-primary" type="submit">Enviar</button>
-                </div>
-
-            </form>
-
-
-        </div>
-
-        <div class="col-1">
-
-        </div>
-
-    </div>
-</div>--%>
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
