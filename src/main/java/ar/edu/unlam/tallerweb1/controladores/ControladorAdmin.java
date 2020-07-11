@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
@@ -58,11 +59,30 @@ public class ControladorAdmin {
 			
 			
 	}
-	
+	//TERMINAR - NICO - debe llevar al home de admin.
 	@RequestMapping(path = "/inicioAdmin", method = RequestMethod.GET)
 	public ModelAndView irAhomeAdmin() {
 		return new ModelAndView("homeAdmin");
 	}
+
+	@RequestMapping("crearMensaje/{id}")
+	public String crearMensaje(@PathVariable Long id, Model m) {
+
+		Paciente p=servicioPaciente.consultarPacientePorId(id);    
+        m.addAttribute("p",p);
+		
+		return "crearMensaje";
+
+	}
+	
+	
+	
+//	@RequestMapping(path = "/crearMensaje", method = RequestMethod.GET)
+//	public ModelAndView crearMensaje() {
+//		
+//		
+//		return new ModelAndView("crearMensaje");
+//	}
 	
 	
 	@RequestMapping("/panel")
@@ -84,7 +104,8 @@ public class ControladorAdmin {
 		return new ModelAndView("panel", model);
 
 	}
-
+	
+	//PAGINA DE ACCESO DENEGADO POR DEFAULT
 	@RequestMapping(path = "/denied", method = RequestMethod.GET)
 	public ModelAndView denied() {
 		return new ModelAndView("denied");

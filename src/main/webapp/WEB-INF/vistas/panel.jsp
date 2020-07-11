@@ -151,10 +151,10 @@
 				<h2>Gestión de Pacientes</h2>
 				<br>
 				<div class="container">
-					
-						<button type="button" class="btn btn-primary btn-lg"  style="margin: 15px">Notificaciones</button>
-						<button onclick="sortTable()" type="button" class="btn btn-secondary btn-lg"  style="margin: 15px; align: left">Ordenar</button>
-					
+
+
+					<button type="button" class="btn btn-outline-primary">Notificaciones</button>
+					<button type="button" class="btn btn-outline-secondary">Ordenar</button>
 
 					<table id="myTable"
 						class="table table-bordered table-hover responsive nowrap text-center">
@@ -176,11 +176,12 @@
 							<td class="align-middle font-weight-bold"><c:out
 									value="${paciente.getInfectado() ? 'Infectado' : 'No infectado'}" /></td>
 							<td class="align-middle"><button type="button"
-									class="btn btn-secondary">Derivar a Institución</button>
-								<button type="button" class="btn btn-warning">Mensaje</button>
+									class="btn btn-secondary">Derivar a Institución</button> <a
+								class="btn btn-warning"
+								href="<c:url value='/crearMensaje/${paciente.getId()}'/>"
+								role="button"> Enviar Mensaje</a>
 								<button type="button" class="btn btn-danger">Borrar</button></td>
-								
-							<%-- <%--<td><a href="<c:url value='/Camas/${paciente.getId()}' />" >Asignar cama</a></td> --%>
+
 							</tr>
 							</c:forEach>
 						</tbody>
