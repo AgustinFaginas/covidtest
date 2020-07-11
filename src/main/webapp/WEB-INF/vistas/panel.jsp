@@ -153,8 +153,8 @@
 				<div class="container">
 
 
-					<button type="button" class="btn btn-outline-primary">Notificaciones</button>
-					<button type="button" class="btn btn-outline-secondary">Ordenar</button>
+					<button type="button" class="btn btn-outline-primary" style="margin: 15px">Notificaciones</button>
+					<button type="button" class="btn btn-outline-secondary" style="margin: 15px">Ordenar</button>
 
 					<table id="myTable"
 						class="table table-bordered table-hover responsive nowrap text-center">
