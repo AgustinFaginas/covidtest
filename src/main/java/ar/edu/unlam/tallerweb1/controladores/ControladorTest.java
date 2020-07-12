@@ -84,6 +84,11 @@ public class ControladorTest {
             @RequestParam(value = "edad", required = false) Integer edad,
             @RequestParam(value = "tipoDocumento", required = false) String tipoDocumento,
             @RequestParam(value = "numeroDocumento", required = false) Integer numeroDocumento,
+            @RequestParam(value = "numeroCalle", required = false) Integer numeroCalle,
+            @RequestParam(value = "calle", required = false) String calle,
+            @RequestParam(value = "localidad", required = false) String localidad,
+            @RequestParam(value = "telefono", required = false) Integer telefono,
+            @RequestParam(value = "mail", required = false) String mail,
             @RequestParam(value = "motivo", required = false) String motivo
     ) {
 
@@ -92,7 +97,13 @@ public class ControladorTest {
             model.put("nombre", nombre);
             model.put("apellido", apellido);
             model.put("edad", edad);
-            model.put("numeroDocumento", tipoDocumento);
+            model.put("tipoDocumento", tipoDocumento);
+            model.put("numeroDocumento", numeroDocumento);
+            model.put("localidad", localidad);
+            model.put("calle", calle);
+            model.put("numeroCalle", numeroCalle);
+            model.put("telefono", telefono);
+            model.put("mail", mail);
             model.put("motivo", motivo);
             return new ModelAndView("permisoAceptado", model);
         } else {
