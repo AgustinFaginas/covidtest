@@ -16,6 +16,8 @@
 
     <title>AsignAR</title>
 
+    <link rel="icon" href="img/asignar-logo.ico">
+
     <style>
         #navbar-top:hover {
             text-decoration: none;
@@ -97,6 +99,35 @@
                         </div>
 
                         <div class="form-row my-4">
+                            <label for="localidad">Localidad</label>
+                            <input type="text" class="form-control" id="localidad" name="localidad" required>
+                        </div>
+
+                        <div class="form-row my-4">
+                            <div class="form-group col-6">
+                                <label for="calle">Calle</label>
+                                <input type="text" name="calle" class="form-control br-radius-zero"
+                                       id="calle" required/>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="numeroCalle">Número</label>
+                                <input type="number" name="numeroCalle" class="form-control br-radius-zero"
+                                       id="numeroCalle"
+                                       data-msg="Ingrese número de calle válido" required/>
+                            </div>
+                        </div>
+
+                        <div class="form-row my-4">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                        </div>
+
+                        <div class="form-row my-4">
+                            <label for="email">Correo electrónico</label>
+                            <input type="text" class="form-control" id="email" required>
+                        </div>
+
+                        <div class="form-row my-4">
                             <div class="form-group col-6">
                                 <label for="tipoDocumento">Tipo Documento</label>
                                 <select name="tipoDocumento" id="tipoDocumento" class="form-control br-radius-zero"
@@ -107,11 +138,10 @@
                                 </select>
                             </div>
                             <div class="form-group col-6">
-                                <label for="numeroDocumento">Numero de documento</label>
+                                <label for="numeroDocumento">Número de documento</label>
                                 <input type="text" name="numeroDocumento" class="form-control br-radius-zero"
                                        id="numeroDocumento"
-                                       placeholder="Ingrese número de documento" data-rule="minlen:1"
-                                       data-msg="Ingrese número de CUIT valido" required/>
+                                       data-msg="Ingrese número de CUIT válido" required/>
                             </div>
                         </div>
 
