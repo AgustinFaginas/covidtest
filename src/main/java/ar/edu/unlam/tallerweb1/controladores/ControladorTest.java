@@ -20,8 +20,23 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioTest;
 
 @Controller
 public class ControladorTest {
+	
 
-    @Inject
+    public ServicioPaciente getServicioPaciente() {
+		return servicioPaciente;
+	}
+
+
+	public void setServicioPaciente(ServicioPaciente servicioPaciente) {
+		this.servicioPaciente = servicioPaciente;
+	}
+
+
+	public void setServicioTest(ServicioTest servicioTest) {
+		this.servicioTest = servicioTest;
+	}
+
+	@Inject
     private ServicioTest servicioTest;
 
     @Inject
