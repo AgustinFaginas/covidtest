@@ -4,59 +4,72 @@
 
 <jsp:include page="../../partial/headerInstitucionesParte1.jsp" />
 
-<title>Paso 2: Lista Camas Disponibles</title>
+<title>Paso 1: Lista Pacientes Infectados</title>
     
 <jsp:include page="../../partial/headerInstitucionesParte2.jsp" />
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-   
-     
+
+         <div class="container m-5">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div>
-        <h4>Pacientes Infectados</h4> 
+        <h2>Pacientes Infectados</h2> 
         </div>
-   
        
       </div>
       	
-    <div class="">
-        <div>
 
-		 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div>
-        		<h6 class="">PASO 2: Elegir la cama</h6>
+		
+		<c:if test="${not empty listaPacientesInfectados}">
+	
+	
+		 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+        <div>
+        		
+		<h6 class="">PASO 2: Elegir el paciente a internar</h6>	
+		
         </div>
         
         <div>
-        <p class="px-md-5"> ${pacienteAInternar.getApellido()}, ${pacienteAInternar.getNombre()}</p>
+        <h5 class="">CAMA: ${cama.getDescripcion()}, ${cama.getTipoCama().name()}</h5>
         </div>
        
       </div>
-	
-	  <div class="table-responsive">
+		
+		  <div class="table-responsive">
 		    <table class="table table-bordered table-hover responsive nowrap text-center">
 		        <tr>
-		            <th class="bg-primary text-white">DESCRIPCION</th>
-		            <th class="bg-primary text-white">TIPO</th>
-		            <th class="bg-primary text-white">SELECCIONAR</th>
+		            <th class="bg-primary text-white">NOMBRE</th>
+		            <th class="bg-primary text-white">APELLIDO</th>
+		            <th class="bg-primary text-white">DNI</th>
+		            <th class="bg-primary text-white">PRIORIDAD</th>
+		            <th class="bg-primary text-white">ACCIÓN</th>
 		        </tr>
-		        
-		        <c:forEach items="${camas}" var="cama">
+		        <c:forEach items="${listaPacientesInfectados}" var="paciente">
 		            <tr>
-		                <td><c:out value="${cama.getDescripcion()}"/></td>
-		                <td><c:out value="${cama.getTipoCama().name()}"/></td>
+		                <td><c:out value="${paciente.getNombre()}"/></td>
+		                <td><c:out value="${paciente.getApellido()}"/></td>
+		                <td><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
+		                <td><c:out value="${paciente.getPrioridad()}"/></td>
 		                
 		                <td class="align-middle">
-		                
-		                <a href="detalleInternacionPorPasos?idCama=${cama.getId()}" type="button" class="btn btn-secondary">Internar</a>
+		               
+		                <a href="detalleInternacionPorPasos2?idCama=${cama.getId()}&idPaciente=${paciente.getId()}" type="button" class="btn btn-secondary">Internar</a>
 						
 		               </td>
 		            </tr>
 		        </c:forEach>
-		        
 		    </table>
 		</div>
 
+
+        </c:if>
+        
+        <c:if test="${empty listaPacientesInfectados}">
+        <h5 class="">No hay pacientes Infectados</h5>	
+         </c:if>
+         
         </div>
     </div>
 

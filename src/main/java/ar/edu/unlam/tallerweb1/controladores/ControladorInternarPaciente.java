@@ -166,5 +166,45 @@ public class ControladorInternarPaciente {
 		return new ModelAndView("detalleInternacionPorPasos", model);		
 		
 	}	
+	
+	@RequestMapping(path = "/detalleInternacionPorPasos2")
+	public ModelAndView detalleInternacionPorPasos2(
+				
+			@RequestParam(value = "idCama", required = false) Long idCama,
+			@RequestParam(value = "idPaciente", required = false) Long idPaciente,
+			HttpServletRequest request
+			) {
+		
+		ModelMap model = new ModelMap();
+		
+		Paciente pacienteBuscado =  servicioPaciente.consultarPacientePorId(idPaciente);
+		Cama camaBuscada = servicioCama.consultarCamaPorId(idCama);
+				
+		Asignacion asignacionAGuardar = new Asignacion();
+		LocalDateTime horaIngreso = LocalDateTime.now();
+		
+		asignacionAGuardar.setPaciente(pacienteBuscado);
+		asignacionAGuardar.setCama(camaBuscada);
+		asignacionAGuardar.setHoraIngreso(horaIngreso );
+		
+		servicioInternacion.registrarInternacion(asignacionAGuardar);
+		
+		pacienteBuscado.setInfectado(false);
+		servicioPaciente.modificarPaciente(pacienteBuscado);
+		
+		String mensaje = "Nombre del paciente: " + asignacionAGuardar.getPaciente().getNombre() + " " 
+												 + asignacionAGuardar.getPaciente().getApellido();
+		String mensaje2 = "Cama asignada: " + asignacionAGuardar.getCama().getDescripcion();
+		String mensaje3 = "Hora de internación: " + asignacionAGuardar.getHoraIngreso();
+		
+		model.put("mensaje", mensaje);
+		model.put("mensaje2", mensaje2);
+		model.put("mensaje3", mensaje3);
+		
+		model.put("detalleInternacionPorPasos", "El paciente fue egresado");
+
+		return new ModelAndView("detalleInternacionPorPasos2", model);		
+		
+	}	
 
 }

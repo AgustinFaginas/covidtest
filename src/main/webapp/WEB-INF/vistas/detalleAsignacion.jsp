@@ -33,17 +33,16 @@
 	
 		<div class="pt-3 pb-2 mb-3">
 	
-			<a
-				href="egresoPacienteMotivo?numeroDocumento=${numeroDocumento}&tipoDocumento=${tipoDocumento}"
-				class="btn btn-sm btn-outline-secondary">Egresar</a> <a
-				href="trasladarPacienteCama" class="btn btn-sm btn-outline-secondary">Trasladar</a>
-	
-	
+			<a href="egresoPacienteMotivo?numeroDocumento=${numeroDocumento}&tipoDocumento=${tipoDocumento}"
+				class="btn btn-sm btn-outline-secondary">Egresar</a> 
+				
+			<a href="trasladarPacienteCama" class="btn btn-sm btn-outline-secondary">Trasladar</a>
+
 		</div>
 	
 	
 		<div
-			class="col-md-9 d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-top">
+			class="pt-3 pb-2">
 	
 			<a href="consultarPaciente" class="btn btn-sm btn-outline-secondary">Volver</a>
 	

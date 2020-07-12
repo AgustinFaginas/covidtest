@@ -38,37 +38,35 @@
 		<h6 class="">PASO 1: Elegir el paciente a internar</h6>	
 		
 		</br>		
-		        
-		<form action="listaCamas" method="get">
 		
 		  <div class="table-responsive">
-		    <table class="table table-striped table-sm">
+		    <table class="table table-bordered table-hover responsive nowrap text-center">
 		        <tr>
-		            <th >Id</th>
-		            <th >Nombre</th>
-		            <th >Apellido</th>
-		            <th></th>
+		            <th class="bg-primary text-white">NOMBRE</th>
+		            <th class="bg-primary text-white">APELLIDO</th>
+		            <th class="bg-primary text-white">DNI</th>
+		            <th class="bg-primary text-white">PRIORIDAD</th>
+		            <th class="bg-primary text-white">ACCIÓN</th>
 		        </tr>
 		        <c:forEach items="${listaPacientesInfectados}" var="paciente">
 		            <tr>
-		                <th ><c:out value="${paciente.getId()}"/></th>
 		                <td><c:out value="${paciente.getNombre()}"/></td>
 		                <td><c:out value="${paciente.getApellido()}"/></td>
-		                <td>
-		                    <div class="form-check">
-		                        <input class="form-check-input" type="radio" name="idPaciente" id="radio-cama"
-		                               value="${paciente.getId()}">
-		                    </div> 
+		                <td><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
+		                <td><c:out value="${paciente.getPrioridad()}"/></td>
+		                
+		                <td class="align-middle">
+		                
+		                <a href="listaCamas?idPaciente=${paciente.getId()}" type="button" class="btn btn-secondary">Internar</a>
+		                <a class="btn btn-warning" href="<c:url value='/crearMensaje/${paciente.getId()}'/>" role="button"> Enviar Mensaje</a>
+						<button type="button" class="btn btn-danger">Borrar</button>
+						
 		               </td>
 		            </tr>
 		        </c:forEach>
 		    </table>
 		</div>
-		
-		    <button class="btn btn-sm btn-outline-secondary" type="submit">Siguiente</button>
-		
-		
-		</form>
+
 
         </c:if>
         

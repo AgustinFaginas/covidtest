@@ -53,4 +53,13 @@ public class Cama {
         this.descripcion = descripcion;
     }
 
+
+	public TipoCama getTipoCama() {
+		return tipoCama;
+	}
+
+
+	public void setTipoCama(TipoCama tipoCama) {
+		this.tipoCama = tipoCama;
+	}
 }
