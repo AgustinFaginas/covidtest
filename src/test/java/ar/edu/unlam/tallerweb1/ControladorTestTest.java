@@ -83,6 +83,11 @@ public class ControladorTestTest {
 		String tipoDocumento=null;
 		Integer numeroDocumento=null;
 		String motivo=null;
+		Integer numeroCalle=null;
+		String calle=null;
+		String localidad=null;
+		Integer telefono=null;
+		String mail=null;
 		
 		
 		
@@ -97,7 +102,7 @@ public class ControladorTestTest {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("permisoAceptado");
 				
-		assertEquals(controladorTest.validarPermiso(nombre, apellido, edad, tipoDocumento, numeroDocumento, motivo).getViewName(), model.getViewName());
+		assertEquals(controladorTest.validarPermiso(nombre, apellido, edad, tipoDocumento, numeroDocumento, numeroCalle, calle, localidad, telefono, mail, motivo).getViewName(), model.getViewName());
 	}
 	
 	@Test
@@ -112,7 +117,11 @@ public class ControladorTestTest {
 		String tipoDocumento=null;
 		Integer numeroDocumento=null;
 		String motivo=null;
-		
+		Integer numeroCalle=null;
+		String calle=null;
+		String localidad=null;
+		Integer telefono=null;
+		String mail=null;
 		
 		
 		ControladorTest controladorTest = new ControladorTest();
@@ -127,6 +136,6 @@ public class ControladorTestTest {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("permisoNegativo");
 				
-		assertEquals(controladorTest.validarPermiso(nombre, apellido, edad, tipoDocumento, numeroDocumento, motivo).getViewName(), model.getViewName());
+		assertEquals(controladorTest.validarPermiso(nombre, apellido, edad, tipoDocumento, numeroDocumento, numeroCalle, calle, localidad, telefono, mail, motivo).getViewName(), model.getViewName());
 	}
 }
