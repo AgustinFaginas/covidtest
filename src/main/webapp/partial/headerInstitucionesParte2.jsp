@@ -3,6 +3,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
     <style>
         .bd-placeholder-img {

@@ -1,12 +1,15 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
+import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -18,6 +21,8 @@ public class ControladorPaciente {
 
     @Autowired
     ServicioPaciente servicioPaciente;
+    @Autowired
+    ServicioCama servicioCama;
 
     @RequestMapping("/listaPacientes")
     public ModelAndView pacientes() {
@@ -91,6 +96,34 @@ public class ControladorPaciente {
         return new ModelAndView("listaPacientesInfectados", model);
     }
 
+    @RequestMapping("/listaPacientesInfectadosPasoDos")
+    public ModelAndView listaPacientesInfectadosPasoDos(
+
+    		@RequestParam(value = "idCama") Long idCama,
+            HttpServletRequest request
+
+    ) {
+
+        ModelMap model = new ModelMap();
+
+        if (request.getSession().getAttribute("ID") == null) {
+            model.put("error", "Debe iniciar sesión");
+            return new ModelAndView("login", model);
+        }
+
+        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
+            return new ModelAndView("redirect:/denied");
+        }
+        
+        Cama cama = servicioCama.consultarCamaPorId(idCama);
+        List<Paciente> listaPacientesInfectados = servicioPaciente.pacientesInfectados();
+
+        model.put("cama", cama);
+        model.put("listaPacientesInfectados", listaPacientesInfectados);
+
+        return new ModelAndView("listaPacientesInfectadosPasoDos", model);
+    }
+    
     @RequestMapping("/listapacientes2")
     public ModelAndView listapacientes2() {
 

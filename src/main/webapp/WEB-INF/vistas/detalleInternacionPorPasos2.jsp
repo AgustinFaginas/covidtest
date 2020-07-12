@@ -4,40 +4,50 @@
 
 <jsp:include page="../../partial/headerInstitucionesParte1.jsp" />
 
-<title>Disponibilidad de Camas - Institucion</title>
+<title>Detalle Internacion Por Pasos</title>
     
 <jsp:include page="../../partial/headerInstitucionesParte2.jsp" />
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-
+   
+     
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Detalle Internacion</h1>
+       
+      </div>
+      	
+     <div class="">
         <div>
-		 <h4>Disponibilidad De Camas</h4> 
-		 
-		  <div class="table-responsive">
-		    <table class="table table-bordered table-hover responsive nowrap text-center">
-		        <tr>
-		            <th class="bg-primary text-white">DESCRIPCION</th>
-		            <th class="bg-primary text-white">TIPO</th>
-		            <th class="bg-primary text-white">SELECCIONAR</th>
-		        </tr>
-		        
-		        <c:forEach items="${camas}" var="cama">
-		            <tr>
-		                <td><c:out value="${cama.getDescripcion()}"/></td>
-		                <td><c:out value="${cama.getTipoCama().name()}"/></td>
-		                
-		                <td class="align-middle">
-		                
-		                <a href="detalleInternacionPorPasos?idCama=${cama.getId()}" type="button" class="btn btn-secondary">Internar</a>
-						
-		               </td>
-		            </tr>
-		        </c:forEach>
-		        
-		    </table>
-		</div>
+			
+               		<h6 >${mensaje}</h6>
+
+                    <h6 >${mensaje2}</h6>
+
+                    <h6>${mensaje3}</h6>
+
+                    <h6 >${msg}</h6>
+					
+					<h6 class="">${mensaje5}</h6>
+					
+                    <br>
+                    <a href="bienvenido" class="btn btn-sm btn-outline-secondary">Inicio</a>
+					
+       
+        </div>
+            
+                        
+                        <div class="form-group">
+                        
+                        <c:if test="${not empty error}">
+			        <h4><span>${error}</span></h4>
+			        <br>
+			         </div>
+		        </c:if>	
         
         </div>
+    </div>
+
+    
       
     </main>
     

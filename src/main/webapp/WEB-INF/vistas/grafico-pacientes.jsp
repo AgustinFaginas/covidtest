@@ -52,7 +52,8 @@
             animationEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2",
             title: {
-                text: "Casos totales de contagiados y recuperados"
+                text: "Casos totales de contagiados y recuperados",
+                    fontFamily: "calibri light",
             },
             axisY: {
                 title: "Cantidad de personas"
@@ -63,8 +64,8 @@
                 legendMarkerColor: "grey",
                 legendText: "Estado",
                 dataPoints: [
-                    {y: ${cantidadPacientesInfectados}, label: "Infectados"},
-                    {y: ${cantidadPacientesNoInfectados}, label: "Recuperados"}
+                    {y: ${cantidadPacientesInfectados}, label: "Infectados", color:"#0080FF"},
+                    {y: ${cantidadPacientesNoInfectados}, label: "Recuperados", color: "#01DF01"}
                 ]
             }]
         });
@@ -84,7 +85,8 @@
             //exportEnabled: true,
             //animationEnabled: true,
             title: {
-                text: "Casos totales de contagiados y recuperados"
+                text: "Casos totales de contagiados y recuperados",
+                	fontFamily: "calibri light"
             },
             data: [{
                 type: "pie",
@@ -95,8 +97,8 @@
                 indexLabelFontSize: 16,
                 indexLabel: "{label} - {y}%",
                 dataPoints: [
-                    {y: porcentaje1, label: "Infectados"},
-                    {y: porcentaje2, label: "Recuperados"}
+                    {y: porcentaje1, label: "Infectados", color:"#0080FF"},
+                    {y: porcentaje2, label: "Recuperados", color:"#01DF01"}
 
                 ]
             }]
@@ -160,7 +162,13 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <div class="container-fluid m-5">
+        
+        
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1>Reportes</h1>
+       
+      </div>
+            <div class="">
                 <div class="row container-chart">
                     <div class="col"></div>
                     <div class="col-6">
@@ -170,7 +178,7 @@
                 </div>
             </div>
 
-            <div class="container-fluid m-5">
+            <div class="">
                 <div class="row container-chart">
                     <div class="col"></div>
                     <div class="col-6">

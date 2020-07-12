@@ -12,33 +12,39 @@
            
             <div class="container m-5">
             
-                <form action="internar" method="get">
-
-                    <div class="table-responsive">
-
-
-                        <table class="table table-striped table-sm">
-                            <tr>
-                                <th>Id</th>
-                                <th>Descripción</th>
-                                <th>Acción</th>
-                            </tr>
-                            <c:forEach items="${camas}" var="cama">
-                                <tr>
-                                    <th><c:out value="${cama.getId()}"/></th>
-                                    <td><c:out value="${cama.getDescripcion()}"/></td>
-                                    <td>
-                                        <div class="form-action">
-                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Internar
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </table>
-                    </div>
-
-                </form>
+                <h2 class="pb-2 mb-3 border-bottom">Disponibilidad De Camas</h2> 
+                <br>
+                <div>
+        		
+				<h6 class="">PASO 1: Elegir la cama en donde internar</h6>	
+		
+       			 </div>
+       			 <br>
+		 
+		  <div class="table-responsive">
+		    <table class="table table-bordered table-hover responsive nowrap text-center">
+		        <tr>
+		            <th class="bg-primary text-white">DESCRIPCION</th>
+		            <th class="bg-primary text-white">TIPO</th>
+		            <th class="bg-primary text-white">SELECCIONAR</th>
+		        </tr>
+		        
+		        <c:forEach items="${camas}" var="cama">
+		            <tr>
+		                <td><c:out value="${cama.getDescripcion()}"/></td>
+		                <td><c:out value="${cama.getTipoCama().name()}"/></td>
+		                
+		                <td class="align-middle">
+		                
+		                <a href="listaPacientesInfectadosPasoDos?idCama=${cama.getId()}" type="button" class="btn btn-secondary">Internar</a>
+						
+		               </td>
+		            </tr>
+		        </c:forEach>
+		        
+		    </table>
+		</div>
+        
             </div>
 
         </main>
