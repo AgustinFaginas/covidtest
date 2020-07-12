@@ -22,6 +22,7 @@ public class Paciente extends Usuario {
     private Boolean tieneEnfRespiratoria;
     private Boolean tieneEnfRenal;
     private Boolean tieneEnfCardiologica;
+    private Integer prioridad;
 
     public Long getId() {
         return id;
@@ -117,6 +118,14 @@ public class Paciente extends Usuario {
 
     public void setEsFumador(Boolean esFumador) {
         this.esFumador = esFumador;
+    }
+
+    public Integer getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(Integer prioridad) {
+        this.prioridad = prioridad;
     }
 }
 

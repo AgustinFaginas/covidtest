@@ -167,7 +167,6 @@ public class ControladorTest {
         Integer contador = 0;
 
         if (tieneEmbarazo) {
-            contador++;
             paciente.setTieneEmbarazo(true);
         }
         if (esFumador) {
@@ -195,19 +194,26 @@ public class ControladorTest {
             paciente.setTieneEnfCardiologica(true);
         }
 
-        servicioPaciente.actualizarPaciente(paciente);
-
         Float estaturaMetros = estatura / 100;
 
         IMC categoriaIMC = servicioTest.calcularCategoriaIMC(peso, estaturaMetros);
 
-        ModelMap model = new ModelMap();
+        Integer prioridad = servicioPaciente.establecerPrioridad(contador, tieneEmbarazo, categoriaIMC, paciente.getEdad());
+
+        paciente.setPrioridad(prioridad);
+
+        servicioPaciente.actualizarPaciente(paciente);
+
+        /*ModelMap model = new ModelMap();
         model.put("contador", contador);
         model.put("estatura", estaturaMetros);
         model.put("peso", peso);
         model.put("categoriaIMC", categoriaIMC);
+        model.put("prioridad", prioridad);
 
-        return new ModelAndView("validarEnfermedades", model);
+        return new ModelAndView("validarEnfermedades", model);*/
+        return new ModelAndView("detalleRegistroPaciente");
+
 
     }
 

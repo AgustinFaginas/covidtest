@@ -16,6 +16,7 @@
 <h2 class="text-center">Estatura: ${estatura}</h2>
 <h2 class="text-center">Peso: ${peso}</h2>
 <h2 class="text-center">Categoria IMC: ${categoriaIMC}</h2>
+<h2 class="text-center">Prioridad: ${prioridad}</h2>
 
 </body>
 </html>
