@@ -23,8 +23,25 @@ public class ControladorPaciente {
     ServicioPaciente servicioPaciente;
     @Autowired
     ServicioCama servicioCama;
+    
 
-    @RequestMapping("/listaPacientes")
+    public ServicioPaciente getServicioPaciente() {
+		return servicioPaciente;
+	}
+
+	public void setServicioPaciente(ServicioPaciente servicioPaciente) {
+		this.servicioPaciente = servicioPaciente;
+	}
+
+	public ServicioCama getServicioCama() {
+		return servicioCama;
+	}
+
+	public void setServicioCama(ServicioCama servicioCama) {
+		this.servicioCama = servicioCama;
+	}
+
+	@RequestMapping("/listaPacientes")
     public ModelAndView pacientes() {
 
         List<Paciente> pacientes = servicioPaciente.pacientes();
