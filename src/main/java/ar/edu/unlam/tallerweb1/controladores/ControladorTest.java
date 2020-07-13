@@ -7,13 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import ar.edu.unlam.tallerweb1.modelo.IMC;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.servicios.ServicioTest;
@@ -41,6 +44,9 @@ public class ControladorTest {
 
     @Inject
     private ServicioPaciente servicioPaciente;
+    
+    @Inject
+    private ServicioLogin servicioLogin;
 
     public ServicioTest getServicioTest() {
         return servicioTest;
@@ -64,6 +70,8 @@ public class ControladorTest {
     ) {
 
         if (servicioTest.realizarTest(fiebre, olfato, gusto, tos, respiracion)) {
+        	
+        	
             return new ModelAndView("testPositivo");
         } else {
             return new ModelAndView("testNegativo");
@@ -243,5 +251,23 @@ public class ControladorTest {
 
     }
 
-
+	@RequestMapping(value= "/validar-email", method = RequestMethod.POST)
+	public @ResponseBody String validarEmail(@RequestBody String json) {
+		Paciente usuario =  new Paciente();
+		usuario.setEmail(json);
+		Usuario usuario2 = servicioLogin.consultarUsuarioporEmail(usuario);
+		String mensaje = "OK";
+		try {			
+			if(usuario2.getEmail() != null) {
+				mensaje = "BAD";
+				return mensaje;
+			}
+		}
+		catch(NullPointerException e) {
+			mensaje = "OK";			
+			return mensaje;
+		}
+		
+		return mensaje;
+	}
 }

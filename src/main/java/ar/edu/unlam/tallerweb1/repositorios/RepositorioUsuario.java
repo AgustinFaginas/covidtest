@@ -15,4 +15,6 @@ public interface RepositorioUsuario {
 
 	Usuario consultarUsuarioPorId(Long id);
 
+	Usuario consultarUsuarioPorEmail(Usuario usuario);
+
 }

@@ -58,10 +58,10 @@
 			                        
 			                  <input type="text" name="email" class="form-control br-radius-zero" id="email"
 			                                   placeholder="Ingrese un mail" data-rule="mail"
-			                                   data-msg="Ingrese un mail valido" required/>
+			                                   data-msg="Ingrese un mail valido" required />
 			                  <div class="validation"></div>
 			              </div>
-			              
+			           <!--    onchange="validarEmail()" -->
 			              <div class="form-group">
 			                        
 			                  <h6>Contraseña de la cuenta</h6>

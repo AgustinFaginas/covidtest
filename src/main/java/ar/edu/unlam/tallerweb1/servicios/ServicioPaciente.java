@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 import ar.edu.unlam.tallerweb1.modelo.IMC;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 import java.util.List;
 
@@ -27,4 +28,6 @@ public interface ServicioPaciente {
     void actualizarPaciente(Paciente paciente);
 
     Integer establecerPrioridad(Integer cantidadEnfermedades, Boolean tieneEmbarazo, IMC categoriaIMC, Integer edad);
+    
+    
 }

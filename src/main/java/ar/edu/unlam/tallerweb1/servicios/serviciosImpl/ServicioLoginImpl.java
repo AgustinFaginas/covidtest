@@ -32,4 +32,10 @@ public class ServicioLoginImpl implements ServicioLogin {
 		return servicioLoginDao.consultarUsuario(usuario);
 	}
 
+	@Override
+	public Usuario consultarUsuarioporEmail(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return servicioLoginDao.consultarUsuarioPorEmail(usuario);
+	}
+
 }

@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.modelo.IMC;
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 
 public interface ServicioTest {
 
@@ -9,4 +10,6 @@ public interface ServicioTest {
     IMC calcularCategoriaIMC(Float peso, Float estaturaMetros);
     
     Boolean realizarPermiso(String nombre,String apellido,Integer edad,String tipoDocumento,Integer numeroDocumento,String movito);
+    
+    void enviarMail (Paciente paciente);
 }

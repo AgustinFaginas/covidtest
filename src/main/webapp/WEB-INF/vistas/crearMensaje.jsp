@@ -64,7 +64,7 @@
 		</form:form>
 
 
-		<br><a href="panel">Atrás</a>
+		<br><a href="/covidtest/panel">Atrás</a>
 	</div>
 	
 	<%-- <form action="contact" method="post">

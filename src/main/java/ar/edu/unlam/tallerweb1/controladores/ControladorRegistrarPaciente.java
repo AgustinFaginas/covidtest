@@ -15,6 +15,7 @@ import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
+import ar.edu.unlam.tallerweb1.servicios.ServicioTest;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
 @Controller
@@ -23,13 +24,16 @@ public class ControladorRegistrarPaciente {
     private ServicioInstitucion servicioInstitucion;
     private ServicioUsuario servicioUsuario;
     private ServicioPaciente servicioPaciente;
+  
+    private ServicioTest servicioTest;
 
     @Autowired
     public ControladorRegistrarPaciente(ServicioInstitucion servicioInstitucion, ServicioCama servicioCama,
-                                        ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario) {
+                                        ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, ServicioTest servicioTest) {
         this.servicioInstitucion = servicioInstitucion;
         this.servicioUsuario = servicioUsuario;
         this.servicioPaciente = servicioPaciente;
+        this.servicioTest = servicioTest;
     }
 
     @RequestMapping("/registrarPaciente")
@@ -76,6 +80,9 @@ public class ControladorRegistrarPaciente {
             model.put("documento", documento);
             model.put("tipoDocumento", tipoDocumento);
             model.put("email", email);
+            
+
+            servicioTest.enviarMail(paciente);
 
             return new ModelAndView("enfermedades", model);
         } else {

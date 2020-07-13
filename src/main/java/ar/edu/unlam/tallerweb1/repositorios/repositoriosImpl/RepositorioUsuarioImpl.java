@@ -65,5 +65,12 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 				.add(Restrictions.eq("id", id))
 				.uniqueResult();
 	}
+
+	@Override
+	public Usuario consultarUsuarioPorEmail(Usuario usuario) {
+		return (Usuario) sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.add(Restrictions.eq("email", usuario.getEmail()))
+				.uniqueResult();
+	}
 	
 }
