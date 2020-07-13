@@ -40,6 +40,55 @@ public class ControladorInternarPaciente {
 	ServicioUsuario servicioUsuario;
 	@Autowired
 	ServicioInstitucion servicioInstitucion;
+	
+
+	public ServicioAsignacion getServicioAsignacion() {
+		return servicioAsignacion;
+	}
+
+	public void setServicioAsignacion(ServicioAsignacion servicioAsignacion) {
+		this.servicioAsignacion = servicioAsignacion;
+	}
+
+	public ServicioInternacion getServicioInternacion() {
+		return servicioInternacion;
+	}
+
+	public void setServicioInternacion(ServicioInternacion servicioInternacion) {
+		this.servicioInternacion = servicioInternacion;
+	}
+
+	public ServicioPaciente getServicioPaciente() {
+		return servicioPaciente;
+	}
+
+	public void setServicioPaciente(ServicioPaciente servicioPaciente) {
+		this.servicioPaciente = servicioPaciente;
+	}
+
+	public ServicioCama getServicioCama() {
+		return servicioCama;
+	}
+
+	public void setServicioCama(ServicioCama servicioCama) {
+		this.servicioCama = servicioCama;
+	}
+
+	public ServicioUsuario getServicioUsuario() {
+		return servicioUsuario;
+	}
+
+	public void setServicioUsuario(ServicioUsuario servicioUsuario) {
+		this.servicioUsuario = servicioUsuario;
+	}
+
+	public ServicioInstitucion getServicioInstitucion() {
+		return servicioInstitucion;
+	}
+
+	public void setServicioInstitucion(ServicioInstitucion servicioInstitucion) {
+		this.servicioInstitucion = servicioInstitucion;
+	}
 
 	@RequestMapping("/internarPaciente")
 	public ModelAndView internarPaciente(HttpServletRequest request) {
