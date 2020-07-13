@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-		 pageEncoding="ISO-8859-1" %>
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+		 pageEncoding="ISO-8859-1" %> --%>
+		 <%@ page contentType="text/html; charset=UTF-8" %>
 <!doctype html>
 
 <html lang="es">
@@ -28,7 +29,7 @@
 <nav class="navbar sticky-top bg-dark text-white justify-content-center align-items-center">
 	<a class="text-center text-white" href="https://www.argentina.gob.ar/salud/coronavirus-COVID-19" id="navbar-top">
 		<h5>
-			Coronavirus COVID-19 conocÈ informaciÛn y recomendaciones del Ministerio de Salud</strong>
+			Coronavirus COVID-19 conoc√© informaci√≥n y recomendaciones del Ministerio de Salud</strong>
 		</h5>
 	</a>
 </nav>
@@ -47,20 +48,34 @@
 
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item ml-5 active"><a class="nav-link" href="#">Home
+				<!-- <li class="nav-item ml-5 active"><a class="nav-link" href="inicioAdmin">Home
 						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item ml-5"><a class="nav-link" href="autoTest">Realizar
-						test</a></li>
-						<li class="nav-item ml-5"><a class="nav-link" href="registrarInstitucion">Registrar Institucion</a></li>
+				</a></li> -->
+				
 			</ul>
 			<c:if test="${alert == null}">
-				<a href="login" class="btn btn-dark ml-5" role="button"
-					aria-disabled="true">Log in</a>
+				<a href="logout" class="btn btn-dark ml-5" role="button"
+					aria-disabled="true">Log out</a>
 			</c:if>
 
 		</div>
 	</nav>
+
+<div class="container .bg-white">
+	<section class="jumbotron text-center .bg-white">
+		
+			<h1>Realiz√° tu Test de COVID-19 aqu√≠</h1>
+			<p class="lead text-muted">Realiz√° tu test de manera gratuita,
+				dej√° tus datos y un profesional de la salud te dar√° las indicaciones
+				seg√∫n tu caso particular.</p>
+			<p>
+				<a href="#" class="btn btn-primary btn-lg">Realizar TEST</a> <!-- <a
+					href="#" class="btn btn-secondary my-2">Secondary action</a> -->
+			</p>
+		
+	</section>
+</div>
+
 
 	<h2 class="text-center mb-3 mt-5">Consejos para prevenir el Coronavirus</h2>
 
@@ -74,7 +89,7 @@
 							 alt="Generic placeholder image">
 					</div>
 					<div class="col-xl-9 col-sm-12">
-						<h4 class="d-inline">Lavarse las manos con jabÛn regularmente al menos por 20 segundos</h4>
+						<h4 class="d-inline">Lavarse las manos con jab√≥n regularmente al menos por 20 segundos</h4>
 					</div>
 				</div>
 			</div>
@@ -130,7 +145,7 @@
 							 alt="Generic placeholder image">
 					</div>
 					<div class="col-xl-9 col-sm-12">
-						<h4 class="d-inline">No comer sopita de murciÈlago y/o derivados</h4>
+						<h4 class="d-inline">No comer sopita de murci√©lago y/o derivados</h4>
 					</div>
 				</div>
 			</div>
@@ -213,7 +228,7 @@
 
 			<!-- Grid column -->
 			<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-				<h6 class="text-uppercase mb-4 font-weight-bold">ENLACES ⁄TILES</h6>
+				<h6 class="text-uppercase mb-4 font-weight-bold">ENLACES √öTILES</h6>
 				<p>
 					<a href="https://www.argentina.gob.ar/salud/coronavirus-COVID-19">Ministerio de Salud</a>
 				</p>
@@ -227,15 +242,15 @@
 
 			<!-- Grid column -->
 			<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-				<h6 class="text-uppercase mb-4 font-weight-bold">TelÈfono</h6>
+				<h6 class="text-uppercase mb-4 font-weight-bold">Tel√©fono</h6>
 				<p>
-					<i class="fas fa-home"></i> Llam· al <strong>120</strong>, es gratuito desde cualquier lugar del
-					paÌs y te atienden las 24 horas.</p>
+					<i class="fas fa-home"></i> Llam√° al <strong>120</strong>, es gratuito desde cualquier lugar del
+					pa√≠s y te atienden las 24 horas.</p>
 				<hr>
 				<h6 class="text-uppercase mb-4 font-weight-bold">Whatsapp</h6>
-				<i class="fas fa-home"></i> EscribÌ "Hola" al <strong>+54 9 11
-				2256-0566</strong> para que encuentres respuestas a las preguntas m·s
-				frecuentes y recibas consejos de prevenciÛn.</p>
+				<i class="fas fa-home"></i> Escrib√≠ "Hola" al <strong>+54 9 11
+				2256-0566</strong> para que encuentres respuestas a las preguntas m√°s
+				frecuentes y recibas consejos de prevenci√≥n.</p>
 
 
 			</div>
@@ -253,7 +268,7 @@
 			<div class="col-md-7 col-lg-8">
 
 				<!--Copyright-->
-				<p class="text-center text-md-left">© 2020 Copyright:
+				<p class="text-center text-md-left">¬© 2020 Copyright:
 
 					<strong>ASIGNAR</strong>
 

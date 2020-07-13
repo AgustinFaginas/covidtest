@@ -59,30 +59,33 @@ public class ControladorAdmin {
 			
 			
 	}
-	//TERMINAR - NICO - debe llevar al home de admin.
-	@RequestMapping(path = "/inicioAdmin", method = RequestMethod.GET)
-	public ModelAndView irAhomeAdmin() {
+	
+	@RequestMapping("inicioAdmin")
+	public ModelAndView irAhomeAdmin(HttpServletRequest request) {
+		
+		if (request.getSession().getAttribute("ID") == null) {
+			return new ModelAndView("redirect:/home");
+		}
+		
+		if (request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
+			return new ModelAndView("redirect:/denied");
+		}
+		
 		return new ModelAndView("homeAdmin");
+		
 	}
 
 	@RequestMapping("crearMensaje/{id}")
 	public String crearMensaje(@PathVariable Long id, Model m) {
 
-		Paciente p=servicioPaciente.consultarPacientePorId(id);    
-        m.addAttribute("p",p);
-		
+		Paciente p = servicioPaciente.consultarPacientePorId(id);
+		m.addAttribute("p", p);
+
 		return "crearMensaje";
 
 	}
 	
 	
-	
-//	@RequestMapping(path = "/crearMensaje", method = RequestMethod.GET)
-//	public ModelAndView crearMensaje() {
-//		
-//		
-//		return new ModelAndView("crearMensaje");
-//	}
 	
 	
 	@RequestMapping("/panel")
