@@ -2,21 +2,19 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import javax.servlet.http.HttpServletRequest;
 
+import ar.edu.unlam.tallerweb1.modelo.Domicilio;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
+import ar.edu.unlam.tallerweb1.servicios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
-import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
-import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
-import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
-import ar.edu.unlam.tallerweb1.servicios.ServicioTest;
-import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
 @Controller
 public class ControladorRegistrarPaciente {
@@ -24,16 +22,18 @@ public class ControladorRegistrarPaciente {
     private ServicioInstitucion servicioInstitucion;
     private ServicioUsuario servicioUsuario;
     private ServicioPaciente servicioPaciente;
-  
+    private ServicioDomicilio servicioDomicilio;
+
     private ServicioTest servicioTest;
 
     @Autowired
     public ControladorRegistrarPaciente(ServicioInstitucion servicioInstitucion, ServicioCama servicioCama,
-                                        ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, ServicioTest servicioTest) {
+                                        ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, ServicioTest servicioTest, ServicioDomicilio servicioDomicilio) {
         this.servicioInstitucion = servicioInstitucion;
         this.servicioUsuario = servicioUsuario;
         this.servicioPaciente = servicioPaciente;
         this.servicioTest = servicioTest;
+        this.servicioDomicilio = servicioDomicilio;
     }
 
     @RequestMapping("/registrarPaciente")
@@ -48,7 +48,9 @@ public class ControladorRegistrarPaciente {
     public ModelAndView validarRegistroPaciente(
 
             @ModelAttribute("paciente") Paciente paciente,
-            HttpServletRequest request
+            HttpServletRequest request,
+            @RequestParam(value = "calle") String calle,
+            @RequestParam(value = "numero") Integer numero
 
     ) {
 
@@ -80,9 +82,15 @@ public class ControladorRegistrarPaciente {
             model.put("documento", documento);
             model.put("tipoDocumento", tipoDocumento);
             model.put("email", email);
-            
 
             servicioTest.enviarMail(paciente);
+
+            Domicilio domicilio = new Domicilio();
+            domicilio.setCalle(calle);
+            domicilio.setNumero(numero);
+            servicioDomicilio.registrarDomicilio(domicilio);
+            paciente.setDomicilio(domicilio);
+            servicioPaciente.actualizarPaciente(paciente);
 
             return new ModelAndView("enfermedades", model);
         } else {

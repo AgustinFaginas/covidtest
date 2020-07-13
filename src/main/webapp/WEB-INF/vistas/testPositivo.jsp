@@ -16,6 +16,8 @@
 
     <title>AsignAR</title>
 
+    <link rel="icon" href="img/asignar-logo.ico">
+
     <style>
         #navbar-top:hover {
             text-decoration: none;
@@ -83,39 +85,89 @@
             <div class="card border-dark mb-3">
                 <div class="card-header">
                     <h3 class="text-center my-2">Complete el formulario con sus datos</h3>
+                    <p class="mt-4 text-right">(<span class="text-primary font-weight-bold">*</span>) Campos
+                        obligatorios</p>
                 </div>
                 <div class="card-body text-dark">
                     <form action="detalleRegistroPaciente" method="POST" modelAttribute="paciente"
                           class="d-flex justify-content-center flex-column justify-content-center">
 
                         <div class="form-row my-4">
-                            <label for="nombre">Nombre</label>
+                            <label for="nombre">Nombre <span class="text-primary font-weight-bold">*</span></label>
                             <input type="text" class="form-control" id="nombre" name="nombre" required>
                         </div>
 
                         <div class="form-row my-4">
-                            <label for="apellido">Apellido</label>
+                            <label for="apellido">Apellido <span class="text-primary font-weight-bold">*</span></label>
                             <input type="text" class="form-control" id="apellido" name="apellido" required>
                         </div>
 
                         <div class="form-row my-4">
-                            <label for="edad">Edad</label>
+                            <label for="edad">Edad <span class="text-primary font-weight-bold">*</span></label>
                             <input type="number" class="form-control" id="edad" name="edad" required>
                         </div>
 
                         <div class="form-row my-4">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <div class="form-group col-9">
+                                <label for="calle">Calle <span class="text-primary font-weight-bold">*</span></label>
+                                <input type="text" name="calle" class="form-control br-radius-zero"
+                                       id="calle" data-rule="minlen:1"
+                                       data-msg="Ingrese número de CUIT valido" required/>
+                                <small id="calleHelp" class="form-text text-muted">Ingrese la calle en donde
+                                    reside actualmente</small>
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="numero">Número <span class="text-primary font-weight-bold">*</span></label>
+                                <input type="number" name="numero" class="form-control br-radius-zero"
+                                       id="numero" data-rule="minlen:1"
+                                       data-msg="Ingrese número de CUIT valido" required/>
+                            </div>
                         </div>
 
                         <div class="form-row my-4">
-                            <label for="password">Contraseña</label>
+                            <div class="form-group col-6">
+                                <label for="localidad">Localidad <span
+                                        class="text-primary font-weight-bold">*</span></label>
+                                <select name="localidad" id="localidad" class="form-control br-radius-zero"
+                                        required>
+                                    <option id="localidadIsidroCasanova">Isidro Casanova
+                                    <option id="localidadLaferrere">Laferrere
+                                    <option id="localidadManzanares">Manzanares
+                                </select>
+                                <small id="localidadHelp" class="form-text text-muted">Seleccione la localidad en donde
+                                    reside actualmente</small>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="partido">Partido <span
+                                        class="text-primary font-weight-bold">*</span></label>
+                                <select name="partido" id="partido" class="form-control br-radius-zero"
+                                        required>
+                                    <option id="partidoLaMatanza">La Matanza
+                                    <option id="partidoMoron">Morón
+                                    <option id="partidoItuzaingo">Ituzaingó
+                                </select>
+                                <small id="partidoHelp" class="form-text text-muted">Seleccione el partido en donde
+                                    reside actualmente</small>
+                            </div>
+                        </div>
+
+                        <div class="form-row my-4">
+                            <label for="email">Email <span class="text-primary font-weight-bold">*</span></label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                            <small id="emailHelp" class="form-text text-muted">Ej: maria@email.com</small>
+
+                        </div>
+
+                        <div class="form-row my-4">
+                            <label for="password">Contraseña <span
+                                    class="text-primary font-weight-bold">*</span></label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
 
                         <div class="form-row my-4">
                             <div class="form-group col-6">
-                                <label for="tipoDocumento">Tipo Documento</label>
+                                <label for="tipoDocumento">Tipo Documento <span
+                                        class="text-primary font-weight-bold">*</span></label>
                                 <select name="tipoDocumento" id="tipoDocumento" class="form-control br-radius-zero"
                                         required>
                                     <option id="tipoDocumentoDNI">DNI
@@ -124,11 +176,14 @@
                                 </select>
                             </div>
                             <div class="form-group col-6">
-                                <label for="numeroDocumento">Numero de documento</label>
+                                <label for="numeroDocumento">Numero de documento <span
+                                        class="text-primary font-weight-bold">*</span></label>
                                 <input type="text" name="numeroDocumento" class="form-control br-radius-zero"
                                        id="numeroDocumento"
-                                       placeholder="Ingrese número de documento" data-rule="minlen:1"
+                                       data-rule="minlen:1"
                                        data-msg="Ingrese número de CUIT valido" required/>
+                                <small id="numeroDocumentoHelp" class="form-text text-muted">Sin puntos ni espacios. Ej:
+                                    30758124</small>
                             </div>
                         </div>
 

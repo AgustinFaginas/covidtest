@@ -16,6 +16,8 @@
 
     <title>AsignAR</title>
 
+    <link rel="icon" href="img/asignar-logo.ico">
+
     <style>
         #navbar-top:hover {
             text-decoration: none;

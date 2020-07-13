@@ -67,7 +67,7 @@ public class ServicioPacienteImpl implements ServicioPaciente {
     @Override
     public Integer establecerPrioridad(Integer cantidadEnfermedades, Boolean tieneEmbarazo, IMC categoriaIMC, Integer edad) {
 
-        Integer prioridad = 0;
+        Integer prioridad = 5;
 
         if (tieneEmbarazo) {
             prioridad = 1;
@@ -97,7 +97,7 @@ public class ServicioPacienteImpl implements ServicioPaciente {
             prioridad = 4;
         }
 
-        if (edad >= 65){
+        if (edad >= 65) {
             prioridad = 5;
         }
 
