@@ -207,6 +207,61 @@
             "lon": -58.460185577552785
         },
         {
+            "nombre": "UNIVERSIDAD NACIONAL DE LA MATANZA",
+            "lat": -34.670520,
+            "lon": -58.562806
+        },
+        {
+            "nombre": "CLUB PORTUGUÉS DEL GRAN BUENOS AIRES",
+            "lat": -34.700021,
+            "lon": -58.589954
+        },
+        {
+            "nombre": "PREDIO DEPORTIVO JUAN DOMINGO PERÓN",
+            "lat": -34.784184,
+            "lon": -58.625167
+        },
+        {
+            "nombre": "HOSPITAL DE AGUDOS PAROISSIEN",
+            "lat": -34.695668,
+            "lon": -58.579381
+        },
+        {
+            "nombre": "SKYLAB",
+            "lat": -34.693365,
+            "lon": -58.572578
+        },
+        {
+            "nombre": "COMPLEJO DEPORTIVO PEDRO MENDOZA",
+            "lat": -34.696371,
+            "lon": -58.585985
+        },
+        {
+            "nombre": "CLUB SOCIAL Y DEPORTIVO LAFERRERE",
+            "lat": -34.752396,
+            "lon": -58.593529
+        },
+        {
+            "nombre": "HOSPITAL DR. ALBERTO BALESTRINI",
+            "lat": -34.707360,
+            "lon": -58.532926
+        },
+        {
+            "nombre": "HOSPITAL DE MORÓN",
+            "lat": -34.658637,
+            "lon": -58.609762
+        },
+        {
+            "nombre": "POLICLÍNICO PROFESOR ALEJANDRO POSADAS",
+            "lat": -34.628968,
+            "lon": -58.574673
+        },
+        {
+            "nombre": "HOSPITAL INTERZONAL GENERAL DE AGUDOS PROFESOR DR. LUIS GÜEMES",
+            "lat": -34.641730,
+            "lon": -58.579906
+        },
+        {
             "nombre": "HOSPITAL MATERNO INFANTIL R. SARDA",
             "lat": -34.634856308414967,
             "lon": -58.402750627537664
