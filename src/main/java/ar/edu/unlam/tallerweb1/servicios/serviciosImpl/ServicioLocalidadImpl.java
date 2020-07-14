@@ -25,4 +25,9 @@ public class ServicioLocalidadImpl implements ServicioLocalidad {
     public Localidad obtenerLocalidadPorNombre(String nombreLocalidad) {
         return repositorioLocalidad.obtenerLocalidadPorNombre(nombreLocalidad);
     }
+
+    @Override
+    public void actualizarLocalidad(Localidad localidad) {
+        repositorioLocalidad.actualizarLocalidad(localidad);
+    }
 }

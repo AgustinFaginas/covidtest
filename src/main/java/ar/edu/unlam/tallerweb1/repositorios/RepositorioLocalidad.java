@@ -9,4 +9,6 @@ public interface RepositorioLocalidad {
     List<Localidad> obtenerLocalidades();
 
     Localidad obtenerLocalidadPorNombre(String nombreLocalidad);
+
+    void actualizarLocalidad(Localidad localidad);
 }

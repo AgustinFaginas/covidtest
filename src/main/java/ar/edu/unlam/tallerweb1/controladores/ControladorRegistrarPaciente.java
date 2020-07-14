@@ -22,18 +22,20 @@ public class ControladorRegistrarPaciente {
     private ServicioPaciente servicioPaciente;
     private ServicioDomicilio servicioDomicilio;
     private ServicioLocalidad servicioLocalidad;
+    private ServicioPartido servicioPartido;
 
     private ServicioTest servicioTest;
 
     @Autowired
     public ControladorRegistrarPaciente(ServicioInstitucion servicioInstitucion, ServicioCama servicioCama,
-                                        ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, ServicioTest servicioTest, ServicioDomicilio servicioDomicilio, ServicioLocalidad servocioLocalidad) {
+                                        ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, ServicioTest servicioTest, ServicioDomicilio servicioDomicilio, ServicioLocalidad servicioLocalidad, ServicioPartido servicioPartido) {
         this.servicioInstitucion = servicioInstitucion;
         this.servicioUsuario = servicioUsuario;
         this.servicioPaciente = servicioPaciente;
         this.servicioTest = servicioTest;
         this.servicioDomicilio = servicioDomicilio;
-        this.servicioLocalidad = servocioLocalidad;
+        this.servicioLocalidad = servicioLocalidad;
+        this.servicioPartido = servicioPartido;
     }
 
     @RequestMapping("/registrarPaciente")
@@ -63,7 +65,8 @@ public class ControladorRegistrarPaciente {
             HttpServletRequest request,
             @RequestParam(value = "calle") String calle,
             @RequestParam(value = "numero") Integer numero,
-            @RequestParam(value = "nombreLocalidad") String nombreLocalidad
+            @RequestParam(value = "nombreLocalidad") String nombreLocalidad,
+            @RequestParam(value = "nombrePartido") String nombrePartido
 
     ) {
 
@@ -105,8 +108,11 @@ public class ControladorRegistrarPaciente {
             paciente.setDomicilio(domicilio);
             Localidad localidad = servicioLocalidad.obtenerLocalidadPorNombre(nombreLocalidad);
             domicilio.setLocalidad(localidad);
+            Partido partido = servicioPartido.obtenerPartidoPorNombre(nombrePartido);
+            localidad.setPartido(partido);
             servicioPaciente.actualizarPaciente(paciente);
             servicioDomicilio.actualizarDomicilio(domicilio);
+            servicioLocalidad.actualizarLocalidad(localidad);
 
             return new ModelAndView("enfermedades", model);
         } else {

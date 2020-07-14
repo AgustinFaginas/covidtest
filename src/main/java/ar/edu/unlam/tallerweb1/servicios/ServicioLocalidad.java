@@ -10,4 +10,6 @@ public interface ServicioLocalidad {
 
     public Localidad obtenerLocalidadPorNombre(String nombreLocalidad);
 
+    public void actualizarLocalidad(Localidad localidad);
+
 }

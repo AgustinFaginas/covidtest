@@ -38,4 +38,9 @@ public class RepositorioLocalidadImpl implements RepositorioLocalidad {
                 .uniqueResult();
     }
 
+    @Override
+    public void actualizarLocalidad(Localidad localidad) {
+        sessionFactory.getCurrentSession().update(localidad);
+    }
+
 }
