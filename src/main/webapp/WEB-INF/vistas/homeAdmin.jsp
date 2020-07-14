@@ -61,7 +61,7 @@
 		</div>
 	</nav>
 
-<div class="container .bg-white">
+<!-- <div class="container .bg-white">
 	<section class="jumbotron text-center .bg-white">
 		
 			<h1>Realizá tu Test de COVID-19 aquí</h1>
@@ -69,12 +69,12 @@
 				dejá tus datos y un profesional de la salud te dará las indicaciones
 				según tu caso particular.</p>
 			<p>
-				<a href="#" class="btn btn-primary btn-lg">Realizar TEST</a> <!-- <a
-					href="#" class="btn btn-secondary my-2">Secondary action</a> -->
+				<a href="#" class="btn btn-primary btn-lg">Realizar TEST</a> <a
+					href="#" class="btn btn-secondary my-2">Secondary action</a>
 			</p>
 		
 	</section>
-</div>
+</div> -->
 
 
 	<h2 class="text-center mb-3 mt-5">Consejos para prevenir el Coronavirus</h2>
