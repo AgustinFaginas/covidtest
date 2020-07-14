@@ -135,41 +135,41 @@
                                         class="text-primary font-weight-bold">*</span></label>
                                 <select name="nombreLocalidad" id="nombreLocalidad" class="form-control br-radius-zero"
                                         required>
-                                    <option id="Vicente López" name="Vicente López">Vicente López
-                                    <option id="Villa Martelli" name="Villa Martelli">Villa Martelli
-                                    <option id="Munro" name="Munro">Munro
-                                    <option id="Martínez" name="Martínez">Martínez
-                                    <option id="San Isidro" name="San Isidro">San Isidro
+                                    <option id="Banfield" name="Banfield">Banfield
                                     <option id="Beccar" name="Beccar">Beccar
-                                    <option id="Victoria" name="Victoria">Victoria
-                                    <option id="Tigre" name="Tigre">Tigre
-                                    <option id="General Pacheco" name="General Pacheco">General Pacheco
-                                    <option id="Don Torcuato" name="Don Torcuato">Don Torcuato
-                                    <option id="Villa Sarmiento" name="Villa Sarmiento">Villa Sarmiento
-                                    <option id="El Palomar" name="El Palomar">El Palomar
-                                    <option id="Haedo" name="Haedo">Haedo
-                                    <option id="Morón" name="Morón">Morón
+                                    <option id="Carlos Spegazzini" name="Carlos Spegazzini">Carlos Spegazzini
+                                    <option id="Canning" name="Canning">Canning
                                     <option id="Castelar" name="Castelar">Castelar
-                                    <option id="Hurlingham" name="Hurlingham">Hurlingham
-                                    <option id="William C. Morris" name="William C. Morris">William C. Morris
-                                    <option id="Udaondo" name="Udaondo">Udaondo
-                                    <option id="Trujui" name="Trujui">Trujui
-                                    <option id="Paso del Rey" name="Paso del Rey">Paso del Rey
-                                    <option id="Moreno" name="Moreno">Moreno
-                                    <option id="La Reja" name="La Reja">La Reja
-                                    <option id="Lomas del Mirador" name="Lomas del Mirador">Lomas del Mirador
-                                    <option id="La Tablada" name="La Tablada">La Tablada
-                                    <option id="Isidro Casanova" name="Isidro Casanova">Isidro Casanova
+                                    <option id="Don Torcuato" name="Don Torcuato">Don Torcuato
+                                    <option id="El Palomar" name="El Palomar">El Palomar
+                                    <option id="General Pacheco" name="General Pacheco">General Pacheco
                                     <option id="Gregorio de Laferrere" name="Gregorio de Laferrere">Gregorio de
                                         Laferrere
-                                    <option id="San Justo" name="San Justo">San Justo
-                                    <option id="Wilde" name="Wilde">Wilde
-                                    <option id="Valentín Alsina" name="Valentín Alsina">Valentín Alsina
-                                    <option id="Villa Fiorito" name="Villa Fiorito">Villa Fiorito
-                                    <option id="Banfield" name="Banfield">Banfield
+                                    <option id="Haedo" name="Haedo">Haedo
+                                    <option id="Hurlingham" name="Hurlingham">Hurlingham
+                                    <option id="Isidro Casanova" name="Isidro Casanova">Isidro Casanova
                                     <option id="José María Ezeiza" name="José María Ezeiza">José María Ezeiza
-                                    <option id="Canning" name="Canning">Canning
-                                    <option id="Carlos Spegazzini" name="Carlos Spegazzini">Carlos Spegazzini
+                                    <option id="La Reja" name="La Reja">La Reja
+                                    <option id="La Tablada" name="La Tablada">La Tablada
+                                    <option id="Lomas del Mirador" name="Lomas del Mirador">Lomas del Mirador
+                                    <option id="Martínez" name="Martínez">Martínez
+                                    <option id="Moreno" name="Moreno">Moreno
+                                    <option id="Morón" name="Morón">Morón
+                                    <option id="Munro" name="Munro">Munro
+                                    <option id="Paso del Rey" name="Paso del Rey">Paso del Rey
+                                    <option id="San Isidro" name="San Isidro">San Isidro
+                                    <option id="San Justo" name="San Justo">San Justo
+                                    <option id="Tigre" name="Tigre">Tigre
+                                    <option id="Trujui" name="Trujui">Trujui
+                                    <option id="Udaondo" name="Udaondo">Udaondo
+                                    <option id="Valentín Alsina" name="Valentín Alsina">Valentín Alsina
+                                    <option id="Vicente López" name="Vicente López">Vicente López
+                                    <option id="Victoria" name="Victoria">Victoria
+                                    <option id="Villa Fiorito" name="Villa Fiorito">Villa Fiorito
+                                    <option id="Villa Martelli" name="Villa Martelli">Villa Martelli
+                                    <option id="Villa Sarmiento" name="Villa Sarmiento">Villa Sarmiento
+                                    <option id="Wilde" name="Wilde">Wilde
+                                    <option id="William C. Morris" name="William C. Morris">William C. Morris
                                 </select>
                                 <small id="localidadHelp" class="form-text text-muted">Seleccione la localidad en donde
                                     reside actualmente</small>
@@ -179,20 +179,20 @@
                                         class="text-primary font-weight-bold">*</span></label>
                                 <select name="nombrePartido" id="nombrePartido" class="form-control br-radius-zero"
                                         required>
-                                    <option id="vicenteLopezMunicipio" name="Vicente López">Vicente López
-                                    <option id="sanIsidroMunicipio" name="San Isidro">San Isidro
-                                    <option id="sanFernandoMunicipio" name="San Fernando">San Fernando
-                                    <option id="tigreMunicipio" name="Tigre">Tigre
-                                    <option id="moronMunicipio" name="Morón">Morón
-                                    <option id="hurlinghamMunicipio" name="hurlinghamMunicipio">Hurlingham
-                                    <option id="ituzaingoMunicipio" name="ituzaingoMunicipio">Ituzaingó
-                                    <option id="morenoMunicipio" name="morenoMunicipio">Moreno
-                                    <option id="laMatanzaMunicipio" name="laMatanzaMunicipio">La Matanza
                                     <option id="avellanedaMunicipio" name="avellanedaMunicipio">Avellaneda
-                                    <option id="lomasDeZamoraMunicipio" name="lomasDeZamoraMunicipio">Lomas de Zamora
                                     <option id="ezeizaMunicipio" name="ezeizaMunicipio">Ezeiza
                                     <option id="florencioVarelaMunicipio" name="florencioVarelaMunicipio">Florencio
                                         Varela
+                                    <option id="hurlinghamMunicipio" name="hurlinghamMunicipio">Hurlingham
+                                    <option id="ituzaingoMunicipio" name="ituzaingoMunicipio">Ituzaingó
+                                    <option id="laMatanzaMunicipio" name="laMatanzaMunicipio">La Matanza
+                                    <option id="lomasDeZamoraMunicipio" name="lomasDeZamoraMunicipio">Lomas de Zamora
+                                    <option id="morenoMunicipio" name="morenoMunicipio">Moreno
+                                    <option id="moronMunicipio" name="Morón">Morón
+                                    <option id="sanIsidroMunicipio" name="San Isidro">San Isidro
+                                    <option id="sanFernandoMunicipio" name="San Fernando">San Fernando
+                                    <option id="tigreMunicipio" name="Tigre">Tigre
+                                    <option id="vicenteLopezMunicipio" name="Vicente López">Vicente López
                                 </select>
                                 <small id="partidoHelp" class="form-text text-muted">Seleccione el partido en donde
                                     reside actualmente</small>
