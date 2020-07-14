@@ -156,7 +156,7 @@ public class ControladorTest {
             model.put("motivo", motivo);
             return new ModelAndView("permisoAceptado", model);
         } else {
-            return new ModelAndView("permisoNegativo");
+            return new ModelAndView("permisoDenegado");
         }
 
     }
@@ -165,6 +165,13 @@ public class ControladorTest {
     public ModelAndView permisoPositivo() {
 
         return new ModelAndView("permisoAceptado");
+
+    }
+
+    @RequestMapping("/permisoDenegado")
+    public ModelAndView permisoDenegado() {
+
+        return new ModelAndView("permisoDenegado");
 
     }
 

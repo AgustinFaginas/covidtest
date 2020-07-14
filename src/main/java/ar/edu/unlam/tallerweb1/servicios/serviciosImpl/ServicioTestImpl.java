@@ -89,7 +89,7 @@ public class ServicioTestImpl implements ServicioTest {
 
 	@Override
 	public Boolean realizarPermiso(String nombre, String apellido, Integer edad, String tipoDocumento,
-			Integer numeroDocumento, String movito) {
+			Integer numeroDocumento, String motivo) {
 
 		if (edad >= 18) {
 			return true;

@@ -9,7 +9,7 @@ public interface ServicioTest {
 
     IMC calcularCategoriaIMC(Float peso, Float estaturaMetros);
     
-    Boolean realizarPermiso(String nombre,String apellido,Integer edad,String tipoDocumento,Integer numeroDocumento,String movito);
+    Boolean realizarPermiso(String nombre,String apellido,Integer edad,String tipoDocumento,Integer numeroDocumento,String motivo);
     
     void enviarMail (Paciente paciente);
 }
