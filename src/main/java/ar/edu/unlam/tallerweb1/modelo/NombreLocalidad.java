@@ -1,19 +1,19 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-	public enum NombreLocalidad {
+public enum NombreLocalidad {
 
-		SARANDI("Sarandí"), WILDE("Wilde"), CASTELAR ("Castelar"),
-		CIUDADELA ("Ciudadela"), SAN_JUSTO("San Justo"), MONSERRAT("Monserrat"),
-		MORON ("Morón");
+    SARANDI("Sarandí"), WILDE("Wilde"), CASTELAR("Castelar"),
+    CIUDADELA("Ciudadela"), SAN_JUSTO("San Justo"), ISIDRO_CASANOVA("Isidro Casanova"), MONSERRAT("Monserrat"),
+    MORON("Morón");
 
-		private final String valor;
+    private final String valor;
 
-		private NombreLocalidad(String valor) {
-			this.valor = valor;
-		}
+    private NombreLocalidad(String valor) {
+        this.valor = valor;
+    }
 
-		public String getValor() {
-			return valor;
-		} 
+    public String getValor() {
+        return valor;
+    }
 
 }

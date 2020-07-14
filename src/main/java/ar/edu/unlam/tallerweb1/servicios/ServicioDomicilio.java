@@ -6,4 +6,6 @@ public interface ServicioDomicilio {
 
     public void registrarDomicilio(Domicilio domicilio);
 
+    public void actualizarDomicilio(Domicilio domicilio);
+
 }

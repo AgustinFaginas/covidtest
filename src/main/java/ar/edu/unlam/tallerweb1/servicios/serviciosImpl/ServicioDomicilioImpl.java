@@ -19,4 +19,9 @@ public class ServicioDomicilioImpl implements ServicioDomicilio {
         repositorioDomicilio.registrarDomicilio(domicilio);
     }
 
+    @Override
+    public void actualizarDomicilio(Domicilio domicilio) {
+        repositorioDomicilio.actualizarDomicilio(domicilio);
+    }
+
 }

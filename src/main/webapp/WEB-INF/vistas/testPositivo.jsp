@@ -124,20 +124,24 @@
                             </div>
                         </div>
 
+                        <%--<div class="form-row my-4">
+                            <label for="nombreLocalidad">Localidad <span class="text-primary font-weight-bold">*</span></label>
+                            <input type="text" class="form-control" id="nombreLocalidad" name="nombreLocalidad" required>
+                        </div>--%>
+
+
                         <div class="form-row my-4">
                             <div class="form-group col-6">
-                                <label for="localidad">Localidad <span
+                                <label for="nombreLocalidad">Localidad <span
                                         class="text-primary font-weight-bold">*</span></label>
-                                <select name="localidad" id="localidad" class="form-control br-radius-zero"
+                                <select name="nombreLocalidad" id="nombreLocalidad" class="form-control br-radius-zero"
                                         required>
-                                    <option id="localidadIsidroCasanova">Isidro Casanova
-                                    <option id="localidadLaferrere">Laferrere
-                                    <option id="localidadManzanares">Manzanares
+                                    <option id="Isidro Casanova" name="Isidro Casanova">Isidro Casanova
                                 </select>
                                 <small id="localidadHelp" class="form-text text-muted">Seleccione la localidad en donde
                                     reside actualmente</small>
                             </div>
-                            <div class="form-group col-6">
+                            <%--<div class="form-group col-6">
                                 <label for="partido">Partido <span
                                         class="text-primary font-weight-bold">*</span></label>
                                 <select name="partido" id="partido" class="form-control br-radius-zero"
@@ -148,7 +152,7 @@
                                 </select>
                                 <small id="partidoHelp" class="form-text text-muted">Seleccione el partido en donde
                                     reside actualmente</small>
-                            </div>
+                            </div>--%>
                         </div>
 
                         <div class="form-row my-4">

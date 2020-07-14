@@ -6,4 +6,5 @@ public interface RepositorioDomicilio {
 
     void registrarDomicilio(Domicilio domicilio);
 
+    void actualizarDomicilio(Domicilio domicilio);
 }

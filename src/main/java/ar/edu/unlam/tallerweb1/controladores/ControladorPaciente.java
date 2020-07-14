@@ -1,9 +1,11 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Cama;
+import ar.edu.unlam.tallerweb1.modelo.Localidad;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
+import ar.edu.unlam.tallerweb1.servicios.ServicioLocalidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,25 +25,36 @@ public class ControladorPaciente {
     ServicioPaciente servicioPaciente;
     @Autowired
     ServicioCama servicioCama;
-    
+    @Autowired
+    ServicioLocalidad servicioLocalidad;
+
 
     public ServicioPaciente getServicioPaciente() {
-		return servicioPaciente;
-	}
+        return servicioPaciente;
+    }
 
-	public void setServicioPaciente(ServicioPaciente servicioPaciente) {
-		this.servicioPaciente = servicioPaciente;
-	}
+    public void setServicioPaciente(ServicioPaciente servicioPaciente) {
+        this.servicioPaciente = servicioPaciente;
+    }
 
-	public ServicioCama getServicioCama() {
-		return servicioCama;
-	}
+    public ServicioCama getServicioCama() {
+        return servicioCama;
+    }
 
-	public void setServicioCama(ServicioCama servicioCama) {
-		this.servicioCama = servicioCama;
-	}
+    public void setServicioCama(ServicioCama servicioCama) {
+        this.servicioCama = servicioCama;
+    }
 
-	@RequestMapping("/listaPacientes")
+    public ServicioLocalidad getServicioLocalidad() {
+        return servicioLocalidad;
+    }
+
+    public void setServicioLocalidad(ServicioLocalidad servicioLocalidad) {
+        this.servicioLocalidad = servicioLocalidad;
+    }
+
+
+    @RequestMapping("/listaPacientes")
     public ModelAndView pacientes() {
 
         List<Paciente> pacientes = servicioPaciente.pacientes();
@@ -52,6 +65,18 @@ public class ControladorPaciente {
 
         return new ModelAndView("listaPacientes", model);
     }
+
+    /*@RequestMapping("/localidades")
+    public ModelAndView localidades() {
+
+        List<Localidad> localidades = servicioLocalidad.obtenerLocalidades();
+
+        ModelMap model = new ModelMap();
+
+        model.put("localidades", localidades);
+
+        return new ModelAndView("localidades", model);
+    }*/
 
     @RequestMapping("/grafico-pacientes")
     public ModelAndView graficoPacientes() {
@@ -116,7 +141,7 @@ public class ControladorPaciente {
     @RequestMapping("/listaPacientesInfectadosPasoDos")
     public ModelAndView listaPacientesInfectadosPasoDos(
 
-    		@RequestParam(value = "idCama") Long idCama,
+            @RequestParam(value = "idCama") Long idCama,
             HttpServletRequest request
 
     ) {
@@ -131,7 +156,7 @@ public class ControladorPaciente {
         if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
             return new ModelAndView("redirect:/denied");
         }
-        
+
         Cama cama = servicioCama.consultarCamaPorId(idCama);
         List<Paciente> listaPacientesInfectados = servicioPaciente.pacientesInfectados();
 
@@ -140,7 +165,7 @@ public class ControladorPaciente {
 
         return new ModelAndView("listaPacientesInfectadosPasoDos", model);
     }
-    
+
     @RequestMapping("/listapacientes2")
     public ModelAndView listapacientes2() {
 

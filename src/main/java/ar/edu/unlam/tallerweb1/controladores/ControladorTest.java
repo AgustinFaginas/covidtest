@@ -5,10 +5,13 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import ar.edu.unlam.tallerweb1.modelo.IMC;
+import ar.edu.unlam.tallerweb1.modelo.Localidad;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioLocalidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,37 +24,48 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.servicios.ServicioTest;
 
+import java.util.List;
+
 @Controller
 public class ControladorTest {
-	
 
     public ServicioPaciente getServicioPaciente() {
-		return servicioPaciente;
-	}
+        return servicioPaciente;
+    }
 
 
-	public void setServicioPaciente(ServicioPaciente servicioPaciente) {
-		this.servicioPaciente = servicioPaciente;
-	}
+    public void setServicioPaciente(ServicioPaciente servicioPaciente) {
+        this.servicioPaciente = servicioPaciente;
+    }
 
 
-	public void setServicioTest(ServicioTest servicioTest) {
-		this.servicioTest = servicioTest;
-	}
+    public void setServicioTest(ServicioTest servicioTest) {
+        this.servicioTest = servicioTest;
+    }
 
-	@Inject
+    @Inject
     private ServicioTest servicioTest;
 
-    @Inject
-    private ServicioPaciente servicioPaciente;
-    
+    @Autowired
+    ServicioPaciente servicioPaciente;
+
     @Inject
     private ServicioLogin servicioLogin;
+
+    @Autowired
+    private ServicioLocalidad servicioLocalidad;
 
     public ServicioTest getServicioTest() {
         return servicioTest;
     }
 
+    public void setServicioLocalidad(ServicioLocalidad servicioLocalidad) {
+        this.servicioLocalidad = servicioLocalidad;
+    }
+
+    public ServicioLocalidad getServicioLocalidad() {
+        return servicioLocalidad;
+    }
 
     @RequestMapping("/autoTest")
     public ModelAndView aTest() {
@@ -70,8 +84,8 @@ public class ControladorTest {
     ) {
 
         if (servicioTest.realizarTest(fiebre, olfato, gusto, tos, respiracion)) {
-        	
-        	
+
+
             return new ModelAndView("testPositivo");
         } else {
             return new ModelAndView("testNegativo");
@@ -85,6 +99,18 @@ public class ControladorTest {
         return new ModelAndView("testPositivo");
 
     }
+
+    /*@RequestMapping("/localidades")
+    public ModelAndView localidades() {
+
+        List<Localidad> localidades = servicioLocalidad.obtenerLocalidades();
+
+        ModelMap model = new ModelMap();
+
+        model.put("localidades", localidades);
+
+        return new ModelAndView("localidades", model);
+    }*/
 
     @RequestMapping("/testNegativo")
     public ModelAndView testNegativo() {
@@ -251,23 +277,25 @@ public class ControladorTest {
 
     }
 
-	@RequestMapping(value= "/validar-email", method = RequestMethod.POST)
-	public @ResponseBody String validarEmail(@RequestBody String json) {
-		Paciente usuario =  new Paciente();
-		usuario.setEmail(json);
-		Usuario usuario2 = servicioLogin.consultarUsuarioporEmail(usuario);
-		String mensaje = "OK";
-		try {			
-			if(usuario2.getEmail() != null) {
-				mensaje = "BAD";
-				return mensaje;
-			}
-		}
-		catch(NullPointerException e) {
-			mensaje = "OK";			
-			return mensaje;
-		}
-		
-		return mensaje;
-	}
+    @RequestMapping(value = "/validar-email", method = RequestMethod.POST)
+    public @ResponseBody
+    String validarEmail(@RequestBody String json) {
+        Paciente usuario = new Paciente();
+        usuario.setEmail(json);
+        Usuario usuario2 = servicioLogin.consultarUsuarioporEmail(usuario);
+        String mensaje = "OK";
+        try {
+            if (usuario2.getEmail() != null) {
+                mensaje = "BAD";
+                return mensaje;
+            }
+        } catch (NullPointerException e) {
+            mensaje = "OK";
+            return mensaje;
+        }
+
+        return mensaje;
+    }
+
+
 }

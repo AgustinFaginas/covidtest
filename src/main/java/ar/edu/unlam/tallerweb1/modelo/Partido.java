@@ -11,40 +11,42 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Partido {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-    @Enumerated(EnumType.STRING)
-	private NombrePartido nombrePartido;
-	
-	@ManyToOne 
-	@JoinColumn 
-	private Provincia provincia;
+    /*@Enumerated(EnumType.STRING)
+	private NombrePartido nombrePartido;*/
 
-	public Long getId() {
-		return id;
-	}
+    private String nombrePartido;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @ManyToOne
+    @JoinColumn
+    private Provincia provincia;
 
-	public Provincia getProvincia() {
-		return provincia;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setProvincia(Provincia provincia) {
-		this.provincia = provincia;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public NombrePartido getNombrePartido() {
-		return nombrePartido;
-	}
+    public Provincia getProvincia() {
+        return provincia;
+    }
 
-	public void setNombrePartido(NombrePartido nombrePartido) {
-		this.nombrePartido = nombrePartido;
-	}
+    public void setProvincia(Provincia provincia) {
+        this.provincia = provincia;
+    }
+
+    public String getNombrePartido() {
+        return nombrePartido;
+    }
+
+    public void setNombrePartido(String nombrePartido) {
+        this.nombrePartido = nombrePartido;
+    }
 
 }

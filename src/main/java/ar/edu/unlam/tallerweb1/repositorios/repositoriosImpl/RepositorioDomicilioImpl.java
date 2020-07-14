@@ -27,4 +27,9 @@ public class RepositorioDomicilioImpl implements RepositorioDomicilio {
         sessionFactory.getCurrentSession().save(domicilio);
     }
 
+    @Override
+    public void actualizarDomicilio(Domicilio domicilio) {
+        sessionFactory.getCurrentSession().update(domicilio);
+    }
+
 }

@@ -2,8 +2,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import javax.servlet.http.HttpServletRequest;
 
-import ar.edu.unlam.tallerweb1.modelo.Domicilio;
-import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
+import ar.edu.unlam.tallerweb1.modelo.*;
 import ar.edu.unlam.tallerweb1.servicios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unlam.tallerweb1.modelo.Paciente;
-import ar.edu.unlam.tallerweb1.modelo.Rol;
+import java.util.List;
 
 @Controller
 public class ControladorRegistrarPaciente {
@@ -23,17 +21,19 @@ public class ControladorRegistrarPaciente {
     private ServicioUsuario servicioUsuario;
     private ServicioPaciente servicioPaciente;
     private ServicioDomicilio servicioDomicilio;
+    private ServicioLocalidad servicioLocalidad;
 
     private ServicioTest servicioTest;
 
     @Autowired
     public ControladorRegistrarPaciente(ServicioInstitucion servicioInstitucion, ServicioCama servicioCama,
-                                        ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, ServicioTest servicioTest, ServicioDomicilio servicioDomicilio) {
+                                        ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, ServicioTest servicioTest, ServicioDomicilio servicioDomicilio, ServicioLocalidad servocioLocalidad) {
         this.servicioInstitucion = servicioInstitucion;
         this.servicioUsuario = servicioUsuario;
         this.servicioPaciente = servicioPaciente;
         this.servicioTest = servicioTest;
         this.servicioDomicilio = servicioDomicilio;
+        this.servicioLocalidad = servocioLocalidad;
     }
 
     @RequestMapping("/registrarPaciente")
@@ -44,13 +44,26 @@ public class ControladorRegistrarPaciente {
         return new ModelAndView("registrarPaciente", modelo);
     }
 
+    @RequestMapping("/localidades")
+    public ModelAndView localidades() {
+
+        List<Localidad> localidades = servicioLocalidad.obtenerLocalidades();
+
+        ModelMap model = new ModelMap();
+
+        model.put("localidades", localidades);
+
+        return new ModelAndView("localidades", model);
+    }
+
     @RequestMapping("/detalleRegistroPaciente")
     public ModelAndView validarRegistroPaciente(
 
             @ModelAttribute("paciente") Paciente paciente,
             HttpServletRequest request,
             @RequestParam(value = "calle") String calle,
-            @RequestParam(value = "numero") Integer numero
+            @RequestParam(value = "numero") Integer numero,
+            @RequestParam(value = "nombreLocalidad") String nombreLocalidad
 
     ) {
 
@@ -90,7 +103,10 @@ public class ControladorRegistrarPaciente {
             domicilio.setNumero(numero);
             servicioDomicilio.registrarDomicilio(domicilio);
             paciente.setDomicilio(domicilio);
+            Localidad localidad = servicioLocalidad.obtenerLocalidadPorNombre(nombreLocalidad);
+            domicilio.setLocalidad(localidad);
             servicioPaciente.actualizarPaciente(paciente);
+            servicioDomicilio.actualizarDomicilio(domicilio);
 
             return new ModelAndView("enfermedades", model);
         } else {
