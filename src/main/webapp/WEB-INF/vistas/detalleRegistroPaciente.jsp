@@ -16,6 +16,8 @@
 
     <title>Grafico Pacientes</title>
 
+    <link rel="icon" href="img/asignar-logo.ico">
+
     <style>
         #map {
             height: 50em;
@@ -267,7 +269,135 @@
             "lon": -58.402750627537664
         }
 
-    ]
+    ];
+
+    var amba = [
+        {
+            "nombre": "BERAZATEGUI",
+            "lat": -34.76531,
+            "lon": -58.21278
+        },
+        {
+            "nombre": "FLORENCIO VARELA",
+            "lat": -34.8272200,
+            "lon": -58.3955600
+        },
+        {
+            "nombre": "PRESIDENTE PERÓN",
+            "lat": -38.416097,
+            "lon": -63.616672
+        },
+        {
+            "nombre": "QUILMES",
+            "lat": -34.72904,
+            "lon": -58.26374
+        },
+        {
+            "nombre": "ESTEBAN ECHEVERRÍA",
+            "lat": -58.4562500,
+            "lon": -34.8184400
+        },
+        {
+            "nombre": "AVELLANEDA",
+            "lat": -34.66018,
+            "lon": -58.36744
+        },
+        {
+            "nombre": "LANÚS",
+            "lat": -34.70252,
+            "lon": -58.3955
+        },
+        {
+            "nombre": "LOMAS DE ZAMORA",
+            "lat": -34.76088,
+            "lon": -58.40632
+        },
+        {
+            "nombre": "LA MATANZA",
+            "lat": -34.6831,
+            "lon": -58.5519
+        },
+        {
+            "nombre": "VICENTE LÓPEZ",
+            "lat": -34.5106,
+            "lon": -58.4964
+        },
+        {
+            "nombre": "SAN ISIDRO",
+            "lat": -22.2666700,
+            "lon": -66.1666700
+        },
+        {
+            "nombre": "SAN FERNANDO",
+            "lat": -34.4417,
+            "lon": -58.5583
+        },
+        {
+            "nombre": "GRAL. SAN MARTÍN",
+            "lat": -34.5758,
+            "lon": -58.5372
+        },
+        {
+            "nombre": "TRES DE FEBRERO",
+            "lat": -34.59987,
+            "lon": -58.56606
+        },
+        {
+            "nombre": "HÚRLINGAM",
+            "lat": -34.6,
+            "lon": -58.63333
+        },
+        {
+            "nombre": "ITUZAINGÓ",
+            "lat": -34.6667,
+            "lon": -58.6667
+        },
+        {
+            "nombre": "MORÓN",
+            "lat": -34.6534400,
+            "lon": -58.6197500
+        },
+        {
+            "nombre": "MERLO",
+            "lat": -32.3428800,
+            "lon": -65.0139600
+        },
+        {
+            "nombre": "MORENO",
+            "lat": -34.4633,
+            "lon": -58.9292
+        },
+        {
+            "nombre": "SAN MIGUEL",
+            "lat": -34.5239,
+            "lon": -58.7794
+        },
+        {
+            "nombre": "JOSÉ C. PAZ",
+            "lat": -34.5,
+            "lon": -58.75
+        },
+        {
+            "nombre": "TIGRE",
+            "lat": -34.42603,
+            "lon": -58.57962
+        },
+        {
+            "nombre": "ESCOBAR",
+            "lat": -34.34833,
+            "lon": -58.79265
+        },
+        {
+            "nombre": "PILAR",
+            "lat": -34.45866,
+            "lon": -58.9142
+        },
+        {
+            "nombre": "CABA",
+            "lat": -34.61315,
+            "lon": -58.37723
+        }
+    ];
 
     var map = L.map('map').fitWorld();
 
@@ -289,9 +419,35 @@
             .bindPopup(hospitales[i].nombre)
             .addTo(map);
     }
+    ;
+    //[amba[0].lat, amba[0].lon],[amba[1].lat, amba[1].lon],[amba[2].lat, amba[2].lon],[amba[3].lat, amba[3].lon]
+    //[-34.61315,-58.37723],[-34.45866,-58.9142],[-34.34833,-58.79265]
+    //AMBA
+    /*var area = L.polygon([[amba[0].lat, amba[0].lon], [amba[1].lat, amba[1].lon], [amba[2].lat, amba[2].lon], [amba[3].lat, amba[3].lon], [amba[4].lat, amba[4].lon], [amba[5].lat, amba[5].lon], [amba[6].lat, amba[6].lon], [amba[7].lat, amba[7].lon], [amba[8].lat, amba[8].lon], [amba[9].lat, amba[9].lon], [amba[10].lat, amba[10].lon], [amba[11].lat, amba[11].lon], [amba[12].lat, amba[12].lon], [amba[13].lat, amba[13].lon], [amba[14].lat, amba[14].lon], [amba[15].lat, amba[15].lon], [amba[16].lat, amba[16].lon], [amba[17].lat, amba[17].lon], [amba[18].lat, amba[18].lon], [amba[19].lat, amba[19].lon], [amba[20].lat, amba[20].lon], [amba[21].lat, amba[21].lon], [amba[22].lat, amba[22].lon], [amba[23].lat, amba[23].lon], [amba[24].lat, amba[24].lon]], {
+        fillColor: 'red',
+        opacity: 1,
+        color: 'red'
+    }).addTo(map);*/
+
+
+    /*//AMBA
+    for (var i = 0; i < amba.length; i++) {
+        var radio = 5000;
+
+        marker = new L.circle([amba[i].lat, amba[i].lon], {
+            color: 'red',
+            fillColor: 'red',
+            radius: radio,
+            opacity: .75,
+        }).addTo(map);
+
+        //L.marker([amba[i].lat, amba[i].lon])
+        //.bindPopup(amba[i].nombre)
+
+    }*/
 
     function onLocationFound(e) {
-        //var radius = 0;
+        //var radius = 100;
 
         L.marker(e.latlng).addTo(map)
             .bindPopup("Su ubicación").openPopup();
