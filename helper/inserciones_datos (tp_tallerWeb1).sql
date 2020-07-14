@@ -1,11 +1,9 @@
-USE tp_db; /*La eliminación siguiente se hace únicamente sobre la BD mencionada*/
-
 /*------- ELIMINACION --------*/
 
 SET sql_safe_updates=0;
 DELETE FROM asignacion;
 DELETE FROM cama;
-DELETE FROM usuario; 
+DELETE FROM usuario;
 DELETE FROM domicilio;
 DELETE FROM localidad;
 DELETE FROM partido;
@@ -19,21 +17,56 @@ VALUES (1, "BUENOS_AIRES"),
        (3, "SANTA_FE");
 
 INSERT INTO partido (id, nombrePartido ,provincia_id)
-VALUES (1, "MORON", 1),
-	   (2, "EZEIZA", 1),
-       (3, "AVELLANEDA", 1),
-       (4, "TRES_DE_FEBRERO", 1),
-       (5, "SAN_JUSTO", 1),
-       (6, "MONSERRAT", 1);
+VALUES (1, "Vicente López", 1),
+	   (2, "San Isidro", 1),
+       (3, "San Fernando", 1),
+       (4, "Tigre", 1),
+       (5, "Morón", 1),
+       (6, "Hurlingham", 1),
+       (7, "Ituzaingó", 1),
+       (8, "Moreno", 1),
+       (9, "La Matanza", 1),
+       (10, "Avellaneda", 1),
+       (11, "Lomas de Zamora", 1),
+       (12, "Ezeiza", 1),
+       (13, "Florencio Varela", 1);
 
 INSERT INTO localidad (id, nombreLocalidad, partido_id)
-VALUES (1,"CASTELAR", 1),
-	   (2, "SARANDI", 3),
-	   (3, "WILDE", 3),
-       (4, "CIUDADELA", 4),
-       (5, "MORON", 1),
-       (6, "SAN_JUSTO", 5),
-       (7, "MONSERRAT", 6);
+VALUES (1,"Vicente López", 1),
+	   (2, "Villa Martelli", 1),
+	   (3, "Munro", 1),
+       (4, "Martínez", 2),
+       (5, "San Isidro", 2),
+       (6, "Beccar", 2),
+       (7, "Victoria", 3),
+       (8, "Tigre", 4),
+       (9, "General Pacheco", 4),
+       (10, "Don Torcuato", 4),
+       (11, "Villa Sarmiento", 5),
+       (12, "El Palomar", 5),
+       (13, "Haedo", 5),
+       (14, "Morón", 5),
+       (15, "Castelar", 5),
+       (16, "Hurlingham", 6),
+       (17, "William C. Morris", 6),
+       (18, "Ituzaingó", 7),
+       (19, "Udaondo", 7),
+       (20, "Trujui", 8),
+       (21, "Paso del Rey", 8),
+       (22, "Moreno", 8),
+       (23, "La Reja", 8),
+       (24, "Lomas del Mirador", 9),
+       (25, "La Tablada", 9),
+       (26, "Isidro Casanova", 9),
+       (27, "Gregorio de Laferrere", 9),
+       (28, "San Justo", 9),
+       (29, "Wilde", 10),
+       (30, "Valentín Alsina", 10),
+       (31, "Villa Fiorito", 11),
+       (32, "Banfield", 11),
+       (33, "José María Ezeiza", 12),
+       (34, "Canning", 12),
+       (35, "Carlos Spegazzini", 12);
 
 INSERT INTO domicilio(id, calle, numero, localidad_id)
 VALUES (1, "Las Heras", 1200, 1),
@@ -55,8 +88,8 @@ VALUES ("INSTITUCION", "Institucion", 2, "Fundación Favaloro", "favaloro@email.
        ("INSTITUCION", "Institucion", 3, "Hospital Italiano De Morón", "hospital_italiano_moron@email.com", "1234","20300030007", "CUIT", 65, 7),
        ("INSTITUCION", "Institucion", 4, "Hospital Donación Francisco Santojanni", "santojanni@email.com", "1234","20400040007", "CUIT", 57, 6),
        ("INSTITUCION", "Institucion", 5, "Hospital Profesor Doctor Ramón Carrillo", "carillo@email.com", "1234", "20500050007", "CUIT", 57, 5);
-       
-/* ----- PACIENTE TESTEADOS POSIVOS----- */       
+
+/* ----- PACIENTE TESTEADOS POSIVOS----- */
 INSERT INTO usuario(rol, DTYPE, id, nombre, apellido, email, password, numeroDocumento, tipoDocumento, domicilio_id, posibleInfectado, infectado)
 VALUES("PACIENTE", "Paciente", 6, "Alejandra", "Rodriguez", "alejandro@email.com", "1234", "1", "DNI", 2, true, null),
       ("PACIENTE", "Paciente", 7, "Alejandra", "Rodriguez", "alejandra@email.com", "1234", "2", "DNI", 3, true, null),
@@ -65,7 +98,7 @@ VALUES("PACIENTE", "Paciente", 6, "Alejandra", "Rodriguez", "alejandro@email.com
       ("PACIENTE", "Paciente", 10, "Carlos", "Gómez", "carlos@email.com", "1234", "32100100", "DNI", 3, true, null),
       ("PACIENTE", "Paciente", 11, "Carla", "Gómez", "carla@email.com", "1234", "32110100", "DNI", 3, true, null);
 
-/* ----- PACIENTE INFECTADOS----- */ 
+/* ----- PACIENTE INFECTADOS----- */
 INSERT INTO usuario(rol, DTYPE, id, nombre, apellido, email, password, numeroDocumento, tipoDocumento, domicilio_id, posibleInfectado, infectado)
 VALUES("PACIENTE", "Paciente", 12, "Cristian", "Gómez", "cristian@email.com", "1234", "32120100", "DNI", 3, null, true),
       ("PACIENTE", "Paciente", 13, "Celeste", "Gómez", "celeste@email.com", "1234", "32130100", "DNI", 1, null, true),
@@ -76,7 +109,7 @@ VALUES("PACIENTE", "Paciente", 12, "Cristian", "Gómez", "cristian@email.com", "
       ("PACIENTE", "Paciente", 18, "Fabricio", "García", "fabricio@email.com", "1234", "32170100", "DNI", 1, null, true),
       ("PACIENTE", "Paciente", 19, "Fabián", "García", "fabian@email.com", "1234", "32108100", "PASAPORTE", 1, null, true),
       ("PACIENTE", "Paciente", 20, "Fabiana", "Garcia", "email12_pac@email.com", "1234", "16", "PASAPORTE", 3, true, true);
-    
+
 INSERT INTO cama(id, descripcion, tipoCama, institucion_id)
 VALUES (1, "101", "FIJA", 2),
 	   (2, "102", "FIJA", 2),
@@ -126,28 +159,28 @@ VALUES (1, "101", "FIJA", 2),
        (46, "122", "FIJA", 5),
 	   (47, "123", "FIJA", 5),
        (48, "124", "FIJA", 5);
- 
-/* ----- INTERNACION ----- */     
+
+/* ----- INTERNACION ----- */
 INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, paciente_id)
 VALUES (1, '2020-01-01 01:00:00.000000', null, null, 1, 9),
 	   (2, '2020-02-01 01:00:00.000000', null, null, 3, 10),
        (3, '2020-03-01 01:00:00.000000', null, null, 6, 11),
 	   (4, '2020-04-01 01:00:00.000000', null, null, 5, 12);
 
-/* ----- EGRESO ----- */     
+/* ----- EGRESO ----- */
 UPDATE asignacion a
-SET a.horaEgreso = '2020-02-01 01:00:00.000000', 
+SET a.horaEgreso = '2020-02-01 01:00:00.000000',
 	a.motivoEgreso = "CURADO"
 WHERE a.cama_id IN(1,2,3);
-       
-/* ----- INGRESO Y EGRESO A LA VEZ (SON EGRESOS EN DEFINITVA)----- */        
+
+/* ----- INGRESO Y EGRESO A LA VEZ (SON EGRESOS EN DEFINITVA)----- */
 INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, paciente_id)
 VALUES (5, '2020-01-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "CURADO", 10, 15),
 	   (6, '2020-02-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "CURADO", 11, 16),
        (7, '2020-03-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "FALLECIDO", 12, 17),
 	   (8, '2020-04-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "TRASLADADO", 13, 18);
-       
-/* ----- INTERNACION 2 (rehusando 2 camas liberadas)----- */     
+
+/* ----- INTERNACION 2 (rehusando 2 camas liberadas)----- */
 INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, paciente_id)
 VALUES (9, '2020-01-01 01:00:00.000000', null, null, 10, 15),
 	   (10, '2020-02-01 01:00:00.000000', null, null, 11, 16),
