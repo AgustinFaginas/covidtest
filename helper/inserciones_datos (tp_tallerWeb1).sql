@@ -185,4 +185,3 @@ INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, pacie
 VALUES (9, '2020-01-01 01:00:00.000000', null, null, 10, 15),
 	   (10, '2020-02-01 01:00:00.000000', null, null, 11, 16),
        (11, '2020-02-01 01:00:00.000000', null, null, 12, 8);
-       
