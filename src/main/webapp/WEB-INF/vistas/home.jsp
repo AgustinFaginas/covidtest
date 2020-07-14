@@ -52,9 +52,12 @@
 				<li class="nav-item ml-5 active"><a class="nav-link" href="#">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item ml-5"><a class="nav-link" href="autoTest">Realizar
-						test</a></li>
-						<li class="nav-item ml-5"><a class="nav-link" href="registrarInstitucion">Registrar Institucion</a></li>
+				<!-- <li class="nav-item ml-5"><a class="nav-link" href="autoTest">Realizar
+						test</a></li> -->
+						
+						<li class="nav-item ml-5"><a class="btn btn-danger" href="autoTest" role="button">Realizar Autotest</a></li>
+						<li class="nav-item ml-5"><a class="btn btn-secondary" href="registrarInstitucion" role="button">Registrar Institución</a></li>
+						<!-- <li class="nav-item ml-5"><a class="nav-link" href="registrarInstitucion">Registrar Institucion</a></li> -->
 			</ul>
 			<c:if test="${alert == null}">
 				<a href="login" class="btn btn-dark ml-5" role="button"
