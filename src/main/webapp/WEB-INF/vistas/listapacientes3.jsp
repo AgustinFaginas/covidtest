@@ -74,7 +74,7 @@
          </tr>
      </c:forEach>
  </table> --%>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Ingrese la prioridad a buscar">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
 <table class="table table-bordered table-dark" id="myTable">
     <tr>
         <th scope="col">#</th>
@@ -90,7 +90,6 @@
             <td><c:out value="${paciente.getNombre()}"/></td>
             <td><c:out value="${paciente.getApellido()}"/></td>
             <td><c:out value="${paciente.getInfectado() ? 'Infectado' : 'No infectado'}"/></td>
-            <td><c:out value="${paciente.getPrioridad()}"/></td>
                 <%--<td><a href="<c:url value='/Camas/${paciente.getId()}' />" >Asignar cama</a></td>
 
                 <td>
@@ -128,7 +127,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[3];
+            td = tr[i].getElementsByTagName("td")[0];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
