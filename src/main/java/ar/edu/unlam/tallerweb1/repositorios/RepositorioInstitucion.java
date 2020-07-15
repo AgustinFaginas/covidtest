@@ -14,5 +14,7 @@ public interface RepositorioInstitucion {
 
 	Institucion obtenerInstitucionPorId(Long id);
 
+    void actualizarInstitucion(Institucion institucion);
+
 //    List<Institucion> listarInstitucionesPorZona(Zona zona);
 }

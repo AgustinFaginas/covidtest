@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class ServicioZonaImpl implements ServicioZona {
@@ -18,4 +20,14 @@ public class ServicioZonaImpl implements ServicioZona {
     public Zona obtenerZonaPorNombre(String nombreZona) {
         return repositorioZona.obtenerZonaPorNombre(nombreZona);
     }
+
+    @Override
+    public List<Zona> listarInstitucionesPorZona(Zona zona) {
+        return null;
+    }
+
+/*    @Override
+    public List<Zona> listarInstitucionesPorZona(Zona zona) {
+        return repositorioZona.listarInstitucionesPorZona(zona);
+    }*/
 }

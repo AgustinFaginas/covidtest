@@ -46,6 +46,11 @@ public class ServicioInstitucionImpl implements ServicioInstitucion {
 		return repositorioInstitucion.obtenerInstitucionPorId(idInstitucion);
 	}
 
+    @Override
+    public void actualizarInstitucion(Institucion institucion) {
+        repositorioInstitucion.actualizarInstitucion(institucion);
+    }
+
     /*@Override
     public List<Institucion> listarInstitucionesPorZona(Zona zona) {
         return repositorioInstitucion.listarInstitucionesPorZona(zona);

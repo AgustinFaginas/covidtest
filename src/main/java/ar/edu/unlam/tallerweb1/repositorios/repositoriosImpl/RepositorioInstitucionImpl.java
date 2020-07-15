@@ -35,13 +35,18 @@ public class RepositorioInstitucionImpl implements RepositorioInstitucion {
                 .list();
     }
 
-	@Override
-	public Institucion obtenerInstitucionPorId(Long id) {
-		
-		return (Institucion) sessionFactory.getCurrentSession().createCriteria(Institucion.class)
-               .add(Restrictions.eq("id", id)).uniqueResult();
+    @Override
+    public Institucion obtenerInstitucionPorId(Long id) {
 
-	}
+        return (Institucion) sessionFactory.getCurrentSession().createCriteria(Institucion.class)
+                .add(Restrictions.eq("id", id)).uniqueResult();
+
+    }
+
+    @Override
+    public void actualizarInstitucion(Institucion institucion) {
+        sessionFactory.getCurrentSession().update(institucion);
+    }
 
     /*@Override
     public List<Institucion> listarInstitucionesPorZona(Zona zona) {

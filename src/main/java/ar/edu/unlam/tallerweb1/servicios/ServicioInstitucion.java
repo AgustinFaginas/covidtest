@@ -17,5 +17,7 @@ public interface ServicioInstitucion {
     //Para panel
     public Institucion obtenerInstitucionPorId(Long idInstitucion);
 
+    void actualizarInstitucion(Institucion institucion);
+
     //List<Institucion> listarInstitucionesPorZona(Zona zona);
 }
