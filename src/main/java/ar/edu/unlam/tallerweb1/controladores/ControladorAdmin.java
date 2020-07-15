@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
+import ar.edu.unlam.tallerweb1.modelo.Notificacion;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioNotificacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
@@ -31,6 +33,8 @@ public class ControladorAdmin {
 	private ServicioUsuario servicioUsuario;
 	@Autowired
 	private ServicioPaciente servicioPaciente;
+	@Autowired
+	private ServicioNotificacion servicioNotificacion;
 	
 	
 	@RequestMapping("admin")
@@ -74,14 +78,52 @@ public class ControladorAdmin {
 		return new ModelAndView("homeAdmin");
 		
 	}
+	
+	
 
-	@RequestMapping("crearMensaje/{id}")
-	public String crearMensaje(@PathVariable Long id, Model m) {
+	@RequestMapping(value ="crearMensaje" , method=RequestMethod.POST)
+	public ModelAndView crearMensaje( @RequestParam(value = "id", required = false) Long id
+			,HttpServletRequest request) {
 
 		Paciente p = servicioPaciente.consultarPacientePorId(id);
-		m.addAttribute("p", p);
+		Long idEmisor = (Long) request.getSession().getAttribute("ID");
+		
+		
+		ModelMap model = new ModelMap();
+		
+		model.put("id", idEmisor);
+		model.put("p", p);
+		
+		return new ModelAndView("crearMensaje",model);
 
-		return "crearMensaje";
+
+	}
+	
+	@RequestMapping(value ="enviarMensaje" , method=RequestMethod.POST)
+	public ModelAndView enviarMensaje( @RequestParam(value = "idEmisor", required = false) Long idEmisor,
+			@RequestParam(value = "idReceptor", required = false) Long idReceptor,
+			@RequestParam(value = "mensaje", required = false)String mensaje
+			) {
+
+		Usuario destinatario = servicioUsuario.consultarUsuarioPorId(idReceptor);
+		Usuario remitente = servicioUsuario.consultarUsuarioPorId(idEmisor);
+		
+		
+			
+		
+		Notificacion notificacionNueva = new Notificacion();
+		
+		notificacionNueva.setDestinatario(destinatario);
+		notificacionNueva.setRemitente(remitente);
+		notificacionNueva.setMsg(mensaje);
+		
+		servicioNotificacion.registrarNotificacion(notificacionNueva);
+		
+		return new ModelAndView("home");
+		
+		
+	
+
 
 	}
 	

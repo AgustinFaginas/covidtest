@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
 <%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -35,44 +35,46 @@
 
 <body>
 
-	
+
 	</nav>
 	<div class="container">
-		
-		<br><br><br><h1>Redactar Mensaje</h1>
 
-		<form:form action="Enviar" modelAttribute="p">
+		<br>
+		<br>
+		<br>
+		<h1>Redactar Mensaje</h1>
 
-			<div class="form-group">
-				<label for="emailFor">Destinatario: </label> <input type="text"
-					readonly class="form-control-plaintext" id="staticEmail"
-					value="${ p.getEmail() }">
-			</div>
+		<form:form action="enviarMensaje" method="POST">
 
 			<div class="form-group">
-				<label for="emailFor">Subject: </label> <input type="text"
-					class="form-control" id="subject" placeholder="Asunto">
+
+				<h1>Destinatario ${p.getEmail()}</h1>
 			</div>
 
 			<div class="form-group">
 				<label for="exampleFormControlTextarea1">Mensaje: </label>
-				<textarea class="form-control" id="exampleFormControlTextarea1"
-					rows="3"></textarea>
+				<textarea class="form-control" id="mensaje" name="mensaje" rows="3"></textarea>
 			</div>
+			<input type="hidden" value="${p.getId()}" name="idReceptor">
+			<input type="hidden" value="${id}" name="idEmisor">
+			
+			<h1>"${p.getId()}"</h1>
+			<h1>"${id}"</h1>
 
 			<button class="btn btn-primary" type="submit">Enviar</button>
 		</form:form>
 
 
-		<br><a href="/covidtest/panel">Atrás</a>
+		<br>
+		<a href="/covidtest/panel">Atrás</a>
 	</div>
-	
+
 	<%-- <form action="contact" method="post">
     <p>Your email address: <input name="email"></p>
     <p>Mail subject: <input name="subject"></p>
     <p>Mail message: <textarea name="message"></textarea></p>
     <p><input type="submit"><span class="message">${message}</span></p> --%>
-</form>
+	</form>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -86,4 +88,4 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
-	</body>
+</body>
