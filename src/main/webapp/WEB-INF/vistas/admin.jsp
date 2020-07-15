@@ -77,7 +77,7 @@
 		
 		<hr class="my-4">
 		<p>
-			<a href="">Modificar datos</a>
+			
 		</p>
 		<p class="lead">
 			<a class="btn btn-primary btn-lg" href="panel" role="submit">

@@ -128,7 +128,7 @@
                     <p class="lead">La institución ${nombre} posee ${camas} camas en total.</p>
                     <hr class="my-4">
                     <p>
-                        <a href="">Modificar datos</a>
+                        
                     </p>
                 </div>
             </div>

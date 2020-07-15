@@ -182,10 +182,30 @@
 								href="<c:url value='/crearMensaje/${paciente.getId()}'/>"
 								role="button"> Enviar Mensaje</a>
 								<button type="button" class="btn btn-danger">Borrar</button></td>
-								
-								<td class="align-middle"><c:out
-									value="${paciente.getPrioridad()}" /></td>
-				
+
+							<td class="align-middle">
+							 <%--   <c:set var = "prioridad" scope = "session" value = "${paciente.getPrioridad()"/>
+							<c:if test = "${prioridad >=1 }">
+							
+							Alta --%>
+							<c:out value="${paciente.getPrioridad()}" /></td> 
+						<%-- 	
+							</c:if> --%>
+
+<%-- <%! int day = 3; %>
+<html>
+   <head>
+      <title>IF...ELSE Example</title>
+   </head>
+   <body>
+      <% if (day == 1 || day == 7) { %>
+         <p> Today is weekend</p>
+      <% } else { %>
+         <p> Today is not weekend</p>
+      <% } %>
+   </body>
+</html> --%>
+
 							</tr>
 							</c:forEach>
 						</tbody>

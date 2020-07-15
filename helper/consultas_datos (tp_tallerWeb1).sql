@@ -12,6 +12,9 @@ WHERE DTYPE = "Institucion";
 SELECT * 
 FROM Asignacion;
 
+SELECT * 
+FROM Notificacion;
+
 SELECT *
 FROM Usuario us 
 	JOIN Asignacion asig 
