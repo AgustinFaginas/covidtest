@@ -13,10 +13,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
@@ -28,11 +27,6 @@ public class ControladorAdmin {
     private ServicioUsuario servicioUsuario;
     @Autowired
     private ServicioPaciente servicioPaciente;
-    @Autowired
-    private ServicioInstitucion servicioInstitucion;
-    @Autowired
-    private ServicioZona servicioZona;
-
 
     @RequestMapping("admin")
     public ModelAndView irAadmin(HttpServletRequest request) {
