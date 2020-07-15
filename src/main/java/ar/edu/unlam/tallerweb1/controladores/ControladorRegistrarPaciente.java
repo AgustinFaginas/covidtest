@@ -80,11 +80,11 @@ public class ControladorRegistrarPaciente {
                 servicioPaciente.consultarPacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento()) == null) {
 
             paciente.setPosibleInfectado(true);
+            paciente.setRol(Rol.PACIENTE);
 
             servicioPaciente.registrarPaciente(paciente);
 
-            String rol = Rol.PACIENTE.name();
-            request.getSession().setAttribute("rol", paciente.getRol());
+            request.getSession().setAttribute("ROL", paciente.getRol());
 
             String nombre = paciente.getNombre();
             String documento = paciente.getNumeroDocumento();
