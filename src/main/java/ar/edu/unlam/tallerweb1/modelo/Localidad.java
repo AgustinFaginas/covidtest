@@ -25,6 +25,10 @@ public class Localidad {
     @JoinColumn
     private Partido partido;
 
+    @ManyToOne
+    @JoinColumn
+    private Zona zona;
+
     public Long getId() {
         return id;
     }
@@ -49,5 +53,11 @@ public class Localidad {
         this.nombreLocalidad = nombreLocalidad;
     }
 
+    public Zona getZona() {
+        return zona;
+    }
 
+    public void setZona(Zona zona) {
+        this.zona = zona;
+    }
 }

@@ -16,6 +16,11 @@ VALUES (1, "BUENOS_AIRES"),
 	   (2, "CORDOBA"),
        (3, "SANTA_FE");
 
+       INSERT INTO zona(id, nombre)
+VALUES (1, "Zona norte"),
+	   (2, "Zona oeste"),
+       (3, "Zona sur");
+
 INSERT INTO partido (id, nombrePartido ,provincia_id)
 VALUES (1, "Vicente López", 1),
 	   (2, "San Isidro", 1),
@@ -31,42 +36,42 @@ VALUES (1, "Vicente López", 1),
        (12, "Ezeiza", 1),
        (13, "Florencio Varela", 1);
 
-INSERT INTO localidad (id, nombreLocalidad, partido_id)
-VALUES (1,"Vicente López", 1),
-	   (2, "Villa Martelli", 1),
-	   (3, "Munro", 1),
-       (4, "Martínez", 2),
-       (5, "San Isidro", 2),
-       (6, "Beccar", 2),
-       (7, "Victoria", 3),
-       (8, "Tigre", 4),
-       (9, "General Pacheco", 4),
-       (10, "Don Torcuato", 4),
-       (11, "Villa Sarmiento", 5),
-       (12, "El Palomar", 5),
-       (13, "Haedo", 5),
-       (14, "Morón", 5),
-       (15, "Castelar", 5),
-       (16, "Hurlingham", 6),
-       (17, "William C. Morris", 6),
-       (18, "Ituzaingó", 7),
-       (19, "Udaondo", 7),
-       (20, "Trujui", 8),
-       (21, "Paso del Rey", 8),
-       (22, "Moreno", 8),
-       (23, "La Reja", 8),
-       (24, "Lomas del Mirador", 9),
-       (25, "La Tablada", 9),
-       (26, "Isidro Casanova", 9),
-       (27, "Gregorio de Laferrere", 9),
-       (28, "San Justo", 9),
-       (29, "Wilde", 10),
-       (30, "Valentín Alsina", 10),
-       (31, "Villa Fiorito", 11),
-       (32, "Banfield", 11),
-       (33, "José María Ezeiza", 12),
-       (34, "Canning", 12),
-       (35, "Carlos Spegazzini", 12);
+INSERT INTO localidad (id, nombreLocalidad, partido_id, zona_id)
+VALUES (1,"Vicente López", 1, 1),
+	   (2, "Villa Martelli", 1, 2),
+	   (3, "Munro", 1, 3),
+       (4, "Martínez", 2, 2),
+       (5, "San Isidro", 2, 1),
+       (6, "Beccar", 2, 1),
+       (7, "Victoria", 3, 2),
+       (8, "Tigre", 4, 1),
+       (9, "General Pacheco", 4, 1),
+       (10, "Don Torcuato", 4, 3),
+       (11, "Villa Sarmiento", 5, 3),
+       (12, "El Palomar", 5, 2),
+       (13, "Haedo", 5, 2),
+       (14, "Morón", 5, 2),
+       (15, "Castelar", 5, 2),
+       (16, "Hurlingham", 6, 3),
+       (17, "William C. Morris", 6, 3),
+       (18, "Ituzaingó", 7, 2),
+       (19, "Udaondo", 7, 3),
+       (20, "Trujui", 8, 3),
+       (21, "Paso del Rey", 8, 2),
+       (22, "Moreno", 8, 2),
+       (23, "La Reja", 8, 2),
+       (24, "Lomas del Mirador", 9, 2),
+       (25, "La Tablada", 9, 2),
+       (26, "Isidro Casanova", 9, 2),
+       (27, "Gregorio de Laferrere", 9, 2),
+       (28, "San Justo", 9, 2),
+       (29, "Wilde", 10, 3),
+       (30, "Valentín Alsina", 10, 3),
+       (31, "Villa Fiorito", 11, 3),
+       (32, "Banfield", 11, 3),
+       (33, "José María Ezeiza", 12, 2),
+       (34, "Canning", 12, 2),
+       (35, "Carlos Spegazzini", 12, 3);
 
 INSERT INTO domicilio(id, calle, numero, localidad_id)
 VALUES (1, "Las Heras", 1200, 1),
@@ -77,6 +82,9 @@ VALUES (1, "Las Heras", 1200, 1),
        (6, "Pilar", 950, 6),
        (7, "Av. Rivadavia", 17961, 5),
        (8, "Solís", 463, 5);
+
+
+
 
 /* ----- ADMIN ----- */
 INSERT INTO usuario(rol, DTYPE, id, nombre, email, password, numeroDocumento, tipoDocumento, cantidadCamas, domicilio_id)
@@ -185,3 +193,4 @@ INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, pacie
 VALUES (9, '2020-01-01 01:00:00.000000', null, null, 10, 15),
 	   (10, '2020-02-01 01:00:00.000000', null, null, 11, 16),
        (11, '2020-02-01 01:00:00.000000', null, null, 12, 8);
+       
