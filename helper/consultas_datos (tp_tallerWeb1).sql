@@ -2,6 +2,9 @@ SELECT *
 FROM Usuario;
 
 SELECT * 
+FROM Notificacion;
+
+SELECT * 
 FROM Usuario
 WHERE DTYPE = "Paciente";
 

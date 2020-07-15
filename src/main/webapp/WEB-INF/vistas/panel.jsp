@@ -177,10 +177,23 @@
 									value="${paciente.getInfectado() ? 'Infectado' : 'No infectado'}" /></td>
 									
 							<td class="align-middle"><button type="button"
-									class="btn btn-secondary">Derivar a Institución</button> <a
+									class="btn btn-secondary">Derivar a Institución</button> 
+									
+									
+									<form action="crearMensaje" method=post>
+									 <input type="hidden" id="id" name="id" value="${paciente.getId()}" >
+									<input type="submit" value="Enviar mensaje">
+									
+									</form>
+									<a
 								class="btn btn-warning"
-								href="<c:url value='/crearMensaje/${paciente.getId()}'/>"
+								href="<c:url value='/crearMensaje'/>"
 								role="button"> Enviar Mensaje</a>
+								
+								
+								
+								
+								
 								<button type="button" class="btn btn-danger">Borrar</button></td>
 
 							<td class="align-middle">
