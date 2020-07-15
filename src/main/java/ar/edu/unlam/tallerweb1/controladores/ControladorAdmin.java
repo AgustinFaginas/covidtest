@@ -99,31 +99,23 @@ public class ControladorAdmin {
 
 	}
 	
-	@RequestMapping(value ="enviarMensaje" , method=RequestMethod.POST)
-	public ModelAndView enviarMensaje( @RequestParam(value = "idEmisor", required = false) Long idEmisor,
+	@RequestMapping(value = "enviarMensaje", method = RequestMethod.POST)
+	public ModelAndView enviarMensaje(@RequestParam(value = "idEmisor", required = false) Long idEmisor,
 			@RequestParam(value = "idReceptor", required = false) Long idReceptor,
-			@RequestParam(value = "mensaje", required = false)String mensaje
-			) {
+			@RequestParam(value = "mensaje", required = false) String mensaje) {
 
 		Usuario destinatario = servicioUsuario.consultarUsuarioPorId(idReceptor);
 		Usuario remitente = servicioUsuario.consultarUsuarioPorId(idEmisor);
-		
-		
-			
-		
+
 		Notificacion notificacionNueva = new Notificacion();
-		
+
 		notificacionNueva.setDestinatario(destinatario);
 		notificacionNueva.setRemitente(remitente);
 		notificacionNueva.setMsg(mensaje);
-		
-		servicioNotificacion.registrarNotificacion(notificacionNueva);
-		
-		return new ModelAndView("home");
-		
-		
-	
 
+		servicioNotificacion.registrarNotificacion(notificacionNueva);
+
+		return new ModelAndView("home");
 
 	}
 	
