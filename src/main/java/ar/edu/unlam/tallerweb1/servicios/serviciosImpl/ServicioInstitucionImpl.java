@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.servicios.serviciosImpl;
 
 import javax.transaction.Transactional;
 
+import ar.edu.unlam.tallerweb1.modelo.Zona;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,11 @@ public class ServicioInstitucionImpl implements ServicioInstitucion {
 		
 		return repositorioInstitucion.obtenerInstitucionPorId(idInstitucion);
 	}
+
+    /*@Override
+    public List<Institucion> listarInstitucionesPorZona(Zona zona) {
+        return repositorioInstitucion.listarInstitucionesPorZona(zona);
+    }*/
 
 
 }

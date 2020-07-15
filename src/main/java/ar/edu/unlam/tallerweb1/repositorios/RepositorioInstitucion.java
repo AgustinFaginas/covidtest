@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
+import ar.edu.unlam.tallerweb1.modelo.Zona;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface RepositorioInstitucion {
 
 	Institucion obtenerInstitucionPorId(Long id);
 
+//    List<Institucion> listarInstitucionesPorZona(Zona zona);
 }

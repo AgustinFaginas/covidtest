@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.repositorios.repositoriosImpl;
 
+import ar.edu.unlam.tallerweb1.modelo.Zona;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioInstitucion;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -39,8 +40,11 @@ public class RepositorioInstitucionImpl implements RepositorioInstitucion {
 		
 		return (Institucion) sessionFactory.getCurrentSession().createCriteria(Institucion.class)
                .add(Restrictions.eq("id", id)).uniqueResult();
-				
-				
-		
+
 	}
+
+    /*@Override
+    public List<Institucion> listarInstitucionesPorZona(Zona zona) {
+        return sessionFactory.getCurrentSession().createCriteria(Ins);
+    }*/
 }
