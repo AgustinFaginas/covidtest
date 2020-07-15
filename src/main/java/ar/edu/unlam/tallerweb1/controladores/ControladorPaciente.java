@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Cama;
+import ar.edu.unlam.tallerweb1.modelo.Institucion;
 import ar.edu.unlam.tallerweb1.modelo.Localidad;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
@@ -177,5 +178,31 @@ public class ControladorPaciente {
 
         return new ModelAndView("listapacientes2", model);
     }
+    
+    @RequestMapping("bienvenidoPaciente")
+	public ModelAndView irAbienvenido(HttpServletRequest request) {
+
+		ModelMap model = new ModelMap();
+
+		if (request.getSession().getAttribute("ID") == null) {
+			return new ModelAndView("redirect:/home");
+		}
+
+		if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
+
+			Long id = (Long) request.getSession().getAttribute("ID");
+			Paciente paciente = servicioPaciente.consultarPacientePorId(id);
+
+			String nombre = paciente.getNombre();
+			//Integer camas = (int) servicioCama.obtenerCamasPorInstitucion(institucion).size();
+
+			model.put("nombre", nombre);
+			
+
+			return new ModelAndView("bienvenidoPaciente", model);
+
+		}
+		return new ModelAndView("redirect:/denied");
+	}
 
 }
