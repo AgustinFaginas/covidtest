@@ -113,40 +113,4 @@ public class ControladorAdmin {
         return new ModelAndView("denied");
     }
 
-/*    @RequestMapping(value = "/instituciones-por-zona", method = RequestMethod.GET)
-    public ModelAndView institucionesPorZona(
-            @RequestParam(value = "nombreZona") String nombreZona
-    ) {
-        ModelMap model = new ModelMap();
-
-        Zona zona = servicioZona.obtenerZonaPorNombre(nombreZona);
-
-        String nombreDeZona = zona.getNombre();
-
-//		List<Institucion> instituciones = servicioInstitucion.listarInstitucionesPorZona(zona);
-
-        model.put("nombreDeZona", nombreDeZona);
-
-        return new ModelAndView("institucionesporzona", model);
-    }*/
-
-	/*    @RequestMapping(value = "/validarTest", method = RequestMethod.GET)
-    public ModelAndView validarTest(
-            @RequestParam(value = "fiebre", required = false) Float fiebre,
-            @RequestParam(value = "perdidaOlfato", required = false) Boolean olfato,
-            @RequestParam(value = "perdidaGusto", required = false) Boolean gusto,
-            @RequestParam(value = "tos", required = false) Boolean tos,
-            @RequestParam(value = "perdidaRespiracion", required = false) Boolean respiracion
-    ) {
-
-        if (servicioTest.realizarTest(fiebre, olfato, gusto, tos, respiracion)) {
-
-
-            return new ModelAndView("testPositivo");
-        } else {
-            return new ModelAndView("testNegativo");
-        }
-
-    }*/
-
 }
