@@ -2,6 +2,10 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:if test="${rol == 1}">
+<jsp:include page="../../partial/headerAdminParte1.jsp" />
+</c:if>	
+                       
 <jsp:include page="../../partial/headerInstitucionesParte1.jsp" />
 
 <title>Consultar Paciente</title>
@@ -10,34 +14,38 @@
 
 <%@page import="java.util.*" session="true"%>
  
-<% HttpSession sesion=request.getSession(); out.println("Creación: "+sesion.getAttribute("ROL")); 
-Date momento=new Date(sesion.getCreationTime()); out.println("Creación: "+momento); %>
+<%-- <% HttpSession sesion=request.getSession(); out.println("ROL: "+sesion.getAttribute("ROL"));%> --%>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
    
      
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+     
+      	
+    <div class="container">
+    
+     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h4>Consultar Paciente</h4>
        
       </div>
-      	
-    <div class="">
         <div>
 					
         <form:form action="detallePaciente" method="POST" modelAttribute="paciente" role="form" class="contactForm">
                         
                         <div class="form-group">
                         
-                        <h6>Número de documento</h6>
-                        
-                            <form:input path="numeroDocumento" type="text" name="name" class="form-control br-radius-zero" id="numeroDocumento"
+                    <label for="nombre" class="h6 my-3">Número de documento<span
+                            class="text-primary font-weight-bold">*</span></label>
+                 <form:input path="numeroDocumento" type="text" name="name" class="form-control br-radius-zero" id="numeroDocumento"
                                    placeholder="Ingrese número de documento" data-rule="minlen:1"
                                    data-msg="Ingrese número de documento valido"/>
                             <div class="validation"></div>
-                        </div>
+                </div>
+
                         
-                        <div class="form-group">
-                        <h6>Tipo de documento</h6>
+                       <div class="form-group">
+                        
+                    <label for="nombre" class="h6 my-3">Tipo de documento<span
+                            class="text-primary font-weight-bold">*</span></label>
                     
 		                     <form:select path="tipoDocumento" name="tipoDocumento" type="TipoDocumento"  class="form-control br-radius-zero" >
 								<option path="tipoDocumento" id="tipoDocumento" type="TipoDocumento">DNI
