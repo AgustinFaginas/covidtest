@@ -120,11 +120,12 @@
 							style="margin-right: 25px; margin-top: 5px; margin-left: -30px">
 
 
-							<form action="crearMensajeParaInstitucion" method=post>
+							<form action="crearMensaje" method=post>
 
 
 								<input class="invisible" type="hidden" id="id" name="id"
-									value="${instituciones.getId()}"> <input
+									value="${paciente.getId()}"> 
+									<input
 									class="btn btn-primary" type="submit" value="Enviar Mensaje">
 
 							</form>
