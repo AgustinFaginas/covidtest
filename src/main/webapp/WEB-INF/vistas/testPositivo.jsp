@@ -480,22 +480,6 @@
             document.getElementById("sanIsidroMunicipio").style.display = "none";
         }
 
-        if (cod == "Martínez" || cod == "San Isidro" || cod == "Beccar"){
-            document.getElementById("hurlinghamMunicipio").style.display = "none";
-            document.getElementById("ituzaingoMunicipio").style.display = "none";
-            document.getElementById("laMatanzaMunicipio").style.display = "none";
-            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
-            document.getElementById("morenoMunicipio").style.display = "none";
-            document.getElementById("moronMunicipio").style.display = "none";
-            document.getElementById("sanFernandoMunicipio").style.display = "none";
-            document.getElementById("tigreMunicipio").style.display = "none";
-            document.getElementById("avellanedaMunicipio").style.display = "none";
-            document.getElementById("ezeizaMunicipio").style.display = "none";
-            document.getElementById("florencioVarelaMunicipio").style.display = "none";
-            document.getElementById("sanIsidroMunicipio").style.display = "none";
-            document.getElementById("vicenteLopezMunicipio").style.display = "none";
-        }
-
         if (cod == "Victoria"){
             document.getElementById("hurlinghamMunicipio").style.display = "none";
             document.getElementById("ituzaingoMunicipio").style.display = "none";
@@ -524,7 +508,6 @@
             document.getElementById("avellanedaMunicipio").style.display = "none";
             document.getElementById("ezeizaMunicipio").style.display = "none";
             document.getElementById("florencioVarelaMunicipio").style.display = "none";
-            document.getElementById("sanIsidroMunicipio").style.display = "none";
         }
 
         if (cod == "Tigre" || cod == "General Pacheco" || cod == "Don Torcuato"){
