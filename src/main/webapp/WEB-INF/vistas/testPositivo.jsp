@@ -133,42 +133,48 @@
                                 <label for="nombreLocalidad">Localidad <span
                                         class="text-primary font-weight-bold">*</span></label>
                                 <select name="nombreLocalidad" id="nombreLocalidad" class="form-control br-radius-zero"
-                                        required>
-                                    <option id="Banfield" name="Banfield">Banfield
-                                    <option id="Beccar" name="Beccar">Beccar
-                                    <option id="Carlos Spegazzini" name="Carlos Spegazzini">Carlos Spegazzini
-                                    <option id="Canning" name="Canning">Canning
-                                    <option id="Castelar" name="Castelar">Castelar
-                                    <option id="Don Torcuato" name="Don Torcuato">Don Torcuato
-                                    <option id="El Palomar" name="El Palomar">El Palomar
-                                    <option id="General Pacheco" name="General Pacheco">General Pacheco
-                                    <option id="Gregorio de Laferrere" name="Gregorio de Laferrere">Gregorio de
+                                        required onchange="ShowSelected();">
+                                    <option id="Banfield" class="partido11" name="Banfield">Banfield
+                                    <option id="Beccar" class="partido2" name="Beccar">Beccar
+                                    <option id="Carlos Spegazzini" class="partido12" name="Carlos Spegazzini">Carlos
+                                        Spegazzini
+                                    <option id="Canning" class="partido12" name="Canning">Canning
+                                    <option id="Castelar" class="partido5" name="Castelar">Castelar
+                                    <option id="Don Torcuato" class="partido4" name="Don Torcuato">Don Torcuato
+                                    <option id="El Palomar" class="partido5" name="El Palomar">El Palomar
+                                    <option id="General Pacheco" class="partido4" name="General Pacheco">General Pacheco
+                                    <option id="Gregorio de Laferrere" class="partido9" name="Gregorio de Laferrere">
+                                        Gregorio de
                                         Laferrere
-                                    <option id="Haedo" name="Haedo">Haedo
-                                    <option id="Hurlingham" name="Hurlingham">Hurlingham
-                                    <option id="Isidro Casanova" name="Isidro Casanova">Isidro Casanova
-                                    <option id="José María Ezeiza" name="José María Ezeiza">José María Ezeiza
-                                    <option id="La Reja" name="La Reja">La Reja
-                                    <option id="La Tablada" name="La Tablada">La Tablada
-                                    <option id="Lomas del Mirador" name="Lomas del Mirador">Lomas del Mirador
-                                    <option id="Martínez" name="Martínez">Martínez
-                                    <option id="Moreno" name="Moreno">Moreno
-                                    <option id="Morón" name="Morón">Morón
-                                    <option id="Munro" name="Munro">Munro
-                                    <option id="Paso del Rey" name="Paso del Rey">Paso del Rey
-                                    <option id="San Isidro" name="San Isidro">San Isidro
-                                    <option id="San Justo" name="San Justo">San Justo
-                                    <option id="Tigre" name="Tigre">Tigre
-                                    <option id="Trujui" name="Trujui">Trujui
-                                    <option id="Udaondo" name="Udaondo">Udaondo
-                                    <option id="Valentín Alsina" name="Valentín Alsina">Valentín Alsina
-                                    <option id="Vicente López" name="Vicente López">Vicente López
-                                    <option id="Victoria" name="Victoria">Victoria
-                                    <option id="Villa Fiorito" name="Villa Fiorito">Villa Fiorito
-                                    <option id="Villa Martelli" name="Villa Martelli">Villa Martelli
-                                    <option id="Villa Sarmiento" name="Villa Sarmiento">Villa Sarmiento
-                                    <option id="Wilde" name="Wilde">Wilde
-                                    <option id="William C. Morris" name="William C. Morris">William C. Morris
+                                    <option id="Haedo" class="partido9" name="Haedo">Haedo
+                                    <option id="Hurlingham" class="partido6" name="Hurlingham">Hurlingham
+                                    <option id="Isidro Casanova" class="partido9" name="Isidro Casanova">Isidro Casanova
+                                    <option id="José María Ezeiza" class="partido12" name="José María Ezeiza">José María
+                                        Ezeiza
+                                    <option id="La Reja" class="partido8" name="La Reja">La Reja
+                                    <option id="La Tablada" class="partido9" name="La Tablada">La Tablada
+                                    <option id="Lomas del Mirador" class="partido9" name="Lomas del Mirador">Lomas del
+                                        Mirador
+                                    <option id="Martínez" class="partido2" name="Martínez">Martínez
+                                    <option id="Moreno" class="partido8" name="Moreno">Moreno
+                                    <option id="Morón" class="partido9" name="Morón">Morón
+                                    <option id="Munro" class="partido1" name="Munro">Munro
+                                    <option id="Paso del Rey" class="partido8" name="Paso del Rey">Paso del Rey
+                                    <option id="San Isidro" class="partido2" name="San Isidro">San Isidro
+                                    <option id="San Justo" class="partido9" name="San Justo">San Justo
+                                    <option id="Tigre" class="partido4" name="Tigre">Tigre
+                                    <option id="Trujui" class="partido8" name="Trujui">Trujui
+                                    <option id="Udaondo" class="partido7" name="Udaondo">Udaondo
+                                    <option id="Valentín Alsina" class="partido10" name="Valentín Alsina">Valentín
+                                        Alsina
+                                    <option id="Vicente López" class="partido1" name="Vicente López">Vicente López
+                                    <option id="Victoria" class="partido3" name="Victoria">Victoria
+                                    <option id="Villa Fiorito" class="partido11" name="Villa Fiorito">Villa Fiorito
+                                    <option id="Villa Martelli" class="partido1" name="Villa Martelli">Villa Martelli
+                                    <option id="Villa Sarmiento" class="partido5" name="Villa Sarmiento">Villa Sarmiento
+                                    <option id="Wilde" class="partido10" name="Wilde">Wilde
+                                    <option id="William C. Morris" class="partido6" name="William C. Morris">William C.
+                                        Morris
                                 </select>
                                 <small id="localidadHelp" class="form-text text-muted">Seleccione la localidad en donde
                                     reside actualmente</small>
@@ -444,5 +450,231 @@
 </footer>
 <!-- Footer -->
 </body>
+<script>
+    //  document.getElementById("Tigre").style.display = "none";
+    // document.getElementsByClassName("partido1").style.display = "none";
+/*    if (document.getElementsByClassName("partido1").select) {
+        alert("Hola");
+    } else {
+        alert("Chau");
+    }*/
+    function ShowSelected()
+    {
+        /* Para obtener el valor */
+        var cod = document.getElementById("nombreLocalidad").value;
+        //alert(cod);
 
+        if (cod == "Munro" || cod == "Villa Martelli"|| cod == "Vicente López"){
+            document.getElementById("hurlinghamMunicipio").style.display = "none";
+            document.getElementById("ituzaingoMunicipio").style.display = "none";
+            document.getElementById("laMatanzaMunicipio").style.display = "none";
+            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
+            document.getElementById("morenoMunicipio").style.display = "none";
+            document.getElementById("moronMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("sanFernandoMunicipio").style.display = "none";
+            document.getElementById("tigreMunicipio").style.display = "none";
+            document.getElementById("avellanedaMunicipio").style.display = "none";
+            document.getElementById("ezeizaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+        }
+
+        if (cod == "Martínez" || cod == "San Isidro" || cod == "Beccar"){
+            document.getElementById("hurlinghamMunicipio").style.display = "none";
+            document.getElementById("ituzaingoMunicipio").style.display = "none";
+            document.getElementById("laMatanzaMunicipio").style.display = "none";
+            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
+            document.getElementById("morenoMunicipio").style.display = "none";
+            document.getElementById("moronMunicipio").style.display = "none";
+            document.getElementById("sanFernandoMunicipio").style.display = "none";
+            document.getElementById("tigreMunicipio").style.display = "none";
+            document.getElementById("avellanedaMunicipio").style.display = "none";
+            document.getElementById("ezeizaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("vicenteLopezMunicipio").style.display = "none";
+        }
+
+        if (cod == "Victoria"){
+            document.getElementById("hurlinghamMunicipio").style.display = "none";
+            document.getElementById("ituzaingoMunicipio").style.display = "none";
+            document.getElementById("laMatanzaMunicipio").style.display = "none";
+            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
+            document.getElementById("morenoMunicipio").style.display = "none";
+            document.getElementById("moronMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("tigreMunicipio").style.display = "none";
+            document.getElementById("avellanedaMunicipio").style.display = "none";
+            document.getElementById("ezeizaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("vicenteLopezMunicipio").style.display = "none";
+        }
+
+        if (cod == "Martínez" || cod == "San Isidro" || cod == "Beccar"){
+            document.getElementById("hurlinghamMunicipio").style.display = "none";
+            document.getElementById("ituzaingoMunicipio").style.display = "none";
+            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
+            document.getElementById("morenoMunicipio").style.display = "none";
+            document.getElementById("moronMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("sanFernandoMunicipio").style.display = "none";
+            document.getElementById("tigreMunicipio").style.display = "none";
+            document.getElementById("avellanedaMunicipio").style.display = "none";
+            document.getElementById("ezeizaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+        }
+
+        if (cod == "Tigre" || cod == "General Pacheco" || cod == "Don Torcuato"){
+            document.getElementById("hurlinghamMunicipio").style.display = "none";
+            document.getElementById("ituzaingoMunicipio").style.display = "none";
+            document.getElementById("laMatanzaMunicipio").style.display = "none";
+            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
+            document.getElementById("morenoMunicipio").style.display = "none";
+            document.getElementById("moronMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("sanFernandoMunicipio").style.display = "none";
+            document.getElementById("avellanedaMunicipio").style.display = "none";
+            document.getElementById("ezeizaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("vicenteLopezMunicipio").style.display = "none";
+        }
+
+        if (cod == "Villa Sarmiento" || cod == "El Palomar" || cod == "Haedo"|| cod == "Morón"|| cod == "Castelar"){
+            document.getElementById("hurlinghamMunicipio").style.display = "none";
+            document.getElementById("ituzaingoMunicipio").style.display = "none";
+            document.getElementById("laMatanzaMunicipio").style.display = "none";
+            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
+            document.getElementById("morenoMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("sanFernandoMunicipio").style.display = "none";
+            document.getElementById("tigreMunicipio").style.display = "none";
+            document.getElementById("avellanedaMunicipio").style.display = "none";
+            document.getElementById("ezeizaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("vicenteLopezMunicipio").style.display = "none";
+        }
+
+        if (cod == "Ituzaingó" || cod == "Udaondo"){
+            document.getElementById("hurlinghamMunicipio").style.display = "none";
+            document.getElementById("laMatanzaMunicipio").style.display = "none";
+            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
+            document.getElementById("morenoMunicipio").style.display = "none";
+            document.getElementById("moronMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("sanFernandoMunicipio").style.display = "none";
+            document.getElementById("tigreMunicipio").style.display = "none";
+            document.getElementById("avellanedaMunicipio").style.display = "none";
+            document.getElementById("ezeizaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("vicenteLopezMunicipio").style.display = "none";
+        }
+
+        if (cod == "Trujui" || cod == "Paso del Rey" || cod == "Moreno"|| cod == "La Reja"){
+            document.getElementById("hurlinghamMunicipio").style.display = "none";
+            document.getElementById("ituzaingoMunicipio").style.display = "none";
+            document.getElementById("laMatanzaMunicipio").style.display = "none";
+            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
+            document.getElementById("moronMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("sanFernandoMunicipio").style.display = "none";
+            document.getElementById("tigreMunicipio").style.display = "none";
+            document.getElementById("avellanedaMunicipio").style.display = "none";
+            document.getElementById("ezeizaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("vicenteLopezMunicipio").style.display = "none";
+        }
+
+        if (cod == "Lomas del Mirador" || cod == "La Tablada" || cod == "Isidro Casanova"|| cod == "San Justo"|| cod == "Gregorio de Laferrere"){
+            document.getElementById("hurlinghamMunicipio").style.display = "none";
+            document.getElementById("ituzaingoMunicipio").style.display = "none";
+            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
+            document.getElementById("morenoMunicipio").style.display = "none";
+            document.getElementById("moronMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("sanFernandoMunicipio").style.display = "none";
+            document.getElementById("tigreMunicipio").style.display = "none";
+            document.getElementById("avellanedaMunicipio").style.display = "none";
+            document.getElementById("ezeizaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("vicenteLopezMunicipio").style.display = "none";
+        }
+
+        if (cod == "Wilde" || cod == "Valentín Alsina"){
+            document.getElementById("hurlinghamMunicipio").style.display = "none";
+            document.getElementById("ituzaingoMunicipio").style.display = "none";
+            document.getElementById("laMatanzaMunicipio").style.display = "none";
+            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
+            document.getElementById("morenoMunicipio").style.display = "none";
+            document.getElementById("moronMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("sanFernandoMunicipio").style.display = "none";
+            document.getElementById("tigreMunicipio").style.display = "none";
+            document.getElementById("ezeizaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("vicenteLopezMunicipio").style.display = "none";
+        }
+
+        if (cod == "Villa Fiorito" || cod == "Banfield"){
+            document.getElementById("hurlinghamMunicipio").style.display = "none";
+            document.getElementById("ituzaingoMunicipio").style.display = "none";
+            document.getElementById("laMatanzaMunicipio").style.display = "none";
+            document.getElementById("morenoMunicipio").style.display = "none";
+            document.getElementById("moronMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("sanFernandoMunicipio").style.display = "none";
+            document.getElementById("tigreMunicipio").style.display = "none";
+            document.getElementById("avellanedaMunicipio").style.display = "none";
+            document.getElementById("ezeizaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("vicenteLopezMunicipio").style.display = "none";
+        }
+
+        if (cod == "Canning" || cod == "José María Ezeiza" || cod == "Carlos Spegazzini"){
+            document.getElementById("hurlinghamMunicipio").style.display = "none";
+            document.getElementById("ituzaingoMunicipio").style.display = "none";
+            document.getElementById("laMatanzaMunicipio").style.display = "none";
+            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
+            document.getElementById("morenoMunicipio").style.display = "none";
+            document.getElementById("moronMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("sanFernandoMunicipio").style.display = "none";
+            document.getElementById("tigreMunicipio").style.display = "none";
+            document.getElementById("avellanedaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("vicenteLopezMunicipio").style.display = "none";
+        }
+
+        if (cod == "Hurlingham" || cod == "William C. Morris"){
+            document.getElementById("ituzaingoMunicipio").style.display = "none";
+            document.getElementById("lomasDeZamoraMunicipio").style.display = "none";
+            document.getElementById("morenoMunicipio").style.display = "none";
+            document.getElementById("moronMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("sanFernandoMunicipio").style.display = "none";
+            document.getElementById("tigreMunicipio").style.display = "none";
+            document.getElementById("avellanedaMunicipio").style.display = "none";
+            document.getElementById("ezeizaMunicipio").style.display = "none";
+            document.getElementById("florencioVarelaMunicipio").style.display = "none";
+            document.getElementById("sanIsidroMunicipio").style.display = "none";
+            document.getElementById("vicenteLopezMunicipio").style.display = "none";
+            document.getElementById("laMatanzaMunicipio").style.display = "none";
+        }
+
+        /* Para obtener el texto
+        var combo = document.getElementById("nombreLocalidad");
+        var selected = combo.options[combo.selectedIndex].text;
+        alert(selected);*/
+    }
+</script>
 </html>
