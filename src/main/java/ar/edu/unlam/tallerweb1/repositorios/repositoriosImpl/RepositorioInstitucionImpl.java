@@ -48,6 +48,11 @@ public class RepositorioInstitucionImpl implements RepositorioInstitucion {
         sessionFactory.getCurrentSession().update(institucion);
     }
 
+    @Override
+    public List<Institucion> listarInstitucionesPorLocalidad(Long id) {
+        return sessionFactory.getCurrentSession().createCriteria(Institucion.class).add(Restrictions.eq("localidad_id", id)).list();
+    }
+
     /*@Override
     public List<Institucion> listarInstitucionesPorZona(Zona zona) {
         return sessionFactory.getCurrentSession().createCriteria(Ins);

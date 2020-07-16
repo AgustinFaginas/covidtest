@@ -21,12 +21,7 @@ public class ServicioZonaImpl implements ServicioZona {
         return repositorioZona.obtenerZonaPorNombre(nombreZona);
     }
 
-    @Override
-    public List<Zona> listarInstitucionesPorZona(Zona zona) {
-        return null;
-    }
-
-/*    @Override
+    /*@Override
     public List<Zona> listarInstitucionesPorZona(Zona zona) {
         return repositorioZona.listarInstitucionesPorZona(zona);
     }*/

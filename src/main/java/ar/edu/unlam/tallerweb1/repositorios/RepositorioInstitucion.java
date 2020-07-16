@@ -16,5 +16,7 @@ public interface RepositorioInstitucion {
 
     void actualizarInstitucion(Institucion institucion);
 
+    List<Institucion> listarInstitucionesPorLocalidad(Long id);
+
 //    List<Institucion> listarInstitucionesPorZona(Zona zona);
 }

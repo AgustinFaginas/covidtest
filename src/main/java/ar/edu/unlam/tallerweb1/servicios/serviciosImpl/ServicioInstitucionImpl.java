@@ -51,6 +51,11 @@ public class ServicioInstitucionImpl implements ServicioInstitucion {
         repositorioInstitucion.actualizarInstitucion(institucion);
     }
 
+    @Override
+    public List<Institucion> listarInstitucionesPorLocalidad(Long id) {
+        return repositorioInstitucion.listarInstitucionesPorLocalidad(id);
+    }
+
     /*@Override
     public List<Institucion> listarInstitucionesPorZona(Zona zona) {
         return repositorioInstitucion.listarInstitucionesPorZona(zona);
