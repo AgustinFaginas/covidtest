@@ -188,11 +188,11 @@
             <div class="container">
 
 
-                <button type="button" class="btn btn-outline-primary" style="margin: 15px">Notificaciones</button>
-                <button type="button" class="btn btn-outline-secondary" style="margin: 15px">Ordenar</button>
+                <!-- <button type="button" class="btn btn-outline-primary" style="margin: 15px">Notificaciones</button>
+                <button type="button" class="btn btn-outline-secondary" style="margin: 15px">Ordenar</button> -->
 
                 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Ingrese la prioridad a buscar">
-                <table id="myTable"
+                <%-- <table id="myTable"
                        class="table table-bordered table-hover responsive nowrap text-center">
                     <thead>
                     <tr>
@@ -228,15 +228,15 @@
                     </td>
 
                     <td class="align-middle">
-                            <%--   <c:set var = "prioridad" scope = "session" value = "${paciente.getPrioridad()"/>
+                              <c:set var = "prioridad" scope = "session" value = "${paciente.getPrioridad()"/>
                            <c:if test = "${prioridad >=1 }">
 
-                           Alta --%>
+                           Alta
                         <c:out value="${paciente.getPrioridad()}"/></td>
-                        <%--
-                            </c:if> --%>
+                        
+                            </c:if>
 
-                        <%-- <%! int day = 3; %>
+                        <%! int day = 3; %>
                         <html>
                            <head>
                               <title>IF...ELSE Example</title>
@@ -248,11 +248,65 @@
                                  <p> Today is not weekend</p>
                               <% } %>
                            </body>
-                        </html> --%>
+                        </html>
 
                     </tr>
                     </c:forEach>
                     </tbody>
+                </table> --%>
+                
+                
+                 <table class="table table-bordered table-hover responsive nowrap text-center align-middle">
+                    <tr class="text-center align-middle">
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Documento</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Infectado</th>
+                        <th scope="col">Prioridad</th>
+                        <th scope="col">Acciones</th>
+
+                    </tr>
+                    <c:forEach items="${poInfectados}" var="paciente">
+                        <tr>
+                            <td class="align-middle"><c:out value="${paciente.getApellido()}, ${paciente.getNombre()}"/></td>
+                            <td><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
+                            <td><c:out value="${paciente.getEdad()}"/></td>
+
+								<c:if test="${paciente.getInfectado() == true}">
+									<td><c:out value="Si" /></td>
+								</c:if>
+								<c:if test="${paciente.getInfectado() != true}">
+									<td><c:out value="Posible" /></td>
+								</c:if>
+
+
+								<td><c:out value="${paciente.getPrioridad()}" /></td>
+
+
+								
+
+								<td class="align-middle"><button type="button"
+										class="btn btn-secondary" style="margin-top: 5px; margin-left: 5px ">Egresar</button> <%-- <a
+									class="btn btn-warning"
+									href="<c:url value='/crearMensaje/${paciente.getId()}'/>"
+									role="button"> Enviar Mensaje</a> --%>
+
+									<div class="float-right" style="margin-right: 25px; margin-top: 5px; margin-left: -30px">
+										<form action="crearMensaje" method=post>
+
+
+											<input class="invisible" type="hidden" id="id" name="id"
+												value="${paciente.getId()}"> <input
+												class="btn btn-primary" type="submit" value="Enviar Mansaje">
+
+
+											<%-- <input type="hidden" id="id" name="id"
+											value="${paciente.getId()}"> 
+										<input type="submit"
+											value="Enviar mensaje">  --%>
+
+										</form>
+									</div></td></c:forEach>
                 </table>
             </div>
         </main>

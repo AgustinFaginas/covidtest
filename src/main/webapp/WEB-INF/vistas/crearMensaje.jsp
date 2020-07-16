@@ -48,7 +48,7 @@
 
 			<div class="form-group">
 
-				<h1>Destinatario ${p.getEmail()}</h1>
+				<h1>Destinatario ${p.getNombre()}</h1>
 			</div>
 
 			<div class="form-group">
@@ -58,8 +58,8 @@
 			<input type="hidden" value="${p.getId()}" name="idReceptor">
 			<input type="hidden" value="${id}" name="idEmisor">
 			
-			<h1>"${p.getId()}"</h1>
-			<h1>"${id}"</h1>
+			<%-- <h1>"${p.getId()}"</h1>
+			<h1>"${id}"</h1> --%>
 
 			<button class="btn btn-primary" type="submit">Enviar</button>
 		</form:form>
