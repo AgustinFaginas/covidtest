@@ -256,8 +256,8 @@
                 </table> --%>
                 
                 
-                 <table class="table table-bordered table-hover responsive nowrap text-center">
-                    <tr>
+                 <table class="table table-bordered table-hover responsive nowrap text-center align-middle">
+                    <tr class="text-center align-middle">
                         <th scope="col">Nombre</th>
                         <th scope="col">Documento</th>
                         <th scope="col">Edad</th>
@@ -268,7 +268,7 @@
                     </tr>
                     <c:forEach items="${poInfectados}" var="paciente">
                         <tr>
-                            <td><c:out value="${paciente.getApellido()}, ${paciente.getNombre()}"/></td>
+                            <td class="align-middle"><c:out value="${paciente.getApellido()}, ${paciente.getNombre()}"/></td>
                             <td><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
                             <td><c:out value="${paciente.getEdad()}"/></td>
 
