@@ -114,9 +114,8 @@
 		               </td> --%>
 		               
 		               <td class="align-middle"><a
-						href="listaCamasDisponiblesTotal?idPaciente=${paciente.getId()}"
-						class="btn btn-success" style="margin-top: 5px; margin-left: 5px">Ver
-							Pacientes</a> 
+						href="listaCamas?idPaciente=${paciente.getId()}"
+						class="btn btn-success" style="margin-top: 5px; margin-left: 5px">Internar</a> 
 						<div class="float-right"
 							style="margin-right: 25px; margin-top: 5px; margin-left: -30px">
 
