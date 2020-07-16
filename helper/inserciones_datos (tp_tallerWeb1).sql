@@ -99,39 +99,39 @@ VALUES ("INSTITUCION", "Institucion", 2, "Fundación Favaloro", "favaloro@email.
        ("INSTITUCION", "Institucion", 5, "Hospital Profesor Doctor Ramón Carrillo", "carillo@email.com", "1234", "20500050007", "CUIT", 57, 5);
 
 /* ----- PACIENTE TESTEADOS POSIVOS----- */
-INSERT INTO usuario(rol, DTYPE, id, nombre, apellido, email, password, numeroDocumento, tipoDocumento, domicilio_id, posibleInfectado, infectado, prioridad)
-VALUES("PACIENTE", "Paciente", 6, "Alejandra", "Rodriguez", "alejandro@email.com", "1234", "1", "DNI", 2, true, null, 1),
-      ("PACIENTE", "Paciente", 7, "Alejandra", "Rodriguez", "alejandra@email.com", "1234", "2", "DNI", 3, true, null, 2),
-	  ("PACIENTE", "Paciente", 8, "Alan", "Rodriguez", "alan@email.com", "1234", "3", "DNI", 4, true, null, 2),
-      ("PACIENTE", "Paciente", 9, "Ana", "Rodriguez", "ana@email.com", "1234", "4", "DNI", 3, true, null, 4),
-      ("PACIENTE", "Paciente", 10, "Carlos", "Gómez", "carlos@email.com", "1234", "32100100", "DNI", 3, true, null, 5),
-      ("PACIENTE", "Paciente", 11, "Carla", "Gómez", "carla@email.com", "1234", "32110100", "DNI", 3, true, null, 1);
+INSERT INTO usuario(rol, DTYPE, id, nombre, apellido, email, password, numeroDocumento, tipoDocumento, domicilio_id, posibleInfectado, infectado, prioridad, edad)
+VALUES("PACIENTE", "Paciente", 6, "Alejandra", "Rodriguez", "alejandro@email.com", "1234", "1", "DNI", 2, true, null, 1, 45),
+      ("PACIENTE", "Paciente", 7, "Alejandra", "Rodriguez", "alejandra@email.com", "1234", "2", "DNI", 3, true, null, 2, 87),
+	  ("PACIENTE", "Paciente", 8, "Alan", "Rodriguez", "alan@email.com", "1234", "3", "DNI", 4, true, null, 2, 54),
+      ("PACIENTE", "Paciente", 9, "Ana", "Rodriguez", "ana@email.com", "1234", "4", "DNI", 3, true, null, 4, 64),
+      ("PACIENTE", "Paciente", 10, "Carlos", "Gómez", "carlos@email.com", "1234", "32100100", "DNI", 3, true, null, 5, 54),
+      ("PACIENTE", "Paciente", 11, "Carla", "Gómez", "carla@email.com", "1234", "32110100", "DNI", 3, true, null, 1, 88);
 
 /* ----- PACIENTE INFECTADOS----- */
-INSERT INTO usuario(rol, DTYPE, id, nombre, apellido, email, password, numeroDocumento, tipoDocumento, domicilio_id, posibleInfectado, infectado, prioridad)
-VALUES("PACIENTE", "Paciente", 12, "Cristian", "Gómez", "cristian@email.com", "1234", "32120100", "DNI", 3, null, true, 4),
-      ("PACIENTE", "Paciente", 13, "Celeste", "Gómez", "celeste@email.com", "1234", "32130100", "DNI", 1, null, true, 3),
-	  ("PACIENTE", "Paciente", 14, "Dario", "García", "dario@email.com", "1234", "32140100", "DNI", 2, null, true, 2),
-      ("PACIENTE", "Paciente", 15, "Danila", "García", "danila@email.com", "1234", "32150100", "DNI", 3, null, true, 1),
-	  ("PACIENTE", "Paciente", 16, "Daniel", "García", "daniel@email.com", "1234", "32106100", "DNI", 4, null, false, 2),
-      ("PACIENTE", "Paciente", 17, "Daniela", "García", "daniela@email.com", "1234", "32160100", "DNI", 3, null, true, 3),
-      ("PACIENTE", "Paciente", 18, "Fabricio", "García", "fabricio@email.com", "1234", "32170100", "DNI", 1, null, true, 4),
-      ("PACIENTE", "Paciente", 19, "Fabián", "García", "fabian@email.com", "1234", "32108100", "PASAPORTE", 1, null, true, 5),
-      ("PACIENTE", "Paciente", 20, "Fabiana", "Garcia", "email12_pac@email.com", "1234", "16", "PASAPORTE", 3, null, true, 3);
+INSERT INTO usuario(rol, DTYPE, id, nombre, apellido, email, password, numeroDocumento, tipoDocumento, domicilio_id, posibleInfectado, infectado, prioridad, edad)
+VALUES("PACIENTE", "Paciente", 12, "Cristian", "Gómez", "cristian@email.com", "1234", "32120100", "DNI", 3, null, true, 4, 65),
+      ("PACIENTE", "Paciente", 13, "Celeste", "Gómez", "celeste@email.com", "1234", "32130100", "DNI", 1, null, true, 3, 32),
+	  ("PACIENTE", "Paciente", 14, "Dario", "García", "dario@email.com", "1234", "32140100", "DNI", 2, null, true, 2, 32),
+      ("PACIENTE", "Paciente", 15, "Danila", "García", "danila@email.com", "1234", "32150100", "DNI", 3, null, true, 1, 65),
+	  ("PACIENTE", "Paciente", 16, "Daniel", "García", "daniel@email.com", "1234", "32106100", "DNI", 4, null, false, 2, 97),
+      ("PACIENTE", "Paciente", 17, "Daniela", "García", "daniela@email.com", "1234", "32160100", "DNI", 3, null, true, 3, 45),
+      ("PACIENTE", "Paciente", 18, "Fabricio", "García", "fabricio@email.com", "1234", "32170100", "DNI", 1, null, true, 4, 64),
+      ("PACIENTE", "Paciente", 19, "Fabián", "García", "fabian@email.com", "1234", "32108100", "PASAPORTE", 1, null, true, 5, 97),
+      ("PACIENTE", "Paciente", 20, "Fabiana", "Garcia", "email12_pac@email.com", "1234", "16", "PASAPORTE", 3, null, true, 3, 45);
 
 /* ----- PACIENTE PARA INTERNAR----- */
-INSERT INTO usuario(rol, DTYPE, id, nombre, apellido, email, password, numeroDocumento, tipoDocumento, domicilio_id, posibleInfectado, infectado, prioridad)
-VALUES("PACIENTE", "Paciente", 21, "Juan", "Gómez", "cristian@email.com", "1234", "42120100", "DNI", 3, null, null, 4),
-      ("PACIENTE", "Paciente", 22, "Juana", "Gómez", "celeste@email.com", "1234", "42130100", "DNI", 1, null, null, 3),
-	  ("PACIENTE", "Paciente", 23, "José", "García", "dario@email.com", "1234", "42140100", "DNI", 2, null, null, 2),
-      ("PACIENTE", "Paciente", 24, "Josefa", "García", "danila@email.com", "1234", "42150100", "DNI", 3, null, null, 1),
-	  ("PACIENTE", "Paciente", 25, "Julián", "García", "daniel@email.com", "1234", "42106100", "DNI", 4, null, null, 2),
-      ("PACIENTE", "Paciente", 26, "Juliana", "García", "daniela@email.com", "1234", "42160100", "DNI", 3, null, null, 3),
-      ("PACIENTE", "Paciente", 27, "Julieta", "García", "fabricio@email.com", "1234", "42170100", "DNI", 1, null, null, 4),
-      ("PACIENTE", "Paciente", 28, "Julia", "García", "fabian@email.com", "1234", "42108100", "PASAPORTE", 1, null, null, 5),
-      ("PACIENTE", "Paciente", 29, "Julio", "Garcia", "email12_pac@email.com", "1234", "46", "PASAPORTE", 3, null, null, 3),
-      ("PACIENTE", "Paciente", 30, "Julia", "García", "fabian@email.com", "1234", "52108100", "PASAPORTE", 1, null, null, 5),
-      ("PACIENTE", "Paciente", 31, "Julio", "Garcia", "email12_pac@email.com", "1234", "56", "PASAPORTE", 3, null, null, 3);
+INSERT INTO usuario(rol, DTYPE, id, nombre, apellido, email, password, numeroDocumento, tipoDocumento, domicilio_id, posibleInfectado, infectado, prioridad, edad)
+VALUES("PACIENTE", "Paciente", 21, "Juan", "Gómez", "cristian@email.com", "1234", "42120100", "DNI", 3, null, null, 4, 45),
+      ("PACIENTE", "Paciente", 22, "Juana", "Gómez", "celeste@email.com", "1234", "42130100", "DNI", 1, null, null, 3, 56),
+	  ("PACIENTE", "Paciente", 23, "José", "García", "dario@email.com", "1234", "42140100", "DNI", 2, null, null, 2, 32),
+      ("PACIENTE", "Paciente", 24, "Josefa", "García", "danila@email.com", "1234", "42150100", "DNI", 3, null, null, 1, 25),
+	  ("PACIENTE", "Paciente", 25, "Julián", "García", "daniel@email.com", "1234", "42106100", "DNI", 4, null, null, 2, 36),
+      ("PACIENTE", "Paciente", 26, "Juliana", "García", "daniela@email.com", "1234", "42160100", "DNI", 3, null, null, 3, 25),
+      ("PACIENTE", "Paciente", 27, "Julieta", "García", "fabricio@email.com", "1234", "42170100", "DNI", 1, null, null, 4, 65),
+      ("PACIENTE", "Paciente", 28, "Julia", "García", "fabian@email.com", "1234", "42108100", "PASAPORTE", 1, null, null, 5, 78),
+      ("PACIENTE", "Paciente", 29, "Julio", "Garcia", "email12_pac@email.com", "1234", "46", "PASAPORTE", 3, null, null, 3, 56),
+      ("PACIENTE", "Paciente", 30, "Julia", "García", "fabian@email.com", "1234", "52108100", "PASAPORTE", 1, null, null, 5, 69),
+      ("PACIENTE", "Paciente", 31, "Julio", "Garcia", "email12_pac@email.com", "1234", "56", "PASAPORTE", 3, null, null, 3, 32);
       
 INSERT INTO cama(id, descripcion, tipoCama, institucion_id)
 VALUES (1, "101", "FIJA", 2),

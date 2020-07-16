@@ -180,6 +180,7 @@
         </div> -->
 
             <%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%>
+	<div class="container">
 
             <br>
             <h1>Gestión de Pacientes</h1>
@@ -219,9 +220,43 @@
                         </c:if>
 
 
-                        <td class="align-middle"><c:out
-                                value="${paciente.getPrioridad()}"/></td>
+                            
+               		  <style>
+					  span {
+					    display: inline-block;
+					    width: 15px;
+					    height: 15px;
+					    margin-left: 6px;
+					    background-color: #555;
+					  }
+					  </style>
 
+							<c:if test="${paciente.getPrioridad() == 5}">
+					        	<td class="align-middle"><c:out value="Baja "/>
+					        	 <span class="rounded-circle bg-success"></span>
+					        	</td>
+		        			</c:if>
+		        			<c:if test="${paciente.getPrioridad() == 4}">
+					        	<td class="align-middle"><c:out value="Baja"/>
+					        	<span class="rounded-circle bg-success"></span>
+					        	</td >
+		        			</c:if>
+		        			<c:if test="${paciente.getPrioridad() == 3}">
+					        	<td class="align-middle"><c:out value="Media"/>
+					        	<span class="rounded-circle bg-warning"></span>
+					        	</td>
+		        			</c:if>
+		        			<c:if test="${paciente.getPrioridad() == 2}">
+					        	<td class="align-middle"><c:out value="Alta "/>
+					        	<span class="rounded-circle bg-danger"></span>
+					        	</td>
+		        			</c:if>
+		        			<c:if test="${paciente.getPrioridad() == 1}">
+					        	<td class="align-middle"><c:out value="Alta"/>
+					        	<span class="rounded-circle bg-danger"></span>
+					        	</td>
+		        			</c:if>
+		        			
                         <td class="align-middle">
                             <div class="float-none"
                                  style="margin-right: -5px; margin-top: 5px; /* margin-left: -30px"
@@ -235,7 +270,8 @@
             </td>
             </c:forEach>
             </table>
-    </div>
+    
+    	<div/>
     </main>
 </div>
 </div>

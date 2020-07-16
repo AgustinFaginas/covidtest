@@ -41,7 +41,7 @@ public class ControladorCama {
     	
     	if (request.getSession().getAttribute("ID") == null) {
 			model.put("error", "Debe iniciar sesi�n");
-	        return new ModelAndView("login", model);
+	        return new ModelAndView("redirect:/login");
 		}
 
 		if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
@@ -51,10 +51,16 @@ public class ControladorCama {
     	Long id = (long) request.getSession().getAttribute("ID");
     	Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
     	
-    	List<Cama> camasDisponiblesInstitucion = servicioCama.obtenerCamasDisponiblesPorInstitucion(institucion);
+    	if (request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
+        	List<Cama> camasDisponiblesInstitucion = servicioCama.obtenerCamasDisponiblesPorInstitucion(institucion);
+        	model.put("camas", camasDisponiblesInstitucion);
+    	}
     	
-        model.put("camas", camasDisponiblesInstitucion);
-
+    	if (request.getSession().getAttribute("ROL") == Rol.ADMIN) {
+        	List<Cama> camasDisponiblesInstitucion = servicioCama.obtenerTotalDeCamasDisponibles();
+        	model.put("camas", camasDisponiblesInstitucion);
+    	}
+        
         return new ModelAndView("disponibilidad-camas", model);
     }
     
