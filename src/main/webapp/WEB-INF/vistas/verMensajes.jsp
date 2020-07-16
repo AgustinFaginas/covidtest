@@ -1,192 +1,80 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
-<html lang="en">
+		 pageEncoding="ISO-8859-1" %>
+<!doctype html>
+
+<html lang="es">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author"
-          content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.0.1">
-    <title>Ver Mensajes</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="canonical"
-          href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+	<title>AsignAR</title>
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+	<link rel="icon" href="img/asignar-logo.ico">
 
-        @media ( min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
-    <style>
-        #myInput {
-            background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-            background-position: 10px 12px; /* Position the search icon */
-            background-repeat: no-repeat; /* Do not repeat the icon image */
-            width: 100%; /* Full-width */
-            font-size: 16px; /* Increase font-size */
-            padding: 12px 20px 12px 40px; /* Add some padding */
-            border: 1px solid #ddd; /* Add a grey border */
-            margin-bottom: 12px; /* Add some space below the input */
-        }
+	<style>
+		#navbar-top:hover {
+			text-decoration: none;
+		}
+	</style>
 
-        #myTable {
-            border-collapse: collapse; /* Collapse borders */
-            width: 100%; /* Full-width */
-            border: 1px solid #ddd; /* Add a grey border */
-            font-size: 18px; /* Increase font-size */
-        }
-
-        #myTable th, #myTable td {
-            text-align: left; /* Left-align text */
-            padding: 12px; /* Add padding */
-        }
-
-        #myTable tr {
-            /* Add a bottom border to all table rows */
-            border-bottom: 1px solid #ddd;
-        }
-
-        #myTable tr.header, #myTable tr:hover {
-            /* Add a grey background color to the table header and on hover */
-            background-color: #f1f1f1;
-        }
-    </style>
 </head>
+
 <body>
-<nav
-        class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">AsignAR</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed"
-            type="button" data-toggle="collapse" data-target="#sidebarMenu"
-            aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-   
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap"><a class="nav-link"
-                                            href="logout">Salir</a></li>
-    </ul>
+
+<nav class="navbar sticky-top bg-dark text-white justify-content-center align-items-center">
+	<a class="text-center text-white" href="https://www.argentina.gob.ar/salud/coronavirus-COVID-19" id="navbar-top">
+		<h5>
+			Coronavirus COVID-19 conocé información y recomendaciones del Ministerio de Salud</strong>
+		</h5>
+	</a>
 </nav>
 
-<div class="container-fluid">
-    <div class="row">
-        <nav id="sidebarMenu"
-             class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="sidebar-sticky pt-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="inicioAdmin"> <span data-feather="home"></span> Home
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="disponibilidadCamas"> <span data-feather="inbox"></span>
-                        Disponibilidad Camas
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="listaInstituciones"> <span data-feather="users"></span>
-                        Instituciones
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="consultarPaciente"> <span data-feather="search"></span>
-                        Consultar paciente
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="internarPaciente"> <span data-feather="user-plus"></span>
-                        Internar paciente
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="egresarPaciente"> <span data-feather="user-minus"></span>
-                        Egresar paciente
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="listaPacientesInfectados"> <span
-                            data-feather="users"></span>
-                        Pacientes Infectados
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="grafico-pacientes"> <span data-feather="bar-chart-2"></span>
-                        Reportes
-                    </a></li>
-                </ul>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="#"> <img src="img/share2.png"
+			width="35" height="35" class="d-inline-block align-top" alt="logo">
+			AsignAR
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarTogglerDemo02"
+			aria-controls="navbarTogglerDemo02" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-                <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-      <span>Saved reports</span>
-      <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-        <span data-feather="plus-circle"></span>
-      </a>
-    </h6>
-    <ul class="nav flex-column mb-2">
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Current month
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Last quarter
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Social engagement
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Year-end sale
-        </a>
-      </li>
-    </ul> -->
-            </div>
-        </nav>
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item ml-5 active"><a class="nav-link" href="#">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<!-- <li class="nav-item ml-5"><a class="nav-link" href="autoTest">Realizar
+						test</a></li> -->
+						
+						<li class="nav-item ml-5"><a class="btn btn-danger" href="autoTest" role="button">Realizar Autotest</a></li>
+						<li class="nav-item ml-5"><a class="btn btn-secondary" href="registrarInstitucion" role="button">Registrar Institución</a></li>
+						<!-- <li class="nav-item ml-5"><a class="nav-link" href="registrarInstitucion">Registrar Institucion</a></li> -->
+			</ul>
+			<c:if test="${alert == null}">
+				<a href="/covidtest/logout" class="btn btn-dark ml-5" role="button"
+					aria-disabled="true">Log out</a>
+			</c:if>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <!-- <div
-                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Panel de Control</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group mr-2">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                    </div>
-                    <button type="button"
-                        class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                        <span data-feather="calendar"></span> This week
-                    </button>
-                </div>
-            </div> -->
+		</div>
+	</nav>
 
-            <%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-md-4">
 
-            <br>
-            <h2>Mensajes</h2>
-            <br>
+            
             <div class="container">
 				
-
+<br>
+            <h2>Mensajes</h2>
+            <br>
                 
                  <table class="table table-bordered table-hover responsive nowrap text-center align-middle">
                     <tr class="text-center align-middle">
@@ -245,3 +133,116 @@
     
 </script>
 </body>
+
+<!-- Footer -->
+<footer class="page-footer font-small mdb-color pt-4 bg-whiteborder border-top">
+
+	<!-- Footer Links -->
+	<div class="container text-center text-md-left">
+
+		<!-- Footer links -->
+		<div class="row text-center text-md-left mt-3 pb-3">
+
+			<!-- Grid column -->
+			<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 text-left">
+				<h6 class="text-uppercase mb-4 font-weight-bold">asignAR</h6>
+				<img src="img/share2.png" width="50" height="50" class="d-inline-block align-top" alt="">
+			</div>
+			<!-- Grid column -->
+
+			<hr class="w-100 clearfix d-md-none">
+
+			<!-- Grid column -->
+			<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+				<h6 class="text-uppercase mb-4 font-weight-bold">ENLACES ÚTILES</h6>
+				<p>
+					<a href="https://www.argentina.gob.ar/salud/coronavirus-COVID-19">Ministerio de Salud</a>
+				</p>
+				<p>
+					<a href="#!">Hospitales y establecimientos de salud</a>
+				</p>
+			</div>
+
+			<!-- Grid column -->
+			<hr class="w-100 clearfix d-md-none">
+
+			<!-- Grid column -->
+			<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+				<h6 class="text-uppercase mb-4 font-weight-bold">Teléfono</h6>
+				<p>
+					<i class="fas fa-home"></i> Llamá al <strong>120</strong>, es gratuito desde cualquier lugar del
+					país y te atienden las 24 horas.</p>
+				<hr>
+				<h6 class="text-uppercase mb-4 font-weight-bold">Whatsapp</h6>
+				<i class="fas fa-home"></i> Escribí "Hola" al <strong>+54 9 11
+				2256-0566</strong> para que encuentres respuestas a las preguntas más
+				frecuentes y recibas consejos de prevención.</p>
+
+
+			</div>
+			<!-- Grid column -->
+
+		</div>
+		<!-- Footer links -->
+
+		<hr>
+
+		<!-- Grid row -->
+		<div class="row d-flex align-items-center">
+
+			<!-- Grid column -->
+			<div class="col-md-7 col-lg-8">
+
+				<!--Copyright-->
+				<p class="text-center text-md-left">© 2020 Copyright:
+
+					<strong>ASIGNAR</strong>
+
+				</p>
+
+			</div>
+			<!-- Grid column -->
+
+			<!-- Grid column -->
+			<div class="col-md-5 col-lg-4 ml-lg-0">
+
+				<!-- Social buttons -->
+				<div class="text-center text-md-right">
+					<ul class="list-unstyled list-inline">
+						<li class="list-inline-item">
+							<a class="btn-floating btn-sm rgba-white-slight mx-1">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+						</li>
+						<li class="list-inline-item">
+							<a class="btn-floating btn-sm rgba-white-slight mx-1">
+								<i class="fab fa-twitter"></i>
+							</a>
+						</li>
+						<li class="list-inline-item">
+							<a class="btn-floating btn-sm rgba-white-slight mx-1">
+								<i class="fab fa-google-plus-g"></i>
+							</a>
+						</li>
+						<li class="list-inline-item">
+							<a class="btn-floating btn-sm rgba-white-slight mx-1">
+								<i class="fab fa-linkedin-in"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<!-- Grid column -->
+
+		</div>
+		<!-- Grid row -->
+
+	</div>
+	<!-- Footer Links -->
+
+</footer>
+<!-- Footer -->
+</body>
+
+</html>
