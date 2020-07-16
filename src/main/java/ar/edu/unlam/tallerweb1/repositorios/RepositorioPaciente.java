@@ -24,4 +24,6 @@ public interface RepositorioPaciente {
     List<Paciente> pacientesInternados();
 
     void actualizarPaciente(Paciente paciente);
+
+	List<Paciente> pacientesInternadosPorInstitucion(Long idInstitucion);
 }

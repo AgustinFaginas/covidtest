@@ -4,7 +4,7 @@
 
 <jsp:include page="../../partial/headerInstitucionesParte1.jsp" />
 
-<title>Paso 1: Lista Pacientes Infectados</title>
+<title>Pacientes Internados</title>
     
 <jsp:include page="../../partial/headerInstitucionesParte2.jsp" />
 
@@ -13,7 +13,7 @@
      
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div>
-        <h4 >Pacientes Infectados</h4> 
+        <h4 >Pacientes Internados</h4> 
         </div>
        
       </div>
@@ -22,10 +22,7 @@
         <div>
         
 		  <div class="table-responsive">
-		  
-		   
-		           
-		          
+
 		          </br>
 
 		            </td>
@@ -33,9 +30,9 @@
 		    </table>
 		</div>
 		
-		<c:if test="${listaPacientesInfectados != null}">
+		<c:if test="${listaPacientesInternados != null}">
 	
-		<h6 class="">PASO 1: Elegir el paciente a internar</h6>	
+		<h6 class="">PASO 1: Elegir el paciente a egresar</h6>	
 		
 		</br>		
 		
@@ -47,19 +44,17 @@
 		            <th >PRIORIDAD</th>
 		            <th >ACCIÓN</th>
 		        </tr>
-		        <c:forEach items="${listaPacientesInfectados}" var="paciente">
+		        <c:forEach items="${listaPacientesInternados}" var="paciente">
 		            <tr>
 		                <td><c:out value="${paciente.getApellido()}, ${paciente.getNombre()}"/></td>
 		                <td><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
 		                <td><c:out value="${paciente.getPrioridad()}"/></td>
-		                
 		                <td class="align-middle">
-		                
-		                <a href="listaCamas?idPaciente=${paciente.getId()}" type="button" class="btn btn-secondary">Internar</a>
-		                <a class="btn btn-warning" href="<c:url value='/crearMensaje/${paciente.getId()}'/>" role="button"> Enviar Mensaje</a>
-						<button type="button" class="btn btn-danger">Borrar</button>
-						
+		                <a href="egresarPacienteMotivo?idPaciente=${paciente.getId()}" type="button" class="btn btn-secondary">Egresar</a>
+		              
+		                <a href="listaCamasDisponiblesTotal?idPaciente=${paciente.getId()}&motivoEgreso=TRASLADADO" type="button" class="btn btn-secondary">Trasladar</a>
 		               </td>
+		               
 		            </tr>
 		        </c:forEach>
 		    </table>
@@ -68,8 +63,8 @@
 
         </c:if>
         
-        <c:if test="${listaPacientesInfectados == null}">
-        <h5 class="">No hay pacientes Infectados</h5>	
+        <c:if test="${listaPacientesInternados == null}">
+        <h5 class="">No hay pacientes Internados</h5>	
          </c:if>
          
         </div>

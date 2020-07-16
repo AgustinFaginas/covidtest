@@ -194,3 +194,10 @@ VALUES (9, '2020-01-01 01:00:00.000000', null, null, 10, 15),
 	   (10, '2020-02-01 01:00:00.000000', null, null, 11, 16),
        (11, '2020-02-01 01:00:00.000000', null, null, 12, 8);
        
+/* ----- INTERNACION ----- */
+INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, paciente_id)
+VALUES (12, '2020-01-01 01:00:00.000000', null, null, 40, 13),
+	   (13, '2020-02-01 01:00:00.000000', null, null, 41, 14),
+       (14, '2020-03-01 01:00:00.000000', null, null, 42, 19),
+	   (15, '2020-04-01 01:00:00.000000', null, null, 43, 20);
+       

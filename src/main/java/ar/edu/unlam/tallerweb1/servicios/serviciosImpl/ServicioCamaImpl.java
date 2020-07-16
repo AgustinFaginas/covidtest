@@ -35,6 +35,12 @@ public class ServicioCamaImpl implements ServicioCama {
     public List<Cama> obtenerCamas() {
         return repositorioCama.obtenerCamas();
     }
+    
+	@Override
+	public List<Cama> obtenerTotalDeCamasOcupadas() {
+		
+		return repositorioCama.obtenerTotalDeCamasOcupadas();
+	}
 
     @Override
     public List<Cama> obtenerCamasPorInstitucion(Institucion institucion) {
@@ -59,5 +65,20 @@ public class ServicioCamaImpl implements ServicioCama {
     	return camasTotalesPorInstitucion;
 
 	}
+	
+	@Override
+	public List<Cama> obtenerTotalDeCamasDisponibles() {
+	
+    	List<Cama> camasTotalesPorInstitucion = obtenerCamas();
+        List<Cama> camasOcupadasPorInstitucion = obtenerTotalDeCamasOcupadas();
+      
+		for (Cama cama: camasOcupadasPorInstitucion) { 
+			camasTotalesPorInstitucion.remove(cama);
+		}
+
+    	return camasTotalesPorInstitucion;
+
+	}
+
 
 }

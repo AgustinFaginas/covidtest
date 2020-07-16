@@ -15,39 +15,46 @@
      
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Egresar Paciente</h1>
-       
+
       </div>
       	
-     <div class="">
+     <div >
+           	<h6>Nombre del Paciente: ${paciente.getApellido()}, ${paciente.getNombre()}</h6> 
+			
+			<h6 class="">Documento: ${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})</h6>
+			
+			<h6 class="">Hora de internación: ${horaIngreso}</h6>
+			
+			<h6 class="">Cama asignada: ${asignacion.getCama()}</h6>
      
      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Elegir motivo del egreso</h1>
+        <h4>Elegir motivo del egreso</h4>
        
       </div>
       	
         <div>
-			
-                  	<h6>Nombre del Paciente: ${apellido}, ${nombre}</h6> 
-					
-					<h6 class="">Documento: ${numeroDocumento} (${tipoDocumento})</h6>
-					
-					<h6 class="">Hora de internación: ${horaIngreso}</h6>
-					
-					<h6 class="">Cama asignada: ${cama}</h6>
-					
-					
-                    <br>
                     
-                    <a href="egresoPacienteMotivo?numeroDocumento=${numeroDocumento}&tipoDocumento=${tipoDocumento}" 
-                    class="btn btn-sm btn-outline-secondary">Egresar</a>
+                    <form action="detalleEgreso" method="get">
+                   	
+	                   	<div class="form-group">
+	                       
+	                        <h6>Motivo de Egreso</h6>
+							 <select name="motivoEgreso" type="MotivoEgreso" class="form-control br-radius-zero" >
+								<option type="MotivoEgreso">CURADO
+								<option type="MotivoEgreso">FALLECIDO
+							</select>      
+	                    </div>  
+	                    
+	                    <input type="hidden" value="11" name="idPaciente">
+	
+						<button type="submit" class="btn btn-sm btn-outline-secondary">Egresar</button>
 					
-					<a href="trasladarPacienteCama" class="btn btn-sm btn-outline-secondary">Trasladar</a>
-					<br><br>
+					</form>
 					
-					 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					 <div>
 				       
 				       <a href="consultarPaciente" class="btn btn-sm btn-outline-secondary">Volver</a>
-                    <br>
+                  
                     <a href="bienvenido" class="btn btn-sm btn-outline-secondary">Inicio</a>
 					
 				      </div>

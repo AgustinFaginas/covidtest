@@ -103,5 +103,10 @@ public class ServicioPacienteImpl implements ServicioPaciente {
 
         return prioridad;
     }
+    
+    @Override
+    public List<Paciente> pacientesInternadosPorInstitucion(Long idInstitucion) {
+        return repositorioPaciente.pacientesInternadosPorInstitucion(idInstitucion);
+    }
 
 }

@@ -29,5 +29,5 @@ public interface ServicioPaciente {
 
     Integer establecerPrioridad(Integer cantidadEnfermedades, Boolean tieneEmbarazo, IMC categoriaIMC, Integer edad);
     
-    
+    List<Paciente> pacientesInternadosPorInstitucion(Long idInstitucion);
 }

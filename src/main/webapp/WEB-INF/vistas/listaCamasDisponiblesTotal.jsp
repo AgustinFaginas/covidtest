@@ -4,7 +4,7 @@
 
 <jsp:include page="../../partial/headerInstitucionesParte1.jsp" />
 
-<title>Paso 1: Lista Pacientes Infectados</title>
+<title>Paso 2: Lista Camas Disponibles</title>
     
 <jsp:include page="../../partial/headerInstitucionesParte2.jsp" />
 
@@ -13,65 +13,52 @@
      
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div>
-        <h4 >Pacientes Infectados</h4> 
+        <h4>Lista de Camas Disponibles</h4> 
         </div>
+   
        
       </div>
       	
     <div class="">
         <div>
-        
-		  <div class="table-responsive">
-		  
-		   
-		           
-		          
-		          </br>
+        <div>
+        <p class="">Nombre del paciente: ${paciente.getApellido()}, ${paciente.getNombre()}</p>
+        <p class="">Motivo del egreso: ${motivoEgreso}</p>
+        </div>
 
-		            </td>
-		        </tr>
-		    </table>
-		</div>
-		
-		<c:if test="${listaPacientesInfectados != null}">
+		 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div>
+        		<h6 class="">PASO 2: Elegir la cama</h6>
+        </div>
+        
+        
+       
+      </div>
 	
-		<h6 class="">PASO 1: Elegir el paciente a internar</h6>	
-		
-		</br>		
-		
-		  <div class="table-responsive">
+	  <div class="table-responsive">
 		    <table class="table table-bordered table-hover responsive nowrap text-center">
 		        <tr>
-		            <th >NOMBRE</th>
-		            <th >DNI</th>
-		            <th >PRIORIDAD</th>
-		            <th >ACCIÓN</th>
+		            <th class="bg-primary text-white">DESCRIPCION</th>
+		            <th class="bg-primary text-white">TIPO</th>
+		            <th class="bg-primary text-white">SELECCIONAR</th>
 		        </tr>
-		        <c:forEach items="${listaPacientesInfectados}" var="paciente">
+		        
+		        <c:forEach items="${listaCamasDisponiblesTotal}" var="cama">
 		            <tr>
-		                <td><c:out value="${paciente.getApellido()}, ${paciente.getNombre()}"/></td>
-		                <td><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
-		                <td><c:out value="${paciente.getPrioridad()}"/></td>
+		                <td><c:out value="${cama.getDescripcion()}"/></td>
+		                <td><c:out value="${cama.getTipoCama().name()}"/></td>
 		                
 		                <td class="align-middle">
 		                
-		                <a href="listaCamas?idPaciente=${paciente.getId()}" type="button" class="btn btn-secondary">Internar</a>
-		                <a class="btn btn-warning" href="<c:url value='/crearMensaje/${paciente.getId()}'/>" role="button"> Enviar Mensaje</a>
-						<button type="button" class="btn btn-danger">Borrar</button>
+		                <a href="detalleEgreso?idPaciente=${paciente.getId()}&idCama=${cama.getId()}&motivoEgreso=${motivoEgreso}" type="button" class="btn btn-secondary">Internar</a>
 						
 		               </td>
 		            </tr>
 		        </c:forEach>
+		        
 		    </table>
 		</div>
 
-
-        </c:if>
-        
-        <c:if test="${listaPacientesInfectados == null}">
-        <h5 class="">No hay pacientes Infectados</h5>	
-         </c:if>
-         
         </div>
     </div>
 

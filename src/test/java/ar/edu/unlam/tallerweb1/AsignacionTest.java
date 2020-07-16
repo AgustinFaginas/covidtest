@@ -24,7 +24,7 @@ public class AsignacionTest {
 		ServicioPaciente servicioPaciente = mock (ServicioPaciente.class);
 		
 		Paciente paciente = mock (Paciente.class);
-		ControladorEgresarPaciente controlador = new ControladorEgresarPaciente(servicioAsignacion, servicioPaciente);
+		ControladorEgresarPaciente controlador = new ControladorEgresarPaciente(servicioAsignacion, servicioPaciente, null, null);
 		
 		MotivoEgreso motivoEgreso = MotivoEgreso.CURADO;
 		
@@ -46,7 +46,7 @@ public class AsignacionTest {
 		Paciente paciente = mock (Paciente.class);
 		Cama cama = mock (Cama.class);
 		Asignacion asignacion = mock (Asignacion.class);
-		ControladorEgresarPaciente controlador = new ControladorEgresarPaciente(servicioAsignacion, servicioPaciente);
+		ControladorEgresarPaciente controlador = new ControladorEgresarPaciente(servicioAsignacion, servicioPaciente, null, null);
 		
 		MotivoEgreso motivoEgreso = MotivoEgreso.CURADO;
 		

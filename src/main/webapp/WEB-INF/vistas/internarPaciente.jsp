@@ -43,7 +43,7 @@
 										
 										<div class="form-group">
 											<h6>Seleccione una cama</h6>
-											<select name="cama" id="idCama">
+											<select name="cama" id="idCama" class="form-control br-radius-zero">
 												<c:forEach var="cama" items="${camas}">
 													<option value="${cama.getId()}">${cama.getDescripcion()}
 												</c:forEach>

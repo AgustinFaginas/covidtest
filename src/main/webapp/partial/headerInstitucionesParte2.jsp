@@ -62,6 +62,12 @@
                             Disponibilidad Camas
                         </a>
                     </li>
+                          <li class="nav-item mt-3 mb-3">
+                        <a class="nav-link" href="listaPacientesInternados">
+                            <span data-feather="users"></span>
+                            Pacientes Internados
+                        </a>
+                    </li>
                     <li class="nav-item mt-3 mb-3">
                         <a class="nav-link" href="posiblesinfectados">
                             <span data-feather="users"></span>

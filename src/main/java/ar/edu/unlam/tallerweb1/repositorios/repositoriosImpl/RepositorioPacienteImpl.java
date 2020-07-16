@@ -1,10 +1,13 @@
 package ar.edu.unlam.tallerweb1.repositorios.repositoriosImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioPaciente;
+
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -13,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.modelo.Asignacion;
+import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 
@@ -88,6 +92,24 @@ public class RepositorioPacienteImpl implements RepositorioPaciente {
                         .add(Projections.property("paciente"), "paciente"))
                 .add(Restrictions.isNull("motivoEgreso"))
                 .list();
+    }
+    
+    @SuppressWarnings({"unchecked", "deprecation"})
+    @Override
+    public List<Paciente> pacientesInternadosPorInstitucion(Long idInstitucion) {
+    	
+    	List<Asignacion> asignacionesVigentes = sessionFactory.getCurrentSession().createCriteria(Asignacion.class)
+								                .add(Restrictions.isNull("motivoEgreso"))
+								                .list();
+    	
+    	List<Paciente> pacientesInternadosPorInstitucion = new ArrayList<Paciente>();
+    	
+        for (Asignacion asignacion: asignacionesVigentes) { 
+        	if (asignacion.getCama().getInstitucion().getId() == idInstitucion ) {
+        		pacientesInternadosPorInstitucion.add(asignacion.getPaciente());
+			}
+		}
+        return pacientesInternadosPorInstitucion;
     }
 
     @Override

@@ -61,6 +61,24 @@ public class RepositorioCamaImpl implements RepositorioCama {
 	@Override
     public List<Cama> obtenerCamasOcupadasPorInstitucion(Institucion institucion) {
        
+            List<Cama> camasOcupadas = sessionFactory.getCurrentSession().createCriteria(Asignacion.class)
+		            					.setProjection(Projections.projectionList()
+					                	.add(Projections.property("cama"), "cama"))
+					            		.add(Restrictions.isNull("motivoEgreso"))
+					                    .list();
+            
+            for (Cama cama: camasOcupadas) { 
+            	if (cama.getInstitucion().equals(institucion)) {
+                	camasOcupadas.remove(cama);
+				}
+    		}
+            return camasOcupadas;
+    }
+
+    @SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+    public List<Cama> obtenerTotalDeCamasOcupadas() {
+       
             return sessionFactory.getCurrentSession().createCriteria(Asignacion.class)
             		.setProjection(Projections.projectionList()
                 	 .add(Projections.property("cama"), "cama"))
