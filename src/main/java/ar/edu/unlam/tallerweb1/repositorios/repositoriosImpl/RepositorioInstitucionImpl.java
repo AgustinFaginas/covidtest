@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class RepositorioInstitucionImpl implements RepositorioInstitucion {
     @Override
     public List<Institucion> obtenerListaInstituciones() {
         return sessionFactory.getCurrentSession().createCriteria(Institucion.class)
+        		.add(Restrictions.eq("rol", Rol.INSTITUCION))
                 .list();
     }
 

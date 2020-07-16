@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unlam.tallerweb1.modelo.Notificacion;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioNotificacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioNotificacion;
 
@@ -27,9 +28,9 @@ public class ServicioNotificacionImpl implements ServicioNotificacion {
 
 
 	@Override
-	public List<Notificacion> buscarNotificacionPorId(Long id) {
-		
-		return repositorioNotificacion.buscarNotificacionPorId(id);
+	public List<Notificacion> buscarNotificacionPorId(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return repositorioNotificacion.buscarNotificacionPorId(usuario);
 	}
 
 }
