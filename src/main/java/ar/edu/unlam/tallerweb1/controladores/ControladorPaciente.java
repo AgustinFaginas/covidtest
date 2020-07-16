@@ -86,11 +86,19 @@ public class ControladorPaciente {
         Integer cantidadPacientesInfectados = servicioPaciente.pacientesInfectados().size();
         Integer cantidadPacientesNoInfectados = cantidadPacientes - cantidadPacientesInfectados;
 
+        List<Cama> camasOcupadas = servicioCama.obtenerTotalDeCamasOcupadas();
+        Integer cantidadCamasOcupadas = camasOcupadas.size();
+
+        List<Cama> camasDisponibles = servicioCama.obtenerTotalDeCamasDisponibles();
+        Integer cantidadCamasDisponibles = camasDisponibles.size();
+
         ModelMap model = new ModelMap();
 
         model.put("cantidadPacientes", cantidadPacientes);
         model.put("cantidadPacientesInfectados", cantidadPacientesInfectados);
         model.put("cantidadPacientesNoInfectados", cantidadPacientesNoInfectados);
+        model.put("cantidadCamasOcupadas", cantidadCamasOcupadas);
+        model.put("cantidadCamasDisponibles", cantidadCamasDisponibles);
 
 
         return new ModelAndView("grafico-pacientes", model);

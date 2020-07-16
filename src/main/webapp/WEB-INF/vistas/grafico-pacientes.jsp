@@ -72,6 +72,31 @@
 
         chart.render();
 
+        //Grafico de barras 2
+        var chart = new CanvasJS.Chart("chartContainerBarras2", {
+            animationEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2",
+            title: {
+                text: "Cantidad total de camas ocupadas y disponibles",
+                fontFamily: "calibri light",
+            },
+            axisY: {
+                title: "Cantidad total de camas"
+            },
+            data: [{
+                type: "column",
+                showInLegend: true,
+                legendMarkerColor: "grey",
+                legendText: "Estado",
+                dataPoints: [
+                    {y: ${cantidadCamasOcupadas}, label: "Ocupadas", color:"#0080FF"},
+                    {y: ${cantidadCamasDisponibles}, label: "Disponibles", color: "#01DF01"}
+                ]
+            }]
+        });
+
+        chart.render();
+
         //Grafico de torta
         var porcentaje1 = (${cantidadPacientesInfectados} * 100 /
         ${cantidadPacientes})
@@ -173,6 +198,16 @@
                     <div class="col"></div>
                     <div class="col-6">
                         <div id="chartContainerBarras" style="height: 40em; width: 100%;"></div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+
+            <div class="">
+                <div class="row container-chart">
+                    <div class="col"></div>
+                    <div class="col-6">
+                        <div id="chartContainerBarras2" style="height: 40em; width: 100%;"></div>
                     </div>
                     <div class="col"></div>
                 </div>
