@@ -8,6 +8,10 @@
     
 <jsp:include page="../../partial/headerInstitucionesParte2.jsp" />
 
+<%@page import="java.util.*" session="true"%>
+ 
+<% HttpSession sesion=request.getSession(); out.println("Creación: "+sesion.getAttribute("ROL")); 
+Date momento=new Date(sesion.getCreationTime()); out.println("Creación: "+momento); %>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
    
