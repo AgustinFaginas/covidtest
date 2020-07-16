@@ -14,7 +14,11 @@
             
 				<h2>Lista de Posibles Infectados</h2>
 				<br>
-				<br><a href="panel">Volver a panel</a><br>
+				
+				<c:if test="${!admin}">
+					<br><a href="panel">Volver a panel</a><br>
+				</c:if>
+				
 				
                 <table class="table table-bordered table-hover responsive nowrap text-center align-middle">
                     <tr class="text-center align-middle">

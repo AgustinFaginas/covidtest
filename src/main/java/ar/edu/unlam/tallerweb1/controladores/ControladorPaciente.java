@@ -111,13 +111,28 @@ public class ControladorPaciente {
     }
 
     @RequestMapping("/posiblesinfectados")
-    public ModelAndView posiblesinfectados() {
+    public ModelAndView posiblesinfectados(HttpServletRequest request) {
 
         List<Paciente> posiblesInfectados = servicioPaciente.posiblesInfectados();
 
         ModelMap model = new ModelMap();
 
+        if (request.getSession().getAttribute("ID") == null) {
+            model.put("error", "Debe iniciar sesión");
+            return new ModelAndView("redirect:/login");
+        }
+
+        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
+            return new ModelAndView("redirect:/denied");
+        }
+        
+        Boolean admin = false;
+        if (request.getSession().getAttribute("ROL") == Rol.ADMIN) {
+            admin = true;
+        }
+        
         model.put("posiblesInfectados", posiblesInfectados);
+        model.put("admin", admin);
 
         return new ModelAndView("posiblesinfectados", model);
     }

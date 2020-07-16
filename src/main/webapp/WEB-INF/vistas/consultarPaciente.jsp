@@ -2,17 +2,18 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:if test="${rol == 1}">
-<jsp:include page="../../partial/headerAdminParte1.jsp" />
-</c:if>	
+<%-- <c:if test="${rol == 1}"> --%>
+<%-- <jsp:include page="../../partial/headerAdminParte1.jsp" /> --%>
+<%-- </c:if> --%>
+<%-- <c:if test="${rol != 1}"> --%>
+
+<%-- </c:if>	 --%>
+
+<jsp:include page="../../partial/headerInstitucionesParte1.jsp" />	
                        
-<jsp:include page="../../partial/headerInstitucionesParte1.jsp" />
-
 <title>Consultar Paciente</title>
-    
-<jsp:include page="../../partial/headerInstitucionesParte2.jsp" />
 
-<%@page import="java.util.*" session="true"%>
+<jsp:include page="../../partial/headerInstitucionesParte2.jsp" />
  
 <%-- <% HttpSession sesion=request.getSession(); out.println("ROL: "+sesion.getAttribute("ROL"));%> --%>
 
