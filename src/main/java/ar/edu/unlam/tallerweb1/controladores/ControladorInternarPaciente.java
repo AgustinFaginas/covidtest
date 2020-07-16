@@ -148,6 +148,10 @@ public class ControladorInternarPaciente {
 				
 				servicioInternacion.registrarInternacion(asignacionAGuardar);
 				
+				pacienteBuscado.setPosibleInfectado(false);
+				pacienteBuscado.setInfectado(false);
+				servicioPaciente.actualizarPaciente(pacienteBuscado);
+				
 				String mensaje = "Nombre del paciente: " + asignacionAGuardar.getPaciente().getNombre() + " " 
 														 + asignacionAGuardar.getPaciente().getApellido();
 				String mensaje2 = "Cama asignada: " + asignacionAGuardar.getCama().getDescripcion();

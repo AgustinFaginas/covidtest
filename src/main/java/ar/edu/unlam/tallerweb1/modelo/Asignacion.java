@@ -23,28 +23,15 @@ public class Asignacion {
 	
 	private LocalDateTime horaTraslado;
 	
-
 	@ManyToOne//(cascade= CascadeType.ALL)
 	private Paciente paciente;
-
-	public MotivoTraslado getMotivoTraslado() {
-		return motivoTraslado;
-	}
-
-	public void setMotivoTraslado(MotivoTraslado motivoTraslado) {
-		this.motivoTraslado = motivoTraslado;
-	}
 
 	@ManyToOne//(cascade= CascadeType.ALL)
 	private Cama cama;
 	
 	@Enumerated(EnumType.STRING)
 	private MotivoEgreso motivoEgreso;
-	
-	@Enumerated(EnumType.STRING)
-	private MotivoTraslado motivoTraslado;
-	
-	
+
 	public MotivoEgreso getMotivoEgreso() {
 		return motivoEgreso;
 	}

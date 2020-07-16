@@ -25,7 +25,7 @@
 			
 			<h6 class="">Hora de internación: ${horaIngreso}</h6>
 			
-			<h6 class="">Cama asignada: ${asignacion.getCama()}</h6>
+			<h6 class="">Cama asignada: ${asignacion.getCama().getDescripcion()}</h6>
      
      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h4>Elegir motivo del egreso</h4>
@@ -45,7 +45,7 @@
 							</select>      
 	                    </div>  
 	                    
-	                    <input type="hidden" value="11" name="idPaciente">
+	                    <input type="hidden" value="${paciente.getId()}" name="idPaciente">
 	
 						<button type="submit" class="btn btn-sm btn-outline-secondary">Egresar</button>
 					
