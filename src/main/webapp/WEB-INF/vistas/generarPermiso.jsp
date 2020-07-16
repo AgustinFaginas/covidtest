@@ -98,9 +98,47 @@
                             <input type="number" class="form-control" id="edad" name="edad" required>
                         </div>
 
-                        <div class="form-row my-4">
-                            <label for="localidad">Localidad</label>
-                            <input type="text" class="form-control" id="localidad" name="localidad" required>
+                        <div class="form-group">
+                            <label for="nombreLocalidad" class="h6 my-3">Localidad <span
+                                    class="text-primary font-weight-bold">*</span></label>
+                            <select name="nombreLocalidad" id="nombreLocalidad" class="form-control br-radius-zero"
+                                    required>
+                                <option id="Banfield" name="Banfield">Banfield
+                                <option id="Beccar" name="Beccar">Beccar
+                                <option id="Carlos Spegazzini" name="Carlos Spegazzini">Carlos Spegazzini
+                                <option id="Canning" name="Canning">Canning
+                                <option id="Castelar" name="Castelar">Castelar
+                                <option id="Don Torcuato" name="Don Torcuato">Don Torcuato
+                                <option id="El Palomar" name="El Palomar">El Palomar
+                                <option id="General Pacheco" name="General Pacheco">General Pacheco
+                                <option id="Gregorio de Laferrere" name="Gregorio de Laferrere">Gregorio de
+                                    Laferrere
+                                <option id="Haedo" name="Haedo">Haedo
+                                <option id="Hurlingham" name="Hurlingham">Hurlingham
+                                <option id="Isidro Casanova" name="Isidro Casanova">Isidro Casanova
+                                <option id="José María Ezeiza" name="José María Ezeiza">José María Ezeiza
+                                <option id="La Reja" name="La Reja">La Reja
+                                <option id="La Tablada" name="La Tablada">La Tablada
+                                <option id="Lomas del Mirador" name="Lomas del Mirador">Lomas del Mirador
+                                <option id="Martínez" name="Martínez">Martínez
+                                <option id="Moreno" name="Moreno">Moreno
+                                <option id="Morón" name="Morón">Morón
+                                <option id="Munro" name="Munro">Munro
+                                <option id="Paso del Rey" name="Paso del Rey">Paso del Rey
+                                <option id="San Isidro" name="San Isidro">San Isidro
+                                <option id="San Justo" name="San Justo">San Justo
+                                <option id="Tigre" name="Tigre">Tigre
+                                <option id="Trujui" name="Trujui">Trujui
+                                <option id="Udaondo" name="Udaondo">Udaondo
+                                <option id="Valentín Alsina" name="Valentín Alsina">Valentín Alsina
+                                <option id="Vicente López" name="Vicente López">Vicente López
+                                <option id="Victoria" name="Victoria">Victoria
+                                <option id="Villa Fiorito" name="Villa Fiorito">Villa Fiorito
+                                <option id="Villa Martelli" name="Villa Martelli">Villa Martelli
+                                <option id="Villa Sarmiento" name="Villa Sarmiento">Villa Sarmiento
+                                <option id="Wilde" name="Wilde">Wilde
+                                <option id="William C. Morris" name="William C. Morris">William C. Morris
+                            </select>
                         </div>
 
                         <div class="form-row my-4">

@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.repositorios.repositoriosImpl;
 
 import ar.edu.unlam.tallerweb1.modelo.Localidad;
+import ar.edu.unlam.tallerweb1.modelo.Partido;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioLocalidad;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -41,6 +42,11 @@ public class RepositorioLocalidadImpl implements RepositorioLocalidad {
     @Override
     public void actualizarLocalidad(Localidad localidad) {
         sessionFactory.getCurrentSession().update(localidad);
+    }
+
+    @Override
+    public List<Partido> obtenerPartidoPorLocalidad(Long idPartido) {
+        return sessionFactory.getCurrentSession().createCriteria(Localidad.class).add(Restrictions.eq("partido_id", idPartido)).list();
     }
 
 }
