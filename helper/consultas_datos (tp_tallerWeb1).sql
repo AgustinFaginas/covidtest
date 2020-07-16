@@ -64,7 +64,6 @@ FROM Cama c
 SELECT a.cama_id
 FROM Asignacion a 
 WHERE NOT EXISTS (SELECT 1
-				   
                   AND a.horaEgreso IS NULL);
                   
 SELECT c.id
@@ -75,10 +74,10 @@ WHERE NOT EXISTS (SELECT 1
 								    WHERE c.id = a.cama_id
                                     AND a.horaEgreso IS NULL));                  
 
-SELECT c.id
+/*Mostrar todas las camas tal para las cuales no existe una asignacion vigente*/
+SELECT *
 FROM cama c
-WHERE c.institucion_id = 2
-AND NOT EXISTS (SELECT 1
+WHERE NOT EXISTS (SELECT 1
  			   FROM asignacion a
 			   WHERE a.cama_id = c.id
 			   AND a.horaEgreso IS NULL);     
