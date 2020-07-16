@@ -62,12 +62,12 @@
 					  }
 					  </style>
 		                
-							<c:if test="${paciente.getInfectado() == true}">
+							<%-- <c:if test="${paciente.getInfectado() == true}">
 								<td class="align-middle"><c:out value="Si" /></td>
 							</c:if>
 							<c:if test="${paciente.getInfectado() != true}">
 								<td class="align-middle"><c:out value="Posible" /></td>
-							</c:if>
+							</c:if> --%>
 
 							<c:if test="${paciente.getPrioridad() == 5}">
 					        	<td class="align-middle"><c:out value="Baja "/>
@@ -95,13 +95,41 @@
 					        	</td>
 		        			</c:if>
 		        			
-		                <td class="align-middle">
+		                <%-- <td class="align-middle">
 		                
-		                <a href="listaCamas?idPaciente=${paciente.getId()}" type="button" class="btn btn-secondary">Internar</a>
-		                <a class="btn btn-warning" href="<c:url value='/crearMensaje/${paciente.getId()}'/>" role="button"> Enviar Mensaje</a>
-						<button type="button" class="btn btn-danger">Borrar</button>
+		                <a href="listaCamasDisponiblesTotal?idPaciente=${paciente.getId()}" type="button" class="btn btn-secondary">Internar</a>
+		                 <div class="float-right" style="margin-right: 20px; margin-top: 5px; /* margin-left: -30px" */>
+										
+										<form action="crearMensaje" method=post>
+
+
+											<input class="invisible" type="hidden" id="id" name="id"
+												value="${paciente.getId()}"> <input
+												class="btn btn-primary" type="submit" value="Enviar Mensaje">
+
+										</form>
+									</div>
+						<!-- <button type="button" class="btn btn-danger">Borrar</button> -->
 						
-		               </td>
+		               </td> --%>
+		               
+		               <td class="align-middle"><a
+						href="listaCamasDisponiblesTotal?idPaciente=${paciente.getId()}"
+						class="btn btn-success" style="margin-top: 5px; margin-left: 5px">Ver
+							Pacientes</a> 
+						<div class="float-right"
+							style="margin-right: 25px; margin-top: 5px; margin-left: -30px">
+
+
+							<form action="crearMensajeParaInstitucion" method=post>
+
+
+								<input class="invisible" type="hidden" id="id" name="id"
+									value="${instituciones.getId()}"> <input
+									class="btn btn-primary" type="submit" value="Enviar Mensaje">
+
+							</form>
+						</div></td>
 		            </tr>
 		        </c:forEach>
 		    </table>

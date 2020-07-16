@@ -135,7 +135,7 @@
                         ${nombre}</p>
                     <p class="lead">La institución ${nombre} posee ${camas} camas en total.</p>
                     <a class="btn btn-outline-primary" href="verMensajes" role="button">Ver Mensajes Recibidos</a>
-                    <a class="btn btn-outline-primary" href="verMensajes" role="button">Enviar Mensaje</a>
+                    <a class="btn btn-outline-primary" href="crearMensaje" role="button">Enviar Mensaje</a>
                     <hr class="my-4">
                     <p>
                         
