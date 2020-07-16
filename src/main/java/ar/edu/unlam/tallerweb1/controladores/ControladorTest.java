@@ -131,7 +131,7 @@ public class ControladorTest {
             @RequestParam(value = "calle", required = false) String calle,
             @RequestParam(value = "nombreLocalidad") String nombreLocalidad,
             @RequestParam(value = "telefono", required = false) Integer telefono,
-            @RequestParam(value = "mail", required = false) String mail,
+            @RequestParam(value = "email", required = false) String email,
             @RequestParam(value = "motivo", required = false) String motivo
     ) {
 
@@ -152,7 +152,7 @@ public class ControladorTest {
             model.put("calle", calle);
             model.put("numeroCalle", numeroCalle);
             model.put("telefono", telefono);
-            model.put("mail", mail);
+            model.put("email", email);
             model.put("motivo", motivo);
             return new ModelAndView("permisoAceptado", model);
         } else {

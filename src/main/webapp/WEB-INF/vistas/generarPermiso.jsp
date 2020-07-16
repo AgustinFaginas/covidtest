@@ -79,22 +79,24 @@
             <div class="card border-dark mb-3">
                 <div class="card-header">
                     <h3 class="text-center my-2">Complete el formulario con sus datos</h3>
+                    <p class="mt-4 text-right">(<span class="text-primary font-weight-bold">*</span>) Campos
+                        obligatorios</p>
                 </div>
                 <div class="card-body text-dark">
                     <form action="validarPermiso" method="POST"
                           class="d-flex justify-content-center flex-column justify-content-center">
                         <div class="form-row my-4">
-                            <label for="nombre">Nombre</label>
+                            <label for="nombre">Nombre <span class="text-primary font-weight-bold">*</span></label>
                             <input type="text" class="form-control" id="nombre" name="nombre" required>
                         </div>
 
                         <div class="form-row my-4">
-                            <label for="apellido">Apellido</label>
+                            <label for="apellido">Apellido <span class="text-primary font-weight-bold">*</span></label>
                             <input type="text" class="form-control" id="apellido" name="apellido" required>
                         </div>
 
                         <div class="form-row my-4">
-                            <label for="edad">Edad</label>
+                            <label for="edad">Edad <span class="text-primary font-weight-bold">*</span></label>
                             <input type="number" class="form-control" id="edad" name="edad" required>
                         </div>
 
@@ -139,16 +141,21 @@
                                 <option id="Wilde" name="Wilde">Wilde
                                 <option id="William C. Morris" name="William C. Morris">William C. Morris
                             </select>
+                            <small id="localidadHelp" class="form-text text-muted">Seleccione la localidad en donde
+                                reside actualmente</small>
                         </div>
 
                         <div class="form-row my-4">
                             <div class="form-group col-6">
-                                <label for="calle">Calle</label>
+                                <label for="calle">Calle <span class="text-primary font-weight-bold">*</span></label>
                                 <input type="text" name="calle" class="form-control br-radius-zero"
                                        id="calle" required/>
+                                <small id="calleHelp" class="form-text text-muted">Ingrese la calle en donde
+                                    reside actualmente</small>
                             </div>
                             <div class="form-group col-6">
-                                <label for="numeroCalle">Número</label>
+                                <label for="numeroCalle">Número <span
+                                        class="text-primary font-weight-bold">*</span></label>
                                 <input type="number" name="numeroCalle" class="form-control br-radius-zero"
                                        id="numeroCalle"
                                        data-msg="Ingrese número de calle válido" required/>
@@ -156,18 +163,23 @@
                         </div>
 
                         <div class="form-row my-4">
-                            <label for="telefono">Teléfono</label>
-                            <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                            <label for="telefono">Teléfono <span class="text-primary font-weight-bold">*</span></label>
+                            <input type="tel" class="form-control" id="telefono" name="telefono" required> <small
+                                id="numeroTelefonoHelp" class="form-text text-muted">Sin puntos guiones ni espacios. Ej:
+                            1530874512</small>
                         </div>
 
                         <div class="form-row my-4">
-                            <label for="email">Correo electrónico</label>
-                            <input type="text" class="form-control" id="email" required>
+                            <label for="email">Correo electrónico <span
+                                    class="text-primary font-weight-bold">*</span></label>
+                            <input type="text" class="form-control" id="email" name="email" required>
+                            <small id="emailHelp" class="form-text text-muted">Ej: maria@email.com</small>
                         </div>
 
                         <div class="form-row my-4">
                             <div class="form-group col-6">
-                                <label for="tipoDocumento">Tipo Documento</label>
+                                <label for="tipoDocumento">Tipo Documento <span
+                                        class="text-primary font-weight-bold">*</span></label>
                                 <select name="tipoDocumento" id="tipoDocumento" class="form-control br-radius-zero"
                                         required>
                                     <option id="tipoDocumentoDNI">DNI
@@ -176,15 +188,18 @@
                                 </select>
                             </div>
                             <div class="form-group col-6">
-                                <label for="numeroDocumento">Número de documento</label>
+                                <label for="numeroDocumento">Número de documento <span
+                                        class="text-primary font-weight-bold">*</span></label>
                                 <input type="text" name="numeroDocumento" class="form-control br-radius-zero"
                                        id="numeroDocumento"
-                                       data-msg="Ingrese número de CUIT válido" required/>
+                                       data-msg="Ingrese número de documento válido" required/>
+                                <small id="numeroDocumentoHelp" class="form-text text-muted">Sin puntos ni espacios. Ej:
+                                    30758124</small>
                             </div>
                         </div>
 
                         <div class="form-row my-4">
-                            <label for="motivo">Motivo del permiso</label>
+                            <label for="motivo">Motivo del permiso <span class="text-primary font-weight-bold">*</span></label>
                             <select name="motivo" id="motivo" class="form-control br-radius-zero"
                                     required>
                                 <option id="motivo1">Asistencia a un adulto mayor
