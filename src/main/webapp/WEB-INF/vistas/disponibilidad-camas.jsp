@@ -38,7 +38,7 @@
 		                
 		                <td class="align-middle">
 		                
-		                <a href="listaPacientesInfectadosPasoDos?idCama=${cama.getId()}" type="button" class="btn btn-primary">Internar</a>
+		                <a href="listaPacientesInfectadosPasoDos?idCama=${cama.getId()}" type="button" class="btn btn-primary">Seleccionar Cama</a>
 						
 		               </td>
 		            </tr>

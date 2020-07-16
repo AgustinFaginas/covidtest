@@ -102,6 +102,7 @@ public class ControladorAdmin {
 
 	}
 	
+	
 	@RequestMapping(value ="crearMensajeParaInstitucion" , method=RequestMethod.POST)
 	public ModelAndView crearMensajeParaInstitucion( @RequestParam(value = "id", required = false) Long id
 			,HttpServletRequest request) {
