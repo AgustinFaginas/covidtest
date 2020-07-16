@@ -1,4 +1,4 @@
-%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <html lang="en">
@@ -81,8 +81,7 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text"
-           placeholder="Search" aria-label="Search">
+   
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap"><a class="nav-link"
                                             href="logout">Salir</a></li>
@@ -186,7 +185,7 @@
             <h2>Mensajes</h2>
             <br>
             <div class="container">
-				<a class="btn btn-outline-primary" href="#" role="button">Ver Notificaciones</a>
+				
 
                 
                  <table class="table table-bordered table-hover responsive nowrap text-center align-middle">
@@ -194,16 +193,25 @@
                         <th scope="col">De: </th>
                         <th scope="col">Mensaje</th>
                         <th scope="col">Fecha y Hora</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Acciones</th>
+                        
                         
                     </tr>
 						<c:forEach items="${list}" var="notificacion">
 							<tr>
 								<td class="align-middle"><c:out
-										value="${notificacion.getRemitente()}" /></td>
+										value="${notificacion.getRemitente().getNombre()}" /></td>
 								<td class="align-middle"><c:out
 										value="${notificacion.getMsg()}" /></td>
 								<td class="align-middle"><c:out
 										value="${notificacion.getFechaHora()}" /></td>
+										<td class="align-middle"><c:out
+										value="${notificacion.getRemitente().getRol().name()}" /></td>
+										
+										
+										<td><a class="btn btn-primary" href="#"
+										role="button">Ver Mensaje</a></td>
 
 								
 

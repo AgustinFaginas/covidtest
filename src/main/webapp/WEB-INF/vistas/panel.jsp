@@ -81,8 +81,7 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text"
-           placeholder="Search" aria-label="Search">
+    
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap"><a class="nav-link"
                                             href="logout">Salir</a></li>
@@ -183,18 +182,16 @@
             <%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%>
 
             <br>
-            <h2>Gestión de Pacientes</h2>
-            <br>
+            <h1>Gestión de Pacientes</h1>
+            <br><br>
+            <h2>Lista de Posibles Infectados</h2>
             <div class="container">
-				<a class="btn btn-outline-primary" href="verMensajes" role="button">Ver Mensajes</a>
-
-                <!-- <button type="button" class="btn btn-outline-primary" style="margin: 15px">Notificaciones</button>
-                <button type="button" class="btn btn-outline-secondary" style="margin: 15px">Ordenar</button> -->
+				
 
                 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Ingrese la prioridad a buscar">
                 
                 
-                
+               <br> 
                  <table class="table table-bordered table-hover responsive nowrap text-center align-middle">
                     <tr class="text-center align-middle">
                         <th scope="col">Nombre</th>
@@ -239,12 +236,6 @@
 											<input class="invisible" type="hidden" id="id" name="id"
 												value="${paciente.getId()}"> <input
 												class="btn btn-primary" type="submit" value="Enviar Mansaje">
-
-
-											<%-- <input type="hidden" id="id" name="id"
-											value="${paciente.getId()}"> 
-										<input type="submit"
-											value="Enviar mensaje">  --%>
 
 										</form>
 									</div></td></c:forEach>

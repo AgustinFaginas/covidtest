@@ -12,7 +12,7 @@
         
             <div class="container m-5">
             
-				<h2>Lista de Espera</h2>
+				<h2>Lista de Posibles Infectados</h2>
 				<br>
 				<br><a href="panel">Volver a panel</a><br>
 				

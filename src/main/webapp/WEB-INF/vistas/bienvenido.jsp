@@ -78,11 +78,13 @@
                             Pacientes Internados
                         </a>
                     </li>
-                    <li class="nav-item mt-3 mb-3">
+                   
+                   <!--  <li class="nav-item mt-3 mb-3">
                         <a class="nav-link" href="posiblesinfectados">
                             <span data-feather="users"></span>
-                            Lista de Espera
-                        </a>
+                            Posibles Infectados
+                        </a> -->
+                        
                     </li>
                     <li class="nav-item mt-3 mb-3">
                         <a class="nav-link" href="consultarPaciente">
@@ -132,6 +134,8 @@
                     <p class="lead">Desde aquí acceda a las opciones principales de:
                         ${nombre}</p>
                     <p class="lead">La institución ${nombre} posee ${camas} camas en total.</p>
+                    <a class="btn btn-outline-primary" href="verMensajes" role="button">Ver Mensajes Recibidos</a>
+                    <a class="btn btn-outline-primary" href="verMensajes" role="button">Enviar Mensaje</a>
                     <hr class="my-4">
                     <p>
                         

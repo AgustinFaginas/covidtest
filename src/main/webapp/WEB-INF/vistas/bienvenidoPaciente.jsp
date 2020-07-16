@@ -56,7 +56,7 @@
 						test</a></li> -->
 						
 						<li class="nav-item ml-5"><a class="btn btn-warning" href="verMensajes" role="button">Mis Mensajes</a></li>
-						<li class="nav-item ml-5"><a class="btn btn-secondary" href="crearMensaje" role="button">Nuevo mensaje</a></li>
+						<!-- <li class="nav-item ml-5"><a class="btn btn-secondary" href="crearMensaje" role="button">Nuevo mensaje</a></li> -->
 						<!-- <li class="nav-item ml-5"><a class="nav-link" href="registrarInstitucion">Registrar Institucion</a></li> -->
 			</ul>
 			<c:if test="${alert == null}">
