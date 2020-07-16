@@ -66,8 +66,11 @@ public class RepositorioCamaImpl implements RepositorioCama {
 					                	.add(Projections.property("cama"), "cama"))
 					            		.add(Restrictions.isNull("motivoEgreso"))
 					                    .list();
-            
+            System.out.println(camasOcupadas);
+            System.out.println(institucion);
             for (Cama cama: camasOcupadas) { 
+            	System.out.println(cama.getInstitucion());
+            	System.out.println(institucion);
             	if (cama.getInstitucion().equals(institucion)) {
                 	camasOcupadas.remove(cama);
 				}

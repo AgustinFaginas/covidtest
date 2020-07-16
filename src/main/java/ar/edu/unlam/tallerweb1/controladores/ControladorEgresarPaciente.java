@@ -188,8 +188,8 @@ public class ControladorEgresarPaciente {
 	        return new ModelAndView("listaCamasDisponiblesTotal", model);
 	    }
 	 
-	@RequestMapping("/detalleEgreso")
-    public ModelAndView validarEgreso(
+	@RequestMapping("/detalleEgresoPorTraslado")
+    public ModelAndView validarEgresoPorTraslado(
 
             HttpServletRequest request,
             @RequestParam(value = "idPaciente") Long idPaciente,
@@ -202,7 +202,7 @@ public class ControladorEgresarPaciente {
 
         if (request.getSession().getAttribute("ID") == null) {
             model.put("error", "Debe iniciar sesión");
-            return new ModelAndView("login", model);
+            return new ModelAndView("redirect:/login");
         }
 
         if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
@@ -295,5 +295,83 @@ public class ControladorEgresarPaciente {
 		
         return new ModelAndView("egresarPacienteMotivo", model);
     }
+	
+	@RequestMapping("/detalleEgreso")
+    public ModelAndView validarEgreso(
+
+            HttpServletRequest request,
+            @RequestParam(value = "idPaciente") Long idPaciente,
+            @RequestParam(value = "motivoEgreso") MotivoEgreso motivoEgreso
+    ) {
+
+        ModelMap model = new ModelMap();
+
+        if (request.getSession().getAttribute("ID") == null) {
+            model.put("error", "Debe iniciar sesión");
+            return new ModelAndView("redirect:/login");
+        }
+
+        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
+            return new ModelAndView("redirect:/denied");
+        }
+        
+    	Paciente pacienteBuscado =  servicioPaciente.consultarPacientePorId(idPaciente);
+		
+		if (pacienteBuscado == null) {
+			model.put("error", "No existe el paciente");
+			return new ModelAndView("egresarPaciente", model);
+		}
+		
+		Asignacion asignacionBuscada = servicioAsignacion.consultarAsignacionPacienteInternado(pacienteBuscado);	
+		
+		if (asignacionBuscada == null) {
+			model.put("error", "El paciente no está asignado");
+			return new ModelAndView("egresarPaciente", model);
+		}	
+		
+		LocalDateTime dateTimeNow = LocalDateTime.now();
+		
+		asignacionBuscada.setHoraEgreso(dateTimeNow);
+		asignacionBuscada.setMotivoEgreso(motivoEgreso);
+		
+		servicioAsignacion.actualizarAsignacion(asignacionBuscada);
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		LocalDateTime dateTime = asignacionBuscada.getHoraIngreso();
+		String horaIngreso = dateTime.format(formatter);
+		String horaEgreso = dateTimeNow.format(formatter);
+		
+		model.put("paciente", pacienteBuscado);
+		model.put("horaIngreso", horaIngreso);
+		model.put("horaEgreso", horaEgreso);
+		model.put("asignacion", asignacionBuscada);
+        
+        return new ModelAndView("detalleEgreso", model);
+    }
+	
+	 @RequestMapping("/listaPacientesInternadosDeInstitucion")
+	    public ModelAndView listaPacientesInternadosDeInstitucion(
+
+	        HttpServletRequest request,
+	        @RequestParam(value = "idInstitucion") Long idInstitucion) {
+
+	        ModelMap model = new ModelMap();
+
+	        if (request.getSession().getAttribute("ID") == null) {
+	            return new ModelAndView("redirect:/login");
+	        }
+
+	        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
+	            return new ModelAndView("redirect:/denied");
+	        }
+	        
+	        List<Paciente> listaPacientesInternadosDeInstitucion = new ArrayList<Paciente>();
+
+        	listaPacientesInternadosDeInstitucion = servicioPaciente.pacientesInternadosPorInstitucion(idInstitucion);
+	        
+	        model.put("listaPacientesInternados", listaPacientesInternadosDeInstitucion);
+	    	
+	        return new ModelAndView("listaPacientesInternadosDeInstitucion", model);
+	    }
 	
 }

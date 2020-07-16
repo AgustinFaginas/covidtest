@@ -39,7 +39,8 @@
 			<p >Fecha y Hora de Egreso: ${horaEgreso}</p>
 			
 			<p>Motivo de Egreso: ${asignacion.getMotivoEgreso()}</p>
-
+			
+			<p >Cama asignada en la nueva internación: ${asignacion2.getCama().getDescripcion()}</p>
 			
 			<br>
 	
