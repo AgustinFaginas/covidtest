@@ -35,6 +35,8 @@ public class ControladorAdmin {
 	private ServicioPaciente servicioPaciente;
 	@Autowired
 	private ServicioNotificacion servicioNotificacion;
+	@Autowired
+	private ServicioInstitucion servicioInstitucion;
 	
 	
 	@RequestMapping("admin")
@@ -86,6 +88,24 @@ public class ControladorAdmin {
 			,HttpServletRequest request) {
 
 		Paciente p = servicioPaciente.consultarPacientePorId(id);
+		Long idEmisor = (Long) request.getSession().getAttribute("ID");
+		
+		
+		ModelMap model = new ModelMap();
+		
+		model.put("id", idEmisor);
+		model.put("p", p);
+		
+		return new ModelAndView("crearMensaje",model);
+
+
+	}
+	
+	@RequestMapping(value ="crearMensajeParaInstitucion" , method=RequestMethod.POST)
+	public ModelAndView crearMensajeParaInstitucion( @RequestParam(value = "id", required = false) Long id
+			,HttpServletRequest request) {
+
+		Institucion p = servicioInstitucion.obtenerInstitucionPorId(id);
 		Long idEmisor = (Long) request.getSession().getAttribute("ID");
 		
 		

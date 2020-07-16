@@ -103,8 +103,8 @@
                         Disponibilidad Camas
                     </a></li>
                     <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="posiblesinfectados"> <span data-feather="users"></span>
-                        Lista de Espera
+                                                      href="listaInstituciones"> <span data-feather="users"></span>
+                        Instituciones
                     </a></li>
                     <li class="nav-item mt-3 mb-3"><a class="nav-link"
                                                       href="consultarPaciente"> <span data-feather="search"></span>
