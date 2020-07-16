@@ -7,5 +7,5 @@ import java.util.List;
 public interface ServicioZona {
     Zona obtenerZonaPorNombre(String nombreZona);
 
-    List<Zona> listarInstitucionesPorZona(Zona zona);
+//    List<Zona> listarInstitucionesPorZona(Zona zona);
 }

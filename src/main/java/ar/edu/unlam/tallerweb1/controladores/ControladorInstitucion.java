@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,16 +24,18 @@ public class ControladorInstitucion {
     private ServicioDomicilio servicioDomicilio;
     private ServicioLocalidad servicioLocalidad;
     private ServicioPartido servicioPartido;
+    private ServicioZona servicioZona;
 
     @Autowired
     public ControladorInstitucion(ServicioInstitucion servicioInstitucion, ServicioCama servicioCama,
-                                  ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, ServicioDomicilio servicioDomicilio, ServicioPartido servicioPartido, ServicioLocalidad servicioLocalidad) {
+                                  ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, ServicioDomicilio servicioDomicilio, ServicioPartido servicioPartido, ServicioLocalidad servicioLocalidad, ServicioZona servicioZona) {
         this.servicioInstitucion = servicioInstitucion;
         this.servicioCama = servicioCama;
         this.servicioUsuario = servicioUsuario;
         this.servicioDomicilio = servicioDomicilio;
         this.servicioLocalidad = servicioLocalidad;
         this.servicioPartido = servicioPartido;
+        this.servicioZona = servicioZona;
     }
 
     @RequestMapping("/registrarInstitucion")
@@ -147,4 +150,25 @@ public class ControladorInstitucion {
         }
         return new ModelAndView("redirect:/denied");
     }
+
+    /*@RequestMapping(value = "/instituciones-por-zona", method = RequestMethod.GET)
+    public ModelAndView institucionesPorZona(
+            @RequestParam(value = "nombreZona") String nombreZona
+    ) {
+        ModelMap model = new ModelMap();
+
+        Zona zona = servicioZona.obtenerZonaPorNombre(nombreZona);
+
+        String nombreDeZona = zona.getNombre();
+
+		List<Institucion> instituciones = servicioInstitucion.listarInstitucionesPorLocalidad(id);
+
+
+        model.put("nombreDeZona", nombreDeZona);
+
+        return new ModelAndView("institucionesporzona", model);
+    }*/
+
+
+
 }
