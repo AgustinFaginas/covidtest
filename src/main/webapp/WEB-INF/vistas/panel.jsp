@@ -81,7 +81,7 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    
+
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap"><a class="nav-link"
                                             href="logout">Salir</a></li>
@@ -89,155 +89,156 @@
 </nav>
 
 <div class="container-fluid">
-		<div class="row">
-			<nav id="sidebarMenu"
-				class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-				<div class="sidebar-sticky pt-3">
-					<ul class="nav flex-column">
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="inicioAdmin"> <span data-feather="home"></span> Home
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="disponibilidadCamas"> <span data-feather="inbox"></span>
-								Disponibilidad Camas
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="listaInstituciones"> <span data-feather="users"></span>
-								Instituciones
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="consultarPaciente"> <span data-feather="search"></span>
-								Consultar paciente
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="internarPaciente"> <span data-feather="user-plus"></span>
-								Internar paciente
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="egresarPaciente"> <span data-feather="user-minus"></span>
-								Egresar paciente
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="listaPacientesInfectados"> <span data-feather="users"></span>
-								Pacientes Infectados
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="grafico-pacientes"> <span data-feather="bar-chart-2"></span>
-								Reportes
-						</a></li>
-					</ul>
+    <div class="row">
+        <nav id="sidebarMenu"
+             class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="sidebar-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
+                                                      href="inicioAdmin"> <span data-feather="home"></span> Home
+                    </a></li>
+                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
+                                                      href="disponibilidadCamas"> <span data-feather="inbox"></span>
+                        Disponibilidad Camas
+                    </a></li>
+                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
+                                                      href="listaInstituciones"> <span data-feather="users"></span>
+                        Instituciones
+                    </a></li>
+                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
+                                                      href="consultarPaciente"> <span data-feather="search"></span>
+                        Consultar paciente
+                    </a></li>
+                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
+                                                      href="internarPaciente"> <span data-feather="user-plus"></span>
+                        Internar paciente
+                    </a></li>
+                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
+                                                      href="egresarPaciente"> <span data-feather="user-minus"></span>
+                        Egresar paciente
+                    </a></li>
+                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
+                                                      href="listaPacientesInfectados"> <span
+                            data-feather="users"></span>
+                        Pacientes Infectados
+                    </a></li>
+                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
+                                                      href="grafico-pacientes"> <span data-feather="bar-chart-2"></span>
+                        Reportes
+                    </a></li>
+                </ul>
 
-					<!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-      <span>Saved reports</span>
-      <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-        <span data-feather="plus-circle"></span>
-      </a>
-    </h6>
-    <ul class="nav flex-column mb-2">
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Current month
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Last quarter
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Social engagement
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Year-end sale
-        </a>
-      </li>
-    </ul> -->
-				</div>
-			</nav>
+                <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+  <span>Saved reports</span>
+  <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+    <span data-feather="plus-circle"></span>
+  </a>
+</h6>
+<ul class="nav flex-column mb-2">
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <span data-feather="file-text"></span>
+      Current month
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <span data-feather="file-text"></span>
+      Last quarter
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <span data-feather="file-text"></span>
+      Social engagement
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <span data-feather="file-text"></span>
+      Year-end sale
+    </a>
+  </li>
+</ul> -->
+            </div>
+        </nav>
 
-			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-				<!-- <div
-                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Panel de Control</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group mr-2">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                    </div>
-                    <button type="button"
-                        class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                        <span data-feather="calendar"></span> This week
-                    </button>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <!-- <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Panel de Control</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
                 </div>
-            </div> -->
+                <button type="button"
+                    class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                    <span data-feather="calendar"></span> This week
+                </button>
+            </div>
+        </div> -->
 
-				<%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%>
+            <%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%>
 
-				<br>
-				<h1>Gestión de Pacientes</h1>
-				<br>
-				<br>
-				<h2>Lista de Posibles Infectados</h2>
-				<div class="container">
-
-
-					<input type="text" id="myInput" onkeyup="myFunction()"
-						placeholder="Ingrese la prioridad a buscar"> <br>
-					<table
-						class="table table-bordered table-hover responsive nowrap text-center align-middle">
-						<tr class="text-center align-middle">
-							<th scope="col">Nombre</th>
-							<th scope="col">Documento</th>
-							<th scope="col">Edad</th>
-							<th scope="col">Infectado</th>
-							<th scope="col">Prioridad</th>
-							<th scope="col">Acciones</th>
-
-						</tr>
-						<c:forEach items="${poInfectados}" var="paciente">
-							<tr>
-								<td class="align-middle"><c:out
-										value="${paciente.getApellido()}, ${paciente.getNombre()}" /></td>
-								<td class="align-middle"><c:out
-										value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})" /></td>
-								<td class="align-middle"><c:out
-										value="${paciente.getEdad()}" /></td>
-
-								<c:if test="${paciente.getInfectado() == true}">
-									<td class="align-middle"><c:out value="Si" /></td>
-								</c:if>
-								<c:if test="${paciente.getInfectado() != true}">
-									<td class="align-middle"><c:out value="Posible" /></td>
-								</c:if>
+            <br>
+            <h1>Gestión de Pacientes</h1>
+            <br>
+            <br>
+            <h2>Lista de Posibles Infectados</h2>
+            <div class="container">
 
 
-								<td class="align-middle"><c:out
-										value="${paciente.getPrioridad()}" /></td>
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Ingrese la prioridad a buscar"><br>
+                <table
+                        class="table table-bordered table-hover responsive nowrap text-center align-middle"
+                        id="myTable">
+                    <tr class="text-center align-middle">
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Documento</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Infectado</th>
+                        <th scope="col">Prioridad</th>
+                        <th scope="col">Acciones</th>
 
-								<td class="align-middle">
-									<div class="float-none"
-										style="margin-right: -5px; margin-top: 5px; /* margin-left: -30px"
-										* />
-									<form action="crearMensaje" method=post>
-										<input class="invisible" type="hidden" id="id" name="id"
-											value="${paciente.getId()}"> <input
-											class="btn btn-primary" type="submit" value="Enviar Mensaje">
-									</form>
-									</div>
-								</td>
-						</c:forEach>
-					</table>
-				</div>
-			</main>
-		</div>
-	</div>
+                    </tr>
+                    <c:forEach items="${poInfectados}" var="paciente">
+                    <tr>
+                        <td class="align-middle"><c:out
+                                value="${paciente.getApellido()}, ${paciente.getNombre()}"/></td>
+                        <td class="align-middle"><c:out
+                                value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
+                        <td class="align-middle"><c:out
+                                value="${paciente.getEdad()}"/></td>
+
+                        <c:if test="${paciente.getInfectado() == true}">
+                        <td class="align-middle"><c:out value="Si"/></td>
+                        </c:if>
+                        <c:if test="${paciente.getInfectado() != true}">
+                        <td class="align-middle"><c:out value="Posible"/></td>
+                        </c:if>
+
+
+                        <td class="align-middle"><c:out
+                                value="${paciente.getPrioridad()}"/></td>
+
+                        <td class="align-middle">
+                            <div class="float-none"
+                                 style="margin-right: -5px; margin-top: 5px; /* margin-left: -30px"
+                                 */>
+                            <form action="crearMensaje" method=post>
+                                <input class="invisible" type="hidden" id="id" name="id"
+                                       value="${paciente.getId()}"> <input
+                                    class="btn btn-primary" type="submit" value="Enviar Mensaje">
+                            </form>
+            </div>
+            </td>
+            </c:forEach>
+            </table>
+    </div>
+    </main>
+</div>
+</div>
 <script>
 
 </script>
@@ -256,7 +257,27 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script src="js/dashboard.js"></script>
 <script>
-    
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[4];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
 </script>
 </body>
 </html>
