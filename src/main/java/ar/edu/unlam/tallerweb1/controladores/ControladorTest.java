@@ -4,13 +4,9 @@ package ar.edu.unlam.tallerweb1.controladores;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import ar.edu.unlam.tallerweb1.modelo.IMC;
-import ar.edu.unlam.tallerweb1.modelo.Localidad;
-import ar.edu.unlam.tallerweb1.modelo.Paciente;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.servicios.ServicioLocalidad;
-import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
-import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
+import ar.edu.unlam.tallerweb1.modelo.*;
+import ar.edu.unlam.tallerweb1.servicios.*;
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import ar.edu.unlam.tallerweb1.servicios.ServicioTest;
 
 import java.util.List;
 
@@ -135,7 +129,7 @@ public class ControladorTest {
             @RequestParam(value = "numeroDocumento", required = false) Integer numeroDocumento,
             @RequestParam(value = "numeroCalle", required = false) Integer numeroCalle,
             @RequestParam(value = "calle", required = false) String calle,
-            @RequestParam(value = "localidad", required = false) String localidad,
+            @RequestParam(value = "nombreLocalidad") String nombreLocalidad,
             @RequestParam(value = "telefono", required = false) Integer telefono,
             @RequestParam(value = "mail", required = false) String mail,
             @RequestParam(value = "motivo", required = false) String motivo
@@ -143,12 +137,18 @@ public class ControladorTest {
 
         if (servicioTest.realizarPermiso(nombre, apellido, edad, tipoDocumento, numeroDocumento, motivo)) {
             ModelMap model = new ModelMap();
+
+            Localidad localidad = servicioLocalidad.obtenerLocalidadPorNombre(nombreLocalidad);
+            Partido partido = localidad.getPartido();
+            String nombrePartido = partido.getNombrePartido();
+
             model.put("nombre", nombre);
             model.put("apellido", apellido);
             model.put("edad", edad);
             model.put("tipoDocumento", tipoDocumento);
             model.put("numeroDocumento", numeroDocumento);
-            model.put("localidad", localidad);
+            model.put("nombreLocalidad", nombreLocalidad);
+            model.put("nombrePartido", nombrePartido);
             model.put("calle", calle);
             model.put("numeroCalle", numeroCalle);
             model.put("telefono", telefono);

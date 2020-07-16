@@ -53,7 +53,6 @@
                 <a class="nav-link" href="autoTest">Realizar test</a>
             </li>
         </ul>
-        <button type="button" class="btn btn-dark ml-5">Log in</button>
     </div>
 </nav>
 

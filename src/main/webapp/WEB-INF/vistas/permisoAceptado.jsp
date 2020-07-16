@@ -91,10 +91,10 @@
         <div class="col-8">
             <h6 style="line-height: 200%">Por medio de la presente, se procede a exceptuar
                 a ${apellido}, ${nombre}, ${tipoDocumento} ${numeroDocumento}, con domicilio en ${calle} ${numeroCalle}
-                - ${localidad}, teléfono ${telefono}, correo electrónico ${mail}, <strong>de los alcances establecidos por el
+                - ${nombreLocalidad}, del partido de ${nombrePartido} teléfono ${telefono}, correo electrónico ${mail}, <strong>de los alcances establecidos por el
                     Decreto
                     2020-
-                    297-APN-PTE</strong> de fecha FECHA del presente año, <strong>en virtud de la criticidad de las
+                    297-APN-PTE</strong> del presente año, <strong>en virtud de la criticidad de las
                     tareas
                     desarrolladas y
                     contempladas como excepciones dentro del cumplimiento del "aislamiento social, preventivo y
