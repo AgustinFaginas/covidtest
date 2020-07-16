@@ -124,7 +124,7 @@ public class ControladorAdmin {
 	@RequestMapping(value = "enviarMensaje", method = RequestMethod.POST)
 	public ModelAndView enviarMensaje(@RequestParam(value = "idEmisor", required = false) Long idEmisor,
 			@RequestParam(value = "idReceptor", required = false) Long idReceptor,
-			@RequestParam(value = "mensaje", required = false) String mensaje) {
+			@RequestParam(value = "mensaje", required = false) String mensaje, HttpServletRequest request) {
 
 		Usuario destinatario = servicioUsuario.consultarUsuarioPorId(idReceptor);
 		Usuario remitente = servicioUsuario.consultarUsuarioPorId(idEmisor);
@@ -137,8 +137,16 @@ public class ControladorAdmin {
 		notificacionNueva.setFechaHora(LocalDateTime.now());
 
 		servicioNotificacion.registrarNotificacion(notificacionNueva);
+		if (request.getSession().getAttribute("ROL") == Rol.ADMIN) {
+			return new ModelAndView("redirect:/panel");
 
-		return new ModelAndView("redirect:/panel");
+		}
+		
+//		if (request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
+//			return new ModelAndView("redirect:/bienvenido");
+//
+//		}
+		return new ModelAndView("redirect:/bienvenido");
 
 	}
 	
