@@ -39,12 +39,7 @@
 					<td class="align-middle"><a
 						href="listaPacientesInternadosDeInstitucion?idInstitucion=${instituciones.getId()}"
 						class="btn btn-success" style="margin-top: 5px; margin-left: 5px">Ver
-							Pacientes</a> <!-- <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a> -->
-						<%-- <a
-									class="btn btn-warning"
-									href="<c:url value='/crearMensaje/${paciente.getId()}'/>"
-									role="button"> Enviar Mensaje</a> --%>
-
+							Pacientes</a> 
 						<div class="float-right"
 							style="margin-right: 25px; margin-top: 5px; margin-left: -30px">
 

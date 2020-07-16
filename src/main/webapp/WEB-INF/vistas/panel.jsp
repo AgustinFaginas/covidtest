@@ -89,46 +89,45 @@
 </nav>
 
 <div class="container-fluid">
-    <div class="row">
-        <nav id="sidebarMenu"
-             class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="sidebar-sticky pt-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="inicioAdmin"> <span data-feather="home"></span> Home
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="disponibilidadCamas"> <span data-feather="inbox"></span>
-                        Disponibilidad Camas
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="listaInstituciones"> <span data-feather="users"></span>
-                        Instituciones
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="consultarPaciente"> <span data-feather="search"></span>
-                        Consultar paciente
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="internarPaciente"> <span data-feather="user-plus"></span>
-                        Internar paciente
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="egresarPaciente"> <span data-feather="user-minus"></span>
-                        Egresar paciente
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="listaPacientesInfectados"> <span
-                            data-feather="users"></span>
-                        Pacientes Infectados
-                    </a></li>
-                    <li class="nav-item mt-3 mb-3"><a class="nav-link"
-                                                      href="grafico-pacientes"> <span data-feather="bar-chart-2"></span>
-                        Reportes
-                    </a></li>
-                </ul>
+		<div class="row">
+			<nav id="sidebarMenu"
+				class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+				<div class="sidebar-sticky pt-3">
+					<ul class="nav flex-column">
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="inicioAdmin"> <span data-feather="home"></span> Home
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="disponibilidadCamas"> <span data-feather="inbox"></span>
+								Disponibilidad Camas
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="listaInstituciones"> <span data-feather="users"></span>
+								Instituciones
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="consultarPaciente"> <span data-feather="search"></span>
+								Consultar paciente
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="internarPaciente"> <span data-feather="user-plus"></span>
+								Internar paciente
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="egresarPaciente"> <span data-feather="user-minus"></span>
+								Egresar paciente
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="listaPacientesInfectados"> <span data-feather="users"></span>
+								Pacientes Infectados
+						</a></li>
+						<li class="nav-item mt-3 mb-3"><a class="nav-link"
+							href="grafico-pacientes"> <span data-feather="bar-chart-2"></span>
+								Reportes
+						</a></li>
+					</ul>
 
-                <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+					<!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
       <span>Saved reports</span>
       <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
         <span data-feather="plus-circle"></span>
@@ -160,11 +159,11 @@
         </a>
       </li>
     </ul> -->
-            </div>
-        </nav>
+				</div>
+			</nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <!-- <div
+			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+				<!-- <div
                 class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Panel de Control</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
@@ -179,34 +178,37 @@
                 </div>
             </div> -->
 
-            <%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%>
+				<%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%>
 
-            <br>
-            <h1>Gestión de Pacientes</h1>
-            <br><br>
-            <h2>Lista de Posibles Infectados</h2>
-            <div class="container">
-				
+				<br>
+				<h1>Gestión de Pacientes</h1>
+				<br>
+				<br>
+				<h2>Lista de Posibles Infectados</h2>
+				<div class="container">
 
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Ingrese la prioridad a buscar">
-                
-                
-               <br> 
-                 <table class="table table-bordered table-hover responsive nowrap text-center align-middle">
-                    <tr class="text-center align-middle">
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Documento</th>
-                        <th scope="col">Edad</th>
-                        <th scope="col">Infectado</th>
-                        <th scope="col">Prioridad</th>
-                        <th scope="col">Acciones</th>
 
-                    </tr>
-                    <c:forEach items="${poInfectados}" var="paciente">
-                        <tr>
-                            <td class="align-middle"><c:out value="${paciente.getApellido()}, ${paciente.getNombre()}"/></td>
-                            <td class="align-middle"><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
-                            <td class="align-middle"><c:out value="${paciente.getEdad()}"/></td>
+					<input type="text" id="myInput" onkeyup="myFunction()"
+						placeholder="Ingrese la prioridad a buscar"> <br>
+					<table
+						class="table table-bordered table-hover responsive nowrap text-center align-middle">
+						<tr class="text-center align-middle">
+							<th scope="col">Nombre</th>
+							<th scope="col">Documento</th>
+							<th scope="col">Edad</th>
+							<th scope="col">Infectado</th>
+							<th scope="col">Prioridad</th>
+							<th scope="col">Acciones</th>
+
+						</tr>
+						<c:forEach items="${poInfectados}" var="paciente">
+							<tr>
+								<td class="align-middle"><c:out
+										value="${paciente.getApellido()}, ${paciente.getNombre()}" /></td>
+								<td class="align-middle"><c:out
+										value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})" /></td>
+								<td class="align-middle"><c:out
+										value="${paciente.getEdad()}" /></td>
 
 								<c:if test="${paciente.getInfectado() == true}">
 									<td class="align-middle"><c:out value="Si" /></td>
@@ -216,34 +218,26 @@
 								</c:if>
 
 
-								<td class="align-middle"><c:out value="${paciente.getPrioridad()}" /></td>
-
-
-								
+								<td class="align-middle"><c:out
+										value="${paciente.getPrioridad()}" /></td>
 
 								<td class="align-middle">
-								<!-- <button type="button"
-										class="btn btn-secondary" style="margin-top: 5px; margin-left: 5px ">Egresar</button> --> 
-										<%-- <a
-									class="btn btn-warning"
-									href="<c:url value='/crearMensaje/${paciente.getId()}'/>"
-									role="button"> Enviar Mensaje</a> --%>
-
-									<div class="float-none" style="margin-right: -5px; margin-top: 5px; /* margin-left: -30px" */>
-										<form action="crearMensaje" method=post>
-
-
-											<input class="invisible" type="hidden" id="id" name="id"
-												value="${paciente.getId()}"> <input
-												class="btn btn-primary" type="submit" value="Enviar Mansaje">
-
-										</form>
-									</div></td></c:forEach>
-                </table>
-            </div>
-        </main>
-    </div>
-</div>
+									<div class="float-none"
+										style="margin-right: -5px; margin-top: 5px; /* margin-left: -30px"
+										* />
+									<form action="crearMensaje" method=post>
+										<input class="invisible" type="hidden" id="id" name="id"
+											value="${paciente.getId()}"> <input
+											class="btn btn-primary" type="submit" value="Enviar Mensaje">
+									</form>
+									</div>
+								</td>
+						</c:forEach>
+					</table>
+				</div>
+			</main>
+		</div>
+	</div>
 <script>
 
 </script>
