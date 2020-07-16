@@ -9,40 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title> Pacientes</title>
-    <style>
-        #myInput {
-            background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-            background-position: 10px 12px; /* Position the search icon */
-            background-repeat: no-repeat; /* Do not repeat the icon image */
-            width: 100%; /* Full-width */
-            font-size: 16px; /* Increase font-size */
-            padding: 12px 20px 12px 40px; /* Add some padding */
-            border: 1px solid #ddd; /* Add a grey border */
-            margin-bottom: 12px; /* Add some space below the input */
-        }
-
-        #myTable {
-            border-collapse: collapse; /* Collapse borders */
-            width: 100%; /* Full-width */
-            border: 1px solid #ddd; /* Add a grey border */
-            font-size: 18px; /* Increase font-size */
-        }
-
-        #myTable th, #myTable td {
-            text-align: left; /* Left-align text */
-            padding: 12px; /* Add padding */
-        }
-
-        #myTable tr {
-            /* Add a bottom border to all table rows */
-            border-bottom: 1px solid #ddd;
-        }
-
-        #myTable tr.header, #myTable tr:hover {
-            /* Add a grey background color to the table header and on hover */
-            background-color: #f1f1f1;
-        }
-    </style>
 </head>
 <body>
 <%-- <c:forEach items="${pacientes}" var="paciente">
@@ -74,20 +40,18 @@
          </tr>
      </c:forEach>
  </table> --%>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-<table class="table table-bordered table-dark" id="myTable">
+
+<table class="table table-bordered table-dark">
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Cantidad de camas</th>
+        <th scope="col">ID</th>
+
 
 
     </tr>
     <c:forEach items="${instituciones}" var="institucion">
         <tr>
             <th scope="row"><c:out value="${institucion.getId()}"/></th>
-            <td><c:out value="${institucion.getNombre()}"/></td>
-            <td><c:out value="${paciente.getCantidadCamas()}"/></td>
+<%--            <td><c:out value="${institucion.get}"/></td>--%>
                 <%--<td><a href="<c:url value='/Camas/${paciente.getId()}' />" >Asignar cama</a></td>
 
                 <td>
@@ -114,28 +78,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script>
-    function myFunction() {
-        // Declare variables
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-</script>
 </body>
 </html>
