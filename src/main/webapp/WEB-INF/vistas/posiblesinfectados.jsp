@@ -15,8 +15,8 @@
 				<h2>Lista de Espera</h2>
 				<br>
 				
-                <table class="table table-bordered table-hover responsive nowrap text-center">
-                    <tr>
+                <table class="table table-bordered table-hover responsive nowrap text-center align-middle">
+                    <tr class="text-center align-middle">
                         <th scope="col">Nombre</th>
                         <th scope="col">Documento</th>
                         <th scope="col">Edad</th>
@@ -27,28 +27,45 @@
                     </tr>
                     <c:forEach items="${posiblesInfectados}" var="paciente">
                         <tr>
-                            <td><c:out value="${paciente.getApellido()}, ${paciente.getNombre()}"/></td>
-                            <td><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
-                            <td><c:out value="${paciente.getEdad()}"/></td>
-                            
-                            <c:if test="${paciente.getInfectado() == true}">
-								<td><c:out value="Si"/></td>
-							</c:if>
-							<c:if test="${paciente.getInfectado() != true}">
-								<td><c:out value="Posible"/></td>
-							</c:if>
-							
-							<td><c:out value=""/></td>
-							
+                            <td class="align-middle"><c:out value="${paciente.getApellido()}, ${paciente.getNombre()}"/></td>
+                            <td class="align-middle"><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
+                            <td class="align-middle"><c:out value="${paciente.getEdad()}"/></td>
+
+								<c:if test="${paciente.getInfectado() == true}">
+									<td class="align-middle"><c:out value="Si" /></td>
+								</c:if>
+								<c:if test="${paciente.getInfectado() != true}">
+									<td class="align-middle"><c:out value="Posible" /></td>
+								</c:if>
+
+
+								<td class="align-middle"><c:out value="${paciente.getPrioridad()}" /></td>
+
+
+								
+
 								<td class="align-middle"><button type="button"
-									class="btn btn-secondary">Derivar a Institución</button> <a
-								class="btn btn-warning"
-								href="<c:url value='/crearMensaje/${paciente.getId()}'/>"
-								role="button"> Enviar Mensaje</a>
-								<button type="button" class="btn btn-danger">Borrar</button></td>
-							
-                        </tr>
-                    </c:forEach>
+										class="btn btn-secondary" style="margin-top: 5px; margin-left: 5px ">Egresar</button> <%-- <a
+									class="btn btn-warning"
+									href="<c:url value='/crearMensaje/${paciente.getId()}'/>"
+									role="button"> Enviar Mensaje</a> --%>
+
+									<div class="float-right" style="margin-right: 25px; margin-top: 5px; margin-left: -30px">
+										<form action="crearMensaje" method=post>
+
+
+											<input class="invisible" type="hidden" id="id" name="id"
+												value="${paciente.getId()}"> <input
+												class="btn btn-primary" type="submit" value="Enviar Mensaje">
+
+
+											<%-- <input type="hidden" id="id" name="id"
+											value="${paciente.getId()}"> 
+										<input type="submit"
+											value="Enviar mensaje">  --%>
+
+										</form>
+									</div></td></c:forEach>
                 </table>
             </div>
 

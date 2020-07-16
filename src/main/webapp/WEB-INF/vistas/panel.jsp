@@ -269,29 +269,31 @@
                     <c:forEach items="${poInfectados}" var="paciente">
                         <tr>
                             <td class="align-middle"><c:out value="${paciente.getApellido()}, ${paciente.getNombre()}"/></td>
-                            <td><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
-                            <td><c:out value="${paciente.getEdad()}"/></td>
+                            <td class="align-middle"><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
+                            <td class="align-middle"><c:out value="${paciente.getEdad()}"/></td>
 
 								<c:if test="${paciente.getInfectado() == true}">
-									<td><c:out value="Si" /></td>
+									<td class="align-middle"><c:out value="Si" /></td>
 								</c:if>
 								<c:if test="${paciente.getInfectado() != true}">
-									<td><c:out value="Posible" /></td>
+									<td class="align-middle"><c:out value="Posible" /></td>
 								</c:if>
 
 
-								<td><c:out value="${paciente.getPrioridad()}" /></td>
+								<td class="align-middle"><c:out value="${paciente.getPrioridad()}" /></td>
 
 
 								
 
-								<td class="align-middle"><button type="button"
-										class="btn btn-secondary" style="margin-top: 5px; margin-left: 5px ">Egresar</button> <%-- <a
+								<td class="align-middle">
+								<!-- <button type="button"
+										class="btn btn-secondary" style="margin-top: 5px; margin-left: 5px ">Egresar</button> --> 
+										<%-- <a
 									class="btn btn-warning"
 									href="<c:url value='/crearMensaje/${paciente.getId()}'/>"
 									role="button"> Enviar Mensaje</a> --%>
 
-									<div class="float-right" style="margin-right: 25px; margin-top: 5px; margin-left: -30px">
+									<div class="float-none" style="margin-right: -5px; margin-top: 5px; /* margin-left: -30px" */>
 										<form action="crearMensaje" method=post>
 
 
