@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -132,10 +133,11 @@ public class ControladorAdmin {
 		notificacionNueva.setDestinatario(destinatario);
 		notificacionNueva.setRemitente(remitente);
 		notificacionNueva.setMsg(mensaje);
+		notificacionNueva.setFechaHora(LocalDateTime.now());
 
 		servicioNotificacion.registrarNotificacion(notificacionNueva);
 
-		return new ModelAndView("home");
+		return new ModelAndView("redirect:/panel");
 
 	}
 	
@@ -160,6 +162,21 @@ public class ControladorAdmin {
 
 		return new ModelAndView("panel", model);
 
+	}
+	
+	@RequestMapping(path = "/verMensajes", method = RequestMethod.GET)
+	public ModelAndView verMensajes(HttpServletRequest request) {
+		ModelMap model = new ModelMap();
+		
+		Long id = (Long) request.getSession().getAttribute("ID");
+		
+		Usuario usuario = servicioUsuario.consultarUsuarioPorId(id);
+		
+		List<Notificacion> list = servicioNotificacion.buscarNotificacionPorId(usuario);
+		
+		model.put("list", list);
+		
+		return new ModelAndView("verMensajes", model);
 	}
 	
 	//PAGINA DE ACCESO DENEGADO POR DEFAULT

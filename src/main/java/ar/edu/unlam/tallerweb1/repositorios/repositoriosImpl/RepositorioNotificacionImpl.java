@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.modelo.Notificacion;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioNotificacion;
 
 @Repository("repositorioNotificacion")
@@ -30,9 +31,9 @@ public class RepositorioNotificacionImpl implements RepositorioNotificacion {
 
 
 	@Override
-	public List<Notificacion> buscarNotificacionPorId(Long id) {
+	public List<Notificacion> buscarNotificacionPorId(Usuario usuario) {
 		
-		return session.getCurrentSession().createCriteria(Notificacion.class).add(Restrictions.eq("destinatario_id", id)).list();
+		return session.getCurrentSession().createCriteria(Notificacion.class).add(Restrictions.eq("destinatario", usuario)).list();
 	}
 
 }

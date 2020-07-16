@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +25,8 @@ public class Notificacion {
 	@ManyToOne
     @JoinColumn
 	private Usuario remitente;
+	
+	private LocalDateTime fechaHora;
 	
 	public Long getId() {
 		return id;
@@ -53,6 +57,12 @@ public class Notificacion {
 	}
 	public void setRemitente(Usuario remitente) {
 		this.remitente = remitente;
+	}
+	public LocalDateTime getFechaHora() {
+		return fechaHora;
+	}
+	public void setFechaHora(LocalDateTime fechaHora) {
+		this.fechaHora = fechaHora;
 	}
 	
 	

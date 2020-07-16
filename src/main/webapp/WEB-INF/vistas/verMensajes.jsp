@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <html lang="en">
@@ -10,7 +10,7 @@
     <meta name="author"
           content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Admin</title>
+    <title>Ver Mensajes</title>
 
     <link rel="canonical"
           href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
@@ -183,72 +183,35 @@
             <%--  <canvas class="my-4 w-100" id="myChart" width="860" height="380"></canvas> --%>
 
             <br>
-            <h2>Gestión de Pacientes</h2>
+            <h2>Mensajes</h2>
             <br>
             <div class="container">
-				<a class="btn btn-outline-primary" href="verMensajes" role="button">Ver Mensajes</a>
+				<a class="btn btn-outline-primary" href="#" role="button">Ver Notificaciones</a>
 
-                <!-- <button type="button" class="btn btn-outline-primary" style="margin: 15px">Notificaciones</button>
-                <button type="button" class="btn btn-outline-secondary" style="margin: 15px">Ordenar</button> -->
-
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Ingrese la prioridad a buscar">
-                
-                
                 
                  <table class="table table-bordered table-hover responsive nowrap text-center align-middle">
                     <tr class="text-center align-middle">
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Documento</th>
-                        <th scope="col">Edad</th>
-                        <th scope="col">Infectado</th>
-                        <th scope="col">Prioridad</th>
-                        <th scope="col">Acciones</th>
-
+                        <th scope="col">De: </th>
+                        <th scope="col">Mensaje</th>
+                        <th scope="col">Fecha y Hora</th>
+                        
                     </tr>
-                    <c:forEach items="${poInfectados}" var="paciente">
-                        <tr>
-                            <td class="align-middle"><c:out value="${paciente.getApellido()}, ${paciente.getNombre()}"/></td>
-                            <td class="align-middle"><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
-                            <td class="align-middle"><c:out value="${paciente.getEdad()}"/></td>
-
-								<c:if test="${paciente.getInfectado() == true}">
-									<td class="align-middle"><c:out value="Si" /></td>
-								</c:if>
-								<c:if test="${paciente.getInfectado() != true}">
-									<td class="align-middle"><c:out value="Posible" /></td>
-								</c:if>
-
-
-								<td class="align-middle"><c:out value="${paciente.getPrioridad()}" /></td>
-
+						<c:forEach items="${list}" var="notificacion">
+							<tr>
+								<td class="align-middle"><c:out
+										value="${notificacion.getRemitente()}" /></td>
+								<td class="align-middle"><c:out
+										value="${notificacion.getMsg()}" /></td>
+								<td class="align-middle"><c:out
+										value="${notificacion.getFechaHora()}" /></td>
 
 								
 
-								<td class="align-middle">
-								<!-- <button type="button"
-										class="btn btn-secondary" style="margin-top: 5px; margin-left: 5px ">Egresar</button> --> 
-										<%-- <a
-									class="btn btn-warning"
-									href="<c:url value='/crearMensaje/${paciente.getId()}'/>"
-									role="button"> Enviar Mensaje</a> --%>
-
-									<div class="float-none" style="margin-right: -5px; margin-top: 5px; /* margin-left: -30px" */>
-										<form action="crearMensaje" method=post>
-
-
-											<input class="invisible" type="hidden" id="id" name="id"
-												value="${paciente.getId()}"> <input
-												class="btn btn-primary" type="submit" value="Enviar Mansaje">
-
-
-											<%-- <input type="hidden" id="id" name="id"
-											value="${paciente.getId()}"> 
-										<input type="submit"
-											value="Enviar mensaje">  --%>
-
-										</form>
-									</div></td></c:forEach>
-                </table>
+									</form>
+									</div>
+								</td>
+						</c:forEach>
+					</table>
             </div>
         </main>
     </div>
@@ -274,4 +237,3 @@
     
 </script>
 </body>
-</html>
