@@ -42,17 +42,59 @@
 		  <div class="table-responsive">
 		    <table class="table table-bordered table-hover responsive nowrap text-center">
 		        <tr>
-		            <th >NOMBRE</th>
-		            <th >DNI</th>
-		            <th >PRIORIDAD</th>
-		            <th >ACCIÓN</th>
+		            <th class="bg-light">NOMBRE</th>
+		            <th class="bg-light">DNI</th>
+		            <th class="bg-light">PRIORIDAD</th>
+		            <th class="bg-light">ACCIÓN</th>
 		        </tr>
 		        <c:forEach items="${listaPacientesInfectados}" var="paciente">
 		            <tr>
 		                <td><c:out value="${paciente.getApellido()}, ${paciente.getNombre()}"/></td>
 		                <td><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
-		                <td><c:out value="${paciente.getPrioridad()}"/></td>
 		                
+               		  <style>
+					  span {
+					    display: inline-block;
+					    width: 15px;
+					    height: 15px;
+					    margin-left: 6px;
+					    background-color: #555;
+					  }
+					  </style>
+		                
+							<c:if test="${paciente.getInfectado() == true}">
+								<td class="align-middle"><c:out value="Si" /></td>
+							</c:if>
+							<c:if test="${paciente.getInfectado() != true}">
+								<td class="align-middle"><c:out value="Posible" /></td>
+							</c:if>
+
+							<c:if test="${paciente.getPrioridad() == 5}">
+					        	<td class="align-middle"><c:out value="Baja "/>
+					        	 <span class="rounded-circle bg-success"></span>
+					        	</td>
+		        			</c:if>
+		        			<c:if test="${paciente.getPrioridad() == 4}">
+					        	<td class="align-middle"><c:out value="Baja"/>
+					        	<span class="rounded-circle bg-success"></span>
+					        	</td >
+		        			</c:if>
+		        			<c:if test="${paciente.getPrioridad() == 3}">
+					        	<td class="align-middle"><c:out value="Media"/>
+					        	<span class="rounded-circle bg-warning"></span>
+					        	</td>
+		        			</c:if>
+		        			<c:if test="${paciente.getPrioridad() == 2}">
+					        	<td class="align-middle"><c:out value="Alta "/>
+					        	<span class="rounded-circle bg-danger"></span>
+					        	</td>
+		        			</c:if>
+		        			<c:if test="${paciente.getPrioridad() == 1}">
+					        	<td class="align-middle"><c:out value="Alta"/>
+					        	<span class="rounded-circle bg-danger"></span>
+					        	</td>
+		        			</c:if>
+		        			
 		                <td class="align-middle">
 		                
 		                <a href="listaCamas?idPaciente=${paciente.getId()}" type="button" class="btn btn-secondary">Internar</a>
