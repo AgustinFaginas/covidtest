@@ -61,13 +61,6 @@
 					    background-color: #555;
 					  }
 					  </style>
-		                
-							<%-- <c:if test="${paciente.getInfectado() == true}">
-								<td class="align-middle"><c:out value="Si" /></td>
-							</c:if>
-							<c:if test="${paciente.getInfectado() != true}">
-								<td class="align-middle"><c:out value="Posible" /></td>
-							</c:if> --%>
 
 							<c:if test="${paciente.getPrioridad() == 5}">
 					        	<td class="align-middle"><c:out value="Baja "/>
@@ -113,11 +106,21 @@
 						
 		               </td> --%>
 		               
-		               <td class="align-middle"><a
-						href="listaCamas?idPaciente=${paciente.getId()}"
+		                
+				
+		               <td class="align-middle">
+		               
+		               <c:if test="${admin}">
+						 	<a href="listaCamas?idPaciente=${paciente.getId()}"
+							class="btn btn-success" style="margin-top: 5px; margin-left: 5px">Internar</a> 
+						</c:if>
+						
+		                <c:if test="${!admin}">
+		               <a href="listaCamasDisponiblesTotal?idPaciente=${paciente.getId()}"
 						class="btn btn-success" style="margin-top: 5px; margin-left: 5px">Internar</a> 
-						<div class="float-right"
-							style="margin-right: 25px; margin-top: 5px; margin-left: -30px">
+						</c:if>
+						
+					   <div class="float-right" style="margin-right: 25px; margin-top: 5px; margin-left: -30px">
 
 
 							<form action="crearMensajeParaInstitucion" method=post>

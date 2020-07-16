@@ -50,7 +50,17 @@
 		                
 		                <td class="align-middle">
 		                
-		                <a href="detalleEgreso?idPaciente=${paciente.getId()}&idCama=${cama.getId()}&motivoEgreso=${motivoEgreso}" type="button" class="btn btn-secondary">Internar</a>
+		                <c:if test="${admin}">
+						 	<a href="detalleInternacion?numeroDocumento=${paciente.getNumeroDocumento()}&tipoDocumento=${paciente.getTipoDocumento()}&cama=${cama.getId()}" 
+		               type="button" class="btn btn-secondary">Seleccionar Cama</a> 
+						</c:if>
+						
+		                <c:if test="${!admin}">
+		               <a href="detalleEgreso?idPaciente=${paciente.getId()}&idCama=${cama.getId()}&motivoEgreso=${motivoEgreso}" 
+		               type="button" class="btn btn-secondary">Internar</a>
+						</c:if>
+						
+		                
 						
 		               </td>
 		            </tr>

@@ -150,6 +150,12 @@ public class ControladorEgresarPaciente {
 	            listaPacientesInternados = servicioPaciente.pacientesInternadosPorInstitucion(id);
 	        }
 	        
+	        Boolean admin = false;
+	        if (request.getSession().getAttribute("ROL") == Rol.ADMIN) {
+	            admin = true;
+	        }
+	        
+	        model.put("admin", admin);
 	        model.put("listaPacientesInternados", listaPacientesInternados);
 	    	
 	        return new ModelAndView("listaPacientesInternados", model);
@@ -178,12 +184,18 @@ public class ControladorEgresarPaciente {
 				model.put("error", "No existe el paciente");
 				return new ModelAndView("redirect:/listaPacientesInternados");
 			}
+			
+			Boolean admin = true;
+			if(motivoEgreso != null) {
+				 model.put("motivoEgreso", motivoEgreso.name());
+				 admin = false;
+			}
 
 	        List<Cama> listaCamasDisponiblesTotal = servicioCama.obtenerTotalDeCamasDisponibles();    
 	        
 	        model.put("listaCamasDisponiblesTotal", listaCamasDisponiblesTotal);
 	        model.put("paciente", pacienteBuscado);
-	        model.put("motivoEgreso", motivoEgreso.name());
+	        model.put("admin", admin);
 	    	
 	        return new ModelAndView("listaCamasDisponiblesTotal", model);
 	    }

@@ -8,6 +8,7 @@ DELETE FROM domicilio;
 DELETE FROM localidad;
 DELETE FROM partido;
 DELETE FROM provincia;
+DELETE FROM zona;
 
 /*----- INSERCION-------*/
 
@@ -116,8 +117,22 @@ VALUES("PACIENTE", "Paciente", 12, "Cristian", "Gómez", "cristian@email.com", "
       ("PACIENTE", "Paciente", 17, "Daniela", "García", "daniela@email.com", "1234", "32160100", "DNI", 3, null, true, 3),
       ("PACIENTE", "Paciente", 18, "Fabricio", "García", "fabricio@email.com", "1234", "32170100", "DNI", 1, null, true, 4),
       ("PACIENTE", "Paciente", 19, "Fabián", "García", "fabian@email.com", "1234", "32108100", "PASAPORTE", 1, null, true, 5),
-      ("PACIENTE", "Paciente", 20, "Fabiana", "Garcia", "email12_pac@email.com", "1234", "16", "PASAPORTE", 3, true, true, 3);
+      ("PACIENTE", "Paciente", 20, "Fabiana", "Garcia", "email12_pac@email.com", "1234", "16", "PASAPORTE", 3, null, true, 3);
 
+/* ----- PACIENTE PARA INTERNAR----- */
+INSERT INTO usuario(rol, DTYPE, id, nombre, apellido, email, password, numeroDocumento, tipoDocumento, domicilio_id, posibleInfectado, infectado, prioridad)
+VALUES("PACIENTE", "Paciente", 21, "Juan", "Gómez", "cristian@email.com", "1234", "42120100", "DNI", 3, null, null, 4),
+      ("PACIENTE", "Paciente", 22, "Juana", "Gómez", "celeste@email.com", "1234", "42130100", "DNI", 1, null, null, 3),
+	  ("PACIENTE", "Paciente", 23, "José", "García", "dario@email.com", "1234", "42140100", "DNI", 2, null, null, 2),
+      ("PACIENTE", "Paciente", 24, "Josefa", "García", "danila@email.com", "1234", "42150100", "DNI", 3, null, null, 1),
+	  ("PACIENTE", "Paciente", 25, "Julián", "García", "daniel@email.com", "1234", "42106100", "DNI", 4, null, null, 2),
+      ("PACIENTE", "Paciente", 26, "Juliana", "García", "daniela@email.com", "1234", "42160100", "DNI", 3, null, null, 3),
+      ("PACIENTE", "Paciente", 27, "Julieta", "García", "fabricio@email.com", "1234", "42170100", "DNI", 1, null, null, 4),
+      ("PACIENTE", "Paciente", 28, "Julia", "García", "fabian@email.com", "1234", "42108100", "PASAPORTE", 1, null, null, 5),
+      ("PACIENTE", "Paciente", 29, "Julio", "Garcia", "email12_pac@email.com", "1234", "46", "PASAPORTE", 3, null, null, 3),
+      ("PACIENTE", "Paciente", 30, "Julia", "García", "fabian@email.com", "1234", "52108100", "PASAPORTE", 1, null, null, 5),
+      ("PACIENTE", "Paciente", 31, "Julio", "Garcia", "email12_pac@email.com", "1234", "56", "PASAPORTE", 3, null, null, 3);
+      
 INSERT INTO cama(id, descripcion, tipoCama, institucion_id)
 VALUES (1, "101", "FIJA", 2),
 	   (2, "102", "FIJA", 2),
@@ -143,37 +158,37 @@ VALUES (1, "101", "FIJA", 2),
        (22, "122", "FIJA", 4),
 	   (23, "123", "FIJA", 4),
        (24, "124", "FIJA", 4),
-       (25, "101", "FIJA", 4),
-	   (26, "102", "FIJA", 4),
-       (27, "103", "FIJA", 4),
-       (28, "104", "FIJA", 4),
-	   (29, "105", "FIJA", 4),
-       (30, "106", "FIJA", 4),
-       (31, "107", "FIJA", 4),
-	   (32, "108", "FIJA", 5),
-       (33, "109", "FIJA", 5),
-       (34, "110", "FIJA", 5),
-	   (35, "111", "FIJA", 5),
-       (36, "112", "FIJA", 5),
-       (37, "113", "FIJA", 5),
-	   (38, "114", "FIJA", 5),
-       (39, "115", "FIJA", 5),
-       (40, "116", "FIJA", 5),
-	   (41, "117", "FIJA", 5),
-       (42, "118", "FIJA", 5),
-       (43, "119", "FIJA", 5),
-	   (44, "120", "FIJA", 5),
-       (45, "121", "FIJA", 5),
-       (46, "122", "FIJA", 5),
-	   (47, "123", "FIJA", 5),
-       (48, "124", "FIJA", 5);
+       (25, "125", "FIJA", 4),
+	   (26, "126", "FIJA", 4),
+       (27, "127", "FIJA", 4),
+       (28, "128", "FIJA", 4),
+	   (29, "129", "FIJA", 4),
+       (30, "130", "FIJA", 4),
+       (31, "131", "FIJA", 4),
+	   (32, "132", "FIJA", 5),
+       (33, "134", "FIJA", 5),
+       (34, "135", "FIJA", 5),
+	   (35, "136", "FIJA", 5),
+       (36, "137", "FIJA", 5),
+       (37, "138", "FIJA", 5),
+	   (38, "139", "FIJA", 5),
+       (39, "140", "FIJA", 5),
+       (40, "141", "FIJA", 5),
+	   (41, "142", "FIJA", 5),
+       (42, "143", "FIJA", 5),
+       (43, "144", "FIJA", 5),
+	   (44, "145", "FIJA", 5),
+       (45, "146", "FIJA", 5),
+       (46, "147", "FIJA", 5),
+	   (47, "148", "FIJA", 5),
+       (48, "149", "FIJA", 5);
 
 /* ----- INTERNACION ----- */
 INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, paciente_id)
-VALUES (1, '2020-01-01 01:00:00.000000', null, null, 1, 9),
-	   (2, '2020-02-01 01:00:00.000000', null, null, 3, 10),
-       (3, '2020-03-01 01:00:00.000000', null, null, 6, 11),
-	   (4, '2020-04-01 01:00:00.000000', null, null, 5, 12);
+VALUES (1, '2020-01-01 01:00:00.000000', null, null, 1, 21),
+	   (2, '2020-02-01 01:00:00.000000', null, null, 2, 22),
+       (3, '2020-03-01 01:00:00.000000', null, null, 3, 23),
+	   (4, '2020-04-01 01:00:00.000000', null, null, 4, 24);
 
 /* ----- EGRESO ----- */
 UPDATE asignacion a
@@ -183,21 +198,21 @@ WHERE a.cama_id IN(1,2,3);
 
 /* ----- INGRESO Y EGRESO A LA VEZ (SON EGRESOS EN DEFINITVA)----- */
 INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, paciente_id)
-VALUES (5, '2020-01-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "CURADO", 10, 15),
-	   (6, '2020-02-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "CURADO", 11, 16),
-       (7, '2020-03-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "FALLECIDO", 12, 17),
-	   (8, '2020-04-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "TRASLADADO", 13, 18);
+VALUES (5, '2020-01-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "CURADO", 10, 25),
+	   (6, '2020-02-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "CURADO", 11, 26),
+       (7, '2020-03-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "FALLECIDO", 12, 27),
+	   (8, '2020-04-01 01:00:00.000000', '2020-02-01 01:00:00.000000', "TRASLADADO", 13, 28);
 
 /* ----- INTERNACION 2 (rehusando 2 camas liberadas)----- */
 INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, paciente_id)
-VALUES (9, '2020-01-01 01:00:00.000000', null, null, 10, 15),
-	   (10, '2020-02-01 01:00:00.000000', null, null, 11, 16),
-       (11, '2020-02-01 01:00:00.000000', null, null, 12, 8);
+VALUES (9, '2020-01-01 01:00:00.000000', null, null, 10, 25),
+	   (10, '2020-02-01 01:00:00.000000', null, null, 11, 26),
+       (11, '2020-02-01 01:00:00.000000', null, null, 12, 27);
        
 /* ----- INTERNACION ----- */
 INSERT INTO asignacion(id, horaIngreso, horaEgreso, motivoEgreso, cama_id, paciente_id)
-VALUES (12, '2020-01-01 01:00:00.000000', null, null, 40, 13),
-	   (13, '2020-02-01 01:00:00.000000', null, null, 41, 14),
-       (14, '2020-03-01 01:00:00.000000', null, null, 42, 19),
-	   (15, '2020-04-01 01:00:00.000000', null, null, 43, 20);
+VALUES (12, '2020-01-01 01:00:00.000000', null, null, 40, 28),
+	   (13, '2020-02-01 01:00:00.000000', null, null, 41, 29),
+       (14, '2020-03-01 01:00:00.000000', null, null, 42, 30),
+	   (15, '2020-04-01 01:00:00.000000', null, null, 43, 31);
        
