@@ -13,17 +13,20 @@
             <div class="container m-5">
             
 				<h2>Lista de Espera</h2>
+			
 				<br>
-				<br><a href="panel">Volver a panel</a><br>
+				<a href="panel">Volver a panel</a>
+				<br>
+				<br>
 				
                 <table class="table table-bordered table-hover responsive nowrap text-center align-middle">
                     <tr class="text-center align-middle">
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Documento</th>
-                        <th scope="col">Edad</th>
-                        <th scope="col">Infectado</th>
-                        <th scope="col">Prioridad</th>
-                        <th scope="col">Acciones</th>
+                        <th class="bg-light" scope="col">Nombre</th>
+                        <th class="bg-light" scope="col">Documento</th>
+                        <th class="bg-light" scope="col">Edad</th>
+                        <th class="bg-light" scope="col">Infectado</th>
+                        <th class="bg-light" scope="col">Prioridad</th>
+                        <th class="bg-light" scope="col">Acciones</th>
 
                     </tr>
                     <c:forEach items="${posiblesInfectados}" var="paciente">
@@ -32,18 +35,48 @@
                             <td class="align-middle"><c:out value="${paciente.getNumeroDocumento()} (${paciente.getTipoDocumento().name()})"/></td>
                             <td class="align-middle"><c:out value="${paciente.getEdad()}"/></td>
 
-								<c:if test="${paciente.getInfectado() == true}">
-									<td class="align-middle"><c:out value="Si" /></td>
-								</c:if>
-								<c:if test="${paciente.getInfectado() != true}">
-									<td class="align-middle"><c:out value="Posible" /></td>
-								</c:if>
+						  <style>
+						  span {
+						    display: inline-block;
+						    width: 15px;
+						    height: 15px;
+						    margin-left: 6px;
+						    background-color: #555;
+						  }
+						  </style>
+  
+							<c:if test="${paciente.getInfectado() == true}">
+								<td class="align-middle"><c:out value="Si" /></td>
+							</c:if>
+							<c:if test="${paciente.getInfectado() != true}">
+								<td class="align-middle"><c:out value="Posible" /></td>
+							</c:if>
 
-
-								<td class="align-middle"><c:out value="${paciente.getPrioridad()}" /></td>
-
-
-								
+							<c:if test="${paciente.getPrioridad() == 5}">
+					        	<td class="align-middle"><c:out value="Baja "/>
+					        	 <span class="rounded-circle bg-success"></span>
+					        	</td>
+		        			</c:if>
+		        			<c:if test="${paciente.getPrioridad() == 4}">
+					        	<td class="align-middle"><c:out value="Baja"/>
+					        	<span class="rounded-circle bg-success"></span>
+					        	</td >
+		        			</c:if>
+		        			<c:if test="${paciente.getPrioridad() == 3}">
+					        	<td class="align-middle"><c:out value="Media"/>
+					        	<span class="rounded-circle bg-warning"></span>
+					        	</td>
+		        			</c:if>
+		        			<c:if test="${paciente.getPrioridad() == 2}">
+					        	<td class="align-middle"><c:out value="Alta "/>
+					        	<span class="rounded-circle bg-danger"></span>
+					        	</td>
+		        			</c:if>
+		        			<c:if test="${paciente.getPrioridad() == 1}">
+					        	<td class="align-middle"><c:out value="Alta"/>
+					        	<span class="rounded-circle bg-danger"></span>
+					        	</td>
+		        			</c:if>
 
 								<td class="align-middle"><button type="button"
 										class="btn btn-secondary" style="margin-top: 5px; margin-left: 5px ">Egresar</button> <%-- <a
