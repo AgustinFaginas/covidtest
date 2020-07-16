@@ -56,11 +56,15 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <%--<li class="nav-item ml-5">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>--%>
+            <li class="nav-item ml-5">
+                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+            </li>
         </ul>
         <%--        <button type="button" class="btn btn-dark ml-5">Log in</button>--%>
+        <c:if test="${alert == null}">
+            <a href="login" class="btn btn-dark ml-5" role="button"
+               aria-disabled="true">Log in</a>
+        </c:if>
     </div>
 </nav>
 
@@ -82,6 +86,17 @@
         <h4><span>${error}</span></h4>
         <br>
     </c:if>
+</div>
+
+<h1 class="text-center mb-3 mt-5">Gracias por registrarse</h1>
+
+<div class="text-center my-5">
+    <img src="img/right.png" class="rounded" alt="virus" width="200" height="200">
+</div>
+
+<div class="container my-5">
+    <h4 class="text-center mt-3 mb-2">Por favor, ingrese con su email y contraseña para poder ver notificaciones</h4>
+    <h4 class="text-center mt-3 mb-5">Usted será contactado en la brevedad</h4>
 </div>
 
 <div class="container-fluid mt-5">

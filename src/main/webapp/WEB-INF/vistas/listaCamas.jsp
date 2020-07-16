@@ -36,13 +36,15 @@
 	  <div class="table-responsive">
 		    <table class="table table-bordered table-hover responsive nowrap text-center">
 		        <tr>
-		            <th class="bg-primary text-white">DESCRIPCION</th>
-		            <th class="bg-primary text-white">TIPO</th>
-		            <th class="bg-primary text-white">SELECCIONAR</th>
+		        	<th class="bg-light">CÓDIGO</th>
+		            <th class="bg-light ">DESCRIPCION</th>
+		            <th class="bg-light ">TIPO</th>
+		            <th class="bg-light ">SELECCIONAR</th>
 		        </tr>
 		        
 		        <c:forEach items="${camas}" var="cama">
 		            <tr>
+		            	<td><c:out value="${cama.getId()}"/></td>
 		                <td><c:out value="${cama.getDescripcion()}"/></td>
 		                <td><c:out value="${cama.getTipoCama().name()}"/></td>
 		                

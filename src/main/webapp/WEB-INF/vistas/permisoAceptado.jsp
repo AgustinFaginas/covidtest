@@ -91,7 +91,7 @@
         <div class="col-8">
             <h6 style="line-height: 200%">Por medio de la presente, se procede a exceptuar
                 a ${apellido}, ${nombre}, ${tipoDocumento} ${numeroDocumento}, con domicilio en ${calle} ${numeroCalle}
-                - ${nombreLocalidad}, del partido de ${nombrePartido} teléfono ${telefono}, correo electrónico ${mail}, <strong>de los alcances establecidos por el
+                - ${nombreLocalidad}, del partido de ${nombrePartido} teléfono ${telefono}, correo electrónico ${email}, <strong>de los alcances establecidos por el
                     Decreto
                     2020-
                     297-APN-PTE</strong> del presente año, <strong>en virtud de la criticidad de las
