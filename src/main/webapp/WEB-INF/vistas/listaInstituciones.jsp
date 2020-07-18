@@ -13,8 +13,7 @@
 	<div class="container m-5">
 
 		<h2>Lista de Instituciones</h2>
-		<br> <br>
-		<a href="panel">Volver a panel</a><br>
+		<br> <br> <a href="panel">Volver a panel</a><br>
 
 		<table
 			class="table table-bordered table-hover responsive nowrap text-center align-middle">
@@ -39,7 +38,7 @@
 					<td class="align-middle"><a
 						href="listaPacientesInternadosDeInstitucion?idInstitucion=${instituciones.getId()}"
 						class="btn btn-success" style="margin-top: 5px; margin-left: 5px">Ver
-							Pacientes</a> 
+							Pacientes</a>
 						<div class="float-right"
 							style="margin-right: 25px; margin-top: 5px; margin-left: -30px">
 
