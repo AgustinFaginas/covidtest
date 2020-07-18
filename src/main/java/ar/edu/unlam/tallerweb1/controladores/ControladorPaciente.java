@@ -1,20 +1,22 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Cama;
-import ar.edu.unlam.tallerweb1.modelo.Institucion;
-import ar.edu.unlam.tallerweb1.modelo.Localidad;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
+import ar.edu.unlam.tallerweb1.servicios.ServicioAtajo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLocalidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,60 +30,115 @@ public class ControladorPaciente {
     ServicioCama servicioCama;
     @Autowired
     ServicioLocalidad servicioLocalidad;
+    @Autowired
+	ServicioAtajo servicioAtajo;
+	 
+    /*Pantalla de bienvenido al paciente cuando inicia sesión*/
+    @RequestMapping("bienvenidoPaciente")
+	public ModelAndView irAbienvenido(HttpServletRequest request) {
 
+		ModelMap model = new ModelMap();
 
-    public ServicioPaciente getServicioPaciente() {
-        return servicioPaciente;
-    }
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
-    public void setServicioPaciente(ServicioPaciente servicioPaciente) {
-        this.servicioPaciente = servicioPaciente;
-    }
+		Long id = (Long) request.getSession().getAttribute("ID");
+		Paciente paciente = servicioPaciente.consultarPacientePorId(id);
 
-    public ServicioCama getServicioCama() {
-        return servicioCama;
-    }
+		String nombre = paciente.getNombre();
 
-    public void setServicioCama(ServicioCama servicioCama) {
-        this.servicioCama = servicioCama;
-    }
+		model.put("nombre", nombre);
+		
 
-    public ServicioLocalidad getServicioLocalidad() {
-        return servicioLocalidad;
-    }
+		return new ModelAndView("bienvenidoPaciente", model);
+	}
+    
+    /*Consultar paciente por Nro y Tipo de Documento*/
+    @RequestMapping("/consultarPaciente")
+	public ModelAndView consultarPaciente() {
 
-    public void setServicioLocalidad(ServicioLocalidad servicioLocalidad) {
-        this.servicioLocalidad = servicioLocalidad;
-    }
+		ModelMap modelo = new ModelMap();
 
+		Paciente paciente = new Paciente();
+		modelo.put("paciente", paciente);
+
+		return new ModelAndView("consultarPaciente", modelo);
+	}
+     
+    /*Detalle por consultar paciente por Nro y Tipo de Documento*/
+	@RequestMapping(path = "/detallePaciente", method = RequestMethod.POST)
+	public ModelAndView validarConsulta(@ModelAttribute("paciente") Paciente paciente, HttpServletRequest request) {
+
+		ModelMap model = new ModelMap();
+
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+		
+		paciente = servicioPaciente.consultarPacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento());
+
+		if (paciente != null) {
+
+			String mensaje = "Nombre: " + paciente.getNombre();
+			String mensaje2 = "Apellido: " + paciente.getApellido();
+			String mensaje3 = "Documento: (" + paciente.getTipoDocumento() + ") " + paciente.getNumeroDocumento();
+			String mensaje4 = "Email: " + paciente.getEmail();
+
+			model.put("mensaje", mensaje);
+			model.put("mensaje2", mensaje2);
+			model.put("mensaje3", mensaje3);
+			model.put("mensaje4", mensaje4);
+
+			return new ModelAndView("detallePaciente", model);
+		}
+
+		model.put("error", "No existe el paciente");
+
+		return new ModelAndView("consultarPaciente", model);
+	}
 
     @RequestMapping("/listaPacientes")
-    public ModelAndView pacientes() {
-
-        List<Paciente> pacientes = servicioPaciente.pacientes();
+    public ModelAndView pacientes(HttpServletRequest request) {
 
         ModelMap model = new ModelMap();
+        
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
+        List<Paciente> pacientes = servicioPaciente.pacientes();
 
         model.put("listaPacientes", pacientes);
 
         return new ModelAndView("listaPacientes", model);
     }
 
-    /*@RequestMapping("/localidades")
-    public ModelAndView localidades() {
-
-        List<Localidad> localidades = servicioLocalidad.obtenerLocalidades();
+    @RequestMapping("/grafico-pacientes")
+    public ModelAndView graficoPacientes(HttpServletRequest request) {
 
         ModelMap model = new ModelMap();
-
-        model.put("localidades", localidades);
-
-        return new ModelAndView("localidades", model);
-    }*/
-
-    @RequestMapping("/grafico-pacientes")
-    public ModelAndView graficoPacientes() {
-
+        
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
         Integer cantidadPacientes = servicioPaciente.pacientes().size();
         Integer cantidadPacientesInfectados = servicioPaciente.pacientesInfectados().size();
         Integer cantidadPacientesNoInfectados = cantidadPacientes - cantidadPacientesInfectados;
@@ -92,39 +149,45 @@ public class ControladorPaciente {
         List<Cama> camasDisponibles = servicioCama.obtenerTotalDeCamasDisponibles();
         Integer cantidadCamasDisponibles = camasDisponibles.size();
 
-        ModelMap model = new ModelMap();
-
         model.put("cantidadPacientes", cantidadPacientes);
         model.put("cantidadPacientesInfectados", cantidadPacientesInfectados);
         model.put("cantidadPacientesNoInfectados", cantidadPacientesNoInfectados);
         model.put("cantidadCamasOcupadas", cantidadCamasOcupadas);
         model.put("cantidadCamasDisponibles", cantidadCamasDisponibles);
 
-
         return new ModelAndView("grafico-pacientes", model);
     }
 
     @RequestMapping("/mapa-paciente")
-    public ModelAndView mapaPaciente() {
+    public ModelAndView mapaPaciente(HttpServletRequest request) {
 
-        return new ModelAndView("detalleRegistroPaciente");
+        ModelMap model = new ModelMap();
+        
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
+        return new ModelAndView("detalleRegistroPaciente", model);
     }
-
+    
     @RequestMapping("/posiblesinfectados")
     public ModelAndView posiblesinfectados(HttpServletRequest request) {
 
-        List<Paciente> posiblesInfectados = servicioPaciente.posiblesInfectados();
-
         ModelMap model = new ModelMap();
+        
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
-        if (request.getSession().getAttribute("ID") == null) {
-            model.put("error", "Debe iniciar sesión");
-            return new ModelAndView("redirect:/login");
-        }
-
-        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-            return new ModelAndView("redirect:/denied");
-        }
+        List<Paciente> posiblesInfectados = servicioPaciente.posiblesInfectados();
         
         Boolean admin = false;
         if (request.getSession().getAttribute("ROL") == Rol.ADMIN) {
@@ -136,7 +199,7 @@ public class ControladorPaciente {
 
         return new ModelAndView("posiblesinfectados", model);
     }
-
+ 
     @RequestMapping("/listaPacientesInfectados")
     public ModelAndView listaPacientesInfectados(
 
@@ -146,14 +209,13 @@ public class ControladorPaciente {
 
         ModelMap model = new ModelMap();
 
-        if (request.getSession().getAttribute("ID") == null) {
-            model.put("error", "Debe iniciar sesión");
-            return new ModelAndView("login", model);
-        }
-
-        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-            return new ModelAndView("redirect:/denied");
-        }
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
         List<Paciente> listaPacientesInfectados = servicioPaciente.pacientesInfectados();
 
@@ -172,14 +234,14 @@ public class ControladorPaciente {
 
         ModelMap model = new ModelMap();
 
-        if (request.getSession().getAttribute("ID") == null) {
-            model.put("error", "Debe iniciar sesión");
-            return new ModelAndView("login", model);
-        }
-
-        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-            return new ModelAndView("redirect:/denied");
-        }
+        
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
         Cama cama = servicioCama.consultarCamaPorId(idCama);
         List<Paciente> listaPacientesInfectados = servicioPaciente.pacientesInfectados();
@@ -190,42 +252,112 @@ public class ControladorPaciente {
         return new ModelAndView("listaPacientesInfectadosPasoDos", model);
     }
 
-    @RequestMapping("/listapacientes2")
-    public ModelAndView listapacientes2() {
+	 @RequestMapping("/listaPacientesInternados")
+	    public ModelAndView listaPacientesInternados(
 
-        List<Paciente> pacientes = servicioPaciente.pacientes();
+	        HttpServletRequest request) {
 
-        ModelMap model = new ModelMap();
+	        ModelMap model = new ModelMap();
 
-        model.put("listaPacientes", pacientes);
+	        
+	    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+	    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+	    	}
+	    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+	    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+	    	}
+	    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+	        
+	        List<Paciente> listaPacientesInternados = new ArrayList<Paciente>();
+	        
+	        if (request.getSession().getAttribute("ROL") == Rol.ADMIN) {
+	            listaPacientesInternados = servicioPaciente.pacientesInternados();
+	        }
+	        
+	        if (request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
+	        	Long id = (long) request.getSession().getAttribute("ID");
+	            listaPacientesInternados = servicioPaciente.pacientesInternadosPorInstitucion(id);
+	        }
+	        
+	        Boolean admin = false;
+	        if (request.getSession().getAttribute("ROL") == Rol.ADMIN) {
+	            admin = true;
+	        }
+	        
+	        model.put("admin", admin);
+	        model.put("listaPacientesInternados", listaPacientesInternados);
+	    	
+	        return new ModelAndView("listaPacientesInternados", model);
+	    }
 
-        return new ModelAndView("listapacientes2", model);
-    }
-    
-    @RequestMapping("bienvenidoPaciente")
-	public ModelAndView irAbienvenido(HttpServletRequest request) {
+	 @RequestMapping("/listaPacientesInternadosDeInstitucion")
+	    public ModelAndView listaPacientesInternadosDeInstitucion(
 
-		ModelMap model = new ModelMap();
+	        HttpServletRequest request,
+	        @RequestParam(value = "idInstitucion") Long idInstitucion) {
 
-		if (request.getSession().getAttribute("ID") == null) {
-			return new ModelAndView("redirect:/home");
-		}
+	        ModelMap model = new ModelMap();  
+	        
+	    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+	    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+	    	}
+	    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+	    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+	    	}
+	    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
-		if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
+	        
+	        List<Paciente> listaPacientesInternadosDeInstitucion = new ArrayList<Paciente>();
 
-			Long id = (Long) request.getSession().getAttribute("ID");
-			Paciente paciente = servicioPaciente.consultarPacientePorId(id);
+     	listaPacientesInternadosDeInstitucion = servicioPaciente.pacientesInternadosPorInstitucion(idInstitucion);
+	        
+	        model.put("listaPacientesInternados", listaPacientesInternadosDeInstitucion);
+	    	
+	        return new ModelAndView("listaPacientesInternadosDeInstitucion", model);
+	    }
+	 
+	    @RequestMapping("/listapacientes2")
+	    public ModelAndView listapacientes2(HttpServletRequest request) {
 
-			String nombre = paciente.getNombre();
-			//Integer camas = (int) servicioCama.obtenerCamasPorInstitucion(institucion).size();
+	        ModelMap model = new ModelMap();
+	        
+	    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+	    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+	    	}
+	    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+	    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+	    	}
+	    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
-			model.put("nombre", nombre);
-			
+	    	List<Paciente> pacientes = servicioPaciente.pacientes();
+	
+	        model.put("listaPacientes", pacientes);
 
-			return new ModelAndView("bienvenidoPaciente", model);
+	        return new ModelAndView("listapacientes2", model);
+	    }
 
-		}
-		return new ModelAndView("redirect:/denied");
-	}
+	 	/* ----- Getters and Setters ----- */
+	    public ServicioPaciente getServicioPaciente() {
+	        return servicioPaciente;
+	    }
 
+	    public void setServicioPaciente(ServicioPaciente servicioPaciente) {
+	        this.servicioPaciente = servicioPaciente;
+	    }
+
+	    public ServicioCama getServicioCama() {
+	        return servicioCama;
+	    }
+
+	    public void setServicioCama(ServicioCama servicioCama) {
+	        this.servicioCama = servicioCama;
+	    }
+
+	    public ServicioLocalidad getServicioLocalidad() {
+	        return servicioLocalidad;
+	    }
+
+	    public void setServicioLocalidad(ServicioLocalidad servicioLocalidad) {
+	        this.servicioLocalidad = servicioLocalidad;
+	    }
 }

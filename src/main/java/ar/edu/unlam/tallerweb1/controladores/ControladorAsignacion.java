@@ -15,25 +15,24 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioAsignacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 
 @Controller
-public class ControladorConsultarAsignacion {
+public class ControladorAsignacion {
 
 	ServicioPaciente servicioPaciente;
 	ServicioAsignacion servicioAsignacion;
 	
 	@Inject
-	public ControladorConsultarAsignacion(ServicioPaciente servicioPaciente, ServicioAsignacion servicioAsignacion){
+	public ControladorAsignacion(ServicioPaciente servicioPaciente, ServicioAsignacion servicioAsignacion){
 		this.servicioPaciente = servicioPaciente;
 		this.servicioAsignacion = servicioAsignacion;
 	}
 	
+	/*Consultar la asignación de un paciente por su nro y tipo de Documento*/
 	@RequestMapping("/consultarAsignacion")
 	public ModelAndView consultarAsignacion() {
-
-		ModelMap modelo = new ModelMap();
-
-		return new ModelAndView("consultarAsignacion", modelo);
+		return new ModelAndView("consultarAsignacion");
 	}
 	
+	/*Detalle de consultar la asignación de un paciente por su nro y tipo de Documento*/
 	@RequestMapping(path = "/detalleAsignacion", method = RequestMethod.GET)
 	public ModelAndView validarAsignacion( 
 			
