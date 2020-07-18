@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
+import ar.edu.unlam.tallerweb1.modelo.listas.CamaInstitucion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCama;
 
 @Service
@@ -80,5 +81,29 @@ public class ServicioCamaImpl implements ServicioCama {
 
 	}
 
+	@Override
+	public List<CamaInstitucion> obtenerCamasTotalesConSuInstitucion() {
+		return repositorioCama.obtenerCamasTotalesConSuInstitucion();
+	}
+
+	@Override
+	public List<CamaInstitucion> obtenerCamasPorInstitucionConSuInstitucion(Institucion institucion) {
+		return repositorioCama.obtenerCamasPorInstitucionConSuInstitucion(institucion);
+	}
+
+	@Override
+	public List<CamaInstitucion> obtenerCamasTotalesDisponiblesConSuInstitucion() {
+		return repositorioCama.obtenerCamasTotalesDisponiblesConSuInstitucion();
+	}
+
+	@Override
+	public List<CamaInstitucion> obtenerCantidadDeCamasOcupadasPorInstitucion(Institucion institucion) {
+		return repositorioCama.obtenerCantidadDeCamasOcupadasPorInstitucion(institucion);
+	}
+
+	@Override
+	public List<CamaInstitucion> obtenerCantidadDeCamasOcupadasDeCadaInstitucion() {
+		return repositorioCama.obtenerCantidadDeCamasOcupadasDeCadaInstitucion();
+	}
 
 }

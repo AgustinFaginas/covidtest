@@ -4,7 +4,9 @@ import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
+import ar.edu.unlam.tallerweb1.modelo.listas.CamaInstitucion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioAsignacion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioAtajo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInstitucion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
@@ -22,54 +24,60 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ControladorCama {
 
-    @Autowired
+    
     ServicioCama servicioCama;
-    @Autowired
     ServicioPaciente servicioPaciente;
-    @Autowired
     ServicioInstitucion servicioInstitucion;
-    @Autowired
     ServicioAsignacion servicioAsignacion;
+    ServicioAtajo servicioAtajo;
+    
+    @Autowired
+    public ControladorCama(ServicioCama servicioCama, ServicioPaciente servicioPaciente,
+			ServicioInstitucion servicioInstitucion, ServicioAsignacion servicioAsignacion,
+			ServicioAtajo servicioAtajo) {
+		this.servicioCama = servicioCama;
+		this.servicioPaciente = servicioPaciente;
+		this.servicioInstitucion = servicioInstitucion;
+		this.servicioAsignacion = servicioAsignacion;
+		this.servicioAtajo = servicioAtajo;
+	}
 
-    @RequestMapping("/disponibilidadCamas")
-    public ModelAndView disponibildadCamas(
-    		
-    		HttpServletRequest request
-    		) {
-
-    	ModelMap model = new ModelMap();
+	@RequestMapping("/disponibilidadCamas")
+    public ModelAndView disponibildadCamas(HttpServletRequest request) {
     	
-    	if (request.getSession().getAttribute("ID") == null) {
-			model.put("error", "Debe iniciar sesi�n");
-	        return new ModelAndView("redirect:/login");
-		}
-
-		if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-			return new ModelAndView("redirect:/denied");
-		}
+    	ModelMap model = new ModelMap();
+		
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	
+    	System.out.println(servicioAtajo.armarHeader(request));
+    	model.put("header2", servicioAtajo.armarHeader(request));
 		
     	Long id = (long) request.getSession().getAttribute("ID");
     	Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
     	
     	if (request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
-        	List<Cama> camasDisponiblesInstitucion = servicioCama.obtenerCamasDisponiblesPorInstitucion(institucion);
-        	model.put("camas", camasDisponiblesInstitucion);
+        	List<CamaInstitucion> camasDisponiblesPorInstitucion = servicioCama.obtenerCamasPorInstitucionConSuInstitucion(institucion);
+        	model.put("camas", camasDisponiblesPorInstitucion);
     	}
     	
     	if (request.getSession().getAttribute("ROL") == Rol.ADMIN) {
-        	List<Cama> camasDisponiblesInstitucion = servicioCama.obtenerTotalDeCamasDisponibles();
-        	model.put("camas", camasDisponiblesInstitucion);
+        	List<CamaInstitucion> CamasTotalesDisponiblesConSuInstitucion = servicioCama.obtenerCamasTotalesDisponiblesConSuInstitucion();
+        	model.put("camas", CamasTotalesDisponiblesConSuInstitucion);
     	}
         
-        return new ModelAndView("disponibilidad-camas", model);
+        return new ModelAndView("disponibilidadCamas", model);
     }
     
     @RequestMapping("/listaCamas")
     public ModelAndView listarCamas(
     		
     		@RequestParam(value = "idPaciente") Long idPaciente,
-    		HttpServletRequest request
-    		) {
+    		HttpServletRequest request) {
 
     	ModelMap model = new ModelMap();
     	
@@ -100,4 +108,32 @@ public class ControladorCama {
         return new ModelAndView("listaCamas", model);
     }
 
+    @RequestMapping("/cantidadDeCamasDisponibles")
+    public ModelAndView obtenerCantidadDeCamasDisponibles(HttpServletRequest request) {
+
+    	ModelMap model = new ModelMap();
+    	
+    	if (request.getSession().getAttribute("ID") == null) {
+	        return new ModelAndView("redirect:/login");
+		}
+
+		if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
+			return new ModelAndView("redirect:/denied");
+		}
+		
+    	Long id = (long) request.getSession().getAttribute("ID");
+    	Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
+    	
+    	if (request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
+        	List<CamaInstitucion> camasDisponiblesPorInstitucion = servicioCama.obtenerCantidadDeCamasOcupadasPorInstitucion(institucion);
+        	model.put("camas", camasDisponiblesPorInstitucion);
+    	}
+    	
+    	if (request.getSession().getAttribute("ROL") == Rol.ADMIN) {
+        	List<CamaInstitucion> CamasTotalesDisponiblesConSuInstitucion = servicioCama.obtenerCantidadDeCamasOcupadasDeCadaInstitucion();
+        	model.put("camas", CamasTotalesDisponiblesConSuInstitucion);
+    	}
+        
+        return new ModelAndView("cantidadDeCamasDisponibles", model);
+    }
 }

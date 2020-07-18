@@ -1,31 +1,17 @@
+<% HttpSession sesion = request.getSession();%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       
-<jsp:include page="../../partial/headerInstitucionesParte1.jsp" />
-
-
-<%-- <c:if test="${rol == 1}"> --%>
-<%-- <jsp:include page="../../partial/headerAdminParte1.jsp" /> --%>
-<%-- </c:if> --%>
-<%-- <c:if test="${rol != 1}"> --%>
-
-<%-- </c:if>	 --%>
->>>>>>> d22b237f61a72e88d64eaf15328ab39cc274315e
-
-<jsp:include page="../../partial/headerInstitucionesParte1.jsp" />	
+<jsp:include page="../../partial/adminHeaderParte1.jsp" />
                        
 <title>Consultar Paciente</title>
 
-<jsp:include page="../../partial/headerInstitucionesParte2.jsp" />
+<jsp:include page="../../partial/adminHeaderParte2.jsp" />
  
-<%-- <% HttpSession sesion=request.getSession(); out.println("ROL: "+sesion.getAttribute("ROL"));%> --%>
-
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-   
-     
-     
-      	
+  	
     <div class="container">
     
      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

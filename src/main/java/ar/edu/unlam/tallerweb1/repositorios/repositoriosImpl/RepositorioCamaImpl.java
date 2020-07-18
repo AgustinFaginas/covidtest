@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.repositorios.repositoriosImpl;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.persistence.Query;
 
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCama;
 
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unlam.tallerweb1.modelo.Asignacion;
 import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
+import ar.edu.unlam.tallerweb1.modelo.listas.CamaInstitucion;
 
 @Repository("repositorioCama")
 @Transactional
@@ -66,11 +68,8 @@ public class RepositorioCamaImpl implements RepositorioCama {
 					                	.add(Projections.property("cama"), "cama"))
 					            		.add(Restrictions.isNull("motivoEgreso"))
 					                    .list();
-            System.out.println(camasOcupadas);
-            System.out.println(institucion);
+
             for (Cama cama: camasOcupadas) { 
-            	System.out.println(cama.getInstitucion());
-            	System.out.println(institucion);
             	if (cama.getInstitucion().equals(institucion)) {
                 	camasOcupadas.remove(cama);
 				}
@@ -87,6 +86,72 @@ public class RepositorioCamaImpl implements RepositorioCama {
                 	 .add(Projections.property("cama"), "cama"))
             		.add(Restrictions.isNull("motivoEgreso"))
                     .list();
+    }
+    
+    @SuppressWarnings({ "unchecked" })
+    public List<CamaInstitucion> obtenerCantidadDeCamasOcupadasPorInstitucion(Institucion institucion) {
+        
+        String hql = "SELECT new ar.edu.unlam.tallerweb1.modelo.listas.CamaInstitucion(c, i, count(*)) "
+        		   + "FROM Cama as c JOIN Institucion as i ON c.institucion = i "
+        		   + "JOIN Asignacion as a ON a.cama = c "
+        		   + "WHERE c.institucion = " + institucion + ""
+        		   + "AND a.horaEgreso IS NULL";
+
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        
+        return query.getResultList();
+    }
+    
+    @SuppressWarnings({ "unchecked" })
+    public List<CamaInstitucion> obtenerCantidadDeCamasOcupadasDeCadaInstitucion() {
+        
+        String hql = "SELECT new ar.edu.unlam.tallerweb1.modelo.listas.CamaInstitucion(c, i, count(*)) "
+        		   + "FROM Cama as c JOIN Institucion as i ON c.institucion = i "
+        		   + "JOIN Asignacion as a ON a.cama = c "
+        		   + "WHERE c.institucion NOT IN (SELECT a.cama "
+        		   							   + "FROM Asignacion as a "
+        		   							   + "WHERE a.cama = c"
+        		   							   + "AND a.horaEgreso IS NULL)"
+        		   + "GROUP BY c.institucion";
+
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        
+        return query.getResultList();
+    }
+    
+    @SuppressWarnings({ "unchecked" })
+    public List<CamaInstitucion> obtenerCamasPorInstitucionConSuInstitucion(Institucion institucion) {
+        
+        String hql = "select new ar.edu.unlam.tallerweb1.modelo.CamaInstitucion(c, i) from Cama as c JOIN Institucion as i ON c.institucion = i where c.institucion = " + institucion + ";";
+
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        
+        return query.getResultList();
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    public List<CamaInstitucion> obtenerCamasTotalesConSuInstitucion() {
+        
+        String hql = "select new ar.edu.unlam.tallerweb1.modelo.CamaInstitucion(c, i) from Cama as a JOIN Institucion as i ON c.institucion = i";
+
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        
+        return query.getResultList();
+    }
+    
+    @SuppressWarnings({ "unchecked" })
+    public List<CamaInstitucion> obtenerCamasTotalesDisponiblesConSuInstitucion() {
+        
+        String hql = "SELECT new ar.edu.unlam.tallerweb1.modelo.listas.CamaInstitucion(c, i) "
+        			+ "FROM Cama as c JOIN Institucion as i ON c.institucion = i "
+        			+ "WHERE c NOT IN (SELECT a.cama " + 
+					        		"FROM Asignacion as a " + 
+					        		"WHERE a.cama = c " + 
+					        		"AND a.horaEgreso IS NULL)";
+
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        
+        return query.getResultList();
     }
 
 }
