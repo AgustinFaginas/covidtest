@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Cama;
 import ar.edu.unlam.tallerweb1.modelo.Institucion;
+import ar.edu.unlam.tallerweb1.modelo.MotivoEgreso;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.listas.CamaInstitucion;
@@ -42,6 +43,7 @@ public class ControladorCama {
 		this.servicioAtajo = servicioAtajo;
 	}
 
+    /*Devuelve una lista de todas las camas disponibles de la institucion (al admin de todos los hospitales)*/
 	@RequestMapping("/disponibilidadCamas")
     public ModelAndView disponibildadCamas(HttpServletRequest request) {
     	
@@ -53,9 +55,7 @@ public class ControladorCama {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
-    	
-    	System.out.println(servicioAtajo.armarHeader(request));
-    	model.put("header2", servicioAtajo.armarHeader(request));
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 		
     	Long id = (long) request.getSession().getAttribute("ID");
     	Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
@@ -81,14 +81,13 @@ public class ControladorCama {
 
     	ModelMap model = new ModelMap();
     	
-    	if (request.getSession().getAttribute("ID") == null) {
-			model.put("error", "Debe iniciar sesión");
-	        return new ModelAndView("login", model);
-		}
-
-		if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-			return new ModelAndView("redirect:/denied");
-		}
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("header2", servicioAtajo.armarHeader(request));
 		
 		request.getSession().setAttribute("ID_PACIENTE", idPaciente);
 		
@@ -113,13 +112,13 @@ public class ControladorCama {
 
     	ModelMap model = new ModelMap();
     	
-    	if (request.getSession().getAttribute("ID") == null) {
-	        return new ModelAndView("redirect:/login");
-		}
-
-		if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-			return new ModelAndView("redirect:/denied");
-		}
+      	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("header2", servicioAtajo.armarHeader(request));
 		
     	Long id = (long) request.getSession().getAttribute("ID");
     	Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
@@ -135,5 +134,44 @@ public class ControladorCama {
     	}
         
         return new ModelAndView("cantidadDeCamasDisponibles", model);
+    }
+    
+    @RequestMapping("/listaCamasDisponiblesTotal")
+    public ModelAndView listaCamasDisponiblesTotal(
+
+    	@RequestParam(value = "idPaciente") Long idPaciente,
+    	@RequestParam(value = "motivoEgreso", required = false) MotivoEgreso motivoEgreso,
+        HttpServletRequest request) {
+
+        ModelMap model = new ModelMap();
+
+        if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("header2", servicioAtajo.armarHeader(request));
+        
+        Paciente pacienteBuscado =  servicioPaciente.consultarPacientePorId(idPaciente);
+		
+		if (pacienteBuscado == null) {
+			model.put("error", "No existe el paciente");
+			return new ModelAndView("redirect:/listaPacientesInternados");
+		}
+		
+		Boolean admin = true;
+		if(motivoEgreso != null) {
+			 model.put("motivoEgreso", motivoEgreso.name());
+			 admin = false;
+		}
+
+        List<Cama> listaCamasDisponiblesTotal = servicioCama.obtenerTotalDeCamasDisponibles();    
+        
+        model.put("listaCamasDisponiblesTotal", listaCamasDisponiblesTotal);
+        model.put("paciente", pacienteBuscado);
+        model.put("admin", admin);
+    	
+        return new ModelAndView("listaCamasDisponiblesTotal", model);
     }
 }

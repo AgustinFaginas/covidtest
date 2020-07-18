@@ -21,6 +21,7 @@ import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 import ar.edu.unlam.tallerweb1.servicios.ServicioAsignacion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioAtajo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
 import ar.edu.unlam.tallerweb1.servicios.ServicioInternacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
@@ -32,14 +33,16 @@ public class ControladorEgresarPaciente {
 	private ServicioPaciente servicioPaciente;
 	private ServicioCama servicioCama;
 	private ServicioInternacion servicioInternacion;
+	private ServicioAtajo servicioAtajo;
 
 	@Autowired
 	public ControladorEgresarPaciente(ServicioAsignacion servicioAsignacion, ServicioPaciente servicioPaciente, 
-									  ServicioCama servicioCama, ServicioInternacion servicioInternacion) {
+									  ServicioCama servicioCama, ServicioInternacion servicioInternacion, ServicioAtajo servicioAtajo) {
 		this.servicioAsignacion = servicioAsignacion;
 		this.servicioPaciente = servicioPaciente;
 		this.servicioCama = servicioCama;
 		this.servicioInternacion = servicioInternacion;
+		this.servicioAtajo = servicioAtajo;
 	}
 	
 	public ServicioAsignacion getServicioAsignacion() {
@@ -60,10 +63,7 @@ public class ControladorEgresarPaciente {
 
 	@RequestMapping("/egresarPaciente")
 	public ModelAndView egresarPaciente() {
-
-		ModelMap modelo = new ModelMap();
-
-		return new ModelAndView("egresarPaciente", modelo);
+		return new ModelAndView("egresarPaciente");
 	}
 	
 	@RequestMapping(path = "/egresoValido")
@@ -71,10 +71,19 @@ public class ControladorEgresarPaciente {
 			
 			@RequestParam(value = "numeroDocumento") String numeroDocumento,
 			@RequestParam(value = "tipoDocumento", required = false) TipoDocumento tipoDocumento,
-			@RequestParam(value = "motivoEgreso", required = false) MotivoEgreso motivoEgreso
+			@RequestParam(value = "motivoEgreso", required = false) MotivoEgreso motivoEgreso,
+			HttpServletRequest request
 			) {
 		
 		ModelMap model = new ModelMap();
+		
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 		
 		Asignacion asignacionBuscada = new Asignacion();
 		
@@ -123,82 +132,6 @@ public class ControladorEgresarPaciente {
 			return new ModelAndView("egresarPaciente", model);
 		}
 	}
-	
-	 @RequestMapping("/listaPacientesInternados")
-	    public ModelAndView listaPacientesInternados(
-
-	        HttpServletRequest request) {
-
-	        ModelMap model = new ModelMap();
-
-	        if (request.getSession().getAttribute("ID") == null) {
-	            return new ModelAndView("redirect:/login");
-	        }
-
-	        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-	            return new ModelAndView("redirect:/denied");
-	        }
-	        
-	        List<Paciente> listaPacientesInternados = new ArrayList<Paciente>();
-	        
-	        if (request.getSession().getAttribute("ROL") == Rol.ADMIN) {
-	            listaPacientesInternados = servicioPaciente.pacientesInternados();
-	        }
-	        
-	        if (request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
-	        	Long id = (long) request.getSession().getAttribute("ID");
-	            listaPacientesInternados = servicioPaciente.pacientesInternadosPorInstitucion(id);
-	        }
-	        
-	        Boolean admin = false;
-	        if (request.getSession().getAttribute("ROL") == Rol.ADMIN) {
-	            admin = true;
-	        }
-	        
-	        model.put("admin", admin);
-	        model.put("listaPacientesInternados", listaPacientesInternados);
-	    	
-	        return new ModelAndView("listaPacientesInternados", model);
-	    }
-	 
-	 @RequestMapping("/listaCamasDisponiblesTotal")
-	    public ModelAndView listaCamasDisponiblesTotal(
-
-	    	@RequestParam(value = "idPaciente") Long idPaciente,
-	    	@RequestParam(value = "motivoEgreso", required = false) MotivoEgreso motivoEgreso,
-	        HttpServletRequest request) {
-
-	        ModelMap model = new ModelMap();
-
-	        if (request.getSession().getAttribute("ID") == null) {
-	            return new ModelAndView("redirect:/login");
-	        }
-
-	        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-	            return new ModelAndView("redirect:/denied");
-	        }
-	        
-	        Paciente pacienteBuscado =  servicioPaciente.consultarPacientePorId(idPaciente);
-			
-			if (pacienteBuscado == null) {
-				model.put("error", "No existe el paciente");
-				return new ModelAndView("redirect:/listaPacientesInternados");
-			}
-			
-			Boolean admin = true;
-			if(motivoEgreso != null) {
-				 model.put("motivoEgreso", motivoEgreso.name());
-				 admin = false;
-			}
-
-	        List<Cama> listaCamasDisponiblesTotal = servicioCama.obtenerTotalDeCamasDisponibles();    
-	        
-	        model.put("listaCamasDisponiblesTotal", listaCamasDisponiblesTotal);
-	        model.put("paciente", pacienteBuscado);
-	        model.put("admin", admin);
-	    	
-	        return new ModelAndView("listaCamasDisponiblesTotal", model);
-	    }
 	 
 	@RequestMapping("/detalleEgresoPorTraslado")
     public ModelAndView validarEgresoPorTraslado(
@@ -212,15 +145,14 @@ public class ControladorEgresarPaciente {
 
         ModelMap model = new ModelMap();
 
-        if (request.getSession().getAttribute("ID") == null) {
-            model.put("error", "Debe iniciar sesión");
-            return new ModelAndView("redirect:/login");
-        }
-
-        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-            return new ModelAndView("redirect:/denied");
-        }
-        
+        if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+		
     	Paciente pacienteBuscado =  servicioPaciente.consultarPacientePorId(idPaciente);
 		
 		if (pacienteBuscado == null) {
@@ -274,14 +206,14 @@ public class ControladorEgresarPaciente {
 
         ModelMap model = new ModelMap();
         
-        if (request.getSession().getAttribute("ID") == null) {
-            model.put("error", "Debe iniciar sesión");
-            return new ModelAndView("redirect:/login");
-        }
-        
-        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-            return new ModelAndView("redirect:/denied");
-        }
+        if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+		
         
     	Paciente pacienteBuscado =  servicioPaciente.consultarPacientePorId(idPaciente);
 		
@@ -318,14 +250,13 @@ public class ControladorEgresarPaciente {
 
         ModelMap model = new ModelMap();
 
-        if (request.getSession().getAttribute("ID") == null) {
-            model.put("error", "Debe iniciar sesión");
-            return new ModelAndView("redirect:/login");
-        }
-
-        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-            return new ModelAndView("redirect:/denied");
-        }
+        if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
         
     	Paciente pacienteBuscado =  servicioPaciente.consultarPacientePorId(idPaciente);
 		
@@ -361,29 +292,6 @@ public class ControladorEgresarPaciente {
         return new ModelAndView("detalleEgreso", model);
     }
 	
-	 @RequestMapping("/listaPacientesInternadosDeInstitucion")
-	    public ModelAndView listaPacientesInternadosDeInstitucion(
 
-	        HttpServletRequest request,
-	        @RequestParam(value = "idInstitucion") Long idInstitucion) {
-
-	        ModelMap model = new ModelMap();
-
-	        if (request.getSession().getAttribute("ID") == null) {
-	            return new ModelAndView("redirect:/login");
-	        }
-
-	        if (request.getSession().getAttribute("ROL") == Rol.PACIENTE) {
-	            return new ModelAndView("redirect:/denied");
-	        }
-	        
-	        List<Paciente> listaPacientesInternadosDeInstitucion = new ArrayList<Paciente>();
-
-        	listaPacientesInternadosDeInstitucion = servicioPaciente.pacientesInternadosPorInstitucion(idInstitucion);
-	        
-	        model.put("listaPacientesInternados", listaPacientesInternadosDeInstitucion);
-	    	
-	        return new ModelAndView("listaPacientesInternadosDeInstitucion", model);
-	    }
 	
 }

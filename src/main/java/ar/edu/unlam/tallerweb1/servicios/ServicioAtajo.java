@@ -9,4 +9,6 @@ public interface ServicioAtajo{
 	String validarPermisoAPagina(HttpServletRequest request);
 
 	String armarHeader(HttpServletRequest request);
+	
+	
 }
