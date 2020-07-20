@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,7 @@ import ar.edu.unlam.tallerweb1.modelo.Asignacion;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 import ar.edu.unlam.tallerweb1.servicios.ServicioAsignacion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioAtajo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 
 @Controller
@@ -19,28 +22,52 @@ public class ControladorAsignacion {
 
 	ServicioPaciente servicioPaciente;
 	ServicioAsignacion servicioAsignacion;
+	ServicioAtajo servicioAtajo;
 	
 	@Inject
-	public ControladorAsignacion(ServicioPaciente servicioPaciente, ServicioAsignacion servicioAsignacion){
+	public ControladorAsignacion(ServicioPaciente servicioPaciente, ServicioAsignacion servicioAsignacion,
+								ServicioAtajo servicioAtajo){
 		this.servicioPaciente = servicioPaciente;
 		this.servicioAsignacion = servicioAsignacion;
+		this.servicioAtajo = servicioAtajo;
 	}
 	
 	/*Consultar la asignación de un paciente por su nro y tipo de Documento*/
 	@RequestMapping("/consultarAsignacion")
-	public ModelAndView consultarAsignacion() {
-		return new ModelAndView("consultarAsignacion");
+	public ModelAndView consultarAsignacion(HttpServletRequest request) {
+		
+    	ModelMap model = new ModelMap();
+		
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
+		return new ModelAndView("consultarAsignacion", model);
 	}
 	
 	/*Detalle de consultar la asignación de un paciente por su nro y tipo de Documento*/
 	@RequestMapping(path = "/detalleAsignacion", method = RequestMethod.GET)
 	public ModelAndView validarAsignacion( 
 			
+			HttpServletRequest request,
             @RequestParam(value = "numeroDocumento") String numeroDocumento,
 			@RequestParam(value = "tipoDocumento", required = false) TipoDocumento tipoDocumento
             ){
 		
-		ModelMap model = new ModelMap();
+    	ModelMap model = new ModelMap();
+		
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+		
 		Asignacion asignacionBuscada = new Asignacion();
 		
 		Paciente pacienteBuscado =  servicioPaciente.consultarPacientePorDoc(numeroDocumento, tipoDocumento);

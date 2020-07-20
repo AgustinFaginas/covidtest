@@ -2,8 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<% HttpSession sesion = request.getSession(); String rol = sesion.getAttribute("ROL").toString(); String admin = "ADMIN";
-out.println("adminHeaderParte2.jsp | Rol: " + rol);%>
+<% HttpSession sesion = request.getSession(); String rol = sesion.getAttribute("ROL").toString(); String admin = "ADMIN";%>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
@@ -60,9 +59,9 @@ out.println("adminHeaderParte2.jsp | Rol: " + rol);%>
             <div class="sidebar-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item mt-3 mb-3">
-                        <a class="nav-link" href="bienvenido">
+                        <a class="nav-link" href="admin">
                             <span data-feather="home"></span>
-                            Home Institución
+                            Inicio
                         </a>
                     </li>
                     <li class="nav-item mt-3 mb-3">

@@ -87,7 +87,7 @@ public class ControladorCama {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
-    	model.put("header2", servicioAtajo.armarHeader(request));
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 		
 		request.getSession().setAttribute("ID_PACIENTE", idPaciente);
 		
@@ -118,7 +118,7 @@ public class ControladorCama {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
-    	model.put("header2", servicioAtajo.armarHeader(request));
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 		
     	Long id = (long) request.getSession().getAttribute("ID");
     	Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
@@ -151,7 +151,7 @@ public class ControladorCama {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
-    	model.put("header2", servicioAtajo.armarHeader(request));
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
         
         Paciente pacienteBuscado =  servicioPaciente.consultarPacientePorId(idPaciente);
 		

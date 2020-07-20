@@ -30,11 +30,53 @@ public class ServicioAtajoImpl implements ServicioAtajo{
 		if (request.getRequestURI() == null) {
 	        return null;
 		}
+
+		/*ACCESO PERMITIDO A TODOS*/
+		if (
+			  /*controladorNotificacion*/
+			  request.getRequestURI().contains("/covidtest/crearMensaje")
+			  || request.getRequestURI().contains("/covidtest/crearMensajeParaInstitucion")
+			  || request.getRequestURI().contains("/covidtest/enviarMensaje")
+			  || request.getRequestURI().contains("/covidtest/verMensajes")
+			  
+			  /*controladorLogin*/
+			  || request.getRequestURI().contains("/covidtest/home")
+			  
+			  /*controladorLogin*/
+			  || request.getRequestURI().contains("/covidtest/autoTest")
+			  || request.getRequestURI().contains("/covidtest/validarTest")
+			  || request.getRequestURI().contains("/covidtest/testPositivo")
+			  || request.getRequestURI().contains("/covidtest/testNegativo")
+			  || request.getRequestURI().contains("/covidtest/generarPermiso")
+			  || request.getRequestURI().contains("/covidtest/validarPermiso")
+			  || request.getRequestURI().contains("/covidtest/permisoPositivo")
+			  || request.getRequestURI().contains("/covidtest/permisoDenegado")
+			  || request.getRequestURI().contains("/covidtest/enfermedades")
+			  || request.getRequestURI().contains("/covidtest/validarEnfermedades")
+			  ) {
+			
+			return null;
+		}
 		
 		/*ACCESO PERMITIDO SOLO A ADMIN E INSTITUCIONES*/
 		if(
+			 /*controladorAdmin*/
+		     request.getRequestURI().contains("/covidtest/admin")
+		  || request.getRequestURI().contains("/covidtest/homeAdmin")
+		  || request.getRequestURI().contains("/covidtest/panel")
+		  
+			 /*controladorAsignacion*/
+		  || request.getRequestURI().contains("/covidtest/consultarAsignacion")
+		  || request.getRequestURI().contains("/covidtest/detalleAsignacion")
+		  
+		  /*controladorNotificacion*/
+		  || request.getRequestURI().contains("/covidtest/crearMensaje")
+		  || request.getRequestURI().contains("/covidtest/crearMensajeParaInstitucion")
+		  || request.getRequestURI().contains("/covidtest/enviarMensaje")
+		  || request.getRequestURI().contains("/covidtest/verMensajes")
+			  
 		  /*controladorCama*/
-		     request.getRequestURI().contains("/covidtest/disponibilidadCamas")
+		  || request.getRequestURI().contains("/covidtest/disponibilidadCamas")
 		  || request.getRequestURI().contains("/covidtest/listaCamas")
 		  || request.getRequestURI().contains("/covidtest/cantidadDeCamasDisponibleslistaCamas")
 		  || request.getRequestURI().contains("/covidtest/listaCamasDisponiblesTotal")
@@ -45,6 +87,21 @@ public class ServicioAtajoImpl implements ServicioAtajo{
 		  || request.getRequestURI().contains("/covidtest/egresarPacienteMotivo")
 		  || request.getRequestURI().contains("/covidtest/detalleEgreso")
 		
+		  /*controladorInstitucion*/
+		  || request.getRequestURI().contains("/covidtest/registrarInstitucion")
+		  || request.getRequestURI().contains("/covidtest/detalleRegistroInstitucion")
+		  || request.getRequestURI().contains("/covidtest/listaInstituciones")
+		  
+		  /*controladorInternarPaciente*/
+		  || request.getRequestURI().contains("/covidtest/internarPaciente")
+		  || request.getRequestURI().contains("/covidtest/detalleInternacion")
+		  || request.getRequestURI().contains("/covidtest/detalleInternacionPorPasos")
+		  || request.getRequestURI().contains("/covidtest/detalleInternacionPorPasos2")
+		  
+		  /*controladorRegistrarPaciente*/
+		  || request.getRequestURI().contains("/covidtest/registrarPaciente")
+		  || request.getRequestURI().contains("/covidtest/detalleRegistroPaciente")
+		  
 		  /*controladorPaciente*/
 		  || request.getRequestURI().contains("/covidtest/consultarPaciente")
 		  || request.getRequestURI().contains("/covidtest/detallePaciente")
@@ -67,6 +124,16 @@ public class ServicioAtajoImpl implements ServicioAtajo{
 		    }
 		}
 
+		/*ACCESO PERMITIDO SOLO A INSTITUCIONES*/
+		if(request.getRequestURI().contains("/covidtest/bienvenido")){
+			if (rol == Rol.PACIENTE) {
+		        return null;
+			}
+			else{
+		        return "redirect:/denied";
+		    }
+		}
+		
 		/*ACCESO PERMITIDO SOLO A PACIENTES*/
 		if(request.getRequestURI().contains("/covidtest/bienvenidoPaciente")){
 			if (rol == Rol.PACIENTE) {
@@ -83,9 +150,34 @@ public class ServicioAtajoImpl implements ServicioAtajo{
 	@Override
 	public String armarHeader(HttpServletRequest request) {
 
+		String header = "header";
+		
+		/*ACCESO PERMITIDO A TODOS*/
+		if (request.getRequestURI().contains("/covidtest/home")
+		  || request.getRequestURI().contains("/covidtest/homeAdmin")
+		  || request.getRequestURI().contains("/covidtest/admin")
+		  || request.getRequestURI().contains("/covidtest/enviarMensaje")
+		  || request.getRequestURI().contains("/covidtest/verMensajes")
+		  || request.getRequestURI().contains("/covidtest/autoTest")
+		  || request.getRequestURI().contains("/covidtest/validarTest")
+		  || request.getRequestURI().contains("/covidtest/testPositivo")
+		  || request.getRequestURI().contains("/covidtest/testNegativo")
+		  || request.getRequestURI().contains("/covidtest/generarPermiso")
+		  || request.getRequestURI().contains("/covidtest/validarPermiso")
+		  || request.getRequestURI().contains("/covidtest/permisoPositivo")
+		  || request.getRequestURI().contains("/covidtest/permisoDenegado")
+		  || request.getRequestURI().contains("/covidtest/enfermedades")
+		  || request.getRequestURI().contains("/covidtest/validarEnfermedades")
+		  || request.getRequestURI().contains("/covidtest/bienvenido")
+		  || request.getRequestURI().contains("/covidtest/bienvenidoPaciente")
+		  || request.getRequestURI().contains("/covidtest/denied")
+		  || request.getRequestURI().contains("/covidtest/detalleRegistroPaciente")
+			){
+			return header = "usuarioHeaderParte";
+		}
+		
 		Rol rol = (Rol) request.getSession().getAttribute("ROL");
 		
-		String header = "header";
 		switch (rol) {
 		case ADMIN:
 			header = "adminHeaderParte";
@@ -97,6 +189,7 @@ public class ServicioAtajoImpl implements ServicioAtajo{
 			header = "pacienteHeaderParte";
 			break;
 		default:
+			header = "usuarioHeaderParte";
 			break;
 		}
 		return header;

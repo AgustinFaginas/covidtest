@@ -1,39 +1,13 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author"
-	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
-<title>Admin</title>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<link rel="canonical"
-	href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+<jsp:include page="../../partial/${armarHeader}1.jsp" />
 
-<!-- Bootstrap core CSS -->
-<link href="css/bootstrap.css" rel="stylesheet">
+<title>Inserte titulo aquí</title>
+    
+<jsp:include page="../../partial/${armarHeader}2.jsp" />
 
-<style>
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-@media ( min-width : 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
-}
-</style>
 <!-- Custom styles for this template -->
 <link href="css/dashboard.css" rel="stylesheet">
 <style>
@@ -71,64 +45,6 @@
 	background-color: #f1f1f1;
 }
 </style>
-</head>
-<body>
-	<nav
-		class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">AsignAR</a>
-		<button class="navbar-toggler position-absolute d-md-none collapsed"
-			type="button" data-toggle="collapse" data-target="#sidebarMenu"
-			aria-controls="sidebarMenu" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap"><a class="nav-link"
-				href="logout">Salir</a></li>
-		</ul>
-	</nav>
-
-<!-- 	<div class="container-fluid">
-		<div class="row">
-			<nav id="sidebarMenu"
-				class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-				<div class="sidebar-sticky pt-3">
-					<ul class="nav flex-column">
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="inicioAdmin"> <span data-feather="home"></span> Home
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="disponibilidadCamas"> <span data-feather="inbox"></span>
-								Disponibilidad Camas
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="listaInstituciones"> <span data-feather="users"></span>
-								Instituciones
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="consultarPaciente"> <span data-feather="search"></span>
-								Consultar paciente
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="internarPaciente"> <span data-feather="user-plus"></span>
-								Internar paciente
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="egresarPaciente"> <span data-feather="user-minus"></span>
-								Egresar paciente
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="listaPacientesInfectados"> <span data-feather="users"></span>
-								Pacientes Infectados
-						</a></li>
-						<li class="nav-item mt-3 mb-3"><a class="nav-link"
-							href="grafico-pacientes"> <span data-feather="bar-chart-2"></span>
-								Reportes
-						</a></li>
-					</ul>
-				</div>
-			</nav> -->
 
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 

@@ -1,20 +1,15 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: juanp
-  Date: 01/07/2020
-  Time: 00:45
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-    <title>Vista Camas</title>
-</head>
-<body>
+
+<jsp:include page="../../partial/${armarHeader}1.jsp" />
+
+<title>Inserte Título Aquí</title>
+    
+<jsp:include page="../../partial/${armarHeader}2.jsp" />
 
 <h2>ID: ${id}</h2>
-<h2>Cantidad de camas de la instituciÃ³n: ${cantidadCamas}</h2>
+<h2>Cantidad de camas de la institución: ${cantidadCamas}</h2>
 <h2>Cantidad de camas disponibles: ${cantidadCamasDisponiblesPorInstitucion}</h2>
 
   <div class="table-responsive">

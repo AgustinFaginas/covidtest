@@ -62,8 +62,19 @@ public class ControladorEgresarPaciente {
 	}
 
 	@RequestMapping("/egresarPaciente")
-	public ModelAndView egresarPaciente() {
-		return new ModelAndView("egresarPaciente");
+	public ModelAndView egresarPaciente(HttpServletRequest request) {
+
+    	ModelMap model = new ModelMap();
+
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+
+		return new ModelAndView("egresarPaciente", model);
 	}
 	
 	@RequestMapping(path = "/egresoValido")

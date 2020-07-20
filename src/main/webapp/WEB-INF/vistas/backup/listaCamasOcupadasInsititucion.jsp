@@ -4,15 +4,11 @@
 
 <jsp:include page="../../partial/${armarHeader}1.jsp" />
 
-<title>Inserte Título Aquí</title>
+<title>Inserte titulo aquí</title>
     
 <jsp:include page="../../partial/${armarHeader}2.jsp" />
 
-<h2 class="text-center">Contador: ${contador}</h2>
-<h2 class="text-center">Estatura: ${estatura}</h2>
-<h2 class="text-center">Peso: ${peso}</h2>
-<h2 class="text-center">Categoria IMC: ${categoriaIMC}</h2>
-<h2 class="text-center">Prioridad: ${prioridad}</h2>
+	<h1>${cantidadDeCamasOcupadas}</h1>
 
 </body>
 </html>

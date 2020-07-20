@@ -2,11 +2,13 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="../../partial/headerInstitucionesParte1.jsp" />
+<jsp:include page="../../partial/${armarHeader}1.jsp" />
 
-<title>Detalle Internacion</title>
+<title>Inserte titulo aquí</title>
     
-<jsp:include page="../../partial/headerInstitucionesParte2.jsp" />
+<jsp:include page="../../partial/${armarHeader}2.jsp" />
+
+<% HttpSession sesion = request.getSession(); String rol = sesion.getAttribute("ROL").toString(); String admin = "ADMIN";%>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
    
@@ -30,8 +32,12 @@
 					<h6 class="">${mensaje5}</h6>
 					
                     <br>
-                    <a href="bienvenido" class="btn btn-sm btn-outline-secondary">Inicio</a>
-					
+             
+             <% if (rol.equals("ADMIN")) { %>		
+			<a href="panel" class="btn btn-primary" role="button" aria-disabled="true">Inicio</a>
+			<% } else{%>
+			<a href="bienvenido" class="btn btn-primary" role="button" aria-disabled="true">Inicio</a>
+			<% } %>
        
         </div>
             

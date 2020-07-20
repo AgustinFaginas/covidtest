@@ -48,6 +48,9 @@ public class ControladorTest {
 
     @Autowired
     private ServicioLocalidad servicioLocalidad;
+    
+    @Autowired
+    private ServicioAtajo servicioAtajo;
 
     public ServicioTest getServicioTest() {
         return servicioTest;
@@ -62,14 +65,25 @@ public class ControladorTest {
     }
 
     @RequestMapping("/autoTest")
-    public ModelAndView aTest() {
+    public ModelAndView aTest(HttpServletRequest request) {
 
-        return new ModelAndView("autoTest");
+    	ModelMap model = new ModelMap();
+
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
+        return new ModelAndView("autoTest", model);
 
     }
 
     @RequestMapping(value = "/validarTest", method = RequestMethod.GET)
     public ModelAndView validarTest(
+    		HttpServletRequest request,
             @RequestParam(value = "fiebre", required = false) Float fiebre,
             @RequestParam(value = "perdidaOlfato", required = false) Boolean olfato,
             @RequestParam(value = "perdidaGusto", required = false) Boolean gusto,
@@ -77,51 +91,80 @@ public class ControladorTest {
             @RequestParam(value = "perdidaRespiracion", required = false) Boolean respiracion
     ) {
 
+    	ModelMap model = new ModelMap();
+
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
         if (servicioTest.realizarTest(fiebre, olfato, gusto, tos, respiracion)) {
 
 
-            return new ModelAndView("testPositivo");
+            return new ModelAndView("testPositivo", model);
         } else {
-            return new ModelAndView("testNegativo");
+            return new ModelAndView("testNegativo", model);
         }
 
     }
 
     @RequestMapping("/testPositivo")
-    public ModelAndView testPositivo() {
+    public ModelAndView testPositivo(HttpServletRequest request) {
+    	
+    	ModelMap model = new ModelMap();
 
-        return new ModelAndView("testPositivo");
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
+        return new ModelAndView("testPositivo", model);
 
     }
 
-    /*@RequestMapping("/localidades")
-    public ModelAndView localidades() {
-
-        List<Localidad> localidades = servicioLocalidad.obtenerLocalidades();
-
-        ModelMap model = new ModelMap();
-
-        model.put("localidades", localidades);
-
-        return new ModelAndView("localidades", model);
-    }*/
-
     @RequestMapping("/testNegativo")
-    public ModelAndView testNegativo() {
+    public ModelAndView testNegativo(HttpServletRequest request) {
+    	
+    	ModelMap model = new ModelMap();
 
-        return new ModelAndView("testNegativo");
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
+        return new ModelAndView("testNegativo", model);
 
     }
 
     @RequestMapping("/generarPermiso")
-    public ModelAndView generarPermiso() {
+    public ModelAndView generarPermiso(HttpServletRequest request) {
+    	
+    	ModelMap model = new ModelMap();
 
-        return new ModelAndView("generarPermiso");
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+
+        return new ModelAndView("generarPermiso", model);
 
     }
 
     @RequestMapping(value = "/validarPermiso", method = RequestMethod.POST)
     public ModelAndView validarPermiso(
+    		HttpServletRequest request,
             @RequestParam(value = "nombre", required = false) String nombre,
             @RequestParam(value = "apellido", required = false) String apellido,
             @RequestParam(value = "edad", required = false) Integer edad,
@@ -134,9 +177,18 @@ public class ControladorTest {
             @RequestParam(value = "email", required = false) String email,
             @RequestParam(value = "motivo", required = false) String motivo
     ) {
+        	
+        	ModelMap model = new ModelMap();
 
+    		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+        		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+        	}
+        	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+        		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+        	}
+        	model.put("armarHeader", servicioAtajo.armarHeader(request));
+        	
         if (servicioTest.realizarPermiso(nombre, apellido, edad, tipoDocumento, numeroDocumento, motivo)) {
-            ModelMap model = new ModelMap();
 
             Localidad localidad = servicioLocalidad.obtenerLocalidadPorNombre(nombreLocalidad);
             Partido partido = localidad.getPartido();
@@ -156,22 +208,42 @@ public class ControladorTest {
             model.put("motivo", motivo);
             return new ModelAndView("permisoAceptado", model);
         } else {
-            return new ModelAndView("permisoDenegado");
+            return new ModelAndView("permisoDenegado", model);
         }
 
     }
 
     @RequestMapping("/permisoPositivo")
-    public ModelAndView permisoPositivo() {
+    public ModelAndView permisoPositivo(HttpServletRequest request) {
+    	
+    	ModelMap model = new ModelMap();
 
-        return new ModelAndView("permisoAceptado");
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+
+        return new ModelAndView("permisoAceptado", model);
 
     }
 
     @RequestMapping("/permisoDenegado")
-    public ModelAndView permisoDenegado() {
+    public ModelAndView permisoDenegado(HttpServletRequest request) {
+    	
+    	ModelMap model = new ModelMap();
 
-        return new ModelAndView("permisoDenegado");
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
+        return new ModelAndView("permisoDenegado", model);
 
     }
 
@@ -179,17 +251,24 @@ public class ControladorTest {
     public ModelAndView enfermedades(
             @RequestParam(value = "ID_PACIENTE", required = false) Long ID_PACIENTE,
             HttpServletRequest request) {
+    	
+    	ModelMap model = new ModelMap();
 
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
         Long id_paciente = (Long) request.getSession().getAttribute("ID_PACIENTE");
 
         Paciente paciente = servicioPaciente.consultarPacientePorId(id_paciente);
 
-        return new ModelAndView("enfermedades");
+        return new ModelAndView("enfermedades", model);
     }
 
-    /*
-    * @RequestMapping(path = "/validar-enfermedades", method = RequestMethod.POST)
-    public ModelAndView validarLogin(@ModelAttribute("paciente") Usuario usuario, HttpServletRequest request) {*/
     @RequestMapping(path = "/validarEnfermedades", method = RequestMethod.POST)
     public ModelAndView validarEnfermedades(
             @ModelAttribute("paciente") Usuario usuario,
@@ -204,7 +283,17 @@ public class ControladorTest {
             @RequestParam(value = "estatura", required = false) Float estatura,
             @RequestParam(value = "peso", required = false) Float peso
     ) {
+        	
+    	ModelMap model = new ModelMap();
 
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
         Long id_paciente = (Long) request.getSession().getAttribute("ID_PACIENTE");
 
         Paciente paciente = servicioPaciente.consultarPacientePorId(id_paciente);
@@ -271,37 +360,26 @@ public class ControladorTest {
 
         servicioPaciente.actualizarPaciente(paciente);
 
-        /*ModelMap model = new ModelMap();
-        model.put("contador", contador);
-        model.put("estatura", estaturaMetros);
-        model.put("peso", peso);
-        model.put("categoriaIMC", categoriaIMC);
-        model.put("prioridad", prioridad);
-
-        return new ModelAndView("validarEnfermedades", model);*/
-        return new ModelAndView("detalleRegistroPaciente");
-
-
+        return new ModelAndView("detalleRegistroPaciente", model);
     }
 
     @RequestMapping(value = "/validar-email", method = RequestMethod.POST)
     public @ResponseBody
     String validarEmail(@RequestBody String json) {
-        Paciente usuario = new Paciente();
-        usuario.setEmail(json);
-        Usuario usuario2 = servicioLogin.consultarUsuarioporEmail(usuario);
-        String mensaje = "OK";
-        try {
-            if (usuario2.getEmail() != null) {
-                mensaje = "BAD";
-                return mensaje;
-            }
-        } catch (NullPointerException e) {
-            mensaje = "OK";
+    Paciente usuario = new Paciente();
+    usuario.setEmail(json);
+    Usuario usuario2 = servicioLogin.consultarUsuarioporEmail(usuario);
+    String mensaje = "OK";
+    try {
+        if (usuario2.getEmail() != null) {
+            mensaje = "BAD";
             return mensaje;
         }
-
+    } catch (NullPointerException e) {
+        mensaje = "OK";
         return mensaje;
+    }
+    return mensaje;
     }
 
 

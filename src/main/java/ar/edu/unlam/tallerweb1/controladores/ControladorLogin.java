@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioAtajo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,18 +20,21 @@ public class ControladorLogin {
 
 	
 	private ServicioLogin servicioLogin;
+	private ServicioAtajo servicioAtajo;
 
 	public ServicioLogin getServicioLogin() {
 		return servicioLogin;
 	}
 
-	public void setServicioLogin(ServicioLogin servicioLogin) {
+	public void setServicioLogin(ServicioLogin servicioLogin, ServicioAtajo servicioAtajo) {
 		this.servicioLogin = servicioLogin;
+		this.servicioAtajo = servicioAtajo;
 	}
 
 	@Autowired
-	public ControladorLogin(ServicioLogin servicioLogin) {
+	public ControladorLogin(ServicioLogin servicioLogin, ServicioAtajo servicioAtajo) {
 		this.servicioLogin = servicioLogin;
+		this.servicioAtajo = servicioAtajo;
 	}
 
 	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/login si la misma es
@@ -53,6 +57,7 @@ public class ControladorLogin {
 	
 	@RequestMapping(path = "/validar-login", method = RequestMethod.POST)
 	public ModelAndView validarLogin(@ModelAttribute("usuario") Usuario usuario, HttpServletRequest request) {
+		
 		ModelMap model = new ModelMap();
 
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
@@ -62,47 +67,45 @@ public class ControladorLogin {
 			return new ModelAndView("login", model);
 		}
 		
-		if (usuarioBuscado != null && usuarioBuscado.getRol() == Rol.INSTITUCION) {
+		if (usuarioBuscado.getRol() == Rol.INSTITUCION) {
 			request.getSession().setAttribute("ID", usuarioBuscado.getId());
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
 			return new ModelAndView("redirect:/bienvenido");
-
 		} 
 		
-		if (usuarioBuscado !=null && usuarioBuscado.getRol() == Rol.ADMIN ) {
+		if (usuarioBuscado.getRol() == Rol.ADMIN ) {
 			request.getSession().setAttribute("ID", usuarioBuscado.getId());
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
 			return new ModelAndView("redirect:/admin");
 		}
 		
-		if (usuarioBuscado !=null && usuarioBuscado.getRol() == Rol.PACIENTE ) {
+		if (usuarioBuscado.getRol() == Rol.PACIENTE ) {
 			request.getSession().setAttribute("ID", usuarioBuscado.getId());
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
 			return new ModelAndView("redirect:/bienvenidoPaciente");
 		}
-	
-		else {
 
-			model.put("error", "Usuario o clave incorrecta");
-		}
 		return new ModelAndView("login", model);
 	}
 
-	// Escucha la URL /home por GET, y redirige a una vista.
 	@RequestMapping(path = "/home", method = RequestMethod.GET)
-	public ModelAndView irAHome() {
-		return new ModelAndView("home");
+	public ModelAndView irAHome(HttpServletRequest request ) {
+		
+    	ModelMap model = new ModelMap();
+
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
+		return new ModelAndView("home", model);
 	}
 
-	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la
-	// url /login directamente.
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
 		return new ModelAndView("login");
 	}
 
-
-	
 	@RequestMapping(path = "/logout")
 	public ModelAndView logout(@RequestParam(value = "redirect", defaultValue = "") String redirect,
 			HttpServletRequest request) {

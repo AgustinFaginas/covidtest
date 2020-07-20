@@ -1,81 +1,12 @@
-<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-		 pageEncoding="ISO-8859-1" %> --%>
-		 <%@ page contentType="text/html; charset=UTF-8" %>
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<html lang="es">
+<jsp:include page="../../partial/${armarHeader}1.jsp" />
 
-<head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-		  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-	<title>AsignAR</title>
-
-	<style>
-		#navbar-top:hover {
-			text-decoration: none;
-		}
-	</style>
-
-</head>
-
-<body>
-
-<nav class="navbar sticky-top bg-dark text-white justify-content-center align-items-center">
-	<a class="text-center text-white" href="https://www.argentina.gob.ar/salud/coronavirus-COVID-19" id="navbar-top">
-		<h5>
-			Coronavirus COVID-19 conocé información y recomendaciones del Ministerio de Salud</strong>
-		</h5>
-	</a>
-</nav>
-
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<a class="navbar-brand" href="#"> <img src="img/share2.png"
-			width="35" height="35" class="d-inline-block align-top" alt="logo">
-			AsignAR
-		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarTogglerDemo02"
-			aria-controls="navbarTogglerDemo02" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<!-- <li class="nav-item ml-5 active"><a class="nav-link" href="inicioAdmin">Home
-						<span class="sr-only">(current)</span>
-				</a></li> -->
-				
-			</ul>
-			<c:if test="${alert == null}">
-				<a href="logout" class="btn btn-dark ml-5" role="button"
-					aria-disabled="true">Log out</a>
-			</c:if>
-
-		</div>
-	</nav>
-
-<!-- <div class="container .bg-white">
-	<section class="jumbotron text-center .bg-white">
-		
-			<h1>Realizá tu Test de COVID-19 aquí</h1>
-			<p class="lead text-muted">Realizá tu test de manera gratuita,
-				dejá tus datos y un profesional de la salud te dará las indicaciones
-				según tu caso particular.</p>
-			<p>
-				<a href="#" class="btn btn-primary btn-lg">Realizar TEST</a> <a
-					href="#" class="btn btn-secondary my-2">Secondary action</a>
-			</p>
-		
-	</section>
-</div> -->
-
+<title>Inserte titulo aqu�</title>
+    
+<jsp:include page="../../partial/${armarHeader}2.jsp" />
 
 	<h2 class="text-center mb-3 mt-5">Consejos para prevenir el Coronavirus</h2>
 

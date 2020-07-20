@@ -60,14 +60,22 @@ public class ControladorPaciente {
     
     /*Consultar paciente por Nro y Tipo de Documento*/
     @RequestMapping("/consultarPaciente")
-	public ModelAndView consultarPaciente() {
+	public ModelAndView consultarPaciente(HttpServletRequest request) {
 
-		ModelMap modelo = new ModelMap();
+    	ModelMap model = new ModelMap();
+
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
 		Paciente paciente = new Paciente();
-		modelo.put("paciente", paciente);
+		model.put("paciente", paciente);
 
-		return new ModelAndView("consultarPaciente", modelo);
+		return new ModelAndView("consultarPaciente", model);
 	}
      
     /*Detalle por consultar paciente por Nro y Tipo de Documento*/

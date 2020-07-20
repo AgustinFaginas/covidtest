@@ -25,31 +25,46 @@ public class ControladorInstitucion {
     private ServicioLocalidad servicioLocalidad;
     private ServicioPartido servicioPartido;
     private ServicioZona servicioZona;
-
+    private ServicioAtajo servicioAtajo;
+    
     @Autowired
     public ControladorInstitucion(ServicioInstitucion servicioInstitucion, ServicioCama servicioCama,
-                                  ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, ServicioDomicilio servicioDomicilio, ServicioPartido servicioPartido, ServicioLocalidad servicioLocalidad, ServicioZona servicioZona) {
-        this.servicioInstitucion = servicioInstitucion;
+                                  ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, 
+                                  ServicioDomicilio servicioDomicilio, ServicioPartido servicioPartido, 
+                                  ServicioLocalidad servicioLocalidad, ServicioZona servicioZona, 
+                                  ServicioAtajo servicioAtajo) {
+        
+    	this.servicioInstitucion = servicioInstitucion;
         this.servicioCama = servicioCama;
         this.servicioUsuario = servicioUsuario;
         this.servicioDomicilio = servicioDomicilio;
         this.servicioLocalidad = servicioLocalidad;
         this.servicioPartido = servicioPartido;
         this.servicioZona = servicioZona;
+        this.servicioAtajo = servicioAtajo;
     }
 
     @RequestMapping("/registrarInstitucion")
-    public ModelAndView registrarInstitucion() {
+    public ModelAndView registrarInstitucion(HttpServletRequest request) {
 
-        ModelMap modelo = new ModelMap();
+		ModelMap model = new ModelMap();
 
-        return new ModelAndView("registrarInstitucion", modelo);
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+
+        return new ModelAndView("registrarInstitucion", model);
     }
 
     @RequestMapping("/detalleRegistroInstitucion")
     public ModelAndView validarRegistroInstitucion(
-
-            @ModelAttribute("usuario") Institucion institucion, HttpServletRequest request,
+    		
+    		HttpServletRequest request,
+            @ModelAttribute("usuario") Institucion institucion, 
             @RequestParam(value = "calle") String calle,
             @RequestParam(value = "numero") Integer numero,
             @RequestParam(value = "nombreLocalidad") String nombreLocalidad,
@@ -57,10 +72,18 @@ public class ControladorInstitucion {
 
     ) {
 
-        institucion.setTipoDocumento(TipoDocumento.CUIT);
-
         ModelMap model = new ModelMap();
+        
+        if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
+        institucion.setTipoDocumento(TipoDocumento.CUIT);
+        
         if (servicioUsuario.consultarUsuarioPorEmail(institucion.getEmail()) == null
                 && servicioInstitucion.consultarInstitucionPorCuit(institucion.getNumeroDocumento()) == null) {
 
@@ -115,11 +138,20 @@ public class ControladorInstitucion {
     }
 
     @RequestMapping("/listaInstituciones")
-    public ModelAndView listarInstituciones() {
-
-        List<Institucion> listaInstituciones = servicioInstitucion.obtenerListaInstituciones();
+    public ModelAndView listarInstituciones(HttpServletRequest request) {
 
         ModelMap model = new ModelMap();
+        
+        if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
+        List<Institucion> listaInstituciones = servicioInstitucion.obtenerListaInstituciones();
+
         model.put("listaInstituciones", listaInstituciones);
 
         return new ModelAndView("listaInstituciones", model);
@@ -129,44 +161,25 @@ public class ControladorInstitucion {
     public ModelAndView irAbienvenido(HttpServletRequest request) {
 
         ModelMap model = new ModelMap();
+        
+        if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
+        Long id = (Long) request.getSession().getAttribute("ID");
+        Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
 
-        if (request.getSession().getAttribute("ID") == null) {
-            return new ModelAndView("redirect:/home");
-        }
+        String nombre = institucion.getNombre();
+        Integer camas = (int) servicioCama.obtenerCamasPorInstitucion(institucion).size();
 
-        if (request.getSession().getAttribute("ROL") == Rol.INSTITUCION) {
+        model.put("nombre", nombre);
+        model.put("camas", camas);
 
-            Long id = (Long) request.getSession().getAttribute("ID");
-            Institucion institucion = servicioInstitucion.obtenerInstitucionPorId(id);
-
-            String nombre = institucion.getNombre();
-            Integer camas = (int) servicioCama.obtenerCamasPorInstitucion(institucion).size();
-
-            model.put("nombre", nombre);
-            model.put("camas", camas);
-
-            return new ModelAndView("bienvenido", model);
-
-        }
-        return new ModelAndView("redirect:/denied");
+        return new ModelAndView("bienvenido", model);
     }
-
-    /*@RequestMapping(value = "/instituciones-por-zona", method = RequestMethod.GET)
-    public ModelAndView institucionesPorZona(
-            @RequestParam(value = "nombreZona") String nombreZona
-    ) {
-        ModelMap model = new ModelMap();
-
-        Zona zona = servicioZona.obtenerZonaPorNombre(nombreZona);
-
-        String nombreDeZona = zona.getNombre();
-
-		List<Institucion> instituciones = servicioInstitucion.listarInstitucionesPorLocalidad(id);
-
-
-        model.put("nombreDeZona", nombreDeZona);
-
-        return new ModelAndView("institucionesporzona", model);
-    }*/
   
 }

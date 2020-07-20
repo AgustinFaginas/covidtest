@@ -23,12 +23,16 @@ public class ControladorRegistrarPaciente {
     private ServicioDomicilio servicioDomicilio;
     private ServicioLocalidad servicioLocalidad;
     private ServicioPartido servicioPartido;
+    private ServicioAtajo servicioAtajo;
 
     private ServicioTest servicioTest;
 
     @Autowired
     public ControladorRegistrarPaciente(ServicioInstitucion servicioInstitucion, ServicioCama servicioCama,
-                                        ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, ServicioTest servicioTest, ServicioDomicilio servicioDomicilio, ServicioLocalidad servicioLocalidad, ServicioPartido servicioPartido) {
+                                        ServicioPaciente servicioPaciente, ServicioUsuario servicioUsuario, 
+                                        ServicioTest servicioTest, ServicioDomicilio servicioDomicilio, 
+                                        ServicioLocalidad servicioLocalidad, ServicioPartido servicioPartido,
+                                        ServicioAtajo servicioAtajo) {
         this.servicioInstitucion = servicioInstitucion;
         this.servicioUsuario = servicioUsuario;
         this.servicioPaciente = servicioPaciente;
@@ -36,26 +40,23 @@ public class ControladorRegistrarPaciente {
         this.servicioDomicilio = servicioDomicilio;
         this.servicioLocalidad = servicioLocalidad;
         this.servicioPartido = servicioPartido;
+        this.servicioAtajo = servicioAtajo;
     }
 
     @RequestMapping("/registrarPaciente")
-    public ModelAndView registrarPaciente() {
+    public ModelAndView registrarPaciente(HttpServletRequest request) {
 
-        ModelMap modelo = new ModelMap();
+    	ModelMap model = new ModelMap();
 
-        return new ModelAndView("registrarPaciente", modelo);
-    }
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
-    @RequestMapping("/localidades")
-    public ModelAndView localidades() {
-
-        List<Localidad> localidades = servicioLocalidad.obtenerLocalidades();
-
-        ModelMap model = new ModelMap();
-
-        model.put("localidades", localidades);
-
-        return new ModelAndView("localidades", model);
+        return new ModelAndView("registrarPaciente", model);
     }
 
     @RequestMapping("/detalleRegistroPaciente")
@@ -70,11 +71,19 @@ public class ControladorRegistrarPaciente {
 
     ) {
 
+    	ModelMap model = new ModelMap();
+
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
         if (paciente == null) {
             return new ModelAndView("redirect:/denied");
         }
-
-        ModelMap model = new ModelMap();
 
         if (servicioUsuario.consultarUsuarioPorEmail(paciente.getEmail()) == null &&
                 servicioPaciente.consultarPacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento()) == null) {
