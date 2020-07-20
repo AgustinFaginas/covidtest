@@ -25,22 +25,20 @@
 		    <table class="table table-bordered table-hover responsive nowrap text-center">
 		        <tr>
 		       		<th class="bg-light">INSTITUCIÓN</th>
-		            <th class="bg-light">CANTIDAD DE CAMAS</th>
+		            <th class="bg-light">CAMAS DISPONIBLES</th>
 		            <th class="bg-light">TIPO</th>
-		            <th class="bg-light">INSTITUCIÓN</th>
 		            <th class="bg-light">ACCIÓN</th>
 		        </tr>
 		        
 		        <c:forEach items="${camas}" var="cama">
 		            <tr>
-		            	<td><c:out value="${cama.getCama().getId()}"/></td>
-		                <td><c:out value="${cama.getCama().getDescripcion()}"/></td>
-		                <td><c:out value="${cama.getCama().getTipoCama().name()}"/></td>
-		                <td><c:out value="${cama.getInstitucion().getNombre()}"/></td>
+		            	<td><c:out value="${cama.getInstitucion().getNombre()}"/></td>
+		                <td><c:out value="${cama.getCount()}"/></td>
+		                <td><c:out value=""/></td>
 		                
 		                <td class="align-middle">
 		                
-		                <a href="listaPacientesInfectadosPasoDos?idCama=${cama.getCama().getId()}" type="button" class="btn btn-primary">Seleccionar Cama</a>
+		                <a href="" type="button" class="btn btn-primary">Internar</a>
 						
 		               </td>
 		            </tr>

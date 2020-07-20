@@ -110,8 +110,8 @@ public class RepositorioCamaImpl implements RepositorioCama {
         		   + "JOIN Asignacion as a ON a.cama = c "
         		   + "WHERE c.institucion NOT IN (SELECT a.cama "
         		   							   + "FROM Asignacion as a "
-        		   							   + "WHERE a.cama = c"
-        		   							   + "AND a.horaEgreso IS NULL)"
+        		   							   + "WHERE a.cama = c "
+        		   							   + "AND a.horaEgreso IS NULL) "
         		   + "GROUP BY c.institucion";
 
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -122,7 +122,8 @@ public class RepositorioCamaImpl implements RepositorioCama {
     @SuppressWarnings({ "unchecked" })
     public List<CamaInstitucion> obtenerCamasPorInstitucionConSuInstitucion(Institucion institucion) {
         
-    	String hql = "select new ar.edu.unlam.tallerweb1.modelo.CamaInstitucion(c, i) from Cama as c JOIN Institucion as i ON c.institucion = i where c.institucion = :institucion";
+    	String hql = "select new ar.edu.unlam.tallerweb1.modelo.CamaInstitucion(c, i) from Cama as c "
+    			+ "JOIN Institucion as i ON c.institucion = i where c.institucion = :institucion";
 
         Query query = sessionFactory.getCurrentSession().createQuery(hql).setParameter("institucion", institucion);
         

@@ -168,9 +168,6 @@ public class ServicioAtajoImpl implements ServicioAtajo{
 		case INSTITUCION:
 			header = "institucionHeaderParte";
 			break;
-		case PACIENTE:
-			header = "pacienteHeaderParte";
-			break;
 		default:
 			header = "usuarioHeaderParte";
 			break;

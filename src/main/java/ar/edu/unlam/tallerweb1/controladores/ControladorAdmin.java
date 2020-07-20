@@ -123,5 +123,22 @@ public class ControladorAdmin {
 
 		return new ModelAndView("denied", model);
 	}
+	
+	//PAGINA DE ACCESO DENEGADO POR DEFAULT
+	@RequestMapping("/acordeon")
+	public ModelAndView acordeon(
+			
+			HttpServletRequest request) {
+		
+		ModelMap model = new ModelMap();
+
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+
+		return new ModelAndView("acordeon", model);
+	}
 
 }

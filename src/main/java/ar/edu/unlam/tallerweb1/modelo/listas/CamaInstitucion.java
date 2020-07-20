@@ -7,14 +7,14 @@ public class CamaInstitucion {
 
 	private Cama cama;
 	private Institucion institucion;
-	private Integer count;
+	private Long count;
 	
 	public CamaInstitucion(Cama cama, Institucion institucion) {
 		this.cama = cama;
 		this.institucion = institucion;
 	}
 	
-	public CamaInstitucion(Cama cama, Institucion institucion, Integer count) {
+	public CamaInstitucion(Cama cama, Institucion institucion, Long count) {
 		this.cama = cama;
 		this.institucion = institucion;
 		this.count = count;
@@ -36,11 +36,11 @@ public class CamaInstitucion {
 		this.institucion = institucion;
 	}
 	
-	public Integer getCount() {
+	public Long getCount() {
 		return count;
 	}
 
-	public void setCount(Integer count) {
+	public void setCount(Long count) {
 		this.count = count;
 	}
 
