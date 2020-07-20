@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
-
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioAtajo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
@@ -39,9 +39,13 @@ public class ControladorAdmin {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
-			
-		Long id = (Long) request.getSession().getAttribute("ID");
+
+    	Long id = (long) request.getSession().getAttribute("ID"); 
 		Usuario admin = servicioUsuario.consultarUsuarioPorId(id);
 		
 		String nombre = admin.getNombre();
@@ -62,6 +66,10 @@ public class ControladorAdmin {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 			
 		return new ModelAndView("homeAdmin", model);
@@ -79,6 +87,10 @@ public class ControladorAdmin {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
 		List<Paciente> poInfectados = servicioPaciente.posiblesInfectados();
@@ -103,6 +115,10 @@ public class ControladorAdmin {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
 		return new ModelAndView("denied", model);

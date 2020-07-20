@@ -55,6 +55,10 @@ public class ControladorInstitucion {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
         return new ModelAndView("registrarInstitucion", model);
@@ -80,6 +84,10 @@ public class ControladorInstitucion {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
         institucion.setTipoDocumento(TipoDocumento.CUIT);
@@ -148,6 +156,10 @@ public class ControladorInstitucion {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
     	
         List<Institucion> listaInstituciones = servicioInstitucion.obtenerListaInstituciones();
@@ -168,6 +180,10 @@ public class ControladorInstitucion {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
     	
         Long id = (Long) request.getSession().getAttribute("ID");

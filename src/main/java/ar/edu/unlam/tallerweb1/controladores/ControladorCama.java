@@ -55,6 +55,10 @@ public class ControladorCama {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 		
     	Long id = (long) request.getSession().getAttribute("ID");
@@ -87,6 +91,10 @@ public class ControladorCama {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 		
 		request.getSession().setAttribute("ID_PACIENTE", idPaciente);
@@ -117,7 +125,10 @@ public class ControladorCama {
     	}
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
-    	}
+    	}    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 		
     	Long id = (long) request.getSession().getAttribute("ID");
@@ -150,7 +161,11 @@ public class ControladorCama {
     	}
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
-    	}
+    	}    	
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
         
         Paciente pacienteBuscado =  servicioPaciente.consultarPacientePorId(idPaciente);

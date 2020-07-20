@@ -45,15 +45,30 @@ public class ControladorLogin {
 		ModelMap modelo = new ModelMap();
 
 		if (request.getSession().getAttribute("ID") != null) {
-			modelo.put("alert", "Ya se encuentra logueado con una cuenta, primero cierre sesion.");
-			return new ModelAndView("error_login", modelo);
+			return new ModelAndView("redirect:/error_login");
 		}
 		Usuario usuario = new Usuario();
 		modelo.put("usuario", usuario);
 
 		return new ModelAndView("login", modelo);
 	}
+	
+	@RequestMapping("/error_login")
+	public ModelAndView errorLogin(HttpServletRequest request) {
 
+		ModelMap model = new ModelMap();
+		
+    	if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+		
+    	return new ModelAndView("error_login", model);
+	}
 	
 	@RequestMapping(path = "/validar-login", method = RequestMethod.POST)
 	public ModelAndView validarLogin(@ModelAttribute("usuario") Usuario usuario, HttpServletRequest request) {
@@ -65,6 +80,11 @@ public class ControladorLogin {
 		if (usuarioBuscado == null) {
 			model.put("error", "Usuario o clave incorrecta");
 			return new ModelAndView("login", model);
+		}
+		
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
 		}
 		
 		if (usuarioBuscado.getRol() == Rol.INSTITUCION) {
@@ -93,9 +113,11 @@ public class ControladorLogin {
 		
     	ModelMap model = new ModelMap();
 
-    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
-    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
-    	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
+   
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
     	
 		return new ModelAndView("home", model);

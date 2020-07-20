@@ -2,11 +2,10 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<% HttpSession sesion = request.getSession(); String rol = sesion.getAttribute("ROL").toString(); String admin = "ADMIN";%>
-
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
-    <!-- Bootstrap core CSS -->
+
+        <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -44,11 +43,14 @@
     <!--   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
     <ul class="navbar-nav px-3">
     	<li class="nav-item text-nowrap">
-			<% if (rol.isEmpty()) { %>		
-			<a href="login" class="btn btn-dark ml-5" role="button" aria-disabled="true">Iniciar Sesión</a>
-			<% } else{%>
-			<a href="logout" class="btn btn-dark ml-5" role="button" aria-disabled="true">Salir</a>
-			<% } %>
+				<c:if test="${rol == null}">
+				<a href="login" class="btn btn-dark ml-5" role="button"
+					aria-disabled="true">Iniciar Sesión</a>
+				</c:if>	
+				<c:if test="${rol != null}">				
+				<a href="logout" class="btn btn-dark ml-5" role="button"
+					aria-disabled="true">Salir</a>
+				</c:if>
        </li>
   	</ul>
 </nav>

@@ -1,12 +1,21 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Cama;
+import ar.edu.unlam.tallerweb1.modelo.Domicilio;
+import ar.edu.unlam.tallerweb1.modelo.Localidad;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
+import ar.edu.unlam.tallerweb1.modelo.Partido;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
+import ar.edu.unlam.tallerweb1.modelo.TipoDocumento;
 import ar.edu.unlam.tallerweb1.servicios.ServicioAtajo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCama;
+import ar.edu.unlam.tallerweb1.servicios.ServicioDomicilio;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLocalidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
+import ar.edu.unlam.tallerweb1.servicios.ServicioPartido;
+import ar.edu.unlam.tallerweb1.servicios.ServicioTest;
+import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,9 +38,17 @@ public class ControladorPaciente {
     @Autowired
     ServicioCama servicioCama;
     @Autowired
+	ServicioAtajo servicioAtajo;
+    @Autowired
+    ServicioUsuario servicioUsuario;
+    @Autowired
+    ServicioDomicilio servicioDomicilio;
+    @Autowired
     ServicioLocalidad servicioLocalidad;
     @Autowired
-	ServicioAtajo servicioAtajo;
+    ServicioPartido servicioPartido;
+    @Autowired
+    ServicioTest servicioTest;
 	 
     /*Pantalla de bienvenido al paciente cuando inicia sesión*/
     @RequestMapping("bienvenidoPaciente")
@@ -45,11 +62,17 @@ public class ControladorPaciente {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
 		Long id = (Long) request.getSession().getAttribute("ID");
+		if(servicioPaciente.consultarPacientePorId(id) == null) {
+			return new ModelAndView("redirect:/login");
+		}
 		Paciente paciente = servicioPaciente.consultarPacientePorId(id);
-
 		String nombre = paciente.getNombre();
 
 		model.put("nombre", nombre);
@@ -57,6 +80,103 @@ public class ControladorPaciente {
 
 		return new ModelAndView("bienvenidoPaciente", model);
 	}
+    
+    @RequestMapping("/registrarPaciente")
+    public ModelAndView registrarPaciente(HttpServletRequest request) {
+
+    	ModelMap model = new ModelMap();
+
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}    	
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+
+        return new ModelAndView("registrarPaciente", model);
+    }
+
+    @RequestMapping("/detalleRegistroPaciente")
+    public ModelAndView validarRegistroPaciente(
+
+            @ModelAttribute("paciente") Paciente paciente,
+            HttpServletRequest request,
+            @RequestParam(value = "calle") String calle,
+            @RequestParam(value = "numero") Integer numero,
+            @RequestParam(value = "nombreLocalidad") String nombreLocalidad,
+            @RequestParam(value = "nombrePartido") String nombrePartido
+
+    ) {
+
+    	ModelMap model = new ModelMap();
+
+		if(servicioAtajo.validarInicioDeSesion(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarInicioDeSesion(request));
+    	}
+    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
+    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
+    	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
+    	model.put("armarHeader", servicioAtajo.armarHeader(request));
+    	
+        if (paciente == null) {
+            return new ModelAndView("redirect:/denied");
+        }
+
+        if (servicioUsuario.consultarUsuarioPorEmail(paciente.getEmail()) == null &&
+                servicioPaciente.consultarPacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento()) == null) {
+
+            paciente.setPosibleInfectado(true);
+            paciente.setRol(Rol.PACIENTE);
+
+            servicioPaciente.registrarPaciente(paciente);
+
+            request.getSession().setAttribute("ROL", paciente.getRol());
+
+            String nombre = paciente.getNombre();
+            String documento = paciente.getNumeroDocumento();
+            String email = paciente.getEmail();
+            TipoDocumento tipoDocumento = paciente.getTipoDocumento();
+
+            Paciente pacienteBuscado = servicioPaciente.consultarPacientePorDoc(documento, tipoDocumento);
+            request.getSession().setAttribute("ID_PACIENTE", pacienteBuscado.getId());
+
+            model.put("nombre", nombre);
+            model.put("documento", documento);
+            model.put("tipoDocumento", tipoDocumento);
+            model.put("email", email);
+
+            servicioTest.enviarMail(paciente);
+
+            Domicilio domicilio = new Domicilio();
+            domicilio.setCalle(calle);
+            domicilio.setNumero(numero);
+            servicioDomicilio.registrarDomicilio(domicilio);
+            paciente.setDomicilio(domicilio);
+            Localidad localidad = servicioLocalidad.obtenerLocalidadPorNombre(nombreLocalidad);
+            domicilio.setLocalidad(localidad);
+            Partido partido = servicioPartido.obtenerPartidoPorNombre(nombrePartido);
+            localidad.setPartido(partido);
+            servicioPaciente.actualizarPaciente(paciente);
+            servicioDomicilio.actualizarDomicilio(domicilio);
+            servicioLocalidad.actualizarLocalidad(localidad);
+
+            return new ModelAndView("enfermedades", model);
+        } else {
+
+            model.put("error", "Ya existe un usuario registrado con su mail o documento");
+
+            return new ModelAndView("registrarPaciente", model);
+        }
+    }
     
     /*Consultar paciente por Nro y Tipo de Documento*/
     @RequestMapping("/consultarPaciente")
@@ -70,6 +190,10 @@ public class ControladorPaciente {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
 		Paciente paciente = new Paciente();
@@ -90,6 +214,10 @@ public class ControladorPaciente {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 		
 		paciente = servicioPaciente.consultarPacientePorDoc(paciente.getNumeroDocumento(), paciente.getTipoDocumento());
@@ -125,6 +253,10 @@ public class ControladorPaciente {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
     	
         List<Paciente> pacientes = servicioPaciente.pacientes();
@@ -145,6 +277,10 @@ public class ControladorPaciente {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
     	
         Integer cantidadPacientes = servicioPaciente.pacientes().size();
@@ -177,6 +313,10 @@ public class ControladorPaciente {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
     	
         return new ModelAndView("detalleRegistroPaciente", model);
@@ -193,6 +333,10 @@ public class ControladorPaciente {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
         List<Paciente> posiblesInfectados = servicioPaciente.posiblesInfectados();
@@ -223,6 +367,10 @@ public class ControladorPaciente {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
         List<Paciente> listaPacientesInfectados = servicioPaciente.pacientesInfectados();
@@ -249,6 +397,10 @@ public class ControladorPaciente {
     	if(servicioAtajo.validarPermisoAPagina(request) != null) {
     		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
     	}
+    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+		if(rol != null) {
+			model.put("rol", rol.name());	
+		}
     	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
         Cama cama = servicioCama.consultarCamaPorId(idCama);
@@ -274,6 +426,10 @@ public class ControladorPaciente {
 	    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
 	    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
 	    	}
+	    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+			if(rol != null) {
+				model.put("rol", rol.name());	
+			}
 	    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 	        
 	        List<Paciente> listaPacientesInternados = new ArrayList<Paciente>();
@@ -312,6 +468,10 @@ public class ControladorPaciente {
 	    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
 	    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
 	    	}
+	    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+			if(rol != null) {
+				model.put("rol", rol.name());	
+			}
 	    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
 	        
@@ -335,6 +495,10 @@ public class ControladorPaciente {
 	    	if(servicioAtajo.validarPermisoAPagina(request) != null) {
 	    		return new ModelAndView(servicioAtajo.validarPermisoAPagina(request));
 	    	}
+	    	Rol rol = (Rol) request.getSession().getAttribute("ROL");
+			if(rol != null) {
+				model.put("rol", rol.name());	
+			}
 	    	model.put("armarHeader", servicioAtajo.armarHeader(request));
 
 	    	List<Paciente> pacientes = servicioPaciente.pacientes();

@@ -30,43 +30,22 @@ public class ServicioAtajoImpl implements ServicioAtajo{
 		if (request.getRequestURI() == null) {
 	        return null;
 		}
-
-		/*ACCESO PERMITIDO A TODOS*/
-		if (
-			  /*controladorNotificacion*/
-			  request.getRequestURI().contains("/covidtest/crearMensaje")
-			  || request.getRequestURI().contains("/covidtest/crearMensajeParaInstitucion")
-			  || request.getRequestURI().contains("/covidtest/enviarMensaje")
-			  || request.getRequestURI().contains("/covidtest/verMensajes")
-			  
-			  /*controladorLogin*/
-			  || request.getRequestURI().contains("/covidtest/home")
-			  
-			  /*controladorLogin*/
-			  || request.getRequestURI().contains("/covidtest/autoTest")
-			  || request.getRequestURI().contains("/covidtest/validarTest")
-			  || request.getRequestURI().contains("/covidtest/testPositivo")
-			  || request.getRequestURI().contains("/covidtest/testNegativo")
-			  || request.getRequestURI().contains("/covidtest/generarPermiso")
-			  || request.getRequestURI().contains("/covidtest/validarPermiso")
-			  || request.getRequestURI().contains("/covidtest/permisoPositivo")
-			  || request.getRequestURI().contains("/covidtest/permisoDenegado")
-			  || request.getRequestURI().contains("/covidtest/enfermedades")
-			  || request.getRequestURI().contains("/covidtest/validarEnfermedades")
-			  ) {
-			
-			return null;
+		
+		
+		/*ACCESO PERMITIDO SOLO A PACIENTES*/
+		if(request.getRequestURI().contains("/covidtest/bienvenidoPaciente")){
+			if (rol == Rol.PACIENTE) {
+		        return null;
+			}
+			else{
+		        return "redirect:/denied";
+		    }
 		}
 		
 		/*ACCESO PERMITIDO SOLO A ADMIN E INSTITUCIONES*/
 		if(
-			 /*controladorAdmin*/
-		     request.getRequestURI().contains("/covidtest/admin")
-		  || request.getRequestURI().contains("/covidtest/homeAdmin")
-		  || request.getRequestURI().contains("/covidtest/panel")
-		  
 			 /*controladorAsignacion*/
-		  || request.getRequestURI().contains("/covidtest/consultarAsignacion")
+		   request.getRequestURI().contains("/covidtest/consultarAsignacion")
 		  || request.getRequestURI().contains("/covidtest/detalleAsignacion")
 		  
 		  /*controladorNotificacion*/
@@ -124,9 +103,13 @@ public class ServicioAtajoImpl implements ServicioAtajo{
 		    }
 		}
 
-		/*ACCESO PERMITIDO SOLO A INSTITUCIONES*/
-		if(request.getRequestURI().contains("/covidtest/bienvenido")){
-			if (rol == Rol.PACIENTE) {
+		/*ACCESO PERMITIDO SOLO A ADMINISTRADORES*/
+		if(
+			 /*controladorAdmin*/
+		     request.getRequestURI().contains("/covidtest/admin")
+		  || request.getRequestURI().contains("/covidtest/homeAdmin")
+		  || request.getRequestURI().contains("/covidtest/panel")){
+			if (rol == Rol.ADMIN) {
 		        return null;
 			}
 			else{
@@ -134,9 +117,9 @@ public class ServicioAtajoImpl implements ServicioAtajo{
 		    }
 		}
 		
-		/*ACCESO PERMITIDO SOLO A PACIENTES*/
-		if(request.getRequestURI().contains("/covidtest/bienvenidoPaciente")){
-			if (rol == Rol.PACIENTE) {
+		/*ACCESO PERMITIDO SOLO A INSTITUCIONES*/
+		if(request.getRequestURI().contains("/covidtest/bienvenido")){
+			if (rol == Rol.INSTITUCION) {
 		        return null;
 			}
 			else{
@@ -152,7 +135,7 @@ public class ServicioAtajoImpl implements ServicioAtajo{
 
 		String header = "header";
 		
-		/*ACCESO PERMITIDO A TODOS*/
+		/*HEADER SIMPLE SIN PANEL*/
 		if (request.getRequestURI().contains("/covidtest/home")
 		  || request.getRequestURI().contains("/covidtest/homeAdmin")
 		  || request.getRequestURI().contains("/covidtest/admin")

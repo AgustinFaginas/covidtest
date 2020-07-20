@@ -1,3 +1,5 @@
+<% HttpSession sesionActual = request.getSession();%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,6 +10,7 @@
 
 <head>
 <!-- Required meta tags -->
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,6 +20,12 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+	
+	
+        <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
 <title>Bienvenido</title>
 
@@ -62,10 +71,13 @@
 						<li class="nav-item ml-5"><a class="nav-link" href="generarPermiso">Generar Permiso
 						</a></li>
 			</ul>
-			<c:if test="${alert == null}">
+			<% if (sesionActual == null) { %>	
 				<a href="login" class="btn btn-dark ml-5" role="button"
 					aria-disabled="true">Iniciar Sesión</a>
-			</c:if>
+			<% } else{%>
+			<a href="login" class="btn btn-dark ml-5" role="button"
+					aria-disabled="true">Iniciar Sesión</a>			
+			<% } %>
 
 		</div>
 	</nav>

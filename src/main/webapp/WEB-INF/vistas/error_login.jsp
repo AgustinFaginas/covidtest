@@ -2,11 +2,11 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="../../partial/${armarHeader}1.jsp" />
+<jsp:include page="../../partial/usuarioHeaderParte1.jsp" />
 
 <title>Inserte titulo aquí</title>
     
-<jsp:include page="../../partial/${armarHeader}2.jsp" />
+<jsp:include page="../../partial/usuarioHeaderParte2.jsp" />
 
 	<div class="jumbotron">
 		<h1 class="display-4">Error: Ya se encuentra logueado con una cuenta</h1>

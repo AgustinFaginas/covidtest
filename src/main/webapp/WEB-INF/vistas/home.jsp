@@ -2,21 +2,11 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<% HttpSession rolUsuario = request.getSession();%>
-
-<% if (rolUsuario == null) { %>	
-	
 <jsp:include page="../../partial/${armarHeader}1.jsp" />
 
 <title>Inserte titulo aquí</title>
     
 <jsp:include page="../../partial/${armarHeader}2.jsp" />
-
-<% } else{%>
-
-<jsp:include page="../../partial/headerHome.jsp" />
-
-<% } %>
 
 
 	<h2 class="text-center mb-3 mt-5">Consejos para prevenir el Coronavirus</h2>
