@@ -12,7 +12,8 @@ public class Institucion extends Usuario{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Integer cantidadCamas;
+    private Integer cantidadCamas;
+	
 	
 	public Long getId() {
 		return id;
