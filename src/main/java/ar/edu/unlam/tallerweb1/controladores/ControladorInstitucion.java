@@ -106,7 +106,8 @@ public class ControladorInstitucion {
 
                 Cama cama = new Cama();
                 cama.setInstitucion(institucion);
-
+                
+                
                 int numeroCama = i + 1;
                 String descripcion = "" + numeroCama;
                 cama.setDescripcion(descripcion);

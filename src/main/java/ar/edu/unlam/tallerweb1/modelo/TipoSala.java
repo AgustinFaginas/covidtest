@@ -1,0 +1,8 @@
+package ar.edu.unlam.tallerweb1.modelo;
+
+
+public enum TipoSala {
+	
+	TERAPIA_INTENSIVA, TERAPIA_INTERMEDIA, SALA_AISLAMIENTO,
+	HABITACION_HOTEL, AULA_UNIVERSITARIA, CLUB;
+}
