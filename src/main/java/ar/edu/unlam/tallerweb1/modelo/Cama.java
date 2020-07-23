@@ -25,8 +25,24 @@ public class Cama {
 
     @Enumerated(EnumType.STRING)
     private TipoCama tipoCama;
+    
+    @Enumerated(EnumType.STRING)
+    private TipoSala tipoSala;
 
-    public Long getId() {
+   
+
+
+	public TipoSala getTipoSala() {
+		return tipoSala;
+	}
+
+
+	public void setTipoSala(TipoSala tipoSala) {
+		this.tipoSala = tipoSala;
+	}
+
+
+	public Long getId() {
         return id;
     }
 

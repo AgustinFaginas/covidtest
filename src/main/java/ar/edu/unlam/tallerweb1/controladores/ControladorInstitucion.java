@@ -198,5 +198,34 @@ public class ControladorInstitucion {
 
         return new ModelAndView("bienvenido", model);
     }
+    
+    @RequestMapping("crearCamaPorTipoSala")
+    public ModelAndView crearCamaPorTipoSala(@RequestParam(value = "tipoCama") TipoCama tipoCama,
+    		@RequestParam(value = "tipoSala")TipoSala tipoSala,
+    		@RequestParam(value = "numeroDocumento") Integer cantidadDeCamas,
+    		HttpServletRequest request) {
+    	
+    	Institucion institucion =servicioInstitucion.obtenerInstitucionPorId((Long) request.getSession().getAttribute("ID"));
+    	
+    	 for (int i = 0; i < cantidadDeCamas; i++) {
+
+             Cama cama = new Cama();
+             cama.setInstitucion(institucion);
+             cama.setTipoCama(tipoCama);
+             cama.setTipoSala(tipoSala);
+             
+             
+             int numeroCama = i+1;
+             String descripcion = "" + numeroCama;
+             cama.setDescripcion(descripcion);
+
+           
+             servicioCama.registrarCama(cama);
+         }
+    	
+    	
+    	return new ModelAndView("instConfirmacionCreacionCamaCorrecto") ;
+    }
+    
   
 }
