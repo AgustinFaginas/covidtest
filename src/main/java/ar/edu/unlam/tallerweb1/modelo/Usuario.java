@@ -19,8 +19,8 @@ public class Usuario {
 	private String email;
 	private String password;
 	private String numeroDocumento;
-	private Float latitud;
-	private Float longitud;
+	private Double latitud;
+	private Double longitud;
 
 	@Enumerated(EnumType.STRING)
 	private Rol rol;
@@ -96,19 +96,19 @@ public class Usuario {
 		this.domicilio = domicilio;
 	}
 
-	public Float getLatitud() {
+	public Double getLatitud() {
 		return latitud;
 	}
 
-	public void setLatitud(Float latitud) {
+	public void setLatitud(Double latitud) {
 		this.latitud = latitud;
 	}
 
-	public Float getLongitud() {
+	public Double getLongitud() {
 		return longitud;
 	}
 
-	public void setLongitud(Float longitud) {
+	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
 	}
 

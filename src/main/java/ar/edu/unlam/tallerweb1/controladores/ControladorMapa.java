@@ -44,8 +44,8 @@ public class ControladorMapa {
 	}
 
 	@RequestMapping("/validarMapa")
-	public ModelAndView validarMapa(HttpServletRequest request, @RequestParam(value = "latitud") Float latitud,
-			@RequestParam(value = "longitud") Float longitud) {
+	public ModelAndView validarMapa(HttpServletRequest request, @RequestParam(value = "latitud") Double latitud,
+			@RequestParam(value = "longitud") Double longitud) {
 		ModelMap model = new ModelMap();
 
 		if (servicioAtajo.validarInicioDeSesion(request) != null) {
