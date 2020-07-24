@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Usuario {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -20,15 +19,17 @@ public class Usuario {
 	private String email;
 	private String password;
 	private String numeroDocumento;
-	
+	private Float latitud;
+	private Float longitud;
+
 	@Enumerated(EnumType.STRING)
 	private Rol rol;
-	
+
 	@Enumerated(EnumType.STRING)
 	private TipoDocumento tipoDocumento;
-	
+
 	@ManyToOne
-	@JoinColumn 
+	@JoinColumn
 	private Domicilio domicilio;
 
 	public Long getId() {
@@ -93,6 +94,22 @@ public class Usuario {
 
 	public void setDomicilio(Domicilio domicilio) {
 		this.domicilio = domicilio;
+	}
+
+	public Float getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(Float latitud) {
+		this.latitud = latitud;
+	}
+
+	public Float getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(Float longitud) {
+		this.longitud = longitud;
 	}
 
 }
